@@ -1,0 +1,32 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="user-form" class="padding-large bg-light-grey">
+    <div class="container">
+        <div class="row">
+            <div class="page-header col-md-6">
+                <div class="section-header">
+                    <h2 class="section-title">{{title_form}}</h3>
+                </div>
+                <div class="detail">
+                    <form method="post" action="{% url 'users:logout' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="button-area col-md-10">
+                            <button class="btn btn-dark btn-full" type="submit">Выйти</button>
+                            <a href="{{ return_url }}"
+                               type="button" class="btn btn-grey btn-full">Назад</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            {% include 'contacts.html' %}
+        </div>
+    </div>
+</section>
+
+{% include 'shipping-info.html' %}
+
+{% endblock content %}
