@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+
+<section id="user-form" class="padding-large bg-light-grey">
+    <div class="container">
+        <div class="row">
+            <div class="page-header col-md-6">
+                <div class="section-header">
+                    <h2 class="section-title">{{title_form}}</h2>
+                    {% include 'messages.html' %}
+                </div>
+                <div class="detail">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-error">{{ form.non_field_errors }}</div>
+                        {% for f in form %}
+                        <p>
+                            <label class="col-sm-3 col-form-label align-top" for="{{ f.id_for_label }}">
+                                {{ f.label }}</label>
+                            {{ f }}
+                        </p>
+                        <div class="form-error">{{ f.errors }}</div>
+                        {% endfor %}
+
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="btn btn-dark btn-full">Сохранить</button>
+                        {% else %}
+                        {% if create_user %}
+                        <button type="submit" class="btn btn-dark btn-full">Зарегистрировать</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-dark btn-full" name="login">Войти</button>
+                        <button type="submit" class="btn btn-grey btn-full" name="recovery">
+                            Восстановить пароль
+                        </button>
+                        <a href="{% url 'users:create_user' %}" type="button" class="btn btn-grey btn-full" name="register">
+                            Регистрация
+                        </a>
+                        {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
+
+            </div>
+            {% include 'contacts.html' %}
+        </div>
+    </div>
+</section>
+
+{% include 'shipping-info.html' %}
+
+{% endblock content %}
