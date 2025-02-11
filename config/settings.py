@@ -52,8 +52,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'tunes.context_processors.get_contact',
-                'cart.context_processors.cart',
+                # 'tunes.context_processors.get_contact',
+                # 'cart.context_processors.cart',
             ],
         },
     },
