@@ -47,3 +47,16 @@ class Product(models.Model):
         return f"{self.name}"
 
 
+class Image(models.Model):
+    name = models.CharField( max_length=50, unique=True , verbose_name='Имя')
+    image = models.ImageField(upload_to='upload/product_images' , verbose_name='Фото')
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, related_name='images', verbose_name='Продукт')
+
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
+        ordering = ['name']
+
+    def __str__(self):
+        return f"{self.name}"
