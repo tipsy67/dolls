@@ -21,20 +21,6 @@ class Feedback(models.Model):
         verbose_name_plural = 'Отзывы'
 
 
-class Quote(models.Model):
-    name = models.CharField(max_length=150, verbose_name='Имя')
-    quote = models.TextField(blank=True, verbose_name='Цитата')
-    is_published = models.BooleanField(default=False, verbose_name='Публиковать')
-
-    def __str__(self):
-        return f"{self.name}"
-
-    class Meta:
-        # db_table = 'optics_quote'
-        verbose_name = 'Цитата'
-        verbose_name_plural = 'Цитаты'
-
-
 class Contact(models.Model):
     country = models.CharField(max_length=50, verbose_name='Страна')
     inn = models.CharField(max_length=20, verbose_name='ИНН')

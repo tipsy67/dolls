@@ -24,9 +24,6 @@ class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(**NULLABLE, verbose_name='Описание')
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена')
-    image = models.ImageField(
-        upload_to='products/', **NULLABLE, verbose_name='Изображение'
-    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     category = models.ForeignKey(
@@ -51,6 +48,10 @@ class Image(models.Model):
     name = models.CharField( max_length=50, unique=True , verbose_name='Имя')
     image = models.ImageField(upload_to='upload/product_images' , verbose_name='Фото')
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE, related_name='images', verbose_name='Продукт')
+    is_published = models.BooleanField(default=False, verbose_name='Активно')
+    active_on_main_page = models.BooleanField(
+        default=False, verbose_name='Активно на гл.стр.'
+    )
 
 
     class Meta:

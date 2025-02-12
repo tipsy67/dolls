@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from tunes.models import Feedback, Quote, Contact, TunesDict
+from tunes.models import Feedback, Contact, TunesDict
 
 
 class TunesAppTest(TestCase):
@@ -8,7 +8,6 @@ class TunesAppTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.feedback = Feedback.objects.create(name='Feedback for test')
-        cls.quote = Quote.objects.create(name='Quote for test')
         cls.contact = Contact.objects.create(country='test', inn='test', address='test', phone='test', email='test@test.test')
         cls.tunesdict = TunesDict.objects.create(key='TunesDict for test')
 
@@ -38,24 +37,6 @@ class TunesAppTest(TestCase):
 
         self.assertEqual(feedback.is_read, False)
         self.assertEqual(feedback.is_published, False)
-
-    def test_quote_model(self):
-        quote = Quote.objects.get(id=self.quote.pk)
-
-        field_label = Quote._meta.get_field('name').verbose_name
-        self.assertEqual(field_label, 'Имя')
-        field_label = Quote._meta.get_field('quote').verbose_name
-        self.assertEqual(field_label, 'Цитата')
-        field_label = Quote._meta.get_field('is_published').verbose_name
-        self.assertEqual(field_label, 'Публиковать')
-
-        max_length = Quote._meta.get_field('name').max_length
-        self.assertEqual(max_length, 150)
-
-        expected_object_name = '%s' % (quote.name)
-        self.assertEqual(expected_object_name, str(quote))
-
-        self.assertEqual(quote.is_published, False)
 
 
     def test_сontact_model(self):
