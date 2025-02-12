@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from tunes.models import Feedback, Quote, TunesDict, Banner, Contact
+from tunes.models import Feedback, TunesDict, Banner, Contact
 
 
 @admin.register(Feedback)
@@ -10,10 +10,6 @@ class FeedbackAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('email', 'phone', 'address',)
-
-@admin.register(Quote)
-class QuoteAdmin(admin.ModelAdmin):
-    pass
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):
