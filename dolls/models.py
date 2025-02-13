@@ -24,6 +24,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(**NULLABLE, verbose_name='Описание')
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена')
+    old_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Старая цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     category = models.ForeignKey(
@@ -43,16 +44,23 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    @property
+    def one_image(self):
+        return self.images.prefetch_related().all().order_by('?').first()
+
+    @property
+    def sale(self):
+        return self.old_price != 0 and self.old_price != self.price
+
 
 class Image(models.Model):
-    name = models.CharField( max_length=50, unique=True , verbose_name='Имя')
+    name = models.CharField(max_length=50, **NULLABLE , verbose_name='Имя')
     image = models.ImageField(upload_to='upload/product_images' , verbose_name='Фото')
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE, related_name='images', verbose_name='Продукт')
     is_published = models.BooleanField(default=False, verbose_name='Активно')
     active_on_main_page = models.BooleanField(
         default=False, verbose_name='Активно на гл.стр.'
     )
-
 
     class Meta:
         verbose_name = 'Изображение'

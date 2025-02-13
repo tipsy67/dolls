@@ -2,6 +2,8 @@
 
 {% block content %}
 {% load static %}
+{% load dolls_tags %}
+
 <main>
 
     {% include 'slider.html' %}
@@ -35,19 +37,29 @@
                 <!-- Products -->
                 <ul class="products">
                     <!-- Product -->
-                    <li class="product design">
+                    {% for product in product_list %}
+                    <li class="product {{product.category}}">
                         <a href="#">
-                            <img src="{% static 'dolls/images/product-1.jpg' %}" alt="Product"/>
-                            <h5>Stylish Chair</h5>
-                            <span class="price"><del>$200</del>$139</span>
+                            {% if product.one_image %}
+                            <img src="{{product.one_image|add_media}}" alt="Product"/>
+                            {% else %}
+                            <img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
+                            {% endif %}
+                            <h5>{{product.name}}</h5>
+                            {% if product.sale %}
+                            <span class="price"><del>{{product.old_price}}</del>{{product.price}}</span>
+                            {% else %}
+                            <span class="price">{{product.price}}</span>
+                            {% endif %}
                         </a>
                         <div class="wishlist-box">
                             <a href="#"><i class="fa fa-arrows-alt"></i></a>
                             <a href="#"><i class="fa fa-heart-o"></i></a>
                             <a href="#"><i class="fa fa-search"></i></a>
                         </div>
-                        <a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
+                        <a href="#" class="addto-cart" title="Add To Cart">Купить</a>
                     </li><!-- Product /- -->
+                    {% endfor %}
 
                     <!-- Product -->
                     <li class="product video">
