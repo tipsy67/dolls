@@ -1,16 +1,44 @@
+import os
+
 from django.contrib import admin
-
+from django.utils.safestring import mark_safe
 from dolls.models import Category, Product, Image
-
+from pytils.translit import slugify
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     pass
 
+class ImageInline(admin.TabularInline):
+    model = Image
+    extra = 1
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('pk', 'name', 'price', 'old_price', 'photo_product')
+    inlines = [ImageInline]
+
+    @admin.display(description="Просмотр")
+    def photo_product(self, product: Product):
+        if product.one_image:
+            return mark_safe(f"<img src='{product.one_image.image.url}' width=50>")
+        return "Без изображения"
+
+    def save_formset(self, request, form, formset, change):
+        product_name = form.cleaned_data.get('name', '')
+        for inline_form in formset.forms:
+            image_name = inline_form.cleaned_data.get('name', '')
+            if inline_form.cleaned_data and (image_name is None or len(image_name) == 0):
+                file_path = inline_form.cleaned_data.get('image','')
+                file_name = os.path.basename(file_path.name)
+                inline_form.instance.name = f"{slugify(product_name)}-{file_name}"
+        super().save_formset(request, form, formset, change)
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     pass
+
+    # def save_model(self, request, obj, form, change):
+    #     if not self.pk:
+    #         self.slug = slugify(self.title)
+    #     super().save_model(request, obj, form, change)
