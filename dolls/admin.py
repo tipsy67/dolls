@@ -1,6 +1,6 @@
 import os
 
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.utils.safestring import mark_safe
 from dolls.models import Category, Product, Image
 from pytils.translit import slugify
@@ -15,7 +15,7 @@ class ImageInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'price', 'old_price', 'photo_product')
+    list_display = ('pk', 'name', 'price', 'old_price', 'photo_product', 'is_published')
     inlines = [ImageInline]
 
     @admin.display(description="Просмотр")
@@ -23,6 +23,16 @@ class ProductAdmin(admin.ModelAdmin):
         if product.one_image:
             return mark_safe(f"<img src='{product.one_image.image.url}' width=50>")
         return "Без изображения"
+
+    @admin.action(description="Опубликовать выбранные записи")
+    def set_published(self, request, queryset):
+        count = queryset.update(is_published=True)
+        self.message_user(request, f"Изменено {count} записей.")
+
+    @admin.action(description="Снять с публикации выбранные записи")
+    def set_draft(self, request, queryset):
+        count = queryset.update(is_published=False)
+        self.message_user(request, f"{count} записей сняты с публикации!", messages.WARNING)
 
     def save_formset(self, request, form, formset, change):
         product_name = form.cleaned_data.get('name', '')

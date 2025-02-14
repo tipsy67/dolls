@@ -19,7 +19,7 @@
                 <div class="section-header">
                     <h3>Our Products</h3>
                     <p>our vision is to be Earth's most customer centric company</p>
-                    <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator"/>
+                    <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator" />
                 </div><!-- Section Header /- -->
                 <ul id="filters" class="products-categories no-left-padding">
                     <li><a data-filter="*" class="active" href="#">Все товары</a></li>
@@ -41,7 +41,7 @@
                     <li class="product {{product.category}}">
                         <a href="#">
                             {% if product.one_image %}
-                            <img src="{{product.one_image|add_media}}" alt="Product"/>
+                            <img src="{{product.one_image|add_media}}" alt="Product" width="270"/>
                             {% else %}
                             <img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
                             {% endif %}
