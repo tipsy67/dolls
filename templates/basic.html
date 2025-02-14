@@ -67,41 +67,41 @@
 		<!-- Header -->
 		<header class="header-section container-fluid no-padding">
 			<!-- Top Header -->
-			<div class="top-header container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="col-md-7 col-sm-7 col-xs-7 dropdown-bar">
-						<h5>Welcome To Max Shop</h5>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="languages" id="language" type="button" class="btn dropdown-toggle">English <span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Danish</a></li>
-								<li><a title="German" href="#">German</a></li>
-								<li><a title="French" href="#">French</a></li>
-							</ul>
-						</div>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="currency" id="currency" type="button" class="btn dropdown-toggle">US Dollar<span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Usd</a></li>
-								<li><a title="German" href="#">Ora</a></li>
-								<li><a title="French" href="#">Riyal</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- Social -->
-					<div class="col-md-5 col-sm-5 col-xs-5 header-social"> 
-						<ul>
-							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-							<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-						</ul>
-					</div><!-- Social /- -->
-				</div><!-- Container /- -->
-			</div><!-- Top Header /- -->
+<!--			<div class="top-header container-fluid no-padding">-->
+<!--				&lt;!&ndash; Container &ndash;&gt;-->
+<!--				<div class="container">-->
+<!--					<div class="col-md-7 col-sm-7 col-xs-7 dropdown-bar">-->
+<!--						<h5>Welcome To Max Shop</h5>-->
+<!--						<div class="language-dropdown dropdown">-->
+<!--							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="languages" id="language" type="button" class="btn dropdown-toggle">English <span class="caret"></span></button>-->
+<!--							<ul class="dropdown-menu no-padding">-->
+<!--								<li><a title="Danish" href="#">Danish</a></li>-->
+<!--								<li><a title="German" href="#">German</a></li>-->
+<!--								<li><a title="French" href="#">French</a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+<!--						<div class="language-dropdown dropdown">-->
+<!--							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="currency" id="currency" type="button" class="btn dropdown-toggle">US Dollar<span class="caret"></span></button>-->
+<!--							<ul class="dropdown-menu no-padding">-->
+<!--								<li><a title="Danish" href="#">Usd</a></li>-->
+<!--								<li><a title="German" href="#">Ora</a></li>-->
+<!--								<li><a title="French" href="#">Riyal</a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					&lt;!&ndash; Social &ndash;&gt;-->
+<!--					<div class="col-md-5 col-sm-5 col-xs-5 header-social"> -->
+<!--						<ul>-->
+<!--							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>-->
+<!--							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>-->
+<!--							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>-->
+<!--							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>-->
+<!--							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>-->
+<!--							<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>-->
+<!--						</ul>-->
+<!--					</div>&lt;!&ndash; Social /- &ndash;&gt;-->
+<!--				</div>&lt;!&ndash; Container /- &ndash;&gt;-->
+<!--			</div>&lt;!&ndash; Top Header /- &ndash;&gt;-->
 			
 			<!-- Menu Block -->
 			<div class="container-fluid no-padding menu-block">
@@ -116,7 +116,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a href="index.html" class="navbar-brand">Max <span>shop</span></a>
+							<a href="{% url 'dolls:home' %}" class="navbar-brand">Dolls <span>shop</span></a>
 						</div>
 						<!-- Menu Icon -->
 						<div class="menu-icon">
@@ -153,40 +153,19 @@
 						</div><!-- Menu Icon /- -->
 						<div class="navbar-collapse collapse navbar-right" id="navbar">
 							<ul class="nav navbar-nav">
-								<li class="active dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+								<li class="{{home}} dropdown">
+									<a href="{% url 'dolls:home' %}" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Главная</a>
 									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="index.html" title="home 1">home 1</a></li>
-										<li><a href="index2.html" title="home 2">home 2</a></li>
-									</ul>
+								</li>
+								<li class="{{shop}} dropdown">
+									<a href="{% url 'dolls:shop' %}" title="Shop" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Товары</a>
+									<i class="ddl-switch fa fa-angle-down"></i>
 								</li>
 								<li class="dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Categories </a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="cart.html" title="Cart">Cart</a></li>
-										<li><a href="checkout.html" title="Checkout">Checkout</a></li>
-										<li><a href="404.html" title="404">404</a></li>
-									</ul>
+									<a href="blog.html" title="Blog" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Блог</a>
 								</li>
-								<li><a href="#product-section" title="Products">Products</a></li>
-								<li class="dropdown">
-									<a href="shop.html" title="Shop" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="shop-single.html" title="Shop Single">Shop Single</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="blog.html" title="Blog" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="blog-post.html" title="Blog Post">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="about.html" title="About Us">About Us</a></li>
-								<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
+								<li><a href="about.html" title="About Us">Обо мне</a></li>
+								<li><a href="contact-us.html" title="Contact Us">Контакты</a></li>
 							</ul>
 						</div><!--/.nav-collapse -->
 					</nav><!-- nav /- -->
@@ -209,7 +188,7 @@
 				<div class="row">
 					<!-- Widget About -->
 					<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_about">
-						<a href="index.html" title="Max Shop">Max <span>Shop</span></a>
+						<a href="index.html" title="Max Shop">Dolls <span>Shop</span></a>
 						<div class="info">
 							<p><i class="icon icon-Pointer"></i>Max Shop, 65 Huge Street Melbourne, 2850 Australia.</p>
 							<p><i class="icon icon-Phone2"></i><a href="tel:(11)1234567890" title="Phone" class="phone">(11) 123 456 7890</a></p>
@@ -261,7 +240,7 @@
 				</div>
 				<div class="copyright-section">
 					<div class="coyright-content">
-						<p>&copy; Max shop. all rights reserved</p>
+						<p>&copy; Dolls shop. all rights reserved</p>
 					</div>	
 					<ul>
 						<li><a href="#" title="Delivery Information">Delivery Information</a></li>
