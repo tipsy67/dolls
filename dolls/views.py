@@ -4,6 +4,7 @@ from django.db.models import F, Q
 from config.settings import PRODUCT_PER_PAGE
 from dolls.models import Category, Product
 from dolls.src.utils import get_random_reviews
+from tags.models import Tag
 from tunes.models import Banner
 
 
@@ -44,6 +45,8 @@ def product_list_view(request, cat=None):
 
     sale_list = Product.objects.filter(~Q(old_price=0) & ~Q(old_price=F('price')), is_published=True).order_by('-update_at')[:3]
 
+    tag_list = Tag.objects.all()
+
     paginator = Paginator(product_list, PRODUCT_PER_PAGE)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -56,6 +59,7 @@ def product_list_view(request, cat=None):
         'page_number': page_number,
         'category_pk': cat,
         'sale_list': sale_list,
+        'tag_list': tag_list
     }
 
     return render(request, 'dolls/shop.html', context)
