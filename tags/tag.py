@@ -30,7 +30,6 @@ class CheckedTag:
         for item in self.tags:
             yield item
 
-
     def __len__(self):
         return len(self.tags)
 
