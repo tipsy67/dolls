@@ -1,5 +1,7 @@
 from config.settings import NULLABLE
 from django.db import models
+from django.urls import reverse
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
@@ -27,6 +29,7 @@ class Product(models.Model):
     old_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Старая цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
+    tags = models.ManyToManyField('tags.Tag', blank=True, related_name='tags', verbose_name="Теги")
     category = models.ForeignKey(
         to=Category,
         on_delete=models.PROTECT,

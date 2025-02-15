@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'users',
     'tunes',
     'cart',
+    'tags',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ TEMPLATES = [
 
                 # 'tunes.context_processors.get_contact',
                 # 'cart.context_processors.cart',
+                'tags.context_processors.tags',
             ],
         },
     },
@@ -104,8 +106,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'optics:home'
-LOGOUT_REDIRECT_URL = 'optics:home'
+LOGIN_REDIRECT_URL = 'dolls:home'
+LOGOUT_REDIRECT_URL = 'dolls:home'
 LOGIN_URL = 'users:login'
 
 CACHE_ENABLED = False
@@ -153,3 +155,4 @@ PRODUCT_PER_PAGE = 4
 BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
 CART_SESSION_ID='dolls_cart'
+TAGS_SESSION_ID='dolls_tags_cart'

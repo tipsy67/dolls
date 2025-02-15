@@ -46,19 +46,19 @@
                         </ul>
                     </aside><!-- Widget Categories /-  -->
                     <!-- Widget Price -->
-<!--                    <aside class="widget widget_price_filter">-->
-<!--                        <h3 class="widget-title">filter by price</h3>-->
-<!--                        <div class="price-filter">-->
-<!--                            <div id="slider-range"></div>-->
-<!--                            <div class="price-input">-->
-<!--                                <span id="amount"></span>-->
-<!--                                <span id="amount2"></span>-->
-<!--                            </div>-->
-<!--                            <a href="#" title="filter">Filter</a>-->
-<!--                        </div>-->
-<!--                    </aside>&lt;!&ndash; Widget Price /- &ndash;&gt;-->
+                    <!--                    <aside class="widget widget_price_filter">-->
+                    <!--                        <h3 class="widget-title">filter by price</h3>-->
+                    <!--                        <div class="price-filter">-->
+                    <!--                            <div id="slider-range"></div>-->
+                    <!--                            <div class="price-input">-->
+                    <!--                                <span id="amount"></span>-->
+                    <!--                                <span id="amount2"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <a href="#" title="filter">Filter</a>-->
+                    <!--                        </div>-->
+                    <!--                    </aside>&lt;!&ndash; Widget Price /- &ndash;&gt;-->
                     <!-- Widget Latest Post -->
-                    <aside class="widget widget_latest_post">
+                    <aside id="tag_list_id" class="widget widget_latest_post">
                         <h3 class="widget-title">Скидки</h3>
                         {% for sale_item in sale_list %}
                         <div class="latest-box">
@@ -83,16 +83,14 @@
                     </aside><!-- Widget Latest Post /- -->
                     <!-- Widget Tags -->
                     <aside class="widget widget_tags">
-                        <h3 class="widget-title">popular tags</h3>
+                        <h3 class="widget-title">популярные теги</h3>
                         <div class="tags-box">
-                            <a href="#" title="Chairs">Chairs</a>
-                            <a href="#" title="Modern Designs">Modern Designs</a>
-                            <a href="#" title="Watches">Watches</a>
-                            <a href="#" title="Future">Future</a>
-                            <a href="#" title="Popular Products">Popular Products</a>
-                            <a href="#" title="Trendy">Trendy</a>
-                            <a href="#" title="Interier">Interier</a>
-                            <a href="#" title="Modern">Modern</a>
+                            {% for tag in tag_list %}
+                            <a href="{{tag.get_url_change}}" title="{{tag.tag}}"
+                               {% if tag.str_pk in tags %}
+                               style="color: #b6795f;"
+                               {% endif %}>{{tag.tag}}</a>
+                            {% endfor %}
                         </div>
                     </aside><!-- Widget Tags -->
                 </div><!-- Widget Area /- -->

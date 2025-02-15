@@ -17,6 +17,7 @@ class ImageInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'price', 'old_price', 'photo_product', 'is_published')
     inlines = [ImageInline]
+    list_display_links = ('name',)
 
     @admin.display(description="Просмотр")
     def photo_product(self, product: Product):
