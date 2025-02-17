@@ -110,7 +110,7 @@ LOGIN_REDIRECT_URL = 'dolls:home'
 LOGOUT_REDIRECT_URL = 'dolls:home'
 LOGIN_URL = 'users:login'
 
-CACHE_ENABLED = False
+CACHE_ENABLED = True
 
 if CACHE_ENABLED:
     CACHES = {
@@ -155,4 +155,4 @@ PRODUCT_PER_PAGE = 4
 BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
 CART_SESSION_ID='dolls_cart'
-TAGS_SESSION_ID='dolls_tags_cart'
+TAGS_SESSION_ID='dolls_tags'

@@ -103,7 +103,7 @@
                         <!-- Product -->
                         {% for product in product_list %}
                         <li class="product {{product.category}}">
-                            <a href="#">
+                            <a href="{% url 'dolls:shop_single' product.pk %}">
                                 {% if product.one_image %}
                                 <img src="{{product.one_image|add_media}}" alt="Product" width="270"/>
                                 {% else %}
@@ -116,12 +116,11 @@
                                 <span class="price">{{product.price}}</span>
                                 {% endif %}
                             </a>
-                            <a href="#" class="add-to-cart1" title="Add To Cart">Купить</a>
-                            <div class="wishlist-box">
-                                <a href="#"><i class="fa fa-arrows-alt"></i></a>
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <a href="#"><i class="fa fa-search"></i></a>
-                            </div>
+                            {% if product.quantity %}
+                            <a href="#" class="add-to-cart1" title="Купить">Купить</a>
+                            {% else %}
+                            <a href="#" class="add-to-cart1" title="Купить" style="pointer-events: none; opacity: 0.6;">Купить</a>
+                            {% endif %}
                         </li><!-- Product /- -->
                         {% endfor %}
                     </ul><!-- Products /- -->
