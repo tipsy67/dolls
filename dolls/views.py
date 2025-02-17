@@ -1,10 +1,11 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from django.db.models import F, Q
+
 from config.settings import PRODUCT_PER_PAGE
 from dolls.models import Category, Product
-from dolls.src.utils import get_random_reviews
+from dolls.src.utils import get_random_reviews, get_queryset_from_cache
 from tags.models import Tag
+from tags.tag import CheckedTag
 from tunes.models import Banner
 
 
@@ -36,16 +37,18 @@ def main_page(request):
 
 def product_list_view(request, cat=None):
 
-    category_list = Category.objects.filter(is_published=True)
+    tag_list = get_queryset_from_cache('tag_list')
+    category_list = get_queryset_from_cache('category_list')
+    sale_list = get_queryset_from_cache('sale_list')
 
     if cat is not None:
         product_list = Product.objects.filter(is_published=True, category_id=cat).order_by('name')
     else:
         product_list = Product.objects.filter(is_published=True).order_by('name')
 
-    sale_list = Product.objects.filter(~Q(old_price=0) & ~Q(old_price=F('price')), is_published=True).order_by('-update_at')[:3]
-
-    tag_list = Tag.objects.all()
+    tags = CheckedTag(request)
+    if tags:
+        product_list = product_list.filter(tags__pk__in=tags.tags)
 
     paginator = Paginator(product_list, PRODUCT_PER_PAGE)
     page_number = request.GET.get('page')
@@ -63,3 +66,14 @@ def product_list_view(request, cat=None):
     }
 
     return render(request, 'dolls/shop.html', context)
+
+
+def product_single_view(request, pk):
+    product = Product.objects.filter(is_published=True, pk=pk).first()
+    if product is not None:
+        context = {
+            'product': product,
+        }
+        return render(request, 'dolls/shop-single.html', context)
+
+    return render(request, 'dolls/404.html')

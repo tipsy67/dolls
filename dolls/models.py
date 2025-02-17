@@ -25,6 +25,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(**NULLABLE, verbose_name='Описание')
+    quantity = models.PositiveSmallIntegerField(**NULLABLE, verbose_name='Количество')
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена')
     old_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Старая цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
