@@ -58,9 +58,11 @@
                     {% endif %}
                     <!--                    <a href="#" title="Купить" class="add_to_cart">Купить</a>-->
                     <form>
-                        <button {% if product.quantity == 0 or product.quantity is None %} disabled {% endif %} title="Купить" class="add_to_cart">
-                            Купить
-                        </button>
+                        {% if product.quantity %}
+                        <button  title="Купить" class="add_to_cart"> Купить </button>
+                        {% else %}
+                        <button disabled title="Купить" class="add_to_cart" style="opacity: 0.5;cursor: not-allowed;"> Купить </button>
+                        {% endif %}
                     </form>
                     <div class="product_meta">
 								<span class="posted_in">

@@ -124,29 +124,7 @@
 								<a href="#" id="search" title="Search"><i class="icon icon-Search"></i></a>
 							</div>
 							<ul class="cart">
-								<li>
-									<a aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" id="cart" class="btn dropdown-toggle" title="Add To Cart" href="#"><i class="icon icon-ShoppingCart"></i></a>
-									<ul class="dropdown-menu no-padding">
-										<li class="mini_cart_item">
-											<a title="Remove this item" class="remove" href="#">&#215;</a>
-											<a href="#" class="shop-thumbnail">
-												<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-1.jpg">Flying Ninja
-											</a>
-											<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-										</li>
-										<li class="mini_cart_item">
-											<a title="Remove this item" class="remove" href="#">&#215;</a>
-											<a href="#" class="shop-thumbnail">
-												<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-2.jpg">Flying Ninja
-											</a>
-											<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-										</li>
-										<li class="button">
-											<a href="#" title="View Cart">View Cart</a>
-											<a href="#" title="Check Out">Check out</a>
-										</li>
-									</ul>
-								</li>
+								<li><a href="{% url 'cart:cart_detail' %}" title="Cart"><i class="icon icon-ShoppingCart"></i></a></li>
 								<li><a href="#" title="Like"><i class="icon icon-Heart"></i></a></li>
 								<li><a href="#" title="User"><i class="icon icon-User"></i></a></li>
 							</ul>

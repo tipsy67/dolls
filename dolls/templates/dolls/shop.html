@@ -116,11 +116,14 @@
                                 <span class="price">{{product.price}}</span>
                                 {% endif %}
                             </a>
+
                             {% if product.quantity %}
                             <a href="#" class="add-to-cart1" title="Купить">Купить</a>
                             {% else %}
-                            <a href="#" class="add-to-cart1" title="Купить" style="pointer-events: none; opacity: 0.6;">Купить</a>
+                            <a href="#" class="add-to-cart1" title="Купить"
+                               style="pointer-events: none; opacity: 0.6;">Купить</a>
                             {% endif %}
+
                         </li><!-- Product /- -->
                         {% endfor %}
                     </ul><!-- Products /- -->
