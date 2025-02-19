@@ -39,7 +39,7 @@
                     <!-- Product -->
                     {% for product in product_list %}
                     <li class="product {{product.category}}">
-                        <a href="#">
+                        <a href="{% url 'dolls:shop_single' product.pk %}">
                             {% if product.one_image %}
                             <img src="{{product.one_image|add_media}}" alt="Product" width="270"/>
                             {% else %}
@@ -57,7 +57,12 @@
                             <a href="#"><i class="fa fa-heart-o"></i></a>
                             <a href="#"><i class="fa fa-search"></i></a>
                         </div>
-                        <a href="#" class="addto-cart" title="Add To Cart">Купить</a>
+                            {% if product.quantity %}
+                            <a href="{% url 'cart:cart_add' product.pk %}" class="addto-cart" title="Купить">Купить</a>
+                            {% else %}
+                            <a href="#" class="addto-cart" title="Нет в наличии"
+                               style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
+                            {% endif %}
                     </li><!-- Product /- -->
                     {% endfor %}
                 </ul><!-- Products /- -->

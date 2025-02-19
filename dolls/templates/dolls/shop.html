@@ -98,7 +98,7 @@
 
                 <!-- Content Area -->
                 <div class="col-md-8 col-sm-7 col-xs-12 content-area product-section2 no-left-padding">
-                    <!-- Products -->
+                   <!-- Products -->
                     <ul class="products">
                         <!-- Product -->
                         {% for product in product_list %}
@@ -118,10 +118,10 @@
                             </a>
 
                             {% if product.quantity %}
-                            <a href="#" class="add-to-cart1" title="Купить">Купить</a>
+                            <a href="{% url 'cart:cart_add' product.pk %}" class="add-to-cart1" title="Купить">Купить</a>
                             {% else %}
-                            <a href="#" class="add-to-cart1" title="Купить"
-                               style="pointer-events: none; opacity: 0.6;">Купить</a>
+                            <a class="add-to-cart1" title="Нет в наличии"
+                               style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
                             {% endif %}
 
                         </li><!-- Product /- -->

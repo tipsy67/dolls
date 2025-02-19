@@ -57,11 +57,11 @@
                     <span class="price">{{product.price}}</span>
                     {% endif %}
                     <!--                    <a href="#" title="Купить" class="add_to_cart">Купить</a>-->
-                    <form>
+                    <form method="get" action="{% url 'cart:cart_add' product.pk %}">
                         {% if product.quantity %}
-                        <button  title="Купить" class="add_to_cart"> Купить </button>
+                        <button id="quantity" title="Купить" class="add_to_cart"> Купить </button>
                         {% else %}
-                        <button disabled title="Купить" class="add_to_cart" style="opacity: 0.5;cursor: not-allowed;"> Купить </button>
+                        <button disabled title="Нет в наличии" class="add_to_cart" style="opacity: 0.5;cursor: not-allowed;"> Нет в наличии </button>
                         {% endif %}
                     </form>
                     <div class="product_meta">
