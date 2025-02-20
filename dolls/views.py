@@ -15,10 +15,7 @@ def main_page(request):
 
     category_list = Category.objects.filter(is_published=True)
 
-    product_list = Product.objects.filter(is_published=True).order_by(
-            '?'
-        )
-
+    product_list = Product.objects.filter(is_published=True).order_by('?')
 
     # blog_set = Blog.objects.filter(is_published=True).order_by('?')
     # blog_list = blog_set[:3]
@@ -32,8 +29,8 @@ def main_page(request):
         'home': 'active',
     }
 
-
     return render(request, 'dolls/index.html', context)
+
 
 def product_list_view(request, cat=None):
 
@@ -42,7 +39,9 @@ def product_list_view(request, cat=None):
     sale_list = get_queryset_from_cache('sale_list')
 
     if cat is not None:
-        product_list = Product.objects.filter(is_published=True, category_id=cat).order_by('name')
+        product_list = Product.objects.filter(
+            is_published=True, category_id=cat
+        ).order_by('name')
     else:
         product_list = Product.objects.filter(is_published=True).order_by('name')
 
@@ -62,7 +61,7 @@ def product_list_view(request, cat=None):
         'page_number': page_number,
         'category_pk': cat,
         'sale_list': sale_list,
-        'tag_list': tag_list
+        'tag_list': tag_list,
     }
 
     return render(request, 'dolls/shop.html', context)

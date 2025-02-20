@@ -33,8 +33,6 @@ class CheckedTag:
     def __len__(self):
         return len(self.tags)
 
-
     def clear(self):
         del self.session[settings.TAGS_SESSION_ID]
         self.save()
-

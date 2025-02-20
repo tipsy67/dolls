@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Tag(models.Model):
     tag = models.CharField(max_length=100, db_index=True)
 

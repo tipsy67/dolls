@@ -13,6 +13,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='quantity',
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='Количество'),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name='Количество'
+            ),
         ),
     ]

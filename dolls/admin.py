@@ -5,17 +5,28 @@ from django.utils.safestring import mark_safe
 from dolls.models import Category, Product, Image
 from pytils.translit import slugify
 
+
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     pass
+
 
 class ImageInline(admin.TabularInline):
     model = Image
     extra = 1
 
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'price', 'old_price', 'quantity', 'photo_product', 'is_published')
+    list_display = (
+        'pk',
+        'name',
+        'price',
+        'old_price',
+        'quantity',
+        'photo_product',
+        'is_published',
+    )
     inlines = [ImageInline]
     list_display_links = ('name',)
 
@@ -33,17 +44,22 @@ class ProductAdmin(admin.ModelAdmin):
     @admin.action(description="Снять с публикации выбранные записи")
     def set_draft(self, request, queryset):
         count = queryset.update(is_published=False)
-        self.message_user(request, f"{count} записей сняты с публикации!", messages.WARNING)
+        self.message_user(
+            request, f"{count} записей сняты с публикации!", messages.WARNING
+        )
 
     def save_formset(self, request, form, formset, change):
         product_name = form.cleaned_data.get('name', '')
         for inline_form in formset.forms:
             image_name = inline_form.cleaned_data.get('name', '')
-            if inline_form.cleaned_data and (image_name is None or len(image_name) == 0):
-                file_path = inline_form.cleaned_data.get('image','')
+            if inline_form.cleaned_data and (
+                image_name is None or len(image_name) == 0
+            ):
+                file_path = inline_form.cleaned_data.get('image', '')
                 file_name = os.path.basename(file_path.name)
                 inline_form.instance.name = f"{slugify(product_name)}-{file_name}"
         super().save_formset(request, form, formset, change)
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):

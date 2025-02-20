@@ -30,7 +30,6 @@ class Contact(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=False, verbose_name='Активно')
 
-
     def __str__(self):
         return f"{self.email}"
 
@@ -44,9 +43,11 @@ class Contact(models.Model):
 class TunesDict(models.Model):
     key = models.CharField(max_length=30, unique=True, verbose_name='Ключ')
     value_int = models.CharField(**NULLABLE, verbose_name='Целочисленное значение')
-    value_char = models.CharField(max_length=100, **NULLABLE,  verbose_name='Строковое значение')
-    value_time = models.TimeField( **NULLABLE,  verbose_name='Константа времени')
-    value_date = models.DateField( **NULLABLE,  verbose_name='Константа даты')
+    value_char = models.CharField(
+        max_length=100, **NULLABLE, verbose_name='Строковое значение'
+    )
+    value_time = models.TimeField(**NULLABLE, verbose_name='Константа времени')
+    value_date = models.DateField(**NULLABLE, verbose_name='Константа даты')
 
     class Meta:
         ordering = ['key']

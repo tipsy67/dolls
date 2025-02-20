@@ -27,10 +27,14 @@ class Product(models.Model):
     description = models.TextField(**NULLABLE, verbose_name='Описание')
     quantity = models.PositiveSmallIntegerField(**NULLABLE, verbose_name='Количество')
     price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Цена')
-    old_price = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Старая цена')
+    old_price = models.DecimalField(
+        max_digits=15, decimal_places=2, verbose_name='Старая цена'
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
-    tags = models.ManyToManyField('tags.Tag', blank=True, related_name='tags', verbose_name="Теги")
+    tags = models.ManyToManyField(
+        'tags.Tag', blank=True, related_name='tags', verbose_name="Теги"
+    )
     category = models.ForeignKey(
         to=Category,
         on_delete=models.PROTECT,
@@ -58,9 +62,14 @@ class Product(models.Model):
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=50, **NULLABLE , verbose_name='Имя')
-    image = models.ImageField(upload_to='upload/product_images' , verbose_name='Фото')
-    product = models.ForeignKey(to=Product, on_delete=models.CASCADE, related_name='images', verbose_name='Продукт')
+    name = models.CharField(max_length=50, **NULLABLE, verbose_name='Имя')
+    image = models.ImageField(upload_to='upload/product_images', verbose_name='Фото')
+    product = models.ForeignKey(
+        to=Product,
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name='Продукт',
+    )
     is_published = models.BooleanField(default=False, verbose_name='Активно')
     active_on_main_page = models.BooleanField(
         default=False, verbose_name='Активно на гл.стр.'
