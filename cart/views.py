@@ -8,17 +8,24 @@ from .forms import CartAddProductForm
 from django.contrib import messages
 
 
+def cart_update(request):
+    cart = Cart(request)
+    for key, value in cart.cart.items():
+        quantity_in_cart = request.GET.get(f'quantity{key}', 1)
+        product = value.get('product', None)
+
+    url = request.META.get('HTTP_REFERER') #+ "#product_" + str(product_id)
+    return redirect(url)
+
+
+
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     if product:
         if request.method == 'POST':
-            form = CartAddProductForm(request.POST)
-            if form.is_valid():
-                cd = form.cleaned_data
-                quantity = cd.get('quantity', 1)
-                override_quantity = cd.get('override', False)
-                cart.add(product=product, quantity = quantity, override_quantity = override_quantity)
+            quantity = request.POST.get(f'quantity', 1)
+            cart.add(product=product, quantity = quantity, override_quantity = True)
         else:
             quantity = 1
             cart.add(product=product, quantity=quantity, )
@@ -31,10 +38,12 @@ def cart_add(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
-    for item in cart:
-        item['update_quantity_form'] = CartAddProductForm(initial={
-                            'quantity': item['quantity'],
-                            'override': True})
+    if request.method == 'POST':
+        for item in cart:
+            product = item.get('product')
+            if product:
+                item['quantity'] = min(int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity)
+
     return render(request, 'dolls/cart.html', {'cart': cart})
 
 # @require_POST
