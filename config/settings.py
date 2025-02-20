@@ -52,7 +52,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
                 # 'tunes.context_processors.get_contact',
                 'cart.context_processors.cart',
                 'tags.context_processors.tags',
@@ -128,7 +127,7 @@ if CACHE_ENABLED:
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-SESSION_COOKIE_AGE = 60*60*24
+SESSION_COOKIE_AGE = 60 * 60 * 24
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
@@ -154,5 +153,5 @@ SERVICE_PER_PAGE = 4
 PRODUCT_PER_PAGE = 4
 BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
-CART_SESSION_ID='dolls_cart'
-TAGS_SESSION_ID='dolls_tags'
+CART_SESSION_ID = 'dolls_cart'
+TAGS_SESSION_ID = 'dolls_tags'

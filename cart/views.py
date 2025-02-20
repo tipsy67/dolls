@@ -14,9 +14,8 @@ def cart_update(request):
         quantity_in_cart = request.GET.get(f'quantity{key}', 1)
         product = value.get('product', None)
 
-    url = request.META.get('HTTP_REFERER') #+ "#product_" + str(product_id)
+    url = request.META.get('HTTP_REFERER')  # + "#product_" + str(product_id)
     return redirect(url)
-
 
 
 def cart_add(request, product_id):
@@ -25,14 +24,19 @@ def cart_add(request, product_id):
     if product:
         if request.method == 'POST':
             quantity = request.POST.get(f'quantity', 1)
-            cart.add(product=product, quantity = quantity, override_quantity = True)
+            cart.add(product=product, quantity=quantity, override_quantity=True)
         else:
             quantity = 1
-            cart.add(product=product, quantity=quantity, )
-        messages.success(request, f"Вы добавили в корзину {product.name} - {quantity} шт.")
+            cart.add(
+                product=product,
+                quantity=quantity,
+            )
+        messages.success(
+            request, f"Вы добавили в корзину {product.name} - {quantity} шт."
+        )
     else:
         messages.error(request, "при добавлении в корзину произошла ошибка")
-    url = request.META.get('HTTP_REFERER') #+ "#product_" + str(product_id)
+    url = request.META.get('HTTP_REFERER')  # + "#product_" + str(product_id)
     return redirect(url)
 
 
@@ -42,9 +46,12 @@ def cart_detail(request):
         for item in cart:
             product = item.get('product')
             if product:
-                item['quantity'] = min(int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity)
+                item['quantity'] = min(
+                    int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity
+                )
 
     return render(request, 'dolls/cart.html', {'cart': cart})
+
 
 # @require_POST
 def cart_remove(request, product_id):

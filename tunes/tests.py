@@ -8,7 +8,13 @@ class TunesAppTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.feedback = Feedback.objects.create(name='Feedback for test')
-        cls.contact = Contact.objects.create(country='test', inn='test', address='test', phone='test', email='test@test.test')
+        cls.contact = Contact.objects.create(
+            country='test',
+            inn='test',
+            address='test',
+            phone='test',
+            email='test@test.test',
+        )
         cls.tunesdict = TunesDict.objects.create(key='TunesDict for test')
 
     def test_feedback_model(self):
@@ -37,7 +43,6 @@ class TunesAppTest(TestCase):
 
         self.assertEqual(feedback.is_read, False)
         self.assertEqual(feedback.is_published, False)
-
 
     def test_сontact_model(self):
         сontact = Contact.objects.get(id=self.contact.pk)
@@ -86,4 +91,3 @@ class TunesAppTest(TestCase):
 
         expected_object_name = '%s' % (tunesDict.key)
         self.assertEqual(expected_object_name, str(tunesDict))
-

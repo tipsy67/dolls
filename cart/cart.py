@@ -21,20 +21,19 @@ class Cart:
         """
         product_id = str(product.pk)
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 0,
-                                     'price': str(product.price)}
+            self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
         if override_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
-            self.cart[product_id]['quantity'] = min(product.quantity, self.cart[product_id]['quantity']+ quantity)
+            self.cart[product_id]['quantity'] = min(
+                product.quantity, self.cart[product_id]['quantity'] + quantity
+            )
         self.save()
-
 
     def save(self):
         # пометить сеанс как "измененный",
         # чтобы обеспечить его сохранение
         self.session.modified = True
-
 
     def remove(self, product):
         """
@@ -68,8 +67,9 @@ class Cart:
         return sum(item['quantity'] for item in self.cart.values())
 
     def get_total_price(self):
-        return sum(Decimal(item['price']) * item['quantity']
-                   for item in self.cart.values())
+        return sum(
+            Decimal(item['price']) * item['quantity'] for item in self.cart.values()
+        )
 
     def clear(self):
         # удалить корзину из сеанса

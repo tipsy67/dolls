@@ -14,6 +14,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='tags',
-            field=models.ManyToManyField(blank=True, null=True, related_name='tags', to='tags.tag', verbose_name='Теги'),
+            field=models.ManyToManyField(
+                blank=True,
+                null=True,
+                related_name='tags',
+                to='tags.tag',
+                verbose_name='Теги',
+            ),
         ),
     ]

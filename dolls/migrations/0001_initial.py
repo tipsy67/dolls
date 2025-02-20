@@ -8,18 +8,33 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=100, verbose_name='Наименование')),
                 ('description', models.TextField(blank=True, verbose_name='Описание')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Активно')),
-                ('active_on_main_page', models.BooleanField(default=False, verbose_name='Активно на гл.стр.')),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Активно'),
+                ),
+                (
+                    'active_on_main_page',
+                    models.BooleanField(
+                        default=False, verbose_name='Активно на гл.стр.'
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'Категория',
@@ -30,15 +45,53 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=100, verbose_name='Наименование')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Описание')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=15, verbose_name='Цена')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Создан')),
-                ('update_at', models.DateTimeField(auto_now=True, verbose_name='Изменен')),
-                ('parameter', models.CharField(blank=True, max_length=30, null=True, verbose_name='Параметр')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Активно')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='products', to='dolls.category', verbose_name='Категория')),
+                (
+                    'description',
+                    models.TextField(blank=True, null=True, verbose_name='Описание'),
+                ),
+                (
+                    'price',
+                    models.DecimalField(
+                        decimal_places=2, max_digits=15, verbose_name='Цена'
+                    ),
+                ),
+                (
+                    'created_at',
+                    models.DateTimeField(auto_now_add=True, verbose_name='Создан'),
+                ),
+                (
+                    'update_at',
+                    models.DateTimeField(auto_now=True, verbose_name='Изменен'),
+                ),
+                (
+                    'parameter',
+                    models.CharField(
+                        blank=True, max_length=30, null=True, verbose_name='Параметр'
+                    ),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Активно'),
+                ),
+                (
+                    'category',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name='products',
+                        to='dolls.category',
+                        verbose_name='Категория',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'Продукт',
@@ -49,12 +102,44 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Image',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True, verbose_name='Имя')),
-                ('image', models.ImageField(upload_to='upload/product_images', verbose_name='Фото')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Активно')),
-                ('active_on_main_page', models.BooleanField(default=False, verbose_name='Активно на гл.стр.')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='dolls.product', verbose_name='Продукт')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'name',
+                    models.CharField(max_length=50, unique=True, verbose_name='Имя'),
+                ),
+                (
+                    'image',
+                    models.ImageField(
+                        upload_to='upload/product_images', verbose_name='Фото'
+                    ),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Активно'),
+                ),
+                (
+                    'active_on_main_page',
+                    models.BooleanField(
+                        default=False, verbose_name='Активно на гл.стр.'
+                    ),
+                ),
+                (
+                    'product',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='images',
+                        to='dolls.product',
+                        verbose_name='Продукт',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'Изображение',

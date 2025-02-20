@@ -13,7 +13,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='old_price',
-            field=models.DecimalField(decimal_places=2, default=0, max_digits=15, verbose_name='Старая цена'),
+            field=models.DecimalField(
+                decimal_places=2, default=0, max_digits=15, verbose_name='Старая цена'
+            ),
             preserve_default=False,
         ),
     ]

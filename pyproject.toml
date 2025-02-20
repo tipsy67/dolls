@@ -16,6 +16,10 @@ pytils = "^0.4.1"
 redis = "^5.2.1"
 
 
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
