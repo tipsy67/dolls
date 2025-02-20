@@ -8,7 +8,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from appointment.tasks import sendmail
 from users.forms import CreateUserForm, ProfileUpdateForm
 from users.models import User
 
@@ -28,11 +27,11 @@ class LoginView(BaseLoginView):
                 password = user.generate_password(8)
                 user.password = make_password(password)
                 user.save()
-                sendmail.delay(
-                    [user.email],
-                    'Восстановление пароля',
-                    f'{user.username} Ваш новый пароль {password}',
-                )
+                # sendmail.delay(
+                #     [user.email],
+                #     'Восстановление пароля',
+                #     f'{user.username} Ваш новый пароль {password}',
+                # )
                 messages.success(self.request, 'На вашу почту отправлен пароль')
                 return redirect(reverse('users:login'))
             else:
@@ -66,12 +65,12 @@ class UserCreateView(CreateView):
         user.is_active = False
         user.token = token
         user.save()
-        sendmail.delay(
-            [user.email],
-            'Подтверждение регистрации',
-            'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
-            + f'http://{self.request.get_host()}/confirm/{token}',
-        )
+        # sendmail.delay(
+        #     [user.email],
+        #     'Подтверждение регистрации',
+        #     'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
+        #     + f'http://{self.request.get_host()}/confirm/{token}',
+        # )
 
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')
 

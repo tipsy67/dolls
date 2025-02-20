@@ -25,7 +25,8 @@
 				<div class="container">
 					<!-- Cart Table -->
 					<div class="col-md-12 col-sm-12 col-xs-12 cart-table">
-						<form>
+						<form id="myForm" method="POST" action="{% url 'cart:cart_detail' %}">
+							{% csrf_token %}
 							<table class="table table-bordered table-responsive">
 								<thead>
 									<tr>
@@ -38,24 +39,33 @@
 									</tr>
 								</thead>
 								<tbody>
+									{% for item in cart %}
+									{% with product=item.product %}
 									<tr class="cart_item">
-										<td data-title="Item" class="product-thumbnail"><a href="#"><img src="images/product-item.jpg" alt="Product" /></a></td>
-										<td data-title="Product Name" class="product-name"><a href="#">mens casual shoe</a></td>
+										<td data-title="Item" class="product-thumbnail"><a href="#">
+											{% if product.one_image %}
+											<img src="{{product.one_image|add_media}}" alt="Product" width="50"/>
+											{% else %}
+											<img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
+											{% endif %}	</a> </td>
+										<td data-title="Product Name" class="product-name"><a href="#">{{product.name}}</a></td>
 										<td data-title="Quantity" class="product-quantity">
 											<div class="prd-quantity" data-title="Quantity">
-												<input value="-" class="qtyminus btn" data-field="quantity1" type="button">
-												<input name="quantity1" value="0" class="qty" type="text">
-												<input value="+" class="qtyplus btn" data-field="quantity1" type="button">
+												<input value="-" class="qtyminus btn" data-field="quantity{{product.pk}}" type="button">
+												<input name="quantity{{product.pk}}" value="{{item.quantity}}" class="qty" type="text">
+												<input value="+" class="qtyplus btn" data-field="quantity{{product.pk}}" type="button">
 											</div>
 										</td>
-										<td data-title="Unit Price" class="product-unit-price">$550</td>
-										<td data-title="Total" class="product-subtotal">$550</td>
+										<td data-title="Unit Price" class="product-unit-price">{{item.price}}</td>
+										<td data-title="Total" class="product-subtotal">{{item.total_price}}</td>
 										<td data-title="Remove" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a></td>
 									</tr>
+									{% endwith %}
+									{% endfor %}
 									<tr>
 										<td class="action" colspan="6">
 											<a href="#" title="Continue shopping">Continue shopping</a>
-											<a href="#" title="update shopping cart">update shopping cart</a>
+											<a href="javascript:void(0);" onclick="document.getElementById('myForm').submit();" title="update shopping cart">update shopping cart</a>
 										</td>
 									</tr>
 								</tbody>
