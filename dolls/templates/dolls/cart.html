@@ -30,42 +30,42 @@
 							<table class="table table-bordered table-responsive">
 								<thead>
 									<tr>
-										<th class="product-thumbnail">Item</th>
-										<th class="product-name">Product Name</th>
-										<th class="product-quantity">Quantity</th>
-										<th class="product-unit-price">Unit Price</th>
-										<th class="product-subtotal">Total</th>
-										<th class="product-remove">Remove</th>
+										<th class="product-thumbnail">Товар</th>
+										<th class="product-name">Наименование</th>
+										<th class="product-quantity">Количество</th>
+										<th class="product-unit-price">Цена</th>
+										<th class="product-subtotal">Сумма</th>
+										<th class="product-remove">Удалить</th>
 									</tr>
 								</thead>
 								<tbody>
 									{% for item in cart %}
 									{% with product=item.product %}
 									<tr class="cart_item">
-										<td data-title="Item" class="product-thumbnail"><a href="#">
+										<td data-title="Товар" class="product-thumbnail"><a href="#">
 											{% if product.one_image %}
 											<img src="{{product.one_image|add_media}}" alt="Product" width="50"/>
 											{% else %}
 											<img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
 											{% endif %}	</a> </td>
-										<td data-title="Product Name" class="product-name"><a href="#">{{product.name}}</a></td>
-										<td data-title="Quantity" class="product-quantity">
+										<td data-title="Наименование" class="product-name"><a href="#">{{product.name}}</a></td>
+										<td data-title="Количество" class="product-quantity">
 											<div class="prd-quantity" data-title="Quantity">
 												<input value="-" class="qtyminus btn" data-field="quantity{{product.pk}}" type="button">
 												<input name="quantity{{product.pk}}" value="{{item.quantity}}" class="qty" type="text">
 												<input value="+" class="qtyplus btn" data-field="quantity{{product.pk}}" type="button">
 											</div>
 										</td>
-										<td data-title="Unit Price" class="product-unit-price">{{item.price}}</td>
-										<td data-title="Total" class="product-subtotal">{{item.total_price}}</td>
-										<td data-title="Remove" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a></td>
+										<td data-title="Цена" class="product-unit-price">{{item.price}}</td>
+										<td data-title="Сумма" class="product-subtotal">{{item.total_price}}</td>
+										<td data-title="Удалить" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a></td>
 									</tr>
 									{% endwith %}
 									{% endfor %}
 									<tr>
 										<td class="action" colspan="6">
-											<a href="#" title="Continue shopping">Continue shopping</a>
-											<a href="javascript:void(0);" onclick="document.getElementById('myForm').submit();" title="update shopping cart">update shopping cart</a>
+											<a href="{{return_url}}" title="Продолжить покупки">Продолжить покупки</a>
+											<a href="javascript:void(0);" onclick="document.getElementById('myForm').submit();" title="Обновить корзину">Обновить корзину</a>
 										</td>
 									</tr>
 								</tbody>
@@ -75,33 +75,33 @@
 					<!-- Coupon -->
 					<div class="col-md-offset-4 col-md-4 col-sm-6 col-xs-6 coupon">
 						<div class="coupon-box">
-							<h4>coupon code</h4>
-							<h6>If You Have A Coupon Code Enter Here</h6>
+							<h4>Купон на скидку</h4>
+							<h6>Если у вас есть купон, введите код</h6>
 							<form>
-								<input type="text" class="form-control" placeholder="Coupon Code" />
-								<input type="submit" value="apply code" />
+								<input type="text" class="form-control" placeholder="Код купона" />
+								<input type="submit" value="Применить" />
 							</form>
 						</div>
 					</div><!-- Coupon /- -->
 					<div class="col-md-4 col-sm-6 col-xs-6 cart-collaterals">
 						<div class="cart_totals">
-							<h3>cart totals</h3>
+							<h3>Итого в корзине</h3>
 							<table>
 								<tr>
-									<th>Sub Total</th>
-									<td>$550</td>
+									<th>Предварительный итог</th>
+									<td>{{ cart.get_total_price }}</td>
 								</tr>
 								<tr>
-									<th>Shipping</th>
-									<td>Free</td>
+									<th>Доставка</th>
+									<td>?</td>
 								</tr>
-								<tr>
-									<th>Grand Total</th>
-									<td>$550</td>
-								</tr>
+<!--								<tr>-->
+<!--									<th>Grand Total</th>-->
+<!--									<td>$550</td>-->
+<!--								</tr>-->
 							</table>
 							<div class="wc-proceed-to-checkout">		
-								<a href="#" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+								<a href="#" class="checkout-button button alt wc-forward">Оформить заказ</a>
 							</div>
 						</div>
 					</div>
