@@ -14,8 +14,8 @@ class Category(models.Model):
     ordering = ['name']
 
     class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
         ordering = ['name']
 
     def __str__(self):
@@ -45,8 +45,8 @@ class Product(models.Model):
     is_published = models.BooleanField(default=False, verbose_name='Активно')
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
+        verbose_name = 'продукт'
+        verbose_name_plural = 'продукты'
         ordering = ['name']
 
     def __str__(self):
@@ -76,8 +76,8 @@ class Image(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
+        verbose_name = 'изображение'
+        verbose_name_plural = 'изображения'
         ordering = ['name']
 
     def __str__(self):
