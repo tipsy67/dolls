@@ -2173,7 +2173,7 @@
 	letter-spacing: 0.56px;
     outline: medium none;
     padding: 10px 20px;
-    text-transform: capitalize;
+/*    text-transform: capitalize; */
 }
 .woocommerce-checkout .login-check .login-form .form-control::-webkit-input-placeholder {
    color: #777;

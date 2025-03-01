@@ -13,7 +13,7 @@ from users.models import User
 
 
 class LoginView(BaseLoginView):
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Вход на сайт'}
 
     def form_valid(self, form):
@@ -42,7 +42,7 @@ class LoginView(BaseLoginView):
 class ProfileUpdateView(UpdateView):
     model = get_user_model()
     form_class = ProfileUpdateForm
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Профиль пользователя'}
 
     def get_success_url(self):
@@ -55,7 +55,7 @@ class ProfileUpdateView(UpdateView):
 class UserCreateView(CreateView):
     model = get_user_model()
     form_class = CreateUserForm
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Регистрация пользователя', 'create_user': True}
     success_url = reverse_lazy('users:login')
 
@@ -71,7 +71,7 @@ class UserCreateView(CreateView):
         #     'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
         #     + f'http://{self.request.get_host()}/confirm/{token}',
         # )
-
+        print(f'http://{self.request.get_host()}/confirm/{token}')
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')
 
         return super().form_valid(form)
@@ -91,4 +91,4 @@ def logout_form(request):
         'return_url': request.META.get('HTTP_REFERER'),
     }
 
-    return render(request, 'users/logout_form.html', context)
+    return render(request, 'dolls/user-logout.html', context)

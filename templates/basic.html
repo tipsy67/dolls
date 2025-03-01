@@ -139,14 +139,14 @@
                                 {% endif %} </a></li>
                             <li><a href="#" title="Like"><i class="icon icon-Heart"></i></a></li>
                             {% if user.is_authenticated %}
-                            <li><a href="#" title="Профиль"><i class="icon icon-User"></i></a></li>
+                            <li><a href="{% url 'users:profile' %}" title="Профиль"><i class="icon icon-User"></i></a></li>
                             <li>
                                 <a title="Выйти" href="{% url 'users:logout_form' %}">
-                                    <i class="icon icon-cancel"></i>
+                                    <i class="icon icon-PowerOff"></i>
                                 </a>
                             </li>
                             {% else %}
-                            <li><a href="#" title="Войти"><i class="icon icon-User"></i></a></li>
+                            <li><a href="{% url 'users:login' %}" title="Войти"><i class="icon icon-User"></i></a></li>
                             {% endif %}
                         </ul>
                     </div><!-- Menu Icon /- -->

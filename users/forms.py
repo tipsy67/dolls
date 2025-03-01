@@ -1,14 +1,25 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+from users.models import Address
+
+
+class CustomLoginForm(AuthenticationForm):
+    pass
 
 class ProfileUpdateForm(forms.ModelForm):
     # username = forms.CharField(disabled=True, label="имя пользователя")
+    address = forms.ModelChoiceField(
+        queryset=None,
+        initial=None,
+        label="Адрес",
+        empty_label="Адрес не выбран"
+    )
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name', 'phone', 'avatar')
+        fields = ('username', 'email', 'first_name', 'last_name', 'phone', 'avatar', 'address')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,6 +28,12 @@ class ProfileUpdateForm(forms.ModelForm):
         username.label = "Логин"
         email = self.fields.get('email')
         email.label = "Почта"
+
+        current_user = kwargs.get('instance')
+        current_queryset = Address.objects.filter(user=current_user)
+        self.fields['address'].queryset = current_queryset
+        if current_queryset:
+            self.fields['address'].initial = getattr(current_queryset.filter(is_active=True).first(), 'id')
 
 
 class CreateUserForm(UserCreationForm):
