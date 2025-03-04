@@ -8,8 +8,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from users.forms import CreateUserForm, ProfileUpdateForm
-from users.models import User
+from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
+from users.models import User, Address
 
 
 class LoginView(BaseLoginView):
@@ -92,3 +92,46 @@ def logout_form(request):
     }
 
     return render(request, 'dolls/user-logout.html', context)
+
+
+# Адреса
+
+class AddressCreateView(CreateView):
+    model = Address
+    template_name = 'dolls/address-form.html'
+    form_class = AddressForm
+    extra_context = {'title_form': "Новый адрес доставки"}
+
+    def get_success_url(self):
+        return self.request.GET.get('next', '/')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.save()
+
+        return super().form_valid(form)
+
+class AddressUpdateView(UpdateView):
+    model = Address
+    template_name = 'dolls/address-form.html'
+    form_class = AddressForm
+    extra_context = {'title_form': "Адрес доставки"}
+
+    def get_success_url(self):
+        return self.request.GET.get('next', '/')
+
+
+
+
+def change_status(request, pk):
+    Address.objects.filter(user=request.user).update(is_active=False)
+    address = get_object_or_404(Address, pk=pk)
+    address.is_active = True
+    address.save()
+
+    url = request.META.get('HTTP_REFERER')
+    return redirect(url)
+
+# /Адреса

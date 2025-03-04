@@ -10,16 +10,16 @@ class CustomLoginForm(AuthenticationForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     # username = forms.CharField(disabled=True, label="имя пользователя")
-    address = forms.ModelChoiceField(
-        queryset=None,
-        initial=None,
-        label="Адрес",
-        empty_label="Адрес не выбран"
-    )
+    # address = forms.ModelChoiceField(
+    #     queryset=None,
+    #     initial=None,
+    #     label="Адрес",
+    #     empty_label="Адрес не выбран"
+    # )
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name', 'phone', 'avatar', 'address')
+        fields = ('username', 'email', 'first_name', 'last_name', 'phone', 'avatar')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -29,11 +29,11 @@ class ProfileUpdateForm(forms.ModelForm):
         email = self.fields.get('email')
         email.label = "Почта"
 
-        current_user = kwargs.get('instance')
-        current_queryset = Address.objects.filter(user=current_user)
-        self.fields['address'].queryset = current_queryset
-        if current_queryset:
-            self.fields['address'].initial = getattr(current_queryset.filter(is_active=True).first(), 'id')
+        # current_user = kwargs.get('instance')
+        # current_queryset = Address.objects.filter(user=current_user)
+        # self.fields['address'].queryset = current_queryset
+        # if current_queryset:
+        #     self.fields['address'].initial = getattr(current_queryset.filter(is_active=True).first(), 'id')
 
 
 class CreateUserForm(UserCreationForm):
@@ -61,3 +61,10 @@ class CreateUserForm(UserCreationForm):
         first_name.required = True
         last_name = self.fields.get('last_name')
         last_name.required = True
+
+class AddressForm (forms.ModelForm):
+
+    class Meta:
+        model = Address
+        exclude = ('is_active', 'user')
+
