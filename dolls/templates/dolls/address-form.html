@@ -1,0 +1,61 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <!-- Page Banner -->
+    <div class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Checkout</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="index.html" title="Home">Home</a></li>
+                <li class="active">Checkout</li>
+            </ol>
+        </div><!-- Container /- -->
+    </div><!-- Page Banner /- -->
+    <!-- Checkout -->
+    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
+        <!-- Container -->
+        <div class="container">
+            <!-- Address -->
+            <div class="checkout-form">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h3>{{title_form}}</h3>
+                    <div class="billing-field">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <div class="col-md-12 form-group">
+                                {% csrf_token %}
+                                <div class="form-error">{{ form.non_field_errors }}</div>
+                                {% for f in form %}
+                                <div class="form-group">
+                                    {% if f.label %}
+                                    <label class="check-detail" for="{{ f.id_for_label }}">
+                                        {{ f.label }}</label>
+                                    {% endif %}
+                                    {{ f| add_attrs }}
+                                </div>
+                                <div class="form-error">{{ f.errors }}</div>
+                                {% endfor %}
+                                {% if user.is_authenticated %}
+                                <div class="place-order">
+                                    <input value="Сохранить" type="submit">
+                                </div>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Address /- -->
+        </div><!-- Container /- -->
+    </div><!-- Checkout /- -->
+
+</main>
+
+{% endblock content %}
+	
