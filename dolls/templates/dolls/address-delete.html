@@ -31,23 +31,11 @@
                         <form method="post" action="" enctype="multipart/form-data">
                             <div class="col-md-12 form-group">
                                 {% csrf_token %}
-                                <div class="form-error">{{ form.non_field_errors }}</div>
-                                {% for f in form %}
-                                <div class="form-group">
-                                    {% if f.label %}
-                                    <label class="check-detail" for="{{ f.id_for_label }}">
-                                        {{ f.label }}</label>
-                                    {% endif %}
-                                    {{ f| add_attrs }}
-                                </div>
-                                <div class="form-error">{{ f.errors }}</div>
-                                {% endfor %}
+                                <h4>{{ object }}</h4>
                                 {% if user.is_authenticated %}
                                 <div class="place-order">
-                                    <input value="Сохранить" type="submit">
-                                    {% if object.pk %}
-                                    <a id="myLink" href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
-                                    {% endif %}
+                                    <input value="Удалить" type="submit">
+                                    <a id="myLink" href="#" onclick="history.back(); return false;">Вернуться</a>
                                 </div>
                                 {% endif %}
                             </div>

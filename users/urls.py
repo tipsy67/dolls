@@ -7,7 +7,11 @@ from users.views import (
     ProfileUpdateView,
     UserCreateView,
     confirm_user,
-    logout_form, change_status, AddressCreateView, AddressUpdateView,
+    logout_form,
+    change_status,
+    AddressCreateView,
+    AddressUpdateView,
+    AddressDeleteView,
 )
 
 appname = UsersConfig.name
@@ -19,9 +23,12 @@ urlpatterns = [
     path('user-create/', UserCreateView.as_view(), name='create_user'),
     path('user-update/', ProfileUpdateView.as_view(), name='profile'),
     path('confirm/<str:token>/', confirm_user, name='confirm'),
-
     path('address-create/', AddressCreateView.as_view(), name='address_create'),
-    path('address-update/<int:pk>', AddressUpdateView.as_view(), name='address_update'),
+    path(
+        'address-update/<int:pk>/', AddressUpdateView.as_view(), name='address_update'
+    ),
+    path(
+        'address-delete/<int:pk>/', AddressDeleteView.as_view(), name='address_delete'
+    ),
     path('address-status/<int:pk>/', change_status, name='change_status'),
-
 ]

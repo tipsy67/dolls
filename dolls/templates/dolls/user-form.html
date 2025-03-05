@@ -81,9 +81,7 @@
                                     </tbody>
                                 </table>
                                 {% if user.is_authenticated %}
-                                <form action="{% url 'users:address_create' %}?next={{ request.path }}" method="post">
-                                    <input type="submit" value="Новый">
-                                </form>
+                                <a id="myLink" style="{padding-top: 20px !important;}" href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Новый</a>
                                 {% endif %}
                             </div>
                         </div>

@@ -48,7 +48,9 @@ class Address(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=False, verbose_name='Активно')
-    user = models.ForeignKey(to='users.User', on_delete=models.CASCADE, related_name='addresses')
+    user = models.ForeignKey(
+        to='users.User', on_delete=models.CASCADE, related_name='addresses'
+    )
 
     class Meta:
         # db_table = 'optics_contact'

@@ -8,6 +8,7 @@ from users.models import Address
 class CustomLoginForm(AuthenticationForm):
     pass
 
+
 class ProfileUpdateForm(forms.ModelForm):
     # username = forms.CharField(disabled=True, label="имя пользователя")
     # address = forms.ModelChoiceField(
@@ -62,9 +63,9 @@ class CreateUserForm(UserCreationForm):
         last_name = self.fields.get('last_name')
         last_name.required = True
 
-class AddressForm (forms.ModelForm):
+
+class AddressForm(forms.ModelForm):
 
     class Meta:
         model = Address
         exclude = ('is_active', 'user')
-

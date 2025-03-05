@@ -2359,7 +2359,7 @@
     margin-bottom: 5px;
     padding: 10px 20px;
 }
-.woocommerce-checkout .shipping-fields input[type="submit"] {
+.woocommerce-checkout .shipping-fields input[type="submit"], #myLink {
     background-color: transparent;
     border: 1px solid #b6795f;
     box-shadow: none;
@@ -2376,7 +2376,7 @@
 	-o-transition: all 1s ease 0s;
 	transition: all 1s ease 0s;
 }
-.woocommerce-checkout .shipping-fields input[type="submit"]:hover {
+.woocommerce-checkout .shipping-fields input[type="submit"]:hover,#myLink:hover {
 	background-color: #b6795f;
 	color: #fff;
 }
