@@ -50,7 +50,11 @@ def cart_detail(request):
                     int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity
                 )
 
-    return render(request, 'dolls/cart.html', {'cart': cart ,'return_url': request.META.get('HTTP_REFERER') })
+    return render(
+        request,
+        'dolls/cart.html',
+        {'cart': cart, 'return_url': request.META.get('HTTP_REFERER')},
+    )
 
 
 # @require_POST

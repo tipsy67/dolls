@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
 from users.models import User, Address
@@ -96,6 +96,7 @@ def logout_form(request):
 
 # Адреса
 
+
 class AddressCreateView(CreateView):
     model = Address
     template_name = 'dolls/address-form.html'
@@ -103,7 +104,7 @@ class AddressCreateView(CreateView):
     extra_context = {'title_form': "Новый адрес доставки"}
 
     def get_success_url(self):
-        return self.request.GET.get('next', '/')
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
     def form_valid(self, form):
         if form.is_valid():
@@ -113,6 +114,7 @@ class AddressCreateView(CreateView):
 
         return super().form_valid(form)
 
+
 class AddressUpdateView(UpdateView):
     model = Address
     template_name = 'dolls/address-form.html'
@@ -120,9 +122,19 @@ class AddressUpdateView(UpdateView):
     extra_context = {'title_form': "Адрес доставки"}
 
     def get_success_url(self):
-        return self.request.GET.get('next', '/')
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
 
+class AddressDeleteView(DeleteView):
+    model = Address
+    template_name = 'dolls/address-delete.html'
+    extra_context = {
+        'title_form': "Вы действительно хотите удалить этот адрес?",
+        # 'back_url': reverse_lazy(request.GET.get('next', '/'))
+    }
+
+    def get_success_url(self):
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
 
 def change_status(request, pk):
@@ -133,5 +145,6 @@ def change_status(request, pk):
 
     url = request.META.get('HTTP_REFERER')
     return redirect(url)
+
 
 # /Адреса

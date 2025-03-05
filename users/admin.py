@@ -9,6 +9,7 @@ class AddressInline(admin.TabularInline):
     show_change_link = True
     fields = ('name', 'is_active')
 
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('pk', 'username')
@@ -19,6 +20,7 @@ class UserAdmin(admin.ModelAdmin):
         if "password" in form.changed_data:
             obj.set_password(obj.password)
         super().save_model(request, obj, form, change)
+
 
 @admin.register(Address)
 class AddressAdmin(admin.ModelAdmin):
