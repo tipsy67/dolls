@@ -11,9 +11,12 @@ class Order(models.Model):
         'SEND': "Отправлен",
         'SHIPPED': "Доставлен",
     }
-
+    first_name = models.CharField(max_length=50, verbose_name='Имя')
+    last_name = models.CharField(max_length=50, verbose_name='Фамилия')
+    middle_name = models.CharField(max_length=50, **NULLABLE, verbose_name='Отчество')
+    email = models.EmailField(verbose_name='Эл.почта')
     country = models.CharField(max_length=50, verbose_name='Страна')
-    zip = models.CharField(max_length=20, verbose_name='Индекс')
+    postal_code = models.CharField(max_length=20, verbose_name='Индекс')
     address = models.CharField(max_length=255, verbose_name='Адрес')
     comment = models.CharField(max_length=255, verbose_name='Комментарий', **NULLABLE)
     updated_at = models.DateTimeField(auto_now=True)
