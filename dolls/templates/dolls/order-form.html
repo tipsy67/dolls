@@ -26,7 +26,7 @@
             <!-- Login -->
             <div class="col-md-12 col-sm-12 col-xs-12 login-block">
                 <div class="login-check">
-                    <form method="post" {% if create_user %} action="{% url 'users:login' %}" {% endif %} enctype="multipart/form-data">
+                    <form method="post" action="{% url 'users:login' %}" enctype="multipart/form-data">
                         <h3>{{title_form}}</h3>
                         <div class="col-md-7 col-sm-6 col-xs-6 login-form">
                             {% csrf_token %}
@@ -57,55 +57,41 @@
                     </form>
                     <div class="col-md-5 col-sm-6 col-xs-6 check-details">
                         <div class="shipping-fields">
+                            <h3><i class="icon icon-Heart"></i> Ваш заказ </h3>
                             <div class="checkout-order-table">
                                 <table>
                                     <thead>
                                     <tr>
-                                        <th>Адреса доставки</th>
-                                        <th>Статус</th>
+                                        <th>Товар</th>
+                                        <th>Цена</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for addr in user.addresses.all %}
+                                    {% for item in cart %}
                                     <tr class="cart_item">
-                                        <td class="product-name"><a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}" title="Редактировать">{{addr}}</a></td>
-                                        <td>
-                                            {% if addr.is_active %}
-                                            <b>{{addr.get_status}}</b>
-                                            {% else %}
-                                            <a href="{% url 'users:change_status' addr.pk %}" title="Сделать основным">{{addr.get_status}}</a>
-                                            {% endif %}
-                                        </td>
+                                        <td class="product-name">{{ item.product.name }} х {{ item.quantity }}</td>
+                                        <td>{{ item.total_price }}</td>
                                     </tr>
                                     {% endfor %}
                                     </tbody>
-                                </table>
-                                {% if user.is_authenticated %}
-                                <a id="myLink" style="{padding-top: 20px !important;}" href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Новый</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="shipping-fields">
-                            <div class="checkout-order-table">
-                                <table>
-                                    <thead>
                                     <tr>
-                                        <th>Мои заказы</th>
-                                        <th>Статус</th>
+                                        <th>Доставка</th>
+                                        <td>?</td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="cart_item">
-                                        <td class="product-name">MENS CASUAL SHOE</td>
-                                        <td>$550.00</td>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Итого:</th>
+                                        <td>{{ cart.get_total_price }}</td>
                                     </tr>
-                                    </tbody>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
-                    </div><!-- Login /- -->
-                </div><!-- Container /- -->
-            </div><!-- Checkout /- -->
+                    </div>
+                </div>
+            </div><!-- Login /- -->
+        </div><!-- Container /- -->
+    </div><!-- Checkout /- -->
 
 </main>
 
