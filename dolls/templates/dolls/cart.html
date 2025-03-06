@@ -4,110 +4,118 @@
 {% load static %}
 {% load dolls_tags %}
 
-		<main>
-			<!-- Page Banner -->
-			<div class="page-banner container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="banner-content">
-						<h3>Cart</h3>
-						<p>our vision is to be Earth's most customer centric company</p>
-					</div>
-					<ol class="breadcrumb">
-						<li><a href="index.html" title="Home">Home</a></li>							
-						<li class="active">Cart</li>
-					</ol>
-				</div><!-- Container /- -->
-			</div><!-- Page Banner /- -->
-			<!-- Cart -->
-			<div class="woocommerce-cart container-fluid no-left-padding no-right-padding">
-				<!-- Container -->
-				<div class="container">
-					<!-- Cart Table -->
-					<div class="col-md-12 col-sm-12 col-xs-12 cart-table">
-						<form id="myForm" method="POST" action="{% url 'cart:cart_detail' %}">
-							{% csrf_token %}
-							<table class="table table-bordered table-responsive">
-								<thead>
-									<tr>
-										<th class="product-thumbnail">Товар</th>
-										<th class="product-name">Наименование</th>
-										<th class="product-quantity">Количество</th>
-										<th class="product-unit-price">Цена</th>
-										<th class="product-subtotal">Сумма</th>
-										<th class="product-remove">Удалить</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% for item in cart %}
-									{% with product=item.product %}
-									<tr class="cart_item">
-										<td data-title="Товар" class="product-thumbnail"><a href="#">
-											{% if product.one_image %}
-											<img src="{{product.one_image|add_media}}" alt="Product" width="50"/>
-											{% else %}
-											<img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
-											{% endif %}	</a> </td>
-										<td data-title="Наименование" class="product-name"><a href="#">{{product.name}}</a></td>
-										<td data-title="Количество" class="product-quantity">
-											<div class="prd-quantity" data-title="Quantity">
-												<input value="-" class="qtyminus btn" data-field="quantity{{product.pk}}" type="button">
-												<input name="quantity{{product.pk}}" value="{{item.quantity}}" class="qty" type="text">
-												<input value="+" class="qtyplus btn" data-field="quantity{{product.pk}}" type="button">
-											</div>
-										</td>
-										<td data-title="Цена" class="product-unit-price">{{item.price}}</td>
-										<td data-title="Сумма" class="product-subtotal">{{item.total_price}}</td>
-										<td data-title="Удалить" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a></td>
-									</tr>
-									{% endwith %}
-									{% endfor %}
-									<tr>
-										<td class="action" colspan="6">
-											<a href="{{return_url}}" title="Продолжить покупки">Продолжить покупки</a>
-											<a href="javascript:void(0);" onclick="document.getElementById('myForm').submit();" title="Обновить корзину">Обновить корзину</a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-					</div><!-- Cart Table /- -->
-					<!-- Coupon -->
-					<div class="col-md-offset-4 col-md-4 col-sm-6 col-xs-6 coupon">
-						<div class="coupon-box">
-							<h4>Купон на скидку</h4>
-							<h6>Если у вас есть купон, введите код</h6>
-							<form>
-								<input type="text" class="form-control" placeholder="Код купона" />
-								<input type="submit" value="Применить" />
-							</form>
-						</div>
-					</div><!-- Coupon /- -->
-					<div class="col-md-4 col-sm-6 col-xs-6 cart-collaterals">
-						<div class="cart_totals">
-							<h3>Итого в корзине</h3>
-							<table>
-								<tr>
-									<th>Предварительный итог</th>
-									<td>{{ cart.get_total_price }}</td>
-								</tr>
-								<tr>
-									<th>Доставка</th>
-									<td>?</td>
-								</tr>
-<!--								<tr>-->
-<!--									<th>Grand Total</th>-->
-<!--									<td>$550</td>-->
-<!--								</tr>-->
-							</table>
-							<div class="wc-proceed-to-checkout">		
-								<a href="{% url 'cart:order_create' %}" class="checkout-button button alt wc-forward">Оформить заказ</a>
-							</div>
-						</div>
-					</div>
-				</div><!-- Container /- -->
-			</div><!-- Cart /- -->
-			
-		</main>
+<main>
+    <!-- Page Banner -->
+    <div class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Cart</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="index.html" title="Home">Home</a></li>
+                <li class="active">Cart</li>
+            </ol>
+        </div><!-- Container /- -->
+    </div><!-- Page Banner /- -->
+    <!-- Cart -->
+    <div class="woocommerce-cart container-fluid no-left-padding no-right-padding">
+        <!-- Container -->
+        <div class="container">
+            <!-- Cart Table -->
+            <div class="col-md-12 col-sm-12 col-xs-12 cart-table">
+                <form id="myForm" method="POST" action="{% url 'cart:cart_detail' %}">
+                    {% csrf_token %}
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail">Товар</th>
+                            <th class="product-name">Наименование</th>
+                            <th class="product-quantity">Количество</th>
+                            <th class="product-unit-price">Цена</th>
+                            <th class="product-subtotal">Сумма</th>
+                            <th class="product-remove">Удалить</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in cart %}
+                        {% with product=item.product %}
+                        <tr class="cart_item">
+                            <td data-title="Товар" class="product-thumbnail"><a href="#">
+                                {% if product.one_image %}
+                                <img src="{{product.one_image|add_media}}" alt="Product" width="50"/>
+                                {% else %}
+                                <img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
+                                {% endif %} </a></td>
+                            <td data-title="Наименование" class="product-name"><a href="#">{{product.name}}</a></td>
+                            <td data-title="Количество" class="product-quantity">
+                                <div class="prd-quantity" data-title="Quantity">
+                                    <input value="-" class="qtyminus btn" data-field="quantity{{product.pk}}"
+                                           type="button">
+                                    <input name="quantity{{product.pk}}" value="{{item.quantity}}" class="qty"
+                                           type="text">
+                                    <input value="+" class="qtyplus btn" data-field="quantity{{product.pk}}"
+                                           type="button">
+                                </div>
+                            </td>
+                            <td data-title="Цена" class="product-unit-price">{{item.price}}</td>
+                            <td data-title="Сумма" class="product-subtotal">{{item.total_price}}</td>
+                            <td data-title="Удалить" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a>
+                            </td>
+                        </tr>
+                        {% endwith %}
+                        {% endfor %}
+                        <tr>
+                            <td class="action" colspan="6">
+                                <a href="{{return_url}}" title="Продолжить покупки">Продолжить покупки</a>
+                                <a href="javascript:void(0);" onclick="document.getElementById('myForm').submit();"
+                                   title="Обновить корзину">Обновить корзину</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div><!-- Cart Table /- -->
+            <!-- Coupon -->
+            <div class="col-md-offset-4 col-md-4 col-sm-6 col-xs-6 coupon">
+                <div class="coupon-box">
+                    <h4>Купон на скидку</h4>
+                    <h6>Если у вас есть купон, введите код</h6>
+                    <form>
+                        <input type="text" class="form-control" placeholder="Код купона"/>
+                        <div class="parent-div">
+                            <input type="submit" value="Применить"/>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- Coupon /- -->
+            <div class="col-md-4 col-sm-6 col-xs-6 cart-collaterals">
+                <div class="cart_totals">
+                    <h3>Итого в корзине</h3>
+                    <table>
+                        <tr>
+                            <th>Предварительный итог</th>
+                            <td>{{ cart.get_total_price }}</td>
+                        </tr>
+                        <tr>
+                            <th>Доставка</th>
+                            <td>?</td>
+                        </tr>
+                        <!--								<tr>-->
+                        <!--									<th>Grand Total</th>-->
+                        <!--									<td>$550</td>-->
+                        <!--								</tr>-->
+                    </table>
+                    <div class="wc-proceed-to-checkout parent-div">
+                        <a href="{% url 'cart:order_create' %}" class="checkout-button button alt wc-forward">Оформить
+                            заказ</a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Container /- -->
+    </div><!-- Cart /- -->
+
+</main>
 
 {% endblock content %}

@@ -2192,7 +2192,7 @@
     border: 1px solid #b6795f;
     box-shadow: none;
 	color: #b6795f;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
 	font-family: 'Montserrat', sans-serif;
     margin-right: 15px;
@@ -2364,7 +2364,7 @@
     border: 1px solid #b6795f;
     box-shadow: none;
 	color: #b6795f;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
 	font-family: 'Montserrat', sans-serif;
     margin-top: 15px;
@@ -2375,6 +2375,7 @@
 	-moz-transition: all 1s ease 0s;
 	-o-transition: all 1s ease 0s;
 	transition: all 1s ease 0s;
+
 }
 .woocommerce-checkout .shipping-fields input[type="submit"]:hover,#myLink:hover {
 	background-color: #b6795f;
@@ -3736,4 +3737,9 @@
 	.woocommerce-selling .selling-box .selling-content h6 {
 		font-size: 11px;
 	}
+}
+
+.parent-div {
+  display: flex;
+  justify-content: center;
 }
