@@ -71,10 +71,14 @@ def cart_remove(request, product_id):
 
 def order_create(request):
     cart = Cart(request)
+    if not cart:
+        return render(request, 'dolls/404.html')
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+            order.user = request.user
+            order.save()
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],

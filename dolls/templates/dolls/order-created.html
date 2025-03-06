@@ -1,0 +1,50 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <!-- Page Banner -->
+    <div class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Checkout</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="index.html" title="Home">Home</a></li>
+                <li class="active">Checkout</li>
+            </ol>
+        </div><!-- Container /- -->
+    </div><!-- Page Banner /- -->
+    <!-- Checkout -->
+    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
+        <!-- Container -->
+        <div class="container">
+            <!-- Login -->
+            <div class="col-md-12 col-sm-12 col-xs-12 login-block">
+                <div class="login-check">
+                    <h3>Заказ создан</h3>
+                    <div style="text-transform: uppercase; color: #808080; ">
+                    <div class="form-group parent-div">Заказ № {{order.pk}} на общую сумму {{order.get_total_cost}}
+                        зарегистрирован.
+                    </div>
+                    <div class="form-group parent-div">Спасибо за выбор наших товаров!</div>
+                    <div class="form-group parent-div">Мы с Вами свяжемся в ближайшее время.</div>
+                    <div class="place-order parent-div">
+                        <a id="myLink"
+                           href="{% url 'dolls:home' %}">На главную</a>
+                    </div>
+                    <div class="form-group parent-div"></div>
+                    </div>
+                </div>
+            </div><!-- Login /- -->
+        </div><!-- Container /- -->
+    </div><!-- Checkout /- -->
+
+</main>
+
+{% endblock content %}
+	

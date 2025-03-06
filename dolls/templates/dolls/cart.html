@@ -84,9 +84,11 @@
                     <h6>Если у вас есть купон, введите код</h6>
                     <form>
                         <input type="text" class="form-control" placeholder="Код купона"/>
+                        {% if cart %}
                         <div class="parent-div">
                             <input type="submit" value="Применить"/>
                         </div>
+                        {% endif %}
                     </form>
                 </div>
             </div><!-- Coupon /- -->
@@ -107,10 +109,12 @@
                         <!--									<td>$550</td>-->
                         <!--								</tr>-->
                     </table>
+                    {% if cart %}
                     <div class="wc-proceed-to-checkout parent-div">
                         <a href="{% url 'cart:order_create' %}" class="checkout-button button alt wc-forward">Оформить
                             заказ</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div><!-- Container /- -->
