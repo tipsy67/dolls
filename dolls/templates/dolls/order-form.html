@@ -40,18 +40,9 @@
                             <div class="form-error">{{ f.errors }}</div>
                             {% endfor %}
                             {% if user.is_authenticated %}
-                            <input value="Сохранить" type="submit">
-                            {% else %}
-                            {% if create_user %}
-                            <input value="Зарегистрировать" type="submit">
-                            {% else %}
-                            <input value="ВОЙТИ" type="submit" name="login">
-                            <input value="Забыли пароль?" type="submit" name="recovery">
-                            <a href="{% url 'users:create_user' %}" type="button"
-                               name="register">
-                                Регистрация
-                            </a>
-                            {% endif %}
+                            <div class="parent-div">
+                                <input value="Оформить" class="text-center" type="submit">
+                            </div>
                             {% endif %}
                         </div>
                     </form>

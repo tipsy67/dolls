@@ -26,7 +26,8 @@
             <!-- Login -->
             <div class="col-md-12 col-sm-12 col-xs-12 login-block">
                 <div class="login-check">
-                    <form method="post" {% if create_user %} action="{% url 'users:login' %}" {% endif %} enctype="multipart/form-data">
+                    <form method="post" {% if create_user %} action="{% url 'users:login' %}" {% endif %}
+                          enctype="multipart/form-data">
                         <h3>{{title_form}}</h3>
                         <div class="col-md-7 col-sm-6 col-xs-6 login-form">
                             {% csrf_token %}
@@ -39,20 +40,22 @@
                             </div>
                             <div class="form-error">{{ f.errors }}</div>
                             {% endfor %}
-                            {% if user.is_authenticated %}
-                            <input value="Сохранить" type="submit">
-                            {% else %}
-                            {% if create_user %}
-                            <input value="Зарегистрировать" type="submit">
-                            {% else %}
-                            <input value="ВОЙТИ" type="submit" name="login">
-                            <input value="Забыли пароль?" type="submit" name="recovery">
-                            <a href="{% url 'users:create_user' %}" type="button"
-                               name="register">
-                                Регистрация
-                            </a>
-                            {% endif %}
-                            {% endif %}
+                            <div class="parent-div">
+                                {% if user.is_authenticated %}
+                                <input value="Сохранить" type="submit">
+                                {% else %}
+                                {% if create_user %}
+                                <input value="Зарегистрировать" type="submit">
+                                {% else %}
+                                <input value="ВОЙТИ" type="submit" name="login">
+                                <input value="Забыли пароль?" type="submit" name="recovery">
+                                <a href="{% url 'users:create_user' %}" type="button"
+                                   name="register">
+                                    Регистрация
+                                </a>
+                                {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
                     </form>
                     <div class="col-md-5 col-sm-6 col-xs-6 check-details">
@@ -68,7 +71,9 @@
                                     <tbody>
                                     {% for addr in user.addresses.all %}
                                     <tr class="cart_item">
-                                        <td class="product-name"><a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}" title="Редактировать">{{addr}}</a></td>
+                                        <td class="product-name"><a
+                                                href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
+                                                title="Редактировать">{{addr}}</a></td>
                                         <td>
                                             {% if addr.is_active %}
                                             <b>{{addr.get_status}}</b>
@@ -81,7 +86,8 @@
                                     </tbody>
                                 </table>
                                 {% if user.is_authenticated %}
-                                <a id="myLink" style="{padding-top: 20px !important;}" href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Новый</a>
+                                <a id="myLink" style="{padding-top: 20px !important;}"
+                                   href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Новый</a>
                                 {% endif %}
                             </div>
                         </div>
