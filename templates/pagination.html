@@ -1,0 +1,22 @@
+<nav class="ow-pagination">
+    <ul class="pager">
+        <li class="number"><a href="#">{{page.number}}</a></li>
+        <li class="load-more"><a href="#">Load More</a></li>
+        <li class="previous">
+            {% if page.has_next %}
+            <a href="?{{page_name}}={{ page.next_page_number }}"
+               {% else %}
+            <a href="#"
+               style="pointer-events: none; opacity: 0.6;"
+               {% endif %}><i class="fa fa-angle-right"></i></a>
+        </li>
+        <li class="next">
+            {% if page.has_previous %}
+            <a href="?{{page_name}}={{ page.previous_page_number }}"
+               {% else %}
+            <a href="#"
+               style="pointer-events: none; opacity: 0.6;"
+               {% endif %}><i class="fa fa-angle-left"></i></a>
+        </li>
+    </ul>
+</nav>

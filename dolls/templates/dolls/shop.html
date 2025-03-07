@@ -129,14 +129,7 @@
                     </ul><!-- Products /- -->
                 </div><!-- Content Area /- -->
             </div><!-- Row /- -->
-            <nav class="ow-pagination">
-                <ul class="pager">
-                    <li class="number"><a href="#">4</a></li>
-                    <li class="load-more"><a href="#">Load More</a></li>
-                    <li class="previous"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    <li class="next"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                </ul>
-            </nav>
+            {% include 'pagination.html' with page=product_list page_name='page' %}
         </div><!-- Container /- -->
     </div><!-- Product Section2 /- -->
 </main>

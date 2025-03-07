@@ -67,14 +67,7 @@
                     {% endfor %}
                 </ul><!-- Products /- -->
             </div><!-- Row /- -->
-            <nav class="ow-pagination">
-                <ul class="pager">
-                    <li class="number"><a href="#">4</a></li>
-                    <li class="load-more"><a href="#">Load More</a></li>
-                    <li class="previous"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    <li class="next"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                </ul>
-            </nav>
+            {% include 'pagination.html' with page=product_list page_name='page_prod' only %}
         </div><!-- Container /- -->
     </div><!-- Product Section /- -->
 
@@ -90,77 +83,39 @@
                 <p>our vision is to be Earth's most customer centric company</p>
                 <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator"/>
             </div><!-- Section Header /- -->
+            {% for article in blog_list %}
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="type-post">
                     <div class="entry-cover">
-                        <a href="blog-post.html"><img src="{% static 'dolls/images/blog-1.jpg' %}" alt="blog"></a>
-                        <span class="post-date"><a href="#"><i class="fa fa-calendar-o"></i>July 20</a></span>
+                        <a href="blog-post.html">
+                            <img src="{% static 'dolls/images/blank-blog.jpg' %}" alt="blog"></a>
+                        <span class="post-date"><a href="#">
+                            <i class="fa fa-calendar-o"></i>
+                            {{article.created_at|date:"j M"}}</a></span>
                     </div>
                     <div class="blog-content">
                         <h3 class="entry-title"><a href="blog-post.html"
-                                                   title="new Collectios are imported In Our shop.">new Collectios
-                            are<span>imported</span> In Our shop.</a></h3>
+                                                   title="new Collectios are imported In Our shop.">
+                            {{article.title|safe}}
+                        </a></h3>
                         <div class="entry-meta">
-                            <span class="post-like"><a href="#" title="224 Likes"><i class="fa fa-heart-o"></i>224 Likes</a></span>
-                            <span class="post-admin"><i class="fa fa-user"></i>Posted By <a href="#" title="Max">Max</a></span>
+                            <span class="post-like">
+                                <a href="#" title="{{article.like_counter}}">
+                                    <i class="fa fa-heart-o"></i>{{article.like_counter}}</a></span>
+                            <span class="post-admin">
+                                <i class="fa fa-user"></i>Автор:
+                                <a href="#" title="Max">{{article.owner}}</a></span>
                         </div>
                         <div class="entry-content">
-                            <p>The weather started getting rough - the tiny ship was tossed. If not for the courage of
-                                the fearless crew the Minnow would be lost.</p>
-                            <a href="blog-post.html" title="Read More" class="read-more">Read More<i
-                                    class="fa fa-long-arrow-right"></i></a>
+                            <p>{{article.short_content|safe}}</p>
+                            <a href="blog-post.html" title="Read More" class="read-more">Читать
+                                <i class="fa fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-6">
-                <div class="type-post">
-                    <div class="entry-cover">
-                        <a href="blog-post.html"><img src="{% static 'dolls/images/blog-3.jpg' %}" alt="blog"></a>
-                        <span class="post-date"><a href="#"><i class="fa fa-calendar-o"></i>march 14</a></span>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="entry-title"><a href="blog-post.html" title="buyers are saying it's good shop">buyers
-                            are saying it's <span>good shop</span></a></h3>
-                        <div class="entry-meta">
-                            <span class="post-like"><a href="#" title="150 Likes"><i class="fa fa-heart-o"></i>150 Likes</a></span>
-                            <span class="post-admin"><i class="fa fa-user"></i>Posted By <a href="#" title="Max">Max</a></span>
-                        </div>
-                        <div class="entry-content">
-                            <p>The weather started getting rough - the tiny ship was tossed. If not for the courage of
-                                the fearless crew the Minnow would be lost.</p>
-                            <a href="blog-post.html" title="Read More" class="read-more">Read More<i
-                                    class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-6">
-                <div class="type-post">
-                    <div class="entry-cover">
-                        <a href="blog-post.html"><img src="{% static 'dolls/images/blog-2.jpg' %}" alt="blog"></a>
-                        <span class="post-date"><a href="#"><i class="fa fa-calendar-o"></i>june 26</a></span>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="entry-title"><a title="Best Solds in the this year was watches"
-                                                   href="blog-post.html">Best Solds in the this year was
-                            <span>watches</span></a></h3>
-                        <div class="entry-meta">
-                            <span class="post-like"><a href="#" title="85 Likes"><i
-                                    class="fa fa-heart-o"></i>85 Likes</a></span>
-                            <span class="post-admin"><i class="fa fa-user"></i>Posted By <a href="#" title="Max">Max</a></span>
-                        </div>
-                        <div class="entry-content">
-                            <p>The weather started getting rough - the tiny ship was tossed. If not for the courage of
-                                the fearless crew the Minnow would be lost.</p>
-                            <a href="blog-post.html" title="Read More" class="read-more">Read More<i
-                                    class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            {% include 'pagination.html' with page=blog_list page_name='page_blog' only%}
         </div><!-- Container /- -->
     </div><!-- Latest Blog /- -->
 

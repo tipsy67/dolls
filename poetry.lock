@@ -234,6 +234,40 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-js-asset"
+version = "3.1.2"
+description = "script tag with additional attributes for django.forms.Media"
+optional = false
+python-versions = ">=3.10"
+files = [
+    {file = "django_js_asset-3.1.2-py3-none-any.whl", hash = "sha256:b5ffe376aebbd73b7af886d675ac9f43ca63b39540190fa8409c9f8e79145f68"},
+    {file = "django_js_asset-3.1.2.tar.gz", hash = "sha256:1fc7584199ed1941ed7c8e7b87ca5524bb0f2ba941561d2a104e88ee9f07bedd"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
+name = "django-mptt"
+version = "0.16.0"
+description = "Utilities for implementing Modified Preorder Tree Traversal with your Django Models and working with trees of Model instances."
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "django_mptt-0.16.0-py3-none-any.whl", hash = "sha256:8716849ba3318d94e2e100ed0923a05c1ffdf8195f8472b690dbaf737d2af3b5"},
+    {file = "django_mptt-0.16.0.tar.gz", hash = "sha256:56c9606bf0b329b5f5afd55dd8bfd073612ea1d5999b10903b09de62bee84c8e"},
+]
+
+[package.dependencies]
+django-js-asset = "*"
+
+[package.extras]
+tests = ["coverage[toml]", "mock-django"]
+
+[[package]]
 name = "isort"
 version = "6.0.0"
 description = "A Python utility / library to sort Python imports."
@@ -623,4 +657,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "2bb4a65172964b5fe9fb82fc7c5d9fe8ab94793658f6e4522e3c18ebd41f641d"
+content-hash = "d4c2f13781be755d039bb75a48e13c6b95e04f612c049ebc1af4e03df649e506"
