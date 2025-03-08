@@ -153,17 +153,17 @@
                     <div class="navbar-collapse collapse navbar-right" id="navbar">
                         <ul class="nav navbar-nav">
                             <li class="{{home}} dropdown">
-                                <a href="{% url 'dolls:home' %}" title="Home" class="dropdown-toggle" role="button"
+                                <a href="{% url 'dolls:home' %}" title="Главная" class="dropdown-toggle" role="button"
                                    aria-haspopup="true" aria-expanded="false">Главная</a>
                                 <i class="ddl-switch fa fa-angle-down"></i>
                             </li>
                             <li class="{{shop}} dropdown">
-                                <a href="{% url 'dolls:shop' %}" title="Shop" class="dropdown-toggle" role="button"
+                                <a href="{% url 'dolls:shop' %}" title="Товары" class="dropdown-toggle" role="button"
                                    aria-haspopup="true" aria-expanded="false">Товары</a>
                                 <i class="ddl-switch fa fa-angle-down"></i>
                             </li>
                             <li class="dropdown">
-                                <a href="blog.html" title="Blog" class="dropdown-toggle" role="button"
+                                <a href="{% url 'blog:blog_list' %}" title="Блог" class="dropdown-toggle" role="button"
                                    aria-haspopup="true" aria-expanded="false">Блог</a>
                             </li>
                             <li><a href="about.html" title="About Us">Обо мне</a></li>

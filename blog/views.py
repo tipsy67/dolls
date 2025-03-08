@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.views.generic import DetailView, ListView
 
 from blog.models import BlogArticle
@@ -7,7 +8,8 @@ from config.settings import BLOG_PER_PAGE
 class BlogListView(ListView):
     model = BlogArticle
     paginate_by = BLOG_PER_PAGE
-
+    template_name = 'dolls/blog.html'
+    context_object_name = 'blog_list'
     extra_context = {
     }
 
@@ -17,6 +19,8 @@ class BlogListView(ListView):
 
 class BlogDetailView(DetailView):
     model = BlogArticle
+    template_name = 'dolls/blog-post.html'
+    context_object_name = 'article'
     extra_context = {
     }
 
@@ -28,3 +32,11 @@ class BlogDetailView(DetailView):
         self.object.save()
 
         return self.object
+
+def add_like(request, pk):
+    instance = get_object_or_404(BlogArticle, pk=pk)
+    if instance:
+        instance.like_counter += 1
+        instance.save()
+
+    return None
