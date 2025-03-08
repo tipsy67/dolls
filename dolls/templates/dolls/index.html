@@ -19,7 +19,7 @@
                 <div class="section-header">
                     <h3>Our Products</h3>
                     <p>our vision is to be Earth's most customer centric company</p>
-                    <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator" />
+                    <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator"/>
                 </div><!-- Section Header /- -->
                 <ul id="filters" class="products-categories no-left-padding">
                     <li><a data-filter="*" class="active" href="#">Все товары</a></li>
@@ -57,12 +57,12 @@
                             <a href="#"><i class="fa fa-heart-o"></i></a>
                             <a href="#"><i class="fa fa-search"></i></a>
                         </div>
-                            {% if product.quantity %}
-                            <a href="{% url 'cart:cart_add' product.pk %}" class="addto-cart" title="Купить">Купить</a>
-                            {% else %}
-                            <a href="#" class="addto-cart" title="Нет в наличии"
-                               style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
-                            {% endif %}
+                        {% if product.quantity %}
+                        <a href="{% url 'cart:cart_add' product.pk %}" class="addto-cart" title="Купить">Купить</a>
+                        {% else %}
+                        <a href="#" class="addto-cart" title="Нет в наличии"
+                           style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
+                        {% endif %}
                     </li><!-- Product /- -->
                     {% endfor %}
                 </ul><!-- Products /- -->
@@ -87,35 +87,39 @@
             <div class="col-md-4 col-sm-6 col-xs-6">
                 <div class="type-post">
                     <div class="entry-cover">
-                        <a href="blog-post.html">
+                        <a href="{% url 'blog:blog_detail' article.slug %}">
                             <img src="{% static 'dolls/images/blank-blog.jpg' %}" alt="blog"></a>
                         <span class="post-date"><a href="#">
                             <i class="fa fa-calendar-o"></i>
                             {{article.created_at|date:"j M"}}</a></span>
                     </div>
                     <div class="blog-content">
-                        <h3 class="entry-title"><a href="blog-post.html"
+                        <h3 class="entry-title"><a href="{% url 'blog:blog_detail' article.slug %}"
                                                    title="new Collectios are imported In Our shop.">
                             {{article.title|safe}}
                         </a></h3>
                         <div class="entry-meta">
                             <span class="post-like">
-                                <a href="#" title="{{article.like_counter}}">
+                                <a href="{% url 'blog:blog_list' %}" title="Like">
                                     <i class="fa fa-heart-o"></i>{{article.like_counter}}</a></span>
                             <span class="post-admin">
                                 <i class="fa fa-user"></i>Автор:
-                                <a href="#" title="Max">{{article.owner}}</a></span>
+                                <a href="{% url 'blog:blog_list' %}" title="Max">{{article.owner}}</a></span>
                         </div>
                         <div class="entry-content">
-                            <p>{{article.short_content|safe}}</p>
-                            <a href="blog-post.html" title="Read More" class="read-more">Читать
+                            <p>{{article.content|safe|truncatechars_html:100}}</p>
+                            <a href="{% url 'blog:blog_detail' article.slug %}" title="Читать" class="read-more">Читать
                                 <i class="fa fa-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            {% include 'pagination.html' with page=blog_list page_name='page_blog' only%}
+            <nav class="ow-pagination">
+                <ul class="pager">
+                    <li class="load-more"><a href="{% url 'blog:blog_list' %}">Перейти в блог</a></li>
+                </ul>
+            </nav>
         </div><!-- Container /- -->
     </div><!-- Latest Blog /- -->
 
