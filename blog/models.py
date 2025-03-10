@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import truncatechars
 from pytils.translit import slugify
 
+from config.settings import AUTH_USER_MODEL
 from users.models import NULLABLE, User
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
@@ -56,6 +57,9 @@ class BlogArticle(models.Model):
         related_name='blogs',
         verbose_name='Владелец',
     )
+    users_like = models.ManyToManyField(AUTH_USER_MODEL,
+                                        related_name='images_liked',
+                                        blank=True)
 
     class Meta:
         verbose_name = 'Статья'

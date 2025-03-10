@@ -1,4 +1,6 @@
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, ListView
 
 from blog.models import BlogArticle
@@ -33,10 +35,21 @@ class BlogDetailView(DetailView):
 
         return self.object
 
-def add_like(request, pk):
-    instance = get_object_or_404(BlogArticle, pk=pk)
-    if instance:
-        instance.like_counter += 1
-        instance.save()
 
-    return None
+
+def article_like(request):
+    post_pk = request.POST.get('pk')
+    action = request.POST.get('action')
+    if post_pk and action:
+        article = BlogArticle.objects.get(pk=post_pk)
+        if article:
+            if action == 'like':
+                article.users_like.add(request.user)
+            else:
+                article.users_like.remove(request.user)
+
+            return JsonResponse({'status': 'ok'})
+
+    return JsonResponse({'status': 'error'})
+
+
