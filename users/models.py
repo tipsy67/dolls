@@ -33,8 +33,8 @@ class User(AbstractUser):
 
         return password
 
-    # def get_address_list(self):
-    #     return self.addresses
+    def get_unfinished_orders(self):
+        return self.orders.exclude(status='SHIPPED')
 
 
 class Address(models.Model):

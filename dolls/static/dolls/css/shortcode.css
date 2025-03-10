@@ -2359,7 +2359,8 @@
     margin-bottom: 5px;
     padding: 10px 20px;
 }
-.woocommerce-checkout .shipping-fields input[type="submit"], #myLink {
+.woocommerce-checkout .shipping-fields input[type="submit"],
+.woocommerce-checkout .shipping-fields a.my-link {
     background-color: transparent;
     border: 1px solid #b6795f;
     box-shadow: none;
@@ -2375,9 +2376,10 @@
 	-moz-transition: all 1s ease 0s;
 	-o-transition: all 1s ease 0s;
 	transition: all 1s ease 0s;
-
+	text-decoration: none;
 }
-.woocommerce-checkout .shipping-fields input[type="submit"]:hover,#myLink:hover {
+.woocommerce-checkout .shipping-fields input[type="submit"]:hover,
+.woocommerce-checkout .shipping-fields a.my-link:hover {
 	background-color: #b6795f;
 	color: #fff;
 }
@@ -3742,6 +3744,11 @@
 .parent-div {
   display: flex;
   justify-content: center;
+}
+.parent-div a {
+    color: #222 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.325px !important;
 }
 
 .myForm {

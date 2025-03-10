@@ -38,6 +38,8 @@ class Order(models.Model):
     def get_total_cost(self):
         return sum(item.get_cost() for item in self.items.all())
 
+    def get_status(self):
+        return self.STATUS_ORDER[self.status]
 
 
 class OrderItem(models.Model):
