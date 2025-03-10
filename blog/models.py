@@ -52,7 +52,6 @@ class BlogArticle(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     is_published = models.BooleanField(default=False, verbose_name='Признак публикации')
     views_counter = models.IntegerField(default=0, verbose_name='Количество просмотров')
-    like_counter = models.IntegerField(default=0, verbose_name='Количество лайков')
     content = models.TextField(verbose_name='Содержимое')
     owner = models.ForeignKey(
         to=User,
