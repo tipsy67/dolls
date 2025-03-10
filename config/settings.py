@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'tunes',
     'cart',
     'tags',
+    'mptt',
 ]
 
 MIDDLEWARE = [

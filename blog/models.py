@@ -34,6 +34,10 @@ class Comment(MPTTModel):
     class MPTTMeta:
         order_insertion_by = ['created_at']
 
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
     def __str__(self):
         return f"{self.owner}: {self.text[:20]}"
 
