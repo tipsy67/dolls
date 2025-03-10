@@ -41,7 +41,8 @@
                                         data-action="unlike" title="Убрать">
                                         <i class="fa fa-heart"></i>{% else %}
                                         data-action="like" title="Поставить">
-                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span class="count_like_{{article.pk}}">{{article.users_like.count}}</span></span>
+                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span class="count_like_{{article.pk}}">
+                                {{article.users_like.count}}</span></span>
                         <span class="post-admin"><i class="fa fa-user"></i>
                             Автор:<a href="#" title="Max">{{article.owner}}</a></span>
                     </div>

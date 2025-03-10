@@ -216,13 +216,11 @@
                 </aside><!-- Widget Links /- -->
                 <!-- Widget Account -->
                 <aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links widget_account">
-                    <h3 class="widget-title">my account</h3>
+                    <h3 class="widget-title">Мой аккаунт</h3>
                     <ul>
-                        <li><a href="#" title="My Order Details">My Order Details</a></li>
-                        <li><a href="#" title="My credit Offers">My credit Offers</a></li>
-                        <li><a href="#" title="My addresses">My addresses</a></li>
-                        <li><a href="#" title="My Personal Details">My Personal Details</a></li>
-                        <li><a href="#" title="My Account Details">My Account Details</a></li>
+                        <li><a href="#" title="Посмотреть заказы">Мои заказы</a></li>
+                        <li><a href="{% url 'users:profile' %}" title="Редактировать адреса">Мои адреса</a></li>
+                        <li><a href="{% url 'users:profile' %}" title="Редактировать профиль">Мой профиль</a></li>
                     </ul>
                 </aside><!-- Widget Account /- -->
                 <!-- Widget Newsletter -->

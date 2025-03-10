@@ -3,7 +3,7 @@ from django import forms
 from django.core.validators import ValidationError
 from pytils.translit import slugify
 
-from blog.models import BlogArticle
+from blog.models import BlogArticle, Comment
 
 
 class BlogAdminForm(forms.ModelForm):
@@ -27,3 +27,8 @@ class BlogAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
 
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    filter = ['created_at', 'owner']
+    search_fields = ['created_at', 'owner']

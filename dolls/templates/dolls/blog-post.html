@@ -3,6 +3,7 @@
 {% block content %}
 {% load static %}
 {% load dolls_tags %}
+{% load mptt_tags %}
 
 <main>
     <!-- Page Banner -->
@@ -27,7 +28,7 @@
             <article class="type-post">
                 <div class="entry-cover">
                     <img src="{% static 'dolls/images/blank-blog.jpg' %}" alt="blog">
-                    <span class="post-date"><a href="#"><i class="fa fa-calendar-o"></i>July 16</a></span>
+                    <span class="post-date"><a href="#"><i class="fa fa-calendar-o"></i>{{article.created_at|date:"j M"}}</a></span>
                 </div>
                 <div class="blog-content">
                     <h3 class="entry-title">{{article.title|safe}}</h3>
@@ -35,25 +36,38 @@
                             <span class="post-like">
                                 <a href="#" class="like" data-pk="{{article.pk}}"
                                    {% if request.user in article.users_like.all %}
-                                        data-action="unlike" title="Убрать">
+                                   data-action="unlike" title="Убрать">
                                         <i class="fa fa-heart"></i>{% else %}
                                         data-action="like" title="Поставить">
-                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span class="count_like_{{article.pk}}">{{article.users_like.count}}</span></span>
+                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span
+                                    class="count_like_{{article.pk}}">
+                                {{article.users_like.count}}</span></span>
                         <span class="post-admin"><i class="fa fa-user"></i>Автор
                             <a href="#" title="Max">{{article.owner}}</a></span>
                     </div>
                     <div class="entry-content">
                         {{article.content|safe}}
                         <div class="tags">
-                            <a href="#" title="Chairs">Chairs</a>
-                            <a href="#" title="Watches">Watches</a>
-                            <a href="#" title="Future">Future</a>
+                            <a id="myLink" href="#" onclick="showReplyForm({{node.id}})">КОММЕНТИРОВАТЬ</a>
                             <ul class="social">
                                 <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#" title="facebook"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#" title="facebook"><i class="fa fa-tumblr"></i></a></li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <!-- Форма для ответа -->
+                <div id="reply-form-undefined" style="display:none;">
+                    <div class="comment-form">
+                        <form method="post" action="{% url 'blog:article_reply' article.pk %}">
+                            {% csrf_token %}
+                            <div class="form-group col-md-12">
+                                        <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
+                                                  class="form-control"></textarea>
+                            </div>
+                            <input type="submit" title="send" value="Отправить" name="send">
+                        </form>
                     </div>
                 </div>
             </article>
@@ -63,70 +77,45 @@
                     <h3>comments are here<span>(3)</span></h3>
                 </div>
                 <ul class="media-list">
+                    {% recursetree comments %}
                     <li class="media">
                         <div class="media-left">
-                            <a href="#" title="Chris Evans"><img src="images/avtar-1.jpg" alt="comment"></a>
+                            <a href="#" title="{{ node.owner }}">
+                                {% if node.owner.avatar %}
+                                <img src="{{ node.owner.avatar }}"
+                                     {% else %}
+                                <img src="{% static 'dolls/images/blank-avatar.jpg' %}"
+                                     {% endif %}
+                                     alt="comment"></a>
                         </div>
                         <div class="media-body">
                             <div class="media-content">
-                                <h4 class="media-heading">Posted By Max</h4>
-                                <span><i class="fa fa-calendar-o"></i>June 18, 2016</span>
-                                <p>So this is the tale of our castaways they're here for a long long time. They'll have
-                                    to make the best of things its an uphill climb. </p>
-                                <a href="#" title="Reply">Reply</a>
+                                <h4 class="media-heading">{{node.owner}}</h4>
+                                <span><i class="fa fa-calendar-o"></i>{{node.created_at| date:"M j, y"}}</span>
+                                <p>{{node.text}}</p>
+                                <a href="#" onclick="showReplyForm({{ node.id }})">Ответить</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="media media-even">
-                        <div class="media-left">
-                            <a href="#" title="Ben Afflick"><img src="images/avtar-2.jpg" alt="comment"></a>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-content">
-                                <h4 class="media-heading">Posted By Smith</h4>
-                                <span><i class="fa fa-calendar-o"></i>June 18, 2016</span>
-                                <p>So this is the tale of our castaways they're here for a long long time.</p>
-                                <a href="#" title="Reply">Reply</a>
+                        <!-- Форма для ответа -->
+                        <div id="reply-form-{{ node.id }}" style="display:none;">
+                            <div class="comment-form">
+                                <form method="post" action="{% url 'blog:comment_reply' node.id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group col-md-12">
+                                        <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
+                                                  class="form-control"></textarea>
+                                    </div>
+                                    <input type="submit" title="send" value="Отправить" name="send">
+                                </form>
                             </div>
                         </div>
+                        {% if not node.is_leaf_node %}
+                        <ul>{{ children }}</ul>
+                        {% endif %}
                     </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#" title="Andrew Garfield"><img src="images/avtar-3.jpg" alt="comment"></a>
-                        </div>
-                        <div class="media-body">
-                            <div class="media-content">
-                                <h4 class="media-heading">Posted By Jhon</h4>
-                                <span><i class="fa fa-calendar-o"></i>June 21, 2016</span>
-                                <p>So this is the tale of our castaways they're here for a long long time. They'll have
-                                    to make the best of things its an uphill climb. </p>
-                                <a href="#" title="Reply">Reply</a>
-                            </div>
-                        </div>
-                    </li>
+                    {% endrecursetree %}
                 </ul>
             </div><!-- Comment Section /- -->
-            <!-- Comment Form -->
-            <div class="comment-form">
-                <div class="section-heading">
-                    <h3>Write Your Comments</h3>
-                </div>
-                <form class="row">
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <input type="text" required="" placeholder="Enter Your Name *" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" required="" placeholder="Enter Your Email *" class="form-control">
-                    </div>
-                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" required="" placeholder="Enter Your website" class="form-control">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <textarea placeholder="Enter Your Comment . . ." rows="3" class="form-control"></textarea>
-                    </div>
-                    <input type="submit" title="send" value="send" name="send">
-                </form>
-            </div><!-- Comment Form /- -->
         </div><!-- Content Area /- -->
 
         <!-- Widget Area -->
@@ -205,5 +194,4 @@
         </div><!-- Widget Area /- -->
     </div><!-- Container /- -->
 </main>
-
 {% endblock content %}

@@ -52,3 +52,13 @@
             });
         });
     });
+
+    function showReplyForm(commentId) {
+    var form = document.getElementById("reply-form-" + commentId);
+    if (form.style.display === "none") {
+        sessionStorage.removeItem('scrollPos');
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+    }
