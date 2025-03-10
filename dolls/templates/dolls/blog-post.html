@@ -48,12 +48,12 @@
                     <div class="entry-content">
                         {{article.content|safe}}
                         <div class="tags">
-                            <a id="myLink" href="#" onclick="showReplyForm({{node.id}})">КОММЕНТИРОВАТЬ</a>
                             <ul class="social">
                                 <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#" title="facebook"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#" title="facebook"><i class="fa fa-tumblr"></i></a></li>
                             </ul>
+                            <a id="myLink" href="#" onclick="showReplyForm({{node.id}});return false;">КОММЕНТИРОВАТЬ</a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                                 <h4 class="media-heading">{{node.owner}}</h4>
                                 <span><i class="fa fa-calendar-o"></i>{{node.created_at| date:"M j, y"}}</span>
                                 <p>{{node.text}}</p>
-                                <a href="#" onclick="showReplyForm({{ node.id }})">Ответить</a>
+                                <a href="#" onclick="showReplyForm({{ node.id }});return false;">Ответить</a>
                             </div>
                         </div>
                         <!-- Форма для ответа -->

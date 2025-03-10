@@ -3743,3 +3743,8 @@
   display: flex;
   justify-content: center;
 }
+
+.myForm {
+  display: none;
+  transition: opacity 0.5s;
+}

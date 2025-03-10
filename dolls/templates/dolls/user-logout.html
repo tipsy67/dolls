@@ -31,9 +31,11 @@
                         <form method="post" action="{% url 'users:logout' %}" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="button-area col-md-12 mx-auto">
+                                <div class="parent-div">
                                 <input value="Выйти" type="submit">
                                 <a href="{{ return_url }}"
                                    type="button">Назад</a>
+                                </div>
                             </div>
                         </form>
                     </div>
