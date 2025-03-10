@@ -139,7 +139,8 @@
                                 {% endif %} </a></li>
                             <li><a href="#" title="Like"><i class="icon icon-Heart"></i></a></li>
                             {% if user.is_authenticated %}
-                            <li><a href="{% url 'users:profile' %}" title="Профиль"><i class="icon icon-User"></i></a></li>
+                            <li><a href="{% url 'users:profile' %}" title="Профиль"><i class="icon icon-User"></i></a>
+                            </li>
                             <li>
                                 <a title="Выйти" href="{% url 'users:logout_form' %}">
                                     <i class="icon icon-PowerOff"></i>
@@ -286,21 +287,10 @@
 
 <!-- Library - Theme JS -->
 <script src="{% static 'dolls/js/functions.js' %}"></script>
-<script>
-    // Сохраняем позицию перед уходом
-    window.onbeforeunload = () => {
-        sessionStorage.setItem('scrollPos', window.scrollY);
-    };
 
-    // Восстанавливаем позицию после загрузки
-    window.onload = () => {
-        const scrollPos = sessionStorage.getItem('scrollPos');
-        if (scrollPos) {
-            window.scrollTo(0, scrollPos);
-            sessionStorage.removeItem('scrollPos'); // Удаляем позицию после использования
-        }
-    };
-</script>
+<script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script>const url = '{% url "blog:like" %}';</script>
+<script src="{% static 'dolls/js/dolls.js' %}"></script>
 
 </body>
 </html>

@@ -35,8 +35,13 @@
                     <h3 class="entry-title"><a title="Читать" href="{% url 'blog:blog_detail' article.slug %}">
                         {{article.title|safe}}</a></h3>
                     <div class="entry-meta">
-                        <span class="post-like"><a href="#" title="Like">
-                            <i class="fa fa-heart-o"></i>{{article.like_counter}}</a></span>
+                            <span class="post-like">
+                                <a href="#" class="like" data-pk="{{article.pk}}"
+                                   {% if request.user in article.users_like.all %}
+                                        data-action="unlike" title="Убрать">
+                                        <i class="fa fa-heart"></i>{% else %}
+                                        data-action="like" title="Поставить">
+                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span class="count_like_{{article.pk}}">{{article.users_like.count}}</span></span>
                         <span class="post-admin"><i class="fa fa-user"></i>
                             Автор:<a href="#" title="Max">{{article.owner}}</a></span>
                     </div>
