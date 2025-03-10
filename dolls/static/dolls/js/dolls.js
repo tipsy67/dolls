@@ -1,18 +1,20 @@
+window.onbeforeunload = () => { savePos(); };
+window.onload = () => { restorePos(); };
 
+function savePos() {
+    // Сохраняем позицию прокрутки перед уходом
+    sessionStorage.setItem('scrollPos', window.scrollY);
+}
 
-    // Сохраняем позицию перед уходом
-    window.onbeforeunload = () => {
-        sessionStorage.setItem('scrollPos', window.scrollY);
-    };
+function restorePos() {
+    // Восстанавливаем позицию прокрутки после загрузки
+    const scrollPos = sessionStorage.getItem('scrollPos');
 
-    // Восстанавливаем позицию после загрузки
-    window.onload = () => {
-        const scrollPos = sessionStorage.getItem('scrollPos');
-        if (scrollPos) {
-            window.scrollTo(0, scrollPos);
-            sessionStorage.removeItem('scrollPos'); // Удаляем позицию после использования
-        }
-    };
+    if (scrollPos !== null) { // Проверяем, что значение существует
+        window.scrollTo(0, parseInt(scrollPos, 10)); // Преобразуем в число
+        sessionStorage.removeItem('scrollPos'); // Удаляем позицию после использования
+    }
+}
 
     // Для лайков
     const csrftoken = Cookies.get('csrftoken');
@@ -56,7 +58,6 @@
     function showReplyForm(commentId) {
     var form = document.getElementById("reply-form-" + commentId);
     if (form.style.display === "none") {
-        sessionStorage.removeItem('scrollPos');
         form.style.display = "block";
     } else {
         form.style.display = "none";
