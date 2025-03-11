@@ -41,6 +41,14 @@ class Order(models.Model):
     def get_status(self):
         return self.STATUS_ORDER[self.status]
 
+    def get_address(self):
+        return f"{self.postal_code}, {self.country}, {self.address}"
+
+    def get_recipient(self):
+        str_ = f"{self.last_name} {self.first_name[:1]}."
+        if self.middle_name:
+            str_ = str_ + f"{self.middle_name[:1]}."
+        return str_
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,

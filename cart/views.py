@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.urls import reverse
+from django.views.generic import DetailView, ListView
+
 from config.settings import LOGIN_URL
 from dolls.models import Product
 from users.models import User
@@ -9,7 +11,7 @@ from .cart import Cart
 from django.contrib import messages
 
 from .forms import OrderCreateForm
-from .models import OrderItem
+from .models import OrderItem, Order
 
 
 def cart_update(request):
@@ -106,3 +108,21 @@ def order_create(request):
         'dolls/order-form.html',
         context,
     )
+
+class OrderDetailView(DetailView):
+    model = Order
+    context_object_name = 'order'
+    template_name = 'dolls/order-detail.html'
+    extra_context = {
+        'title_form': "Вы действительно хотите удалить этот адрес?",
+        # 'back_url': reverse_lazy(request.GET.get('next', '/'))
+    }
+
+class OrderListView(ListView):
+    model = Order
+    context_object_name = 'order_list'
+    template_name = 'dolls/order-list.html'
+    extra_context = {
+        'title_form': "Вы действительно хотите удалить этот адрес?",
+        # 'back_url': reverse_lazy(request.GET.get('next', '/'))
+    }
