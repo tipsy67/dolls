@@ -16,6 +16,15 @@ function restorePos() {
     }
 }
 
+  // Строка в таблице ссылка
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".clickable-row").forEach(row => {
+      row.addEventListener("click", function() {
+        window.location = this.dataset.href;
+      });
+    });
+  });
+
     // Для лайков
     const csrftoken = Cookies.get('csrftoken');
     document.addEventListener('DOMContentLoaded', (event) => {

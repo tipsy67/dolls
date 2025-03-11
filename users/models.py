@@ -38,7 +38,7 @@ class User(AbstractUser):
 
 
 class Address(models.Model):
-    STATUS_VALUES = {True: "Осн", False: "---"}
+    STATUS_VALUES = {True: "Выбран", False: "Неактивен"}
 
     name = models.CharField(max_length=50, verbose_name='Наименование')
     country = models.CharField(max_length=50, verbose_name='Страна')

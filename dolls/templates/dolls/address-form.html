@@ -43,10 +43,10 @@
                                 <div class="form-error">{{ f.errors }}</div>
                                 {% endfor %}
                                 {% if user.is_authenticated %}
-                                <div class="place-order parent-div">
+                                <div class="place-order">
                                     <input value="Сохранить" type="submit">
                                     {% if object.pk %}
-                                    <a class="my-link" href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
+                                    <a class="check-detail" href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
                                     {% endif %}
                                 </div>
                                 {% endif %}

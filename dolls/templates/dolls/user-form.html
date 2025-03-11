@@ -29,7 +29,11 @@
                     <form method="post" {% if create_user %} action="{% url 'users:login' %}" {% endif %}
                           enctype="multipart/form-data">
                         <h3>{{title_form}}</h3>
-                        <div class="col-md-7 col-sm-6 col-xs-6 login-form">
+                        <div {% if user.is_authenticated %}
+                                    class="col-md-6 col-sm-6 col-xs-6 login-form"
+                                {% else %}
+                                    class="login-form"
+                                {% endif %}>
                             {% csrf_token %}
                             <div class="form-error">{{ form.non_field_errors }}</div>
                             {% for f in form %}
@@ -40,6 +44,7 @@
                             </div>
                             <div class="form-error">{{ f.errors }}</div>
                             {% endfor %}
+                            <div class="place-order">
                                 {% if user.is_authenticated %}
                                 <input value="Сохранить" type="submit">
                                 {% else %}
@@ -54,10 +59,11 @@
                                 </a>
                                 {% endif %}
                                 {% endif %}
+                            </div>
                         </div>
                     </form>
-                    <div class="col-md-5 col-sm-6 col-xs-6 check-details">
-                        {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
+                    <div class="col-md-6 col-sm-6 col-xs-6 check-details">
                         <div class="shipping-fields">
                             <div class="checkout-order-table">
                                 <table>
@@ -70,21 +76,22 @@
                                     <tbody>
                                     {% for addr in user.addresses.all %}
                                     <tr class="cart_item">
-                                        <td class="product-name"><a
+                                        <td class="product-name clickable-href"><a
                                                 href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
                                                 title="Редактировать">{{addr}}</a></td>
-                                        <td>
+                                        <td class="clickable-href">
                                             {% if addr.is_active %}
                                             <b>{{addr.get_status}}</b>
                                             {% else %}
-                                            <a href="{% url 'users:change_status' addr.pk %}" title="Сделать основным">{{addr.get_status}}</a>
+                                            <a href="{% url 'users:change_status' addr.pk %}"
+                                               title="Сделать основным">{{addr.get_status}}</a>
                                             {% endif %}
                                         </td>
                                     </tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>
-                                <p></p>
+                                <p><br></p>
                                 <a class="my-link" style="{padding-top: 20px !important;}"
                                    href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Новый</a>
                             </div>
@@ -101,7 +108,8 @@
                                     </thead>
                                     <tbody>
                                     {% for order in user.orders.all %}
-                                    <tr class="cart_item">
+                                    <tr class="clickable-row" data-href="{% url 'cart:order_detail' order.pk %}"
+                                    title="Посмотреть детали">
                                         <td class="product-name">{{order.pk}}/{{order.created_at|date:"d.m.y"}}</td>
                                         <td>{{order.get_total_cost}}</td>
                                         <td>{{order.get_status}}</td>
@@ -109,16 +117,17 @@
                                     {% endfor %}
                                     </tbody>
                                 </table>
-                                <p></p>
+                                <p><br></p>
                                 <a class="my-link" style="{padding-top: 20px !important;}"
-                                   href="{% url 'users:address_create' %}?next={{request.path}}" type="button">Архив</a>
+                                   href="{% url 'cart:order_list' %}" type="button">Архив</a>
                             </div>
                         </div>
-                        {% endif %}
                     </div><!-- Login /- -->
+                    {% endif %}
                 </div><!-- Container /- -->
             </div><!-- Checkout /- -->
-
+        </div>
+    </div>
 </main>
 
 {% endblock content %}

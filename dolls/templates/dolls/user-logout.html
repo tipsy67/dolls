@@ -26,17 +26,20 @@
             <!-- Login -->
             <div class="col-md-12 col-sm-12 col-xs-12 login-block">
                 <div class="login-check">
-                    <h3>Вы действительно хотите выйти?</h3>
-                    <div class="col-md-7 col-sm-6 col-xs-6 login-form">
+                    <h3>Выйти</h3>
+                    <div class="login-form">
+                        <h2><span style="color:#777; text-align: center; display: block;">
+                            Вы действительно хотите выйти?</span></h2>
+                        <br>
                         <form method="post" action="{% url 'users:logout' %}" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="button-area col-md-12 mx-auto">
-                                <div class="parent-div">
+                                <div class=" place-order">
                                 <input value="Выйти" type="submit">
                                 <a href="{{ return_url }}"
                                    type="button">Назад</a>
                                 </div>
-                            </div>
+                                </div>
                         </form>
                     </div>
                 </div>
