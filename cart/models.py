@@ -50,6 +50,7 @@ class Order(models.Model):
             str_ = str_ + f"{self.middle_name[:1]}."
         return str_
 
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order,
                               related_name='items',

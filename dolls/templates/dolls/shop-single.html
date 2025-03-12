@@ -59,9 +59,15 @@
                     <!--                    <a href="#" title="Купить" class="add_to_cart">Купить</a>-->
                     <form method="get" action="{% url 'cart:cart_add' product.pk %}">
                         {% if product.quantity %}
-                        <button id="quantity" title="Купить" class="add_to_cart"> Купить </button>
+                        <button id="quantity"
+                           class="add_to_cart ajax-cart-add"
+                           data-product_id="{{ product.pk }}"
+                           data-url="{% url 'cart:cart_add' product.pk %}"
+                           title="Купить">Купить</button>
                         {% else %}
-                        <button disabled title="Нет в наличии" class="add_to_cart" style="opacity: 0.5;cursor: not-allowed;"> Нет в наличии </button>
+                        <button disabled class="add_to_cart"
+                           title="Нет в наличии"
+                           style="opacity: 0.5;cursor: not-allowed;">Нет в наличии</button>
                         {% endif %}
                     </form>
                     <div class="product_meta">

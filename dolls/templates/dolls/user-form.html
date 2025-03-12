@@ -30,10 +30,10 @@
                           enctype="multipart/form-data">
                         <h3>{{title_form}}</h3>
                         <div {% if user.is_authenticated %}
-                                    class="col-md-6 col-sm-6 col-xs-6 login-form"
-                                {% else %}
-                                    class="login-form"
-                                {% endif %}>
+                             class="col-md-6 col-sm-6 col-xs-6 login-form"
+                             {% else %}
+                             class="login-form"
+                             {% endif %}>
                             {% csrf_token %}
                             <div class="form-error">{{ form.non_field_errors }}</div>
                             {% for f in form %}
@@ -66,7 +66,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-6 check-details">
                         <div class="shipping-fields">
                             <div class="checkout-order-table">
-                                <table>
+                                <table id="table">
                                     <thead>
                                     <tr>
                                         <th>Адреса доставки</th>
@@ -76,15 +76,19 @@
                                     <tbody>
                                     {% for addr in user.addresses.all %}
                                     <tr class="cart_item">
-                                        <td class="product-name clickable-href"><a
-                                                href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
-                                                title="Редактировать">{{addr}}</a></td>
-                                        <td class="clickable-href">
+                                        <td class="product-name clickable-href">
+                                            <a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
+                                               title="Редактировать">{{addr}}</a>
+                                        </td>
+                                        <td class="clickable-href address-status"
+                                            data-address-id="{{ addr.pk }}"
+                                            data-status-url="{% url 'users:change_status' addr.pk %}">
                                             {% if addr.is_active %}
-                                            <b>{{addr.get_status}}</b>
+                                            <b>Основной</b>
                                             {% else %}
-                                            <a href="{% url 'users:change_status' addr.pk %}"
-                                               title="Сделать основным">{{addr.get_status}}</a>
+                                            <a href="#" class="change-status"
+                                               data-id="{{addr.pk}}"
+                                               data-url="{% url 'users:change_status' addr.pk %}">Неактивен</a>
                                             {% endif %}
                                         </td>
                                     </tr>
@@ -109,7 +113,7 @@
                                     <tbody>
                                     {% for order in user.orders.all %}
                                     <tr class="clickable-row" data-href="{% url 'cart:order_detail' order.pk %}"
-                                    title="Посмотреть детали">
+                                        title="Посмотреть детали">
                                         <td class="product-name">{{order.pk}}/{{order.created_at|date:"d.m.y"}}</td>
                                         <td>{{order.get_total_cost}}</td>
                                         <td>{{order.get_status}}</td>
