@@ -61,7 +61,7 @@
                             </td>
                             <td data-title="Цена" class="product-unit-price">{{item.price}}</td>
                             <td data-title="Сумма" class="product-subtotal">{{item.total_price}}</td>
-                            <td data-title="Удалить" class="product-remove"><a href="#"><i class="icon icon-Delete"></i></a>
+                            <td data-title="Удалить" class="product-remove"><a href="{% url 'cart:cart_remove' product.pk %}"><i class="icon icon-Delete"></i></a>
                             </td>
                         </tr>
                         {% endwith %}

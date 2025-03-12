@@ -69,6 +69,7 @@ def cart_detail(request):
                 item['quantity'] = min(
                     int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity
                 )
+                if item['quantity'] == 0: cart.remove(product)
         cart.save()
 
     return render(
