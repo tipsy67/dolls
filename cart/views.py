@@ -1,9 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.urls import reverse
 from django.views.generic import DetailView, ListView
 
-from config.settings import LOGIN_URL
+from config.settings import LOGIN_URL, CART_SESSION_ID
 from dolls.models import Product
 from users.models import User
 from .cart import Cart
@@ -27,22 +28,35 @@ def cart_update(request):
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    if product:
-        if request.method == 'POST':
-            quantity = request.POST.get(f'quantity', 1)
-            cart.add(product=product, quantity=quantity, override_quantity=True)
-        else:
-            quantity = 1
-            cart.add(
-                product=product,
-                quantity=quantity,
-            )
-        messages.success(
-            request, f"Вы добавили в корзину {product.name} - {quantity} шт."
-        )
+
+    quantity = int(request.POST.get('quantity', 1))
+
+    if product and product.quantity > 0:
+        # Add product to cart
+        cart.add(product=product, quantity=quantity, override_quantity=False)
+
+        response_data = {
+            'status': 'success',
+            'message': f"Вы добавили в корзину {product.name} - {quantity} шт.",
+            'cart_total': len(cart),
+            'product_name': product.name,
+            'quantity': quantity
+        }
     else:
-        messages.error(request, "при добавлении в корзину произошла ошибка")
-    url = request.META.get('HTTP_REFERER')  # + "#product_" + str(product_id)
+        response_data = {
+            'status': 'error',
+            'message': "При добавлении в корзину произошла ошибка"
+        }
+
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse(response_data)
+
+    if response_data['status'] == 'success':
+        messages.success(request, response_data['message'])
+    else:
+        messages.error(request, response_data['message'])
+
+    url = request.META.get('HTTP_REFERER', '/')
     return redirect(url)
 
 
@@ -55,6 +69,7 @@ def cart_detail(request):
                 item['quantity'] = min(
                     int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity
                 )
+        cart.save()
 
     return render(
         request,
@@ -70,6 +85,10 @@ def cart_remove(request, product_id):
     cart.remove(product)
     return redirect('cart:cart_detail')
 
+def get_cart(request):
+    cart = Cart(request)
+    response = {'success': True, 'cart_length': len(cart)}
+    return JsonResponse(response)
 
 def order_create(request):
     cart = Cart(request)

@@ -132,7 +132,8 @@
                             <a href="#" id="search" title="Search"><i class="icon icon-Search"></i></a>
                         </div>
                         <ul class="cart">
-                            <li><a href="{% url 'cart:cart_detail' %}" title="Корзина">
+                            <li><a href="{% url 'cart:cart_detail' %}" id="cart-count"
+                                   data-url="{% url 'cart:get_cart' %}" title="Корзина">
                                 <i class="icon icon-ShoppingCart"></i>
                                 {% if cart|length > 0 %}
                                 {{ cart|length }}
@@ -288,6 +289,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>const url = '{% url "blog:like" %}';</script>
+
 <script src="{% static 'dolls/js/dolls.js' %}"></script>
 
 </body>

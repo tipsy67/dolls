@@ -1,6 +1,7 @@
 from django.urls import path
 from cart.apps import CartConfig
-from cart.views import cart_add, cart_detail, cart_remove, cart_update, order_create, OrderDetailView, OrderListView
+from cart.views import cart_add, cart_detail, cart_remove, cart_update, order_create, OrderDetailView, OrderListView, \
+    get_cart
 
 appname = CartConfig.name
 
@@ -11,6 +12,8 @@ urlpatterns = [
 
     path('order-create/', order_create, name='order_create'),
     path('order-list/', OrderListView.as_view(), name='order_list'),
-    path('order-detail/<int:pk>', OrderDetailView.as_view(), name='order_detail'),
+    path('order-detail/<int:pk>/', OrderDetailView.as_view(), name='order_detail'),
+
+    path('ajax/cart/', get_cart, name='get_cart'),
 
 ]

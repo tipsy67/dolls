@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import LoginView as BaseLoginView
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -138,13 +139,23 @@ class AddressDeleteView(DeleteView):
 
 
 def change_status(request, pk):
-    Address.objects.filter(user=request.user).update(is_active=False)
-    address = get_object_or_404(Address, pk=pk)
-    address.is_active = True
-    address.save()
+    if request.method == "POST":
+        # Деактивируем все адреса текущего пользователя
+        Address.objects.filter(user=request.user).update(is_active=False)
 
-    url = request.META.get('HTTP_REFERER')
-    return redirect(url)
+        # Активируем выбранный адрес
+        address = get_object_or_404(Address, pk=pk)
+        address.is_active = True
+        address.save()
+
+        return JsonResponse({
+            'success': True,
+            'active_address': address.id,
+            'message': f'{address.name} был установлен как основной',  # Сообщение для пользователя
+            'message_type': 'success'  # Тип сообщения (success, warning, danger)
+        })
+
+    return JsonResponse({"success": False}, status=400)
 
 
 # /Адреса

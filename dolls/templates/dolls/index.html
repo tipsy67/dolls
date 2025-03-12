@@ -58,11 +58,17 @@
                             <a href="#"><i class="fa fa-search"></i></a>
                         </div>
                         {% if product.quantity %}
-                        <a href="{% url 'cart:cart_add' product.pk %}" class="addto-cart" title="Купить">Купить</a>
+                        <a href="#"
+                           class="addto-cart ajax-cart-add"
+                           data-product_id="{{ product.pk }}"
+                           data-url="{% url 'cart:cart_add' product.pk %}"
+                           title="Купить">Купить</a>
                         {% else %}
-                        <a href="#" class="addto-cart" title="Нет в наличии"
+                        <a class="addto-cart"
+                           title="Нет в наличии"
                            style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
                         {% endif %}
+
                     </li><!-- Product /- -->
                     {% endfor %}
                 </ul><!-- Products /- -->
@@ -102,10 +108,11 @@
                             <span class="post-like">
                                 <a href="#" class="like" data-pk="{{article.pk}}"
                                    {% if request.user in article.users_like.all %}
-                                        data-action="unlike" title="Убрать">
+                                   data-action="unlike" title="Убрать">
                                         <i class="fa fa-heart"></i>{% else %}
                                         data-action="like" title="Поставить">
-                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span class="count_like_{{article.pk}}">
+                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span
+                                    class="count_like_{{article.pk}}">
                                 {{article.users_like.count}}</span></span>
                             <span class="post-admin">
                                 <i class="fa fa-user"></i>Автор:
