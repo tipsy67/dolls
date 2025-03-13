@@ -73,43 +73,6 @@
 
     <!-- Header -->
     <header class="header-section container-fluid no-padding">
-        <!-- Top Header -->
-        <!--			<div class="top-header container-fluid no-padding">-->
-        <!--				&lt;!&ndash; Container &ndash;&gt;-->
-        <!--				<div class="container">-->
-        <!--					<div class="col-md-7 col-sm-7 col-xs-7 dropdown-bar">-->
-        <!--						<h5>Welcome To Max Shop</h5>-->
-        <!--						<div class="language-dropdown dropdown">-->
-        <!--							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="languages" id="language" type="button" class="btn dropdown-toggle">English <span class="caret"></span></button>-->
-        <!--							<ul class="dropdown-menu no-padding">-->
-        <!--								<li><a title="Danish" href="#">Danish</a></li>-->
-        <!--								<li><a title="German" href="#">German</a></li>-->
-        <!--								<li><a title="French" href="#">French</a></li>-->
-        <!--							</ul>-->
-        <!--						</div>-->
-        <!--						<div class="language-dropdown dropdown">-->
-        <!--							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="currency" id="currency" type="button" class="btn dropdown-toggle">US Dollar<span class="caret"></span></button>-->
-        <!--							<ul class="dropdown-menu no-padding">-->
-        <!--								<li><a title="Danish" href="#">Usd</a></li>-->
-        <!--								<li><a title="German" href="#">Ora</a></li>-->
-        <!--								<li><a title="French" href="#">Riyal</a></li>-->
-        <!--							</ul>-->
-        <!--						</div>-->
-        <!--					</div>-->
-        <!--					&lt;!&ndash; Social &ndash;&gt;-->
-        <!--					<div class="col-md-5 col-sm-5 col-xs-5 header-social"> -->
-        <!--						<ul>-->
-        <!--							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>-->
-        <!--							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>-->
-        <!--							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>-->
-        <!--							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>-->
-        <!--							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>-->
-        <!--							<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>-->
-        <!--						</ul>-->
-        <!--					</div>&lt;!&ndash; Social /- &ndash;&gt;-->
-        <!--				</div>&lt;!&ndash; Container /- &ndash;&gt;-->
-        <!--			</div>&lt;!&ndash; Top Header /- &ndash;&gt;-->
-
         <!-- Menu Block -->
         <div class="container-fluid no-padding menu-block">
             <!-- Container -->
@@ -117,6 +80,7 @@
                 <!-- nav -->
                 <nav class="navbar navbar-default ow-navigation">
                     <div class="navbar-header">
+                        <a href="{% url 'dolls:home' %}" class="navbar-brand">Кук<span>лы</span></a>
                         <button aria-controls="navbar" aria-expanded="false" data-target="#navbar"
                                 data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                             <span class="sr-only">Toggle navigation</span>
@@ -124,7 +88,6 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="{% url 'dolls:home' %}" class="navbar-brand">Кукольный <span>дом</span></a>
                     </div>
                     <!-- Menu Icon -->
                     <div class="menu-icon">
@@ -132,7 +95,7 @@
                             <a href="#" id="search" title="Search"><i class="icon icon-Search"></i></a>
                         </div>
                         <ul class="cart">
-                            <li><a href="{% url 'cart:cart_detail' %}" id="cart-count"
+                            <li><a href="{% url 'cart:cart_detail' %}" class="cart-counter"
                                    data-url="{% url 'cart:get_cart' %}" title="Корзина">
                                 <i class="icon icon-ShoppingCart"></i>
                                 {% if cart|length > 0 %}
@@ -157,12 +120,10 @@
                             <li class="{{home}} dropdown">
                                 <a href="{% url 'dolls:home' %}" title="Главная" class="dropdown-toggle" role="button"
                                    aria-haspopup="true" aria-expanded="false">Главная</a>
-                                <i class="ddl-switch fa fa-angle-down"></i>
                             </li>
                             <li class="{{shop}} dropdown">
                                 <a href="{% url 'dolls:shop' %}" title="Товары" class="dropdown-toggle" role="button"
                                    aria-haspopup="true" aria-expanded="false">Товары</a>
-                                <i class="ddl-switch fa fa-angle-down"></i>
                             </li>
                             <li class="dropdown">
                                 <a href="{% url 'blog:blog_list' %}" title="Блог" class="dropdown-toggle" role="button"

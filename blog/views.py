@@ -1,3 +1,5 @@
+import json
+
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST
@@ -40,8 +42,9 @@ class BlogDetailView(DetailView):
 
 
 def article_like(request):
-    post_pk = request.POST.get('pk')
-    action = request.POST.get('action')
+    data = json.loads(request.body)
+    post_pk = data.get('pk')
+    action = data.get('action')
     if post_pk and action:
         article = BlogArticle.objects.get(pk=post_pk)
         if article:
