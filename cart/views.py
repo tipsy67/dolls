@@ -1,3 +1,5 @@
+import json
+
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -28,15 +30,15 @@ def cart_update(request):
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-
-    quantity = int(request.POST.get('quantity', 1))
+    data = json.loads(request.body)
+    quantity = int(data.get('quantity', 1))
 
     if product and product.quantity > 0:
         # Add product to cart
         cart.add(product=product, quantity=quantity, override_quantity=False)
 
         response_data = {
-            'status': 'success',
+            'success': True,
             'message': f"Вы добавили в корзину {product.name} - {quantity} шт.",
             'cart_total': len(cart),
             'product_name': product.name,
@@ -44,11 +46,11 @@ def cart_add(request, product_id):
         }
     else:
         response_data = {
-            'status': 'error',
+            'success': False,
             'message': "При добавлении в корзину произошла ошибка"
         }
 
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+    if request.headers.get('Content-Type') == 'application/json':
         return JsonResponse(response_data)
 
     if response_data['status'] == 'success':

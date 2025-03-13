@@ -294,9 +294,9 @@
 
 /* - Navigation Menu Switch < 991 RES */
 @media (max-width: 991px) {
-	.navbar-header { 
-		float: none; 
-	}
+    .navbar-header {
+        float: none;}
+
 	.header-section-1 .ow-navigation a.navbar-brand span {
 		color: #fff;
 	}
@@ -510,3 +510,14 @@
 		font-size: 14px;
 	}
 }
+
+        .div1 {
+            position: absolute; /* Используем абсолютное позиционирование */
+            top: 20%; /* Расположение сверху */
+            left: 20%; /* Расположение слева */
+        }
+        .div2 {
+            position: absolute; /* Используем абсолютное позиционирование */
+            top: 50%; /* Расположение сверху */
+            left: 50%; /* Расположение слева */
+            transform: translate(-50%, -50%); /* Центрируем второй div */
