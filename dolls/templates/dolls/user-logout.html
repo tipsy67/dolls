@@ -3,51 +3,40 @@
 {% block content %}
 {% load static %}
 {% load dolls_tags %}
-
-<main>
-    <!-- Page Banner -->
-    <div class="page-banner container-fluid no-padding">
-        <!-- Container -->
+<main class="main">
+    <div class="section block-breadcrumb">
         <div class="container">
-            <div class="banner-content">
-                <h3>Checkout</h3>
-                <p>our vision is to be Earth's most customer centric company</p>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home </a></li>
+                    <li><a href="#">Checkout</a></li>
+                </ul>
             </div>
-            <ol class="breadcrumb">
-                <li><a href="index.html" title="Home">Home</a></li>
-                <li class="active">Checkout</li>
-            </ol>
-        </div><!-- Container /- -->
-    </div><!-- Page Banner /- -->
-    <!-- Checkout -->
-    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
-        <!-- Container -->
-        <div class="container">
-            <!-- Login -->
-            <div class="col-md-12 col-sm-12 col-xs-12 login-block">
-                <div class="login-check">
-                    <h3>Выйти</h3>
-                    <div class="login-form">
-                        <h2><span style="color:#777; text-align: center; display: block;">
-                            Вы действительно хотите выйти?</span></h2>
-                        <br>
-                        <form method="post" action="{% url 'users:logout' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="button-area col-md-12 mx-auto">
-                                <div class=" place-order">
-                                <input value="Выйти" type="submit">
-                                <a href="{{ return_url }}"
-                                   type="button">Назад</a>
-                                </div>
-                                </div>
-                        </form>
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60">
+            <form action="#">
+                <div class="row mt-20 d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="box-form-checkout form-comment">
+                            <h4 class="mt-32 mb-25">{{title_form}}</h4>
+                            <div class="row">
+                                <form method="post" action="{% url 'users:logout' %}"
+                                      enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="box-button-checkout">
+                                        <input class="btn btn-black" value="Выйти" type="submit">
+                                        <a class="btn btn-grey my-1" href="{{ return_url }}"
+                                           type="button">Назад</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div><!-- Login /- -->
-        </div><!-- Container /- -->
-    </div><!-- Checkout /- -->
-
+            </form>
+        </div>
+    </section>
 </main>
-
 {% endblock content %}
-	

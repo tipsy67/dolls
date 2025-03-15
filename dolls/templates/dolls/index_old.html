@@ -1,0 +1,139 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+
+    {% include 'slider.html' %}
+
+    {% include 'services.html' %}
+
+    <!-- Product Section -->
+    <div id="product-section" class="product-section container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <!-- Section Header -->
+                <div class="section-header">
+                    <h3>Our Products</h3>
+                    <p>our vision is to be Earth's most customer centric company</p>
+                    <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator"/>
+                </div><!-- Section Header /- -->
+                <ul id="filters" class="products-categories no-left-padding">
+                    <li><a data-filter="*" class="active" href="#">Все товары</a></li>
+                    {% for category in category_list %}
+                    <li><a data-filter=".{{category.name}}" href="#">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="input-group">
+                    <input class="form-control" placeholder="Search You Wants" type="text">
+                    <span class="input-group-btn">
+								<button class="btn btn-search" title="Search" type="button"><i
+                                        class="icon icon-Search"></i></button>
+							</span>
+                </div>
+                <!-- Products -->
+                <ul class="products">
+                    <!-- Product -->
+                    {% for product in product_list %}
+                    <li class="product {{product.category}}">
+                        <a href="{% url 'dolls:shop_single' product.pk %}">
+                            {% if product.one_image %}
+                            <img src="{{product.one_image|add_media}}" alt="Product" width="270"/>
+                            {% else %}
+                            <img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
+                            {% endif %}
+                            <h5>{{product.name}}</h5>
+                            {% if product.sale %}
+                            <span class="price"><del>{{product.old_price}}</del>{{product.price}}</span>
+                            {% else %}
+                            <span class="price">{{product.price}}</span>
+                            {% endif %}
+                        </a>
+                        <div class="wishlist-box">
+                            <a href="#"><i class="fa fa-arrows-alt"></i></a>
+                            <a href="#"><i class="fa fa-heart-o"></i></a>
+                            <a href="#"><i class="fa fa-search"></i></a>
+                        </div>
+                        {% if product.quantity %}
+                        <a href="#"
+                           class="addto-cart ajax-cart-add"
+                           data-product_id="{{ product.pk }}"
+                           data-url="{% url 'cart:cart_add' product.pk %}"
+                           title="Купить">Купить</a>
+                        {% else %}
+                        <a class="addto-cart"
+                           title="Нет в наличии"
+                           style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
+                        {% endif %}
+
+                    </li><!-- Product /- -->
+                    {% endfor %}
+                </ul><!-- Products /- -->
+            </div><!-- Row /- -->
+            {% include 'pagination.html' with page=product_list page_name='page_prod' only %}
+        </div><!-- Container /- -->
+    </div><!-- Product Section /- -->
+
+    {% include 'testimonials.html' %}
+
+    <!-- Latest Blog -->
+    <div class="blog-section latest-blog container-fluid">
+        <!-- Container -->
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h3>Latest News</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+                <img src="{% static 'dolls/images/section-seprator.png' %}" alt="section-seprator"/>
+            </div><!-- Section Header /- -->
+            {% for article in blog_list %}
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                <div class="type-post">
+                    <div class="entry-cover">
+                        <a href="{% url 'blog:blog_detail' article.slug %}">
+                            <img src="{% static 'dolls/images/blank-blog.jpg' %}" alt="blog"></a>
+                        <span class="post-date"><a href="#">
+                            <i class="fa fa-calendar-o"></i>
+                            {{article.created_at|date:"j M"}}</a></span>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="entry-title"><a href="{% url 'blog:blog_detail' article.slug %}"
+                                                   title="new Collectios are imported In Our shop.">
+                            {{article.title|safe}}
+                        </a></h3>
+                        <div class="entry-meta">
+                            <span class="post-like">
+                                <a href="#" class="like" data-pk="{{article.pk}}"
+                                   {% if request.user in article.users_like.all %}
+                                   data-action="unlike" title="Убрать">
+                                        <i class="fa fa-heart"></i>{% else %}
+                                        data-action="like" title="Поставить">
+                                        <i class="fa fa-heart-o"></i>{% endif %}</a><span
+                                    class="count_like_{{article.pk}}">
+                                {{article.users_like.count}}</span></span>
+                            <span class="post-admin">
+                                <i class="fa fa-user"></i>Автор:
+                                <a href="{% url 'blog:blog_list' %}" title="Max">{{article.owner}}</a></span>
+                        </div>
+                        <div class="entry-content">
+                            <p>{{article.content|safe|truncatechars_html:100}}</p>
+                            <a href="{% url 'blog:blog_detail' article.slug %}" title="Читать" class="read-more">Читать
+                                <i class="fa fa-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <nav class="ow-pagination">
+                <ul class="pager">
+                    <li class="load-more"><a href="{% url 'blog:blog_list' %}">Перейти в блог</a></li>
+                </ul>
+            </nav>
+        </div><!-- Container /- -->
+    </div><!-- Latest Blog /- -->
+
+</main>
+{% endblock content %}
