@@ -1,7 +1,7 @@
 from config.settings import NULLABLE
 from django.db import models
 from django.urls import reverse
-
+from django.db.models.functions import Random
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
@@ -54,7 +54,7 @@ class Product(models.Model):
 
     @property
     def one_image(self):
-        return self.images.prefetch_related().all().order_by('?').first()
+        return self.images.prefetch_related().all().order_by(Random()).first()
 
     @property
     def sale(self):
