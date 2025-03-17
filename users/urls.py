@@ -22,6 +22,7 @@ urlpatterns = [
     path('logout-form/', logout_form, name='logout_form'),
     path('user-create/', UserCreateView.as_view(), name='create_user'),
     path('user-update/', ProfileUpdateView.as_view(), name='profile'),
+    # path('user-update/', ProfileUpdateView.as_view(), name='profile'),
     path('confirm/<str:token>/', confirm_user, name='confirm'),
     path('address-create/', AddressCreateView.as_view(), name='address_create'),
     path(

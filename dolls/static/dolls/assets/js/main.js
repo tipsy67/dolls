@@ -1143,57 +1143,57 @@
         $(".box-cart-wrapper").addClass("active");
     });
 
-    $(".btn-close-popup, .box-cart-overlay").on("click", function (e) {
-        $(".box-cart-wrapper").removeClass("active");
-        $(".box-popup-cart").css("visibility", "hidden");
-    });
+//    $(".btn-close-popup, .box-cart-overlay").on("click", function (e) {
+//        $(".box-cart-wrapper").removeClass("active");
+//        $(".box-popup-cart").css("visibility", "hidden");
+//    });
 
     //Off canvas Wishlist
-    $("a.account-icon.wishlist").on("click", function (e) {
-        $(".box-popup-wishlist").css("visibility", "visible");
-        $(".box-wishlist-wrapper").addClass("active");
-    });
-
-    $(".btn-close-popup, .box-wishlist-overlay").on("click", function (e) {
-        $(".box-wishlist-wrapper").removeClass("active");
-        $(".box-popup-wishlist").css("visibility", "hidden");
-    });
+//    $("a.account-icon.wishlist").on("click", function (e) {
+//        $(".box-popup-wishlist").css("visibility", "visible");
+//        $(".box-wishlist-wrapper").addClass("active");
+//    });
+//
+//    $(".btn-close-popup, .box-wishlist-overlay").on("click", function (e) {
+//        $(".box-wishlist-wrapper").removeClass("active");
+//        $(".box-popup-wishlist").css("visibility", "hidden");
+//    });
 
      //Popup Account
-    $(".btn-close-popup-account, .box-account-overlay").on("click", function (e) {
-        $(".box-popup-account").hide();
-    });
-    $("a.account-icon.account").on("click", function (e) {
-        $(".box-popup-account").show();
-    });
-
-    $(".button-tab").on("click", function (e) {
-        $(".button-tab").removeClass("active");
-        $(this).addClass("active");
-        if ($(this).hasClass("btn-for-login")) {
-            $(".form-login").show();
-            $(".form-register").hide();
-        }
-        if ($(this).hasClass("btn-for-signup")) {
-            $(".form-login").hide();
-            $(".form-register").show();
-        }
-    });
-    $(".login-now").on("click", function (e) {
-        $(".button-tab").removeClass("active");
-        $(".btn-for-login").addClass("active");
-        $(".form-login").show();
-        $(".form-register").hide();
-        $(".form-account-info").show();
-        $(".form-password-info").hide();
-    });
-    $(".buttun-forgotpass").on("click", function (e) {
-        e.preventDefault();
-        $(".form-account-info").hide();
-        $(".form-password-info").show();
-    });
-
-    // Product gallery
+//    $(".btn-close-popup-account, .box-account-overlay").on("click", function (e) {
+//        $(".box-popup-account").hide();
+//    });
+//    $("a.account-icon.account").on("click", function (e) {
+//        $(".box-popup-account").show();
+//    });
+//
+//    $(".button-tab").on("click", function (e) {
+//        $(".button-tab").removeClass("active");
+//        $(this).addClass("active");
+//        if ($(this).hasClass("btn-for-login")) {
+//            $(".form-login").show();
+//            $(".form-register").hide();
+//        }
+//        if ($(this).hasClass("btn-for-signup")) {
+//            $(".form-login").hide();
+//            $(".form-register").show();
+//        }
+//    });
+//    $(".login-now").on("click", function (e) {
+//        $(".button-tab").removeClass("active");
+//        $(".btn-for-login").addClass("active");
+//        $(".form-login").show();
+//        $(".form-register").hide();
+//        $(".form-account-info").show();
+//        $(".form-password-info").hide();
+//    });
+//    $(".buttun-forgotpass").on("click", function (e) {
+//        e.preventDefault();
+//        $(".form-account-info").hide();
+//        $(".form-password-info").show();
+//    });
+//
+//    // Product gallery
     GLightbox({
         selector: ".glightbox"
     });
@@ -1241,8 +1241,21 @@
 
     $(".btn-remove-cart").on("click", function(e){
         e.preventDefault();
-        $(this).parents(".item-cart").fadeOut(500, function(){
-            $(this).remove();
+        let cartUrl = $(this).data("url");
+        let item = $(this).parents(".item-cart");
+        sendPostRequest(cartUrl)
+        .then(response => {
+            if (response.success) {
+                item.fadeOut(500, function(){
+                    $(this).remove();
+                });
+                updateCartUI();
+            } else {
+                showMessage("Ошибка при удалении", "danger");
+            }
+        })
+        .catch(error => {
+            showMessage("Произошла ошибка запроса.", "danger");
         });
     });
 })(jQuery);

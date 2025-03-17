@@ -16,21 +16,19 @@
     </div>
     <section class="section block-cart">
         <div class="container mb-100 mt-60">
-            <form action="#">
+            <form method="post" action="{% url 'users:logout' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row mt-20 d-flex justify-content-center">
                     <div class="col-lg-6">
                         <div class="box-form-checkout form-comment">
                             <h4 class="mt-32 mb-25">{{title_form}}</h4>
                             <div class="row">
-                                <form method="post" action="{% url 'users:logout' %}"
-                                      enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    <div class="box-button-checkout">
-                                        <input class="btn btn-black" value="Выйти" type="submit">
-                                        <a class="btn btn-grey my-1" href="{{ return_url }}"
-                                           type="button">Назад</a>
-                                    </div>
-                                </form>
+                                <div class="box-button-checkout">
+                                    <input class="btn btn-black" value="Выйти" type="submit">
+                                    <a class="btn btn-grey my-1" href="{{ return_url }}"
+                                       type="button">Назад</a>
+                                </div>
                             </div>
                         </div>
                     </div>

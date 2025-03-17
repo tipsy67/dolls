@@ -84,9 +84,16 @@ def cart_detail(request):
 # @require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
-    return redirect('cart:cart_detail')
+    try:
+        product = get_object_or_404(Product, id=product_id)
+        cart.remove(product)
+        return JsonResponse({'success': True})
+    # return redirect('cart:cart_detail')
+    except:
+        return JsonResponse({'success': False})
+
+def cart_partial_update(request):
+    return render(request, "popup-cart.html")
 
 def get_cart(request):
     cart = Cart(request)
