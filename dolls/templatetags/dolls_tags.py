@@ -13,5 +13,6 @@ def add_media(url_image):
 @register.filter
 def add_attrs(value):
     return value.as_widget(
-        attrs={'class': 'form-control', 'placeholder': f'{value.label} *'}
+        attrs={'class': 'form-control'}
+        # attrs = {'class': 'form-control', 'placeholder': f'{value.label} *'}
     )

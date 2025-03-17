@@ -119,36 +119,54 @@ function setupAddToCartHandler() {
             sendPostRequest(this.dataset.url, { quantity: 1 })
                 .then(data => {
                     if (data.success) {
-                        let counterElement = document.querySelector(".cart-counter");
-                        if (counterElement) {
-                            counterElement.innerHTML = `<i class="icon icon-ShoppingCart"></i> ${data.cart_total}`;
                             updateCartUI();
-                            showMessage(data.message, data.status);
-                            }
+                            updateCartPopup();
+                            showMessage(data.message, data.status);}
                         else {
                             showMessage("Ошибка добавления в корзину", "danger");
                         }
-                    }
                 })
-                .catch(() => showMessage("Ошибка добавления в корзину", "danger"));
+                .catch(() => showMessage("Ошибка выполнения запроса", "danger"));
         });
     });
 }
 
 // Обновление информации о корзине
 function updateCartUI() {
-    let cartElement = document.getElementById("cart-count");
+    let cartElement = document.querySelector(".cart-counter");
     if (!cartElement) return;
 
     fetch(cartElement.dataset.url)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                cartElement.innerHTML = `<i class="icon icon-ShoppingCart"></i> ${data.cart_length}`;
+                cartElement.innerHTML = `${data.cart_length}`;
             }
         })
-        .catch(() => console.error("Ошибка при обновлении корзины"));
+        .catch(() => console.error("Ошибка при обновлении количества в корзине"));
 }
+
+function updateCartPopup() {
+    let cartContainer = document.querySelector(".box-popup-cart");
+    if (!cartContainer) return;
+
+    fetch(cartContainer.dataset.url)
+        .then(response => response.text())  // Получаем HTML-код
+        .then(html => {
+            if (cartContainer) {
+                cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
+            }
+        })
+        .catch(error => console.error("Ошибка обновления popup окна корзины:", error));
+}
+
+    //навесим обработчик закрытия всплывающего окна на документ
+document.addEventListener("click", function (event) {
+    if (event.target.closest(".btn-close-popup, .box-cart-overlay")) {
+        document.querySelector(".box-cart-wrapper")?.classList.remove("active");
+        document.querySelector(".box-popup-cart")?.style.setProperty("visibility", "hidden");
+    }
+});
 
     // Показать комменты
 function showReplyForm(commentId) {
