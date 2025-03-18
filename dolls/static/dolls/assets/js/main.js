@@ -1141,8 +1141,13 @@
     $("a.account-icon.cart").on("click", function (e) {
         $(".box-popup-cart").css("visibility", "visible");
         $(".box-cart-wrapper").addClass("active");
+        $(".box-cart-overlay").addClass("active");
     });
 
+    $(document).on("click", ".btn-close-popup, .box-cart-overlay", function (e) {
+        $(".box-cart-wrapper").removeClass("active");
+        $(".box-popup-cart").css("visibility", "hidden");
+    });
 //    $(".btn-close-popup, .box-cart-overlay").on("click", function (e) {
 //        $(".box-cart-wrapper").removeClass("active");
 //        $(".box-popup-cart").css("visibility", "hidden");
