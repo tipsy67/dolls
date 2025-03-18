@@ -160,13 +160,6 @@ function updateCartPopup() {
         .catch(error => console.error("Ошибка обновления popup окна корзины:", error));
 }
 
-    //навесим обработчик закрытия всплывающего окна на документ
-document.addEventListener("click", function (event) {
-    if (event.target.closest(".btn-close-popup, .box-cart-overlay")) {
-        document.querySelector(".box-cart-wrapper")?.classList.remove("active");
-        document.querySelector(".box-popup-cart")?.style.setProperty("visibility", "hidden");
-    }
-});
 
     // Показать комменты
 function showReplyForm(commentId) {

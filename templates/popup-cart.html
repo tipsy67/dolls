@@ -7,7 +7,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
     </a>
-        <h5 class="mb-15">Your Cart (2)</h5>
+        <h5 class="mb-15">Ваша корзина ({{cart|length}})</h5>
         <p class="body-p2"><span class="text-17-medium">Free Shipping</span>on orders over<span class="text-17-medium">$200.00</span>
         </p>
         <div class="box-progress-bar-block">
@@ -34,7 +34,8 @@
                     <div class="item-cart-info">
                         <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{product.name}}</a>
                             <div class="box-info-size-color-product">
-                                <p> {{item.quantity}} </p>
+<!--                                <p class="box-color"><span-->
+<!--                                        class="body-p2 neutral-dark">{{item.quantity}}</span> </p>-->
                             </div>
                             <p class="body-p2 d-block d-sm-none mb-8">{{item.price}}</p>
                             <div class="box-form-cart">
@@ -65,8 +66,8 @@
             <h6 class="neutral-dark">$59.00</h6>
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a
-                class="btn btn-border w-100 mr-5" href="cart.html">View Cart</a><a class="btn btn-black w-100 ml-5"
-                                                                                   href="checkout.html">Check Out</a>
+                class="btn btn-border w-100 mr-5" href="{% url 'cart:cart_detail' %}">Подробнее</a><a class="btn btn-black w-100 ml-5"
+                                                                                   href="checkout.html">Заказать</a>
         </div>
     </div>
 </div>
