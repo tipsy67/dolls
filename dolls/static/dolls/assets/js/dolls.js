@@ -140,7 +140,12 @@ function updateCartUI() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                if (data.cart_length>0){
                 cartElement.innerHTML = `${data.cart_length}`;
+                cartElement.style.visibility = "visible";}
+                else{
+                cartElement.innerHTML = ``;
+                cartElement.style.visibility = "hidden";}
             }
         })
         .catch(() => console.error("Ошибка при обновлении количества в корзине"));
