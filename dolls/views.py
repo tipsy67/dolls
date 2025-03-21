@@ -81,3 +81,13 @@ def product_single_view(request, pk):
         return render(request, 'dolls/shop-single.html', context)
 
     return render(request, 'dolls/404.html')
+
+def product_preview_update(request, pk):
+    product = Product.objects.filter(pk=pk).first()
+    if product is not None:
+        context = {
+            'product': product,
+        }
+        return render(request, 'popup-preview.html', context)
+
+    return render(request, 'dolls/404.html')

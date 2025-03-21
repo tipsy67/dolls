@@ -1,7 +1,7 @@
 from django.urls import path
 
 from dolls.apps import DollsConfig
-from dolls.views import main_page, product_list_view, product_single_view
+from dolls.views import main_page, product_list_view, product_single_view, product_preview_update
 
 app_name = DollsConfig.name
 
@@ -13,4 +13,7 @@ urlpatterns = [
     path('shop/', product_list_view, name='shop'),
     path('category/<int:cat>/', product_list_view, name='shop_cat'),
     path('shop-detail/<int:pk>/', product_single_view, name='shop_single'),
+
+    path("ajax/product-preview/<int:pk>/", product_preview_update, name="product_preview_update"),
+
 ]

@@ -1203,13 +1203,15 @@
         selector: ".glightbox"
     });
 
-    $(".btn-close-popup").on("click", function(e){
+    $(document).on("click",".btn-close-popup", function(e){
         e.preventDefault();
         $(".box-popup-preview").hide();
     });
 
     $(".preview-product").on("click", function (e) {
         e.preventDefault();
+        const dataset = this.dataset;
+        updatePreviewPopup(dataset);
         $(".box-popup-preview").show();
         initSlidePreview();
     });
