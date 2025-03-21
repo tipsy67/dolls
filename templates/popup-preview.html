@@ -1,52 +1,44 @@
-<div class="box-popup-preview"><a class="btn-close-popup" href="#"><img src="assets/imgs/template/icons/close-popup.svg"
-                                                                        alt="kidify"></a>
+{% load dolls_tags %}
+{% load static %}
+
+<div class="box-popup-preview">
+    <a class="btn-close-popup" href="#"><img src="{% static 'dolls/assets/imgs/template/icons/close-popup.svg' %}"
+                                             alt="kidify"></a>
     <div class="box-popup-content">
         <div class="preview-product-image">
             <div class="detail-gallery detail-gallery-2">
                 <div class="box-main-gallery"><a class="zoom-image glightbox"
                                                  href="assets/imgs/page/product/img.png"></a>
                     <div class="product-image-slider product-image-slider-preview">
+                        {% for image in product.images.all %}
                         <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="assets/imgs/page/product/img.png"><img
-                                src="assets/imgs/page/product/img.png" alt="kidify"></a></figure>
+                                                            href="{{image}}"><img
+                                src="{{image|add_media}}" alt="kidify"></a></figure>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
         <div class="preview-product-info">
             <div class="box-product-info">
-                <h3 class="mb-5">Summer Stripes Shorts</h3>
-                <div class="block-rating"><img src="assets/imgs/template/icons/star-fill.svg" alt="Guza"><img
-                        src="assets/imgs/template/icons/star-fill.svg" alt="Guza"><img
-                        src="assets/imgs/template/icons/star-fill.svg" alt="Guza"><img
-                        src="assets/imgs/template/icons/star-fill.svg" alt="Guza"><img
-                        src="assets/imgs/template/icons/star-none.svg" alt="Guza"><span
+                <h3 class="mb-5">{{product.name}}</h3>
+                <div class="block-rating"><img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}"
+                                               alt="Guza"><img
+                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                        src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span
                         class="text-17 neutral-medium-dark">(5)</span></div>
-                <div class="block-price"><span class="price-main">$15.00</span><span class="price-line">$25.00</span>
+                <div class="block-price">
+                    <span class="price-main">{{product.price}}</span>
+                    {% if product.sale %}
+                    <span class="price-line">{{product.old_price}}</span>
+                    {% endif %}
                 </div>
                 <p class="body-p2 viewed-guest viewed-guest-black mb-25"><span class="text-17-medium">24 guests are viewing this product</span>
                 </p>
                 <div class="block-description">
-                    <p class="body-p2 neutral-medium-dark">The shorts are made from soft organic cotton. They have an
-                        elasticated waistband with an internal drawstring and side pockets.</p>
+                    <p class="body-p2 neutral-medium-dark">{{product.description}}</p>
                 </div>
                 <div class="block-quantity">
                     <div class="text-17 neutral-medium-dark mb-10">Quantity</div>

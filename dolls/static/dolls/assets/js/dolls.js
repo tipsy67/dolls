@@ -158,13 +158,26 @@ function updateCartPopup() {
     fetch(cartContainer.dataset.url)
         .then(response => response.text())  // Получаем HTML-код
         .then(html => {
-            if (cartContainer) {
                 cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
-            }
         })
         .catch(error => console.error("Ошибка обновления popup окна корзины:", error));
 }
 
+function updatePreviewPopup(data) {
+    let cartContainer = document.querySelector(".box-popup-preview");
+    if (!cartContainer) return;
+
+    fetch(data.url)
+        .then(response => {
+            // Логируем статус ответа
+            console.log("Response status:", response.status);
+            return response.text();  // Получаем HTML-код
+        })  // Получаем HTML-код
+        .then(html => {
+                cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
+        })
+        .catch(error => console.error("Ошибка обновления popup preview:", error));
+}
 
     // Показать комменты
 function showReplyForm(commentId) {
