@@ -8,11 +8,11 @@
         <div class="preview-product-image">
             <div class="detail-gallery detail-gallery-2">
                 <div class="box-main-gallery"><a class="zoom-image glightbox"
-                                                 href="assets/imgs/page/product/img.png"></a>
+                                                 href="#"></a>
                     <div class="product-image-slider product-image-slider-preview">
                         {% for image in product.images.all %}
                         <figure class="border-radius-10"><a class="glightbox"
-                                                            href="{{image}}"><img
+                                                            href="{{image|add_media}}"><img
                                 src="{{image|add_media}}" alt="kidify"></a></figure>
                         {% endfor %}
                     </div>
@@ -41,13 +41,20 @@
                     <p class="body-p2 neutral-medium-dark">{{product.description}}</p>
                 </div>
                 <div class="block-quantity">
-                    <div class="text-17 neutral-medium-dark mb-10">Quantity</div>
+                    <div class="text-17 neutral-medium-dark mb-10">Количество</div>
                     <div class="box-form-cart">
                         <div class="form-cart detail-qty"><span class="minus"></span>
                             <input class="qty-val form-control" type="text" name="quantity" value="1" min="1"><span
                                     class="plus"></span>
                         </div>
-                        <a class="btn btn-black" href="#">Add to Cart</a><a class="btn btn-navy" href="#">Buy Now</a>
+                        <a class="btn btn-black ajax-cart-add"
+                           data-product_id="{{ product.pk }}"
+                           {% if product.pk %}
+                            data-url="{% url 'cart:cart_add' product.pk %}"
+                           {% else %}
+                            data-url="#"
+                           {% endif %} href="#">
+                            В корзину</a><a class="btn btn-navy" href="#">Купить</a>
                     </div>
                 </div>
                 <div class="block-tags-product">

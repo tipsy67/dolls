@@ -1212,8 +1212,8 @@
         e.preventDefault();
         const dataset = this.dataset;
         updatePreviewPopup(dataset);
-        $(".box-popup-preview").show();
-        initSlidePreview();
+//        $(".box-popup-preview").show();
+//        initSlidePreview();
     });
     var _container = $(".container").offset().left;
     $(".box-padding-left-banner").css('padding-left', ''+_container+'px');
@@ -1246,7 +1246,7 @@
         _parent.find(".extra-info").addClass("active");
     });
 
-    $(".btn-remove-cart").on("click", function(e){
+    $(document).on("click", ".btn-remove-cart", function(e){
         e.preventDefault();
         let cartUrl = $(this).data("url");
         let item = $(this).parents(".item-cart");

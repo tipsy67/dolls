@@ -174,7 +174,11 @@ function updatePreviewPopup(data) {
             return response.text();  // Получаем HTML-код
         })  // Получаем HTML-код
         .then(html => {
-                cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
+            cartContainer.innerHTML = html;
+            // Из за асинхронности fetch перенес из main сюда
+            $(".box-popup-preview").show();
+            initSlidePreview();
+            setupAddToCartHandler();
         })
         .catch(error => console.error("Ошибка обновления popup preview:", error));
 }
