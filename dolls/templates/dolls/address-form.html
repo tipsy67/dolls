@@ -5,33 +5,26 @@
 {% load dolls_tags %}
 
 <main>
-    <!-- Page Banner -->
-    <div class="page-banner container-fluid no-padding">
-        <!-- Container -->
+    <div class="section block-breadcrumb">
         <div class="container">
-            <div class="banner-content">
-                <h3>Checkout</h3>
-                <p>our vision is to be Earth's most customer centric company</p>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home </a></li>
+                    <li><a href="#">Checkout</a></li>
+                </ul>
             </div>
-            <ol class="breadcrumb">
-                <li><a href="index.html" title="Home">Home</a></li>
-                <li class="active">Checkout</li>
-            </ol>
-        </div><!-- Container /- -->
-    </div><!-- Page Banner /- -->
-    <!-- Checkout -->
-    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
-        <!-- Container -->
-        <div class="container">
-            <!-- Address -->
-            <div class="checkout-form">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h3>{{title_form}}</h3>
-                    <div class="billing-field">
-                        <form method="post" action="" enctype="multipart/form-data">
-                            <div class="col-md-12 form-group">
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60 ">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="row mt-20 d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="box-form-checkout form-comment">
+                        <h4>{{title_form}}</h4>
+                            <div class="col-md-12">
                                 {% csrf_token %}
-                                <div class="form-error">{{ form.non_field_errors }}</div>
+                                <div class="form-error text-end">{{ form.non_field_errors }}</div>
                                 {% for f in form %}
                                 <div class="form-group">
                                     {% if f.label %}
@@ -43,21 +36,21 @@
                                 <div class="form-error">{{ f.errors }}</div>
                                 {% endfor %}
                                 {% if user.is_authenticated %}
-                                <div class="place-order">
-                                    <input value="Сохранить" type="submit">
+                                <div class="box-button-checkout">
+                                    <button class="btn btn-black" type="submit">Сохранить</button>
                                     {% if object.pk %}
-                                    <a class="check-detail" href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
+                                    <a class="btn btn-grey my-1"
+                                       href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
                                     {% endif %}
                                 </div>
                                 {% endif %}
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div><!-- Address /- -->
-        </div><!-- Container /- -->
-    </div><!-- Checkout /- -->
-
+            </form>
+        </div>
+    </section>
 </main>
 
 {% endblock content %}
