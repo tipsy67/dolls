@@ -13780,3 +13780,9 @@ quote {
 .page-content p {
   margin-bottom: 15px;
 }/*# sourceMappingURL=style.css.map */
+
+/* Отключим кнопку разместить заказ */
+.btn-disabled {
+    pointer-events: none;
+    opacity: 0.5; /* Изменение прозрачности кнопки для наглядности */
+}

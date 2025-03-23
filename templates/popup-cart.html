@@ -70,7 +70,7 @@
         </div>
         <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a
                 class="btn btn-border w-100 mr-5" href="{% url 'cart:cart_detail' %}">Подробнее</a><a class="btn btn-black w-100 ml-5"
-                                                                                   href="checkout.html">Заказать</a>
+                                                                                   href="{% url 'cart:order_create' %}">Заказать</a>
         </div>
     </div>
 </div>

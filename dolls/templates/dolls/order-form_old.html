@@ -1,0 +1,90 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <!-- Page Banner -->
+    <div class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Checkout</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="index.html" title="Home">Home</a></li>
+                <li class="active">Checkout</li>
+            </ol>
+        </div><!-- Container /- -->
+    </div><!-- Page Banner /- -->
+    <!-- Checkout -->
+    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
+        <!-- Container -->
+        <div class="container">
+            <!-- Login -->
+            <div class="col-md-12 col-sm-12 col-xs-12 login-block">
+                <div class="login-check">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        <h3>{{title_form}}</h3>
+                        <div class="col-md-7 col-sm-6 col-xs-6 login-form">
+                            {% csrf_token %}
+                            <div class="form-error">{{ form.non_field_errors }}</div>
+                            {% for f in form %}
+                            <div class="form-group">
+                                <label class="check-detail" for="{{ f.id_for_label }}">
+                                    {{ f.label }}</label>
+                                {{ f| add_attrs }}
+                            </div>
+                            <div class="form-error">{{ f.errors }}</div>
+                            {% endfor %}
+                            {% if user.is_authenticated and cart %}
+                            <div class="parent-div">
+                                <input value="Оформить" class="text-center" type="submit">
+                            </div>
+                            {% endif %}
+                        </div>
+                    </form>
+                    <div class="col-md-5 col-sm-6 col-xs-6 check-details">
+                        <div class="shipping-fields">
+                            <h3><i class="icon icon-Heart"></i> Ваш заказ </h3>
+                            <div class="checkout-order-table">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>Товар</th>
+                                        <th>Цена</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
+                                    <tr class="cart_item">
+                                        <td class="product-name">{{ item.product.name }} х {{ item.quantity }}</td>
+                                        <td>{{ item.total_price }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    <tr>
+                                        <th>Доставка</th>
+                                        <td>?</td>
+                                    </tr>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Итого:</th>
+                                        <td>{{ cart.get_total_price }}</td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Login /- -->
+        </div><!-- Container /- -->
+    </div><!-- Checkout /- -->
+
+</main>
+
+{% endblock content %}
+	
