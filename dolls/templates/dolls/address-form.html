@@ -20,15 +20,15 @@
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="row mt-20 d-flex justify-content-center">
                     <div class="col-lg-6">
+                        <h4 class="py-3">{{title_form}}</h4>
                         <div class="box-form-checkout form-comment">
-                        <h4>{{title_form}}</h4>
                             <div class="col-md-12">
                                 {% csrf_token %}
                                 <div class="form-error text-end">{{ form.non_field_errors }}</div>
                                 {% for f in form %}
                                 <div class="form-group">
                                     {% if f.label %}
-                                    <label class="check-detail" for="{{ f.id_for_label }}">
+                                    <label class="form-label" for="{{ f.id_for_label }}">
                                         {{ f.label }}</label>
                                     {% endif %}
                                     {{ f| add_attrs }}

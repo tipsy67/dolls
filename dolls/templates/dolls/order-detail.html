@@ -5,27 +5,20 @@
 {% load dolls_tags %}
 
 <main>
-    <!-- Page Banner -->
-    <div class="page-banner container-fluid no-padding">
-        <!-- Container -->
+    <div class="section block-breadcrumb">
         <div class="container">
-            <div class="banner-content">
-                <h3>Checkout</h3>
-                <p>our vision is to be Earth's most customer centric company</p>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="#">Home </a></li>
+                    <li><a href="#">Checkout</a></li>
+                </ul>
             </div>
-            <ol class="breadcrumb">
-                <li><a href="index.html" title="Home">Home</a></li>
-                <li class="active">Checkout</li>
-            </ol>
-        </div><!-- Container /- -->
-    </div><!-- Page Banner /- -->
-    <!-- Checkout -->
-    <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
-        <!-- Container -->
-        <div class="container">
-            <!-- Login -->
-            <div class="col-md-12 col-sm-12 col-xs-12 login-block">
-                <div class="login-check">
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60 ">
+            <div class="d-flex justify-content-center">
+                <div class="row col-md-12">
                     <h3>Детали заказа</h3>
                     <div class="col-md-8 col-sm-8 col-xs-8">
                         <table class="table table-striped">
@@ -52,7 +45,7 @@
                                 <td colspan="4"></td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="text-right">Сумма заказа {{order.get_total_cost}} </td>
+                                <td colspan="3" class="text-right">Сумма заказа {{order.get_total_cost}}</td>
                                 <td></td>
                             </tr>
                             </tfoot>
@@ -63,7 +56,8 @@
                             <thead>
                             <tr>
                                 <td colspan="2" class="text-center">
-                                    Заказ № {{order.pk}} от {{order.created_at|date:"d M Y"}}</td>
+                                    Заказ № {{order.pk}} от {{order.created_at|date:"d M Y"}}
+                                </td>
                             </tr>
                             </thead>
                             <tbody>
@@ -84,9 +78,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- Container /- -->
-    </div><!-- Checkout /- -->
-
+        </div>
+    </section>
 </main>
 
 {% endblock content %}
