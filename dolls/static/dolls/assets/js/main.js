@@ -1106,6 +1106,7 @@
         $(this).addClass("active");
         var _col = $(this).data("col");
         var _class = "grid-col-" + _col;
+        $(".box-list-products").removeClass("grid-col-1");
         $(".box-list-products").removeClass("grid-col-2");
         $(".box-list-products").removeClass("grid-col-3");
         $(".box-list-products").removeClass("grid-col-4");
