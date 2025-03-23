@@ -1,0 +1,143 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <!-- Page Banner -->
+    <div class="page-banner container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="banner-content">
+                <h3>Shop</h3>
+                <p>our vision is to be Earth's most customer centric company</p>
+            </div>
+            <ol class="breadcrumb">
+                <li><a href="index.html" title="Home">Home</a></li>
+                <li class="active">Shop</li>
+            </ol>
+        </div><!-- Container /- -->
+    </div><!-- Page Banner /- -->
+
+    <!-- Product Section2 -->
+    <div class="product-section product-section1 product-section2 container-fluid no-padding">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+                <!-- Widget Area -->
+                <div class="col-md-4 col-sm-4 col-xs-12 widget-area no-right-padding">
+                    <aside class="widget widget_categories">
+                        <h3 class="widget-title">Категории</h3>
+                        <ul>
+                            {% if category_pk %}
+                            <li><a title="Все категории" href="{% url 'dolls:shop' %}">Все</a></li>
+                            {% else %}
+                            <li><a style="color: #b6795f;">Все</a></li>
+                            {% endif %}
+                            {% for category in category_list %}
+                            {% if category.pk == category_pk %}
+                            <li><a style="color: #b6795f;">{{category.name}}</a></li>
+                            {% else %}
+                            <li><a title="{{category.name}}" href="{% url 'dolls:shop_cat' category.pk %}">{{category.name}}</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </aside><!-- Widget Categories /-  -->
+                    <!-- Widget Price -->
+                    <!--                    <aside class="widget widget_price_filter">-->
+                    <!--                        <h3 class="widget-title">filter by price</h3>-->
+                    <!--                        <div class="price-filter">-->
+                    <!--                            <div id="slider-range"></div>-->
+                    <!--                            <div class="price-input">-->
+                    <!--                                <span id="amount"></span>-->
+                    <!--                                <span id="amount2"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <a href="#" title="filter">Filter</a>-->
+                    <!--                        </div>-->
+                    <!--                    </aside>&lt;!&ndash; Widget Price /- &ndash;&gt;-->
+                    <!-- Widget Latest Post -->
+                    <aside id="tag_list_id" class="widget widget_latest_post">
+                        <h3 class="widget-title">Скидки</h3>
+                        {% for sale_item in sale_list %}
+                        <div class="latest-box">
+                            <div class="post-box">
+                                {% if sale_item.one_image %}
+                                <a href="#"><img src="{{sale_item.one_image|add_media}}" alt="Product" width="85"/></a>
+                                {% else %}
+                                <a href="#"><img src="{% static 'dolls/images/blank-post.jpg' %}" alt="Product"/></a>
+                                {% endif %}
+                                <h5><a href="#" title="need max shop.">{{sale_item.name}}</a></h5>
+                                <div class="star-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <span class="price"><del>{{sale_item.old_price}}</del>{{sale_item.price}}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </aside><!-- Widget Latest Post /- -->
+                    <!-- Widget Tags -->
+                    <aside class="widget widget_tags">
+                        <h3 class="widget-title">популярные теги</h3>
+                        <div class="tags-box">
+                            {% for tag in tag_list %}
+                            <a href="{{tag.get_url_change}}" title="{{tag.tag}}"
+                               {% if tag.str_pk in tags %}
+                               style="color: #b6795f;"
+                               {% endif %}>{{tag.tag}}</a>
+                            {% endfor %}
+                            <a href="{% url 'tags:clear_tag' %}" title="Сбросить отбор тегов">Сбросить</a>
+                        </div>
+                    </aside><!-- Widget Tags -->
+                </div><!-- Widget Area /- -->
+
+                <!-- Content Area -->
+                <div class="col-md-8 col-sm-7 col-xs-12 content-area product-section2 no-left-padding">
+                    <!-- Products -->
+                    <ul class="products">
+                        <!-- Product -->
+                        {% for product in product_list %}
+                        <li class="product {{product.category}}">
+                            <a href="{% url 'dolls:shop_single' product.pk %}">
+                                {% if product.one_image %}
+                                <img src="{{product.one_image|add_media}}" alt="Product" width="270"/>
+                                {% else %}
+                                <img src="{% static 'dolls/images/blank-product.jpg' %}" alt="Product"/>
+                                {% endif %}
+                                <h5>{{product.name}}</h5>
+                                {% if product.sale %}
+                                <span class="price"><del>{{product.old_price}}</del>{{product.price}}</span>
+                                {% else %}
+                                <span class="price">{{product.price}}</span>
+                                {% endif %}
+                            </a>
+
+                            {% if product.quantity %}
+                            <a href="#"
+                               class="add-to-cart1 ajax-cart-add"
+                               data-product_id="{{ product.pk }}"
+                               data-url="{% url 'cart:cart_add' product.pk %}"
+                               title="Купить">Купить</a>
+                            {% else %}
+                            <a class="add-to-cart1"
+                               title="Нет в наличии"
+                               style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
+                            {% endif %}
+
+                        </li><!-- Product /- -->
+                        {% endfor %}
+                    </ul><!-- Products /- -->
+                </div><!-- Content Area /- -->
+            </div><!-- Row /- -->
+            {% include 'pagination.html' with page=product_list page_name='page' %}
+        </div><!-- Container /- -->
+    </div><!-- Product Section2 /- -->
+</main>
+
+{% endblock content %}
+	

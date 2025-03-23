@@ -10268,6 +10268,14 @@ footer a {
   border-radius: 4px;
   margin-left: 8px;
 }
+.view-type.view-1 {
+  background-image: url(../imgs/page/shop1/col-1.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.view-type.view-1:hover, .view-type.view-1.active {
+  background-image: url(../imgs/page/shop1/col-1-hover.svg);
+}
 .view-type.view-2 {
   background-image: url(../imgs/page/shop1/col-2.svg);
   background-repeat: no-repeat;
@@ -10400,6 +10408,10 @@ footer a {
 
 .clear-filter {
   margin-left: 12px;
+}
+
+.grid-col-1 .product-item {
+  width: 100% !important;
 }
 
 .grid-col-2 .product-item {
