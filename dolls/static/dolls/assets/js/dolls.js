@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupLikeHandlers();
     setupChangeStatusHandler();
     setupAddToCartHandler();
+    checkTerms();
 });
 
 // Восстановление позиции прокрутки
@@ -192,3 +193,17 @@ function showReplyForm(commentId) {
         form.style.display = "none";
     }
     }
+
+function checkTerms() {
+    const checkbox = document.getElementById('termsCheckbox');
+    const button = document.getElementById('placeOrderButton');
+    checkbox.checked = false;
+
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            button.classList.remove('btn-disabled');
+        } else {
+            button.classList.add('btn-disabled');
+        }
+    });
+}
