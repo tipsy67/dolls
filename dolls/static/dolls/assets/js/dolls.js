@@ -77,7 +77,7 @@ function toggleLikeState(button, data) {
 
 // Настройка изменения статуса адресов
 function setupChangeStatusHandler() {
-    document.querySelector("table")?.addEventListener("click", function (event) {
+    document.getElementById("tableAddress")?.addEventListener("click", function (event) {
         if (event.target.classList.contains("change-status")) {
             event.preventDefault();
             let button = event.target;
@@ -98,8 +98,8 @@ function updateStatusUI(activeAddressId) {
     document.querySelectorAll(".address-status").forEach(element => {
         let addressId = parseInt(element.dataset.addressId);
         element.innerHTML = addressId === activeAddressId
-            ? `<b>Основной</b>`
-            : `<a href="#" class="change-status" data-id="${addressId}" data-url="${element.dataset.statusUrl}">Неактивен</a>`;
+            ? `<b class="text-success">Основной</b>`
+            : `<a href="#" class="change-status text-secondary" data-id="${addressId}" data-url="${element.dataset.statusUrl}">Неактивен</a>`;
     });
 }
 
@@ -197,8 +197,9 @@ function showReplyForm(commentId) {
 function checkTerms() {
     const checkbox = document.getElementById('termsCheckbox');
     const button = document.getElementById('placeOrderButton');
-    checkbox.checked = false;
+    if (!checkbox) return;
 
+    checkbox.checked = false;
     checkbox.addEventListener('change', function() {
         if (this.checked) {
             button.classList.remove('btn-disabled');

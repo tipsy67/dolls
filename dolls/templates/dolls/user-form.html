@@ -63,8 +63,8 @@
                     {% if user.is_authenticated %}
                     <div class="col-lg-6">
                         <div class="box-detail-cart">
-                            <h4 class="mb-25">Ваши заказы</h4>
                             <div class="box-info-cart">
+                                <p class="text-17-medium text-uppercase">Активные заказы</p>
                                 <div class="box-info-checkout-inner">
                                     <div class="list-items-cart">
                                         <div class="item-cart">
@@ -95,21 +95,55 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box-button-checkout"><a class="btn btn-grey" href="#">Place Order</a></div>
+                                <div class="box-button-checkout">
+                                    <a class="btn btn-grey" href="{% url 'cart:order_list' %}">Архив</a>
+                                </div>
                             </div>
                         </div>
                         <div class="box-detail-cart">
-                            <h4 class="mb-25">Адреса доставки</h4>
                             <div class="box-info-cart">
+                                <p class="text-17-medium text-uppercase">Адреса доставки</p>
                                 <div class="box-info-checkout-inner">
                                     <div class="list-items-cart">
                                         <div class="item-cart">
                                             <div class="item-cart-info">
+                                                <table id="tableAddress" class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Название</th>
+                                                        <th>Статус</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for addr in user.addresses.all %}
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
+                                                               title="Редактировать">{{addr}}</a>
+                                                        </td>
+                                                        <td class="address-status"
+                                                            data-address-id="{{ addr.pk }}"
+                                                            data-status-url="{% url 'users:change_status' addr.pk %}">
+                                                            {% if addr.is_active %}
+                                                            <b class="text-success">Основной</b>
+                                                            {% else %}
+                                                            <a href="#" class="change-status text-secondary"
+                                                               data-id="{{addr.pk}}"
+                                                               data-url="{% url 'users:change_status' addr.pk %}">Неактивен</a>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box-button-checkout"><a class="btn btn-grey" href="#">Place Order</a></div>
+                                <div class="box-button-checkout">
+                                    <a class="btn btn-grey"
+                                       href="{% url 'users:address_create' %}?next={{request.path}}">Новый</a>
+                                </div>
                             </div>
                         </div>
                     </div>

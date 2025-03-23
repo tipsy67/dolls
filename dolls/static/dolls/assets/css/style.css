@@ -13786,3 +13786,26 @@ quote {
     pointer-events: none;
     opacity: 0.5; /* Изменение прозрачности кнопки для наглядности */
 }
+
+/* Кликабельная строка в таблице */
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  color: #b6795f !important;
+}
+
+.clickable-row:hover td {
+  color: #b6795f !important;
+}
+
+
+.clickable-href a {
+  color: #777 !important;
+  text-decoration: none;
+}
+
+.clickable-href:hover a {
+  color: #b6795f !important;
+}
