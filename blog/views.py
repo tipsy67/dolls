@@ -23,7 +23,7 @@ class BlogListView(ListView):
 
 class BlogDetailView(DetailView):
     model = BlogArticle
-    template_name = 'dolls/blog-post.html'
+    template_name = 'dolls/blog-single.html'
     context_object_name = 'article'
     extra_context = {
     }
