@@ -41,7 +41,8 @@
                             </thead>
                             <tbody>
                             {% for order in order_list %}
-                            <tr class="clickable-row" data-href="{% url 'cart:order_detail' order.pk %}" title="Детальная информация">
+                            <tr class="clickable-row" data-href="{% url 'cart:order_detail' order.pk %}"
+                                title="Детальная информация">
                                 <td>{{order.pk}}</td>
                                 <td>{{order.created_at|date:"d.m.y"}}</td>
                                 <td>{{order.get_status}}</td>

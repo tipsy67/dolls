@@ -43,6 +43,7 @@
                 <div class="block-quantity">
                     <div class="text-17 neutral-medium-dark mb-10">Количество</div>
                     <div class="box-form-cart">
+                        {% if product.quantity %}
                         <div class="form-cart detail-qty"><span class="minus"></span>
                             <input class="qty-val form-control" type="text" name="quantity" value="1" min="1"><span
                                     class="plus"></span>
@@ -50,21 +51,28 @@
                         <a class="btn btn-black ajax-cart-add"
                            data-product_id="{{ product.pk }}"
                            {% if product.pk %}
-                            data-url="{% url 'cart:cart_add' product.pk %}"
+                           data-url="{% url 'cart:cart_add' product.pk %}"
                            {% else %}
-                            data-url="#"
+                           data-url="#"
                            {% endif %} href="#">
                             В корзину</a><a class="btn btn-navy" href="#">Купить</a>
+                        {% else %}
+                        нет в наличии
+                        {% endif %}
                     </div>
                 </div>
                 <div class="block-tags-product">
-                    <p class="body-p2"><span class="neutral-medium-dark">SKU:</span><span class="neutral-dark">C66R8B47MP</span>
+                    <p class="body-p2"><span class="neutral-medium-dark">Категория:</span>
+                        <a class="neutral-dark" href="#">{{product.category}}</a>
                     </p>
-                    <p class="body-p2"><span class="neutral-medium-dark">Categories:</span><a class="neutral-dark"
-                                                                                              href="#">Dress,</a><a
-                            class="neutral-dark" href="#">Pants</a></p>
-                    <p class="body-p2"><span class="neutral-medium-dark">Tags:</span><a class="neutral-dark" href="#">fashion,</a><a
-                            class="neutral-dark" href="#">shoes,</a><a class="neutral-dark" href="#">women</a></p>
+                    <p class="body-p2"><span class="neutral-medium-dark">Тэги:</span>
+                        {% for tag in product.tags.all %}
+                        <a class="neutral-dark" href="#">
+                            {{tag}}
+                            {% if not forloop.last %},{% endif %}
+                        </a>
+                        {% endfor %}
+                    </p>
                 </div>
             </div>
         </div>

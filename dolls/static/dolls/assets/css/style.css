@@ -10416,26 +10416,20 @@ footer a {
 
 .grid-col-2 .product-item {
   width: 50% !important;
+  }
+.product-item .cardProduct .cardImage {
+  height: auto !important; /* Авто-высота для сохранения пропорций */
+  display: block; /* Убрать возможные inline-проблемы */
+  object-fit: contain; /* Подгонка контента */
 }
-.grid-col-2 .product-item .cardProduct .cardImage {
-  height: 600px;
-  line-height: 600px;
-}
-
 .grid-col-3 .product-item {
   width: 33.33% !important;
 }
-
 .grid-col-4 .product-item {
   width: 25% !important;
 }
-
 .grid-col-5 .product-item {
   width: 20% !important;
-}
-.grid-col-5 .product-item .cardProduct .cardImage {
-  height: 200px;
-  line-height: 200px;
 }
 
 .list-filter-checkbox li {
