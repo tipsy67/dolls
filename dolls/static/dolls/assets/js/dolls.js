@@ -54,7 +54,7 @@ function setupLikeHandlers() {
     document.querySelectorAll("a.like").forEach(likeButton => {
         likeButton.addEventListener("click", function (e) {
             e.preventDefault();
-            sendPostRequest(url, { pk: this.dataset.pk, action: this.dataset.action })
+            sendPostRequest(this.dataset.url, { pk: this.dataset.pk, action: this.dataset.action })
                 .then(data => {
                     if (data.status === "ok") {
                         toggleLikeState(likeButton, data);
