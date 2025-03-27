@@ -69,10 +69,10 @@ function setupLikeHandlers() {
 function toggleLikeState(button, data) {
     let action = button.dataset.action === "like" ? "unlike" : "like";
     button.dataset.action = action;
-    button.innerHTML = action === "like" ? '<i class="fa fa-heart-o"></i>' : '<i class="fa fa-heart"></i>';
+    button.innerHTML = action === "like" ? '<i class="fas fa-heart-o"></i>' : '<i class="fas fa-heart"></i>';
 
     let likeCounter = document.querySelector(`.count_like_${button.dataset.pk}`);
-    likeCounter.textContent = parseInt(likeCounter.textContent) + (action === "like" ? -1 : 1);
+    likeCounter.textContent = ` ${parseInt(likeCounter.textContent) + (action === "like" ? -1 : 1)}`;
 }
 
 // Настройка изменения статуса адресов
