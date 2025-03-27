@@ -13815,3 +13815,7 @@ quote {
 .clickable-href:hover a {
   color: #b6795f !important;
 }
+
+
+.fa-heart-o:before{content:"\f08a"}
+.fa-heart:before{content:"\f004"}

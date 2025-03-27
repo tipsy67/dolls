@@ -22,7 +22,9 @@
             <div class="blog-head wow bounceIn">
                 <div class="text-center">
                     <span class="post-like">
-                                <a href="#" class="text-17-medium like" data-pk="{{article.pk}}"
+                                <a href="#" class="text-17-medium like"
+                                   data-url = "{% url 'blog:like' %}"
+                                   data-pk="{{article.pk}}"
                                    {% if request.user in article.users_like.all %}
                                    data-action="unlike" title="Убрать">
                                         <i class="fa fa-heart"></i>{% else %}
