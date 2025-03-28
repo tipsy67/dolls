@@ -91,3 +91,9 @@ def product_preview_update(request, pk):
         return render(request, 'popup-preview.html', context)
 
     return render(request, 'dolls/404.html')
+
+def about(request):
+    context = {
+    }
+
+    return render(request, 'dolls/about.html')
