@@ -113,61 +113,51 @@
                     <!--                            </div>-->
                     <!--                        </div>-->
                     <!--                    </div>-->
-                    <div class="block-comments">
-                        <div class="list-comments">
-                            <ul>
-                                {% recursetree comments %}
-                                <li>
-                                    <div class="item-comment">
-                                        <div class="comment-image">
-                                            <a href="#" title="{{ node.owner }}">
-                                                {% if node.owner.avatar %}
-                                                <img src="{{ node.owner.avatar }}" alt="comment">
-                                                {% else %}
-                                                <img src="{% static 'dolls/assets/imgs/page/blog/avatar.png' %}"
-                                                     alt="comment">
-                                                {% endif %}
-                                            </a>
-                                        </div>
-                                        <div class="comment-info">
-                                            <div class="comment-info-top">
-                                                <div class="comment-author-name">{{ node.owner }}</div>
-                                                <div class="comment-date">{{ node.created_at|date:"M j, y" }}</div>
-                                            </div>
-                                            <div class="comment-info-bottom">
-                                                <p class="body-p2">{{ node.text }}</p>
-                                                <a href="#"
-                                                   onclick="showReplyForm({{ node.id }});return false;">Ответить</a>
-                                            </div>
-                                        </div>
-
-                                        <!-- Форма для ответа -->
-                                        <div id="reply-form-{{ node.id }}" style="display:none;">
-                                            <div class="block-form-comment">
-                                                <form method="post" action="{% url 'blog:article_reply' article.pk %}">
-                                                    {% csrf_token %}
-                                                    <div class="form-group col-md-12">
-                                                <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
-                                                          class="form-control"></textarea>
-                                                    </div>
-                                                    <input class="btn btn-navy" type="submit" title="Отправить"
-                                                           value="Отправить" name="send">
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        {% if not node.is_leaf_node %}
-                                        <ul>
-                                                {{ children }}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                </li>
-                                {% endrecursetree %}
-                            </ul>
+                    <!-- Comment Section -->
+                    <div class="comment-section col-12">
+                        <div class="section-heading">
+<!--                            <h3>comments are here<span>(3)</span></h3>-->
                         </div>
-                    </div>
-
+                        <ul class="media-list">
+                            {% recursetree comments %}
+                            <li class="media">
+                                <div class="media-left">
+                                    <a href="#" title="{{ node.owner }}">
+                                        {% if node.owner.avatar %}
+                                        <img src="{{ node.owner.avatar }}"
+                                             {% else %}
+                                        <img src="{% static 'dolls/images/blank-avatar.jpg' %}"
+                                             {% endif %}
+                                             alt="comment"></a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-content">
+                                        <h4 class="media-heading">{{node.owner}}</h4>
+                                        <span><i class="fa fa-calendar-o"></i>{{node.created_at| date:"M j, y"}}</span>
+                                        <p>{{node.text}}</p>
+                                        <a class="border border-success rounded p-1" href="#" onclick="showReplyForm({{ node.id }});return false;">Ответить</a>
+                                    </div>
+                                </div>
+                                <!-- Форма для ответа -->
+                                <div id="reply-form-{{ node.id }}" style="display:none;">
+                                    <div class="comment-form">
+                                        <form method="post" action="{% url 'blog:comment_reply' node.id %}">
+                                            {% csrf_token %}
+                                            <div class="form-group col-md-12">
+                                        <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
+                                                  class="form-control"></textarea>
+                                            </div>
+                                            <input type="submit" title="send" value="Отправить" name="send">
+                                        </form>
+                                    </div>
+                                </div>
+                                {% if not node.is_leaf_node %}
+                                <ul>{{ children }}</ul>
+                                {% endif %}
+                            </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </div><!-- Comment Section /- -->
                 </div>
             </div>
         </div>
