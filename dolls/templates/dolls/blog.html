@@ -71,8 +71,12 @@
                             <h5 class="text-20-medium mb-20">Tags</h5>
                             <div class="box-tags">
                                 {% for tag in tags_list %}
-                                <a class="btn btn-tag-filter" href="#">{{tag}}</a>
+                                <a class="btn btn-tag-filter" href="{{tag.get_url_change}}?model=Article" title="{{tag.tag}}"
+                                   {% if tag.str_pk in tags_article %}
+                                   style="color: #b6795f;"
+                                   {% endif %}>{{tag.tag}}</a>
                                 {% endfor %}
+                                <a class="btn btn-tag-filter" href="{% url 'tags:clear_tag' %}?model=Article" title="Сбросить отбор тегов">Сбросить</a>
                         </div>
                         <div class="block-sidebar"><img src="assets/imgs/page/blog-list/sale.png" alt=""></div>
                     </div>

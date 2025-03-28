@@ -3,12 +3,13 @@ from django.conf import settings
 
 class CheckedTag:
 
-    def __init__(self, request):
+    def __init__(self, request, model: str):
         self.session = request.session
-        tags = self.session.get(settings.TAGS_SESSION_ID)
+        tags = self.session.get(settings.TAGS_SESSION_ID + model)
         if tags is None:
-            tags = self.session[settings.TAGS_SESSION_ID] = set()
+            tags = self.session[settings.TAGS_SESSION_ID + model] = set()
         self.tags = tags
+        self.model = model
 
     def change(self, tag_pk):
         tag_pk = str(tag_pk)
@@ -34,5 +35,16 @@ class CheckedTag:
         return len(self.tags)
 
     def clear(self):
-        del self.session[settings.TAGS_SESSION_ID]
+        del self.session[settings.TAGS_SESSION_ID + self.model]
         self.save()
+
+class ArticleCheckedTag(CheckedTag):
+
+    def __init__(self, request, model='Article'):
+        super().__init__(request, model)
+
+
+class ProductCheckedTag(CheckedTag):
+
+    def __init__(self, request, model='Product'):
+        super().__init__(request, model)

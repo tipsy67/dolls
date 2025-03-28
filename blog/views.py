@@ -8,6 +8,7 @@ from django.views.generic import DetailView, ListView
 from blog.models import BlogArticle, Comment
 from config.settings import BLOG_PER_PAGE
 from dolls.src.utils import get_queryset_from_cache
+from tags.tag import CheckedTag, ArticleCheckedTag
 
 
 class BlogListView(ListView):
@@ -20,7 +21,11 @@ class BlogListView(ListView):
     }
 
     def get_queryset(self):
-        return BlogArticle.objects.filter(is_published=True)
+        article_list = BlogArticle.objects.filter(is_published=True)
+        tags = ArticleCheckedTag(self.request)
+        if tags:
+            article_list = article_list.filter(tags__pk__in=tags.tags)
+        return article_list
 
 
 class BlogDetailView(DetailView):
