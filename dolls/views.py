@@ -8,7 +8,7 @@ from config.settings import PRODUCT_PER_PAGE, BLOG_PER_PAGE
 from dolls.models import Category, Product
 from dolls.src.utils import get_random_reviews, get_queryset_from_cache
 from tags.models import Tag
-from tags.tag import CheckedTag
+from tags.tag import CheckedTag, ProductCheckedTag
 from tunes.models import Banner
 
 
@@ -53,7 +53,7 @@ def product_list_view(request, cat=None):
     else:
         product_list = Product.objects.filter(is_published=True).order_by('name')
 
-    tags = CheckedTag(request)
+    tags = ProductCheckedTag(request)
     if tags:
         product_list = product_list.filter(tags__pk__in=tags.tags)
 
