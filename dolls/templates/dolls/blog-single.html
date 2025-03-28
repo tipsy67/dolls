@@ -31,15 +31,16 @@
                 <div class="blog-content-inner">
                     {{article.content|safe}}
                     <div class="block-tag-share">
-                        <div class="block-tags"><span class="text-17 mr-20">Tags</span><a class="btn btn-tag-filter"
-                                                                                          href="#">Collection</a><a
-                                class="btn btn-tag-filter" href="#">Makeup</a><a class="btn btn-tag-filter" href="#">Jacket</a>
+                        <div class="block-tags"><span class="text-17 mr-20">Tags</span>
+                            {% for tag in article.tags.all %}
+                            <a class="btn btn-tag-filter" href="#">{{tag}}</a>
+                            {% endfor %}
                         </div>
                         <div class="block-shares"><span class="text-17 mr-20">Share</span>
-                            <div class="socials"><a href="#"><img src="assets/imgs/template/icons/fb.svg"
+                            <div class="socials"><a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
                                                                   alt="Guza"></a><a href="#"><img
-                                    src="assets/imgs/template/icons/insta.svg" alt="Guza"></a><a href="#"><img
-                                    src="assets/imgs/template/icons/tw.svg" alt="Guza"></a></div>
+                                    src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}" alt="Guza"></a><a href="#"><img
+                                    src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="Guza"></a></div>
                         </div>
                     </div>
                     <div class="container" style="display: flex;">
