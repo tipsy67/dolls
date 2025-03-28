@@ -42,12 +42,12 @@ class Contact(models.Model):
 
 class TunesDict(models.Model):
     key = models.CharField(max_length=30, unique=True, verbose_name='Ключ')
-    value_int = models.CharField(**NULLABLE, verbose_name='Целочисленное значение')
-    value_char = models.CharField(
+    value = models.CharField(
         max_length=100, **NULLABLE, verbose_name='Строковое значение'
     )
-    value_time = models.TimeField(**NULLABLE, verbose_name='Константа времени')
-    value_date = models.DateField(**NULLABLE, verbose_name='Константа даты')
+    description = models.CharField(
+        max_length=100, **NULLABLE, verbose_name='Описание'
+    )
 
     class Meta:
         ordering = ['key']

@@ -33,7 +33,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     tags = models.ManyToManyField(
-        'tags.Tag', blank=True, related_name='tags', verbose_name="Теги"
+        'tags.Tag', blank=True, related_name='tags_product', verbose_name="Теги"
     )
     category = models.ForeignKey(
         to=Category,

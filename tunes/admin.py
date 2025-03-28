@@ -19,7 +19,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):
-    list_display = ('key', 'value_int', 'value_char', 'value_date', 'value_time')
+    list_display = ('key', 'value', 'description')
 
 
 @admin.register(Banner)
