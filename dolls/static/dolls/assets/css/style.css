@@ -13820,4 +13820,161 @@ quote {
 .fa-heart-o:before{content:"\f08a"; color: gray;}
 .fa-heart:before{content:"\f004"; color: red;}
 
-/* block for comment */
+/* - Comment Section */
+.section-heading h3 {
+	border-bottom: 1px solid #ececec;
+	color: #333;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	letter-spacing: 0.64px;
+	line-height: 28px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-bottom: 12px;
+	text-transform: uppercase;
+}
+.section-heading h3 > span {
+	float: right;
+}
+.comment-section {
+	display: inline-block;
+	margin-bottom: 25px;
+	margin-top: 20px;;
+}
+.comment-section .section-heading span {
+	margin-left: 10px;
+}
+.comment-section .media {
+	border: 1px solid #e6e6e6;
+	margin-top: 20px;
+	padding: 15px 10px;
+}
+.comment-section .media:first-child {
+	margin-top: 0;
+}
+.comment-section .media img {
+	border-radius: 0;
+}
+.comment-section .media-body {
+	text-align: left;
+}
+.comment-section .media-left {
+	float: left;
+	clear: both;
+	margin-top: 10px;
+}
+.comment-section .media-heading {
+	color: #333;
+	font-family: 'montserratlight';
+	font-size: 13px;
+	display: inline-block;
+	letter-spacing: 0.52px;
+	line-height: 26px;
+	margin-bottom: 0;
+	text-transform: capitalize;
+}
+.comment-section .media-content span {
+	color: #777;
+	display: inline-block;
+	font-family: 'montserratlight';
+	font-size: 12px;
+	margin-top: 0;
+	line-height: 28px;
+}
+.comment-section .media-content span::before {
+	content: "\f0c8";
+	color: #b6795f;
+	font-family:'FontAwesome';
+	font-size: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.comment-section .media-content span i {
+	padding-right: 12px;
+}
+.comment-section .media-list {
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+.comment-section .media-content {
+	margin-left: 24px;
+	position: relative;
+	display: inline-block;
+}
+.comment-section .media-content p {
+    color: #777;
+    font-size: 15px;
+    line-height: 26px;
+	margin-bottom: 5px;
+}
+.comment-section .media-content a {
+	background-color: transparent;
+	font-size: 14px;
+	color: #333;
+	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.56px;
+	line-height: 24px;
+	text-transform: uppercase;
+	-webkit-transition: all 1s ease 0s;
+	-moz-transition: all 1s ease 0s;
+	-o-transition: all 1s ease 0s;
+	transition: all 1s ease 0s;
+}
+.comment-section .media-content a:hover {
+	color: #b6795f;
+}
+.comment-section .media.media-even {
+	background-color: #f1f1f1;
+	border: none;
+	margin-left: 100px;
+}
+/* - Comment Form */
+.comment-form form {
+	margin-top: 40px;
+}
+.comment-form .form-control {
+	padding: 12px 25px;
+	height: auto;
+	outline: none;
+	box-shadow: none;
+	border-radius: 0;
+	border: 1px solid #e8e8e8;
+	background-color: transparent;
+	position: relative;
+	z-index: 1;
+	margin-bottom: 10px;
+	font-size: 16px;
+	color: #555;
+}
+.comment-form .form-control::-webkit-input-placeholder {
+   color: #555;
+}
+.comment-form .form-control:-moz-placeholder { /* Firefox 18- */
+   color: #555;
+}
+.comment-form .form-control::-moz-placeholder {  /* Firefox 19+ */
+   color: #555;
+}
+.comment-form .form-control:-ms-input-placeholder {
+   color: #555;
+}
+.comment-form  input[type="submit"] {
+  background-color: #C8815F;
+  border-radius: 4px;
+  padding: 11px 32px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  border: 1px solid #C8815F;
+}
+.comment-form  input[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid #111111;
+}
+
