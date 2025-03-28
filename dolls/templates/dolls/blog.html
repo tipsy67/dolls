@@ -27,7 +27,7 @@
                         <div class="cardImage"><a href="{% url 'blog:blog_detail' article.slug %}">
                             <img src="{% static 'dolls/assets/imgs/page/blog-list/img6.png' %}" alt="guza"></a></div>
                         <div class="cardInfo">
-                            <div class="cardTags"><a href="#">Fashion</a>
+                            <div class="cardTags"><a href="#">{{article.category}}</a>
                                 <span class="date-post text-uppercase">{{article.created_at|date:"j M"}}</span>
                             </div>
                             <a class="cardTitle" href="{% url 'blog:blog_detail' article.slug %}">
@@ -69,14 +69,10 @@
                         </div>
                         <div class="block-sidebar">
                             <h5 class="text-20-medium mb-20">Tags</h5>
-                            <div class="box-tags"><a class="btn btn-tag-filter" href="#">Accessories</a><a
-                                    class="btn btn-tag-filter" href="#">Beauty</a><a class="btn btn-tag-filter"
-                                                                                     href="#">Hats</a><a
-                                    class="btn btn-tag-filter" href="#">Collection</a><a class="btn btn-tag-filter"
-                                                                                         href="#">Makeup</a><a
-                                    class="btn btn-tag-filter" href="#">Jacket</a><a class="btn btn-tag-filter"
-                                                                                     href="#">Vintage</a><a
-                                    class="btn btn-tag-filter" href="#">Life Style</a></div>
+                            <div class="box-tags">
+                                {% for tag in tags_list %}
+                                <a class="btn btn-tag-filter" href="#">{{tag}}</a>
+                                {% endfor %}
                         </div>
                         <div class="block-sidebar"><img src="assets/imgs/page/blog-list/sale.png" alt=""></div>
                     </div>

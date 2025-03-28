@@ -15,7 +15,8 @@ from tunes.models import Banner
 def main_page(request):
 
     banner_list = Banner.objects.filter(is_published=True)
-    category_list = Category.objects.filter(is_published=True)
+    category_list = get_queryset_from_cache('category_list_product')
+
     objects_list=[]
     for category in category_list:
         product_list = Product.objects.filter(is_published=True, category=category).order_by(Random())[:PRODUCT_PER_PAGE]
@@ -40,8 +41,9 @@ def main_page(request):
 
 def product_list_view(request, cat=None):
 
-    tag_list = get_queryset_from_cache('tag_list')
-    category_list = get_queryset_from_cache('category_list')
+    tag_list = get_queryset_from_cache('tag_list_product')
+
+    category_list = get_queryset_from_cache('category_list_product')
     sale_list = get_queryset_from_cache('sale_list')
 
     if cat is not None:

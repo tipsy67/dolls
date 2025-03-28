@@ -3,6 +3,7 @@ from django.template.defaultfilters import truncatechars
 from pytils.translit import slugify
 
 from config.settings import AUTH_USER_MODEL
+from dolls.models import Category
 from users.models import NULLABLE, User
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
@@ -63,6 +64,15 @@ class BlogArticle(models.Model):
     users_like = models.ManyToManyField(AUTH_USER_MODEL,
                                         related_name='images_liked',
                                         blank=True)
+    tags = models.ManyToManyField(
+        'tags.Tag', blank=True, related_name='tags_article', verbose_name="Теги"
+    )
+    category = models.ForeignKey(
+        to=Category,
+        on_delete=models.PROTECT,
+        related_name='articles',
+        verbose_name='Категория',
+    )
 
     class Meta:
         verbose_name = 'Статья'

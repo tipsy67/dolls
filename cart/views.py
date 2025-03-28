@@ -8,6 +8,7 @@ from django.views.generic import DetailView, ListView
 
 from config.settings import LOGIN_URL, CART_SESSION_ID
 from dolls.models import Product
+from tunes.src.utils import get_value_from_tunes
 from users.models import User
 from .cart import Cart
 
@@ -73,11 +74,15 @@ def cart_detail(request):
                 )
                 if item['quantity'] == 0: cart.remove(product)
         cart.save()
+    context = {
+        'cart': cart,
+        'return_url': request.META.get('HTTP_REFERER'),
+    }
 
     return render(
         request,
         'dolls/cart.html',
-        {'cart': cart, 'return_url': request.META.get('HTTP_REFERER')},
+        context,
     )
 
 

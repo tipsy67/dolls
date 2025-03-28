@@ -8,7 +8,7 @@ from pytils.translit import slugify
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('pk', 'name', )
 
 
 class ImageInline(admin.TabularInline):

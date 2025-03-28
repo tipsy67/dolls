@@ -7,6 +7,7 @@ from django.views.generic import DetailView, ListView
 
 from blog.models import BlogArticle, Comment
 from config.settings import BLOG_PER_PAGE
+from dolls.src.utils import get_queryset_from_cache
 
 
 class BlogListView(ListView):
@@ -15,6 +16,7 @@ class BlogListView(ListView):
     template_name = 'dolls/blog.html'
     context_object_name = 'blog_list'
     extra_context = {
+        'tags_list': get_queryset_from_cache('tag_list_article')
     }
 
     def get_queryset(self):
