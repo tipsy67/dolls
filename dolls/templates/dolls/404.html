@@ -3,36 +3,15 @@
 {% block content %}
 {% load static %}
 {% load dolls_tags %}
-
-		<main>
-			<!-- Page Banner -->
-			<div class="page-banner container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="banner-content">
-						<h3>404</h3>
-						<p>our vision is to be Earth's most customer centric company</p>
-					</div>
-					<ol class="breadcrumb">
-						<li><a href="index.html" title="Home">Home</a></li>							
-						<li class="active">Error</li>
-					</ol>
-				</div><!-- Container /- -->
-			</div><!-- Page Banner /- -->
-			
-			<!-- Error Page -->
-			<div class="error-page container-fluid">
-				<!-- Container -->
-				<div class="container">
-					<div class="error-code">
-						<span>4<img src="images/404.png" alt="404">4</span>
-					</div>
-					<div class="error-content">
-						<p><span>Oops!</span>  Страница не найдена</p>
-						<a href="{% url 'dolls:home' %}">Вернуться на главную</a>
-					</div>
-				</div><!-- Container /- -->
-			</div><!-- Error Page /- -->
-		</main>
-		
-{% endblock content %}
+    <main class="main">
+      <section class="section block-content-404">
+        <div class="container"> 
+          <div class="text-center"> 
+            <div class="box-image-404"> <img src="{% static 'dolls/assets/imgs/page/404/404.svg' %}" alt="Guza"></div>
+            <h1 class="mb-25">404 - Not found!</h1>
+            <p class="text-20">This page could not be found.<br>Continue to the Home Page</p>
+          </div>
+        </div>
+      </section>
+    </main>
+{% endblock %}
