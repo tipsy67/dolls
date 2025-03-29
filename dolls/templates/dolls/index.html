@@ -9,35 +9,12 @@
     <section class="section block-intro">
         <div class="container">
             <div class="text-center">
-                <h3 class="mb-20">Welcome to our store</h3>
+                <h3 class="mb-20">Добро пожаловать</h3>
                 <h5 class="mb-60">The self care brand that’s setting a new standard. Clean <br
                         class="d-none d-lg-block">products and sex ed, to help you feel good in your own body.</h5>
             </div>
-            <div class="list-intros">
-                <div class="item-intro">
-                    <div class="item-intro-icon"><img src="{% static 'dolls/assets/imgs/page/homepage15/icon1.svg' %}"
-                                                      alt="Guza"></div>
-                    <div class="item-intro-info">
-                        <h6 class="primary-dark">Powered By Nature</h6>
-                        <p class="body-p2 neutral-dark">Aliquam venenatis vel lorem id mollis. </p>
-                    </div>
-                </div>
-                <div class="item-intro">
-                    <div class="item-intro-icon"><img src="{% static 'dolls/assets/imgs/page/homepage15/icon2.svg' %}"
-                                                      alt="Guza"></div>
-                    <div class="item-intro-info">
-                        <h6 class="primary-dark">Exceptional Quality</h6>
-                        <p class="body-p2 neutral-dark">Nulla tincidunt gravida augue, eget pellentesque.</p>
-                    </div>
-                </div>
-                <div class="item-intro">
-                    <div class="item-intro-icon"><img src="{% static 'dolls/assets/imgs/page/homepage15/icon3.svg' %}"
-                                                      alt="Guza"></div>
-                    <div class="item-intro-info">
-                        <h6 class="primary-dark">Skin First Formulas</h6>
-                        <p class="body-p2 neutral-dark">Aliquam sed diam fringilla, lobortis orci nec.</p>
-                    </div>
-                </div>
+                {% include 'our-quality.html' %}
+
             </div>
         </div>
     </section>
@@ -154,7 +131,6 @@
         </div>
     </section>
     {% include 'testimonials.html' %}
-    {% include 'our-quality.html' %}
     <section class="section block-banner-collection-home15">
         <div class="container">
             <h2 class="mb-10">Your Skin<br class="d-none d-lg-block">Deserves Better.</h2>
