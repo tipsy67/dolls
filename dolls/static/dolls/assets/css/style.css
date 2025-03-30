@@ -13978,3 +13978,116 @@ quote {
   border: 1px solid #111111;
 }
 
+/* history page */
+        /* Основные стили с префиксом doll- */
+        .doll-container {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #5a4a42;
+            background-color: #fff9f5;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .doll-title {
+            color: #b38a6d;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-weight: normal;
+            border-bottom: 1px dashed #d4b8a7;
+            padding-bottom: 15px;
+        }
+
+        .doll-subtitle {
+            color: #b38a6d;
+            font-size: 1.5em;
+            margin-top: 40px;
+            font-weight: normal;
+        }
+
+        .doll-text {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .doll-intro {
+            font-style: italic;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 30px 0;
+            color: #7a6a62;
+        }
+
+        .doll-divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #d4b8a7;
+            font-size: 1.5em;
+        }
+
+        /* Стили для шагов с префиксом */
+        .doll-steps {
+            counter-reset: doll-step-counter;
+            margin: 40px 0;
+        }
+
+        .doll-step {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 30px;
+            min-height: 50px;
+        }
+
+        .doll-step:before {
+            counter-increment: doll-step-counter;
+            content: counter(doll-step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #e8d5c5;
+            color: #5a4a42;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .doll-highlight {
+            background-color: #f8efe8;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid #d4b8a7;
+        }
+
+        .doll-secret {
+            background-color: #f0e6e6;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border: 1px dashed #b38a6d;
+        }
+
+        .doll-secret-title {
+            font-weight: bold;
+            color: #9e6d6d;
+            margin-bottom: 15px;
+        }
+
+        .doll-checkmark {
+            color: #b38a6d;
+            margin-right: 8px;
+        }
+
+        .doll-conclusion {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 40px;
+            font-style: italic;
+            color: #7a6a62;
+        }

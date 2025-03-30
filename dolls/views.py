@@ -21,12 +21,12 @@ def main_page(request):
     for category in category_list:
         product_list = Product.objects.filter(is_published=True, category=category).order_by(Random())[:PRODUCT_PER_PAGE]
         objects_list.append({
+            'pk': category.pk,
             'name': category.name,
             'product_list': product_list
         })
+
     blog_list = BlogArticle.objects.filter(is_published=True).order_by(Random())[:BLOG_PER_PAGE]
-
-
 
     context = {
         'objects_list': objects_list,
@@ -99,3 +99,10 @@ def about(request):
     }
 
     return render(request, 'dolls/about.html')
+
+
+def history(request):
+    context = {
+    }
+
+    return render(request, 'dolls/history.html')
