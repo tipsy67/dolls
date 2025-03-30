@@ -10,8 +10,12 @@
         <div class="container">
             <div class="text-center">
                 <h3 class="mb-20">Добро пожаловать</h3>
-                <h5 class="mb-60">The self care brand that’s setting a new standard. Clean <br
-                        class="d-none d-lg-block">products and sex ed, to help you feel good in your own body.</h5>
+                <h6 class="mb-60">Мой сайт — это уютный мир авторских кукол, наполненных теплом,
+                    творчеством и волшебством. <br
+                        class="d-none d-lg-block">Эти куклы созданы с любовью и вниманием к деталям,
+                    чтобы радовать, вдохновлять и дарить незабываемые эмоции.<br
+                        class="d-none d-lg-block">Я рада, что Вы заглянули в Кукольный дворик Екатерины ТОР — возможно, именно здесь Вас
+                        ждет ваша особенная кукольная история!</h6>
             </div>
                 {% include 'our-quality.html' %}
 
@@ -22,8 +26,8 @@
         <div class="container">
             <div class="box-banner-video">
                 <div class="box-banner-video-info">
-                    <h2 class="mb-25">We make going all <br class="d-none d-lg-block">natural second nature.</h2><a
-                        class="btn btn-border-white" href="#">Our Story</a>
+                    <h2 class="mb-25">Как рождаются куклы <br class="d-none d-lg-block">Магия создания кукол ручной работы</h2><a
+                        class="btn btn-border-white" href="{% url 'dolls:history' %}">Читать</a>
                 </div>
             </div>
         </div>
@@ -31,16 +35,20 @@
     <section class="section block-shop-1">
         <div class="container">
             <div class="text-center">
-                <h3 class="neutral-dark wow fadeInLeft">Our Best Sellers</h3>
+                <h3 class="neutral-dark wow fadeInLeft">Мои куколки</h3>
                 <div class="box-tabs wow fadeInRight">
                     <ul class="nav nav-tabs nav-tabs-style-2 nav-tabs-style-3" role="tablist">
                         {% for category in objects_list %}
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {% if forloop.first %} active {% endif %}"
-                                    id="{{category.name}}-tab" data-bs-toggle="tab"
-                                    data-bs-target="#{{category.name}}" type="button" role="tab"
-                                    aria-controls="{{category.name}}"
-                                    aria-selected="true">{{category.name}}
+                                    id="{{category.pk}}-tab" data-bs-toggle="tab"
+                                    data-bs-target="#{{category.pk}}" type="button" role="tab"
+                                    aria-controls="{{category.pk}}"
+                                    {% if forloop.first %}
+                                    aria-selected="true"
+                                    {% else %}
+                                    aria-selected="false"
+                                    {% endif %}>{{category.name}}
                             </button>
                         </li>
                         {% endfor %}
@@ -49,8 +57,9 @@
             </div>
             <div class="tab-content">
                 {% for category in objects_list %}
-                <div class="tab-pane fade show active" id="{{category.name}}" role="tabpanel"
-                     aria-labelledby="{{category.name}}-tab">
+                <div class="tab-pane fade{% if forloop.first %} show active {% endif %}"
+                     id="{{category.pk}}" role="tabpanel"
+                     aria-labelledby="{{category.pk}}-tab">
                     <div class="row">
                         {% for product in category.product_list %}
                         <div class="col-lg-3 col-md-4 col-sm-6">
@@ -113,36 +122,19 @@
             </div>
         </div>
     </section>
-    <section class="section block-feature-product-home15">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 mb-30">
-                    <h3 class="overline-t2 title-feature">Featured product</h3>
-                    <h3 class="title-main-feature">72 hours of <br class="d-none d-lg-block">hydration</h3>
-                    <p class="body-p2 mb-25">Too much time in the sun can dehydrate and damage your skin, causing
-                        premature aging. Look for a fast absorbing moisturiser to provide that instant hydration
-                        boost.</p><a class="btn btn-black" href="#">Shop Now</a>
-                </div>
-                <div class="col-lg-4 mb-30"><img src="{% static 'dolls/assets/imgs/page/homepage15/feature.png' %}"
-                                                 alt="Guza"></div>
-                <div class="col-lg-4 mb-30"><img src="{% static 'dolls/assets/imgs/page/homepage15/feature2.png' %}"
-                                                 alt="Guza"></div>
-            </div>
-        </div>
-    </section>
+
     {% include 'testimonials.html' %}
     <section class="section block-banner-collection-home15">
         <div class="container">
-            <h2 class="mb-10">Your Skin<br class="d-none d-lg-block">Deserves Better.</h2>
-            <h5 class="mb-30">Organic. Phytoactive. Skincare</h5><a class="btn btn-black" href="#">Shop the
-            Collection</a>
+            <h2 class="mb-10">Блог для того,</h2>
+            <h5 class="mb-30">кто верит в кукольную магию</h5><a class="btn btn-black" href="{% url 'blog:blog_list' %}">Читать</a>
         </div>
     </section>
 
     <section class="section box-blogs">
         <div class="container">
             <div class="text-center">
-                <h3 class="mb-40 wow fadeInLeft">From the Blog</h3>
+                <h3 class="mb-40 wow fadeInLeft">Мои истории</h3>
             </div>
             <div class="row">
                 {% for article in blog_list %}
