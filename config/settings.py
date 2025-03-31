@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from celery.schedules import crontab
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -142,6 +143,10 @@ CELERY_BEAT_SCHEDULE = {
     'cleanup-task-results': {
         'task': 'celery.backend_cleanup',
         'schedule': crontab(hour=4, minute=0),
+    },
+    'get-post-from-instagram': {
+        'task': 'myapp.tasks.my_task',
+        'schedule': timedelta(hours=24),
     },
 }
 

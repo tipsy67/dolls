@@ -9,10 +9,9 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="#">Home </a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Women </a></li>
-                    <li><a href="#">Summer Stripes Shorts</a></li>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="{% url 'dolls:shop' %}">Куклы</a></li>
+                    <li><a href="#">{{ product.name }}</a></li>
                 </ul>
             </div>
         </div>

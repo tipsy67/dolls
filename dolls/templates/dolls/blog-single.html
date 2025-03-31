@@ -10,9 +10,9 @@
         <div class="container">
             <div class="breadcrumbs wow bounceIn">
                 <ul>
-                    <li><a href="#">Home </a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">5 Tips to Increase Your Online Sales</a></li>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="{% url 'dolls:shop' %}">Блог</a></li>
+                    <li><a href="#">{{ article.title | safe }}</a></li>
                 </ul>
             </div>
         </div>
