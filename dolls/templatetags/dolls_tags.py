@@ -9,6 +9,11 @@ def add_media(url_image):
         return f'/media/{url_image.image.name}'
     return '#'
 
+@register.filter
+def add_media_insta(image):
+    if image:
+        return f'/media/{image.name}'
+    return '#'
 
 @register.filter
 def add_attrs(value):

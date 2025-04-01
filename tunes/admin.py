@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from tunes.models import Feedback, TunesDict, Banner, Contact
 
@@ -24,4 +25,10 @@ class TunesDictAdmin(admin.ModelAdmin):
 
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
-    list_display = ('title', 'short_content')
+    list_display = ('pk', 'photo_banner', 'title')
+
+    @admin.display(description="Просмотр")
+    def photo_banner(self, banner: Banner):
+        if banner.image:
+            return mark_safe(f"<img src='{banner.image.url}' width=50>")
+        return "Без изображения"

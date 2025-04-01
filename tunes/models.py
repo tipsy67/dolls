@@ -60,7 +60,6 @@ class TunesDict(models.Model):
 
 class Banner(models.Model):
     title = models.CharField(max_length=300, verbose_name='Заголовок')
-    content = models.TextField(**NULLABLE, verbose_name='Описание')
     image = models.ImageField(
         upload_to='tunes/', **NULLABLE, verbose_name='Изображение'
     )
@@ -68,12 +67,9 @@ class Banner(models.Model):
 
     class Meta:
         ordering = ['title']
-        verbose_name = 'Заглавный баннер'
-        verbose_name_plural = 'Заглавные баннеры'
+        verbose_name = 'Инстаграм'
+        verbose_name_plural = 'Инстаграм'
 
     def __str__(self):
         return f"{self.title}"
 
-    @property
-    def short_content(self):
-        return f"{self.content[:40]} ..."

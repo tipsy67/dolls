@@ -12,21 +12,23 @@
                 <h3 class="mb-20">Добро пожаловать</h3>
                 <h6 class="mb-60">Мой сайт — это уютный мир авторских кукол, наполненных теплом,
                     творчеством и волшебством. <br
-                        class="d-none d-lg-block">Эти куклы созданы с любовью и вниманием к деталям,
+                            class="d-none d-lg-block">Эти куклы созданы с любовью и вниманием к деталям,
                     чтобы радовать, вдохновлять и дарить незабываемые эмоции.<br
-                        class="d-none d-lg-block">Я рада, что Вы заглянули в Кукольный дворик Екатерины ТОР — возможно, именно здесь Вас
-                        ждет ваша особенная кукольная история!</h6>
+                            class="d-none d-lg-block">Я рада, что Вы заглянули в Кукольный дворик Екатерины ТОР —
+                    возможно, именно здесь Вас
+                    ждет ваша особенная кукольная история!</h6>
             </div>
-                {% include 'our-quality.html' %}
+            {% include 'our-quality.html' %}
 
-            </div>
+        </div>
         </div>
     </section>
     <section class="section block-banner-video-2">
         <div class="container">
             <div class="box-banner-video">
                 <div class="box-banner-video-info">
-                    <h2 class="mb-25">Как рождаются куклы <br class="d-none d-lg-block">Магия создания кукол ручной работы</h2><a
+                    <h2 class="mb-25">Как рождаются куклы <br class="d-none d-lg-block">Магия создания кукол ручной
+                        работы</h2><a
                         class="btn btn-border-white" href="{% url 'dolls:history' %}">Читать</a>
                 </div>
             </div>
@@ -127,7 +129,8 @@
     <section class="section block-banner-collection-home15">
         <div class="container">
             <h2 class="mb-10">Блог для того,</h2>
-            <h5 class="mb-30">кто верит в кукольную магию</h5><a class="btn btn-black" href="{% url 'blog:blog_list' %}">Читать</a>
+            <h5 class="mb-30">кто верит в кукольную магию</h5><a class="btn btn-black"
+                                                                 href="{% url 'blog:blog_list' %}">Читать</a>
         </div>
     </section>
 
@@ -163,18 +166,22 @@
     <section class="section block-instagram-type-5">
         <div class="container">
             <div class="text-center">
-                <h3 class="wow fadeInLeft">Instagram with <span class="primary-navy">#July</span></h3>
+                <h3 class="wow fadeInLeft">Instagram вместе с <span class="primary-navy">#July</span></h3>
             </div>
             <div class="box-gallery-instagram-type-5 wow fadeInRight">
-                <div class="gallery-1"><img src="{% static 'dolls/assets/imgs/page/homepage15/inst-img.png' %}"
-                                            alt="kidify"></div>
-                <div class="gallery-2"><img src="{% static 'dolls/assets/imgs/page/homepage15/inst-img2.png' %}"
-                                            alt="kidify"><img
-                        src="{% static 'dolls/assets/imgs/page/homepage15/inst-img3.png' %}" alt="kidify"><img
-                        src="{% static 'dolls/assets/imgs/page/homepage15/inst-img4.png' %}" alt="kidify"><img
-                        src="{% static 'dolls/assets/imgs/page/homepage15/inst-img5.png' %}" alt="kidify"><img
-                        src="{% static 'dolls/assets/imgs/page/homepage15/inst-img6.png' %}" alt="kidify"><img
-                        src="{% static 'dolls/assets/imgs/page/homepage15/inst-img7.png' %}" alt="kidify"></div>
+                {% for banner in banner_list %}
+                {% if forloop.first %}
+                <div class="gallery-1">
+                    <img src="{{banner.image|add_media_insta}}" alt="kidify">
+                </div>
+                <div class="gallery-2">
+                {% else %}
+                    <img src="{{banner.image|add_media_insta}}" alt="kidify">
+                {% endif %}
+                    {% if forloop.last %}
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
