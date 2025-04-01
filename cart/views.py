@@ -86,6 +86,17 @@ def cart_detail(request):
     )
 
 
+def buy_now(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    quantity = 1
+
+    if product and product.quantity > 0:
+        cart.add(product=product, quantity=quantity, override_quantity=False)
+
+    return redirect('cart:order_create')
+
+
 # @require_POST
 def cart_remove(request, product_id):
     cart = Cart(request)

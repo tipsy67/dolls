@@ -8,8 +8,8 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ul>
-                    <li><a href="#">Home </a></li>
-                    <li><a href="#">Checkout</a></li>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Заказ</a></li>
                 </ul>
             </div>
         </div>
@@ -72,74 +72,18 @@
                                     <h5 class="neutral-medium-dark">Предварительный итог</h5>
                                     <h5 class="neutral-dark">{{cart.get_total_price}}</h5>
                                 </div>
-                                <div class="box-info-cart-inner">
-                                    <p class="text-17-medium text-uppercase mb-15 neutral-medium-dark">Доставка</p>
-                                    <div class="list-radio">
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="shipping" checked="checked">Flat rate: $50.00
-                                            </label><span class="price-ship">$50.00</span>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="shipping">Local pickup: $60.00
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between box-border-bottom">
-                                    <h5 class="neutral-medium-dark">Итого</h5>
-                                    <h5 class="color-9">{{cart.get_total_price}} </h5>
-                                </div>
                                 <div class="box-other-link text-start box-border-bottom"><span
-                                        class="text-17 link-green">Бесплатная доставка при покупке от {{limit_free_shipping}}</span><a
-                                        class="text-17" href="{% url 'dolls:shop' %}">Продолжить покупки</a></div>
-                                <div class="box-payment-method">
-                                    <p class="text-17-medium text-uppercase mb-15 neutral-medium-dark">Shipping</p>
-                                    <div class="list-radio">
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment" checked="checked">Direct bank
-                                                transfer
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info active">Please send a check
-                                                to Store Name, Store Street, Store Town, Store State / County, Store
-                                                Postcode.</p>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment">Cash on delivery
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">Please send a check to
-                                                Store Name, Store Street, Store Town, Store State / County, Store
-                                                Postcode.</p>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment">Credit Card (Stripe)
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">Please send a check to
-                                                Store Name, Store Street, Store Town, Store State / County, Store
-                                                Postcode.</p>
-                                        </div>
-                                        <div class="item-radio">
-                                            <label>
-                                                <input type="radio" name="payment">Paypal
-                                            </label>
-                                            <p class="body-p2 neutral-medium-dark extra-info">Please send a check to
-                                                Store Name, Store Street, Store Town, Store State / County, Store
-                                                Postcode.</p>
-                                        </div>
-                                    </div>
+                                        class="text-17 link-green">Бесплатная доставка при покупке от {{limit_free_shipping}}</span>
+                                    <a class="text-17 text-primary" href="{% url 'dolls:shop' %}">Продолжить покупки</a>
                                 </div>
                                 <div class="box-desc-checkout">
-                                    <p class="body-p2 neutral-medium-dark mb-20">Your personal data will be used to
-                                        process your order, support your experience throughout this website, and for
-                                        other purposes described in our privacy policy.</p>
+                                    <p class="body-p2 neutral-medium-dark mb-20">Персональные данные пользователя обрабатываются
+                                        в целях исполнения заказа, обеспечения функционирования сайта и иных целей,
+                                        предусмотренных Политикой конфиденциальности.</p>
                                     <div class="form-group">
                                         <label>
                                             <input class="cb-left" type="checkbox" id="termsCheckbox"> Я согласен с условиями
-                                            <a href="#">пользования *</a>
+                                            <a href="#">политики *</a>
                                         </label>
                                     </div>
                                 </div>
