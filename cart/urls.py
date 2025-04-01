@@ -1,7 +1,7 @@
 from django.urls import path
 from cart.apps import CartConfig
 from cart.views import cart_add, cart_detail, cart_remove, cart_update, order_create, OrderDetailView, OrderListView, \
-    get_cart, cart_partial_update
+    get_cart, cart_partial_update, buy_now
 
 appname = CartConfig.name
 
@@ -9,6 +9,8 @@ urlpatterns = [
     path('cart/', cart_detail, name='cart_detail'),
     path('add/<int:product_id>/', cart_add, name='cart_add'),
     path('remove/<int:product_id>/', cart_remove, name='cart_remove'),
+
+    path('buy_now/<int:product_id>/', buy_now, name='buy_now'),
 
     path('order-create/', order_create, name='order_create'),
     path('order-list/', OrderListView.as_view(), name='order_list'),
