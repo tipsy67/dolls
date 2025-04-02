@@ -38,6 +38,7 @@ class CheckedTag:
         del self.session[settings.TAGS_SESSION_ID + self.model]
         self.save()
 
+
 class ArticleCheckedTag(CheckedTag):
 
     def __init__(self, request, model='Article'):

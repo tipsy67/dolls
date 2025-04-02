@@ -9,12 +9,14 @@ import requests
 
 from config.settings import MEDIA_ROOT, STATIC_FILES
 
+
 def get_current_ip():
     try:
         response = requests.get("https://api.ipify.org?format=json")
         return response.json()["ip"]
     except:
         return "Не удалось определить IP"
+
 
 def download_and_rename_posts():
     target_username = 'ekaterinas_toyland'
@@ -28,7 +30,7 @@ def download_and_rename_posts():
         download_geotags=False,
         download_comments=False,
         compress_json=False,
-        filename_pattern="{shortcode}"
+        filename_pattern="{shortcode}",
     )
 
     # Создаем папку для сохранения
@@ -53,8 +55,9 @@ def download_and_rename_posts():
             post_count += 1
 
             # Получаем список скачанных файлов для этого поста
-            post_files = [f for f in os.listdir(target_username)
-                          if f.startswith(post.shortcode)]
+            post_files = [
+                f for f in os.listdir(target_username) if f.startswith(post.shortcode)
+            ]
 
             # Переименовываем файлы
             for i, filename in enumerate(post_files):
@@ -67,17 +70,22 @@ def download_and_rename_posts():
 
         time.sleep(2)  # Задержка между постами
 
-    print(f"\nСкачано {post_count} постов с изображениями из профиля @{target_username}")
+    print(
+        f"\nСкачано {post_count} постов с изображениями из профиля @{target_username}"
+    )
 
 
 def run_instaloader_with_vpn():
     # Запускаем OpenVPN
-    vpn_process = subprocess.Popen([
-        "openvpn",
-        # "--config", os.path.join(STATIC_FILES, 'data', 'overlord.ovpn'),
-        "--config", './static/data/overlord.ovpn',
-        "--daemon"
-    ])
+    vpn_process = subprocess.Popen(
+        [
+            "openvpn",
+            # "--config", os.path.join(STATIC_FILES, 'data', 'overlord.ovpn'),
+            "--config",
+            './static/data/overlord.ovpn',
+            "--daemon",
+        ]
+    )
 
     # Ждем подключения
     time.sleep(10)
@@ -94,5 +102,5 @@ def run_instaloader_with_vpn():
         vpn_process.terminate()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     download_and_rename_posts()

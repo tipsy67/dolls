@@ -14,20 +14,21 @@ class Comment(MPTTModel):
         'BlogArticle',
         on_delete=models.CASCADE,
         related_name="comments",
-        verbose_name="Статья"
+        verbose_name="Статья",
     )
     parent = TreeForeignKey(
         'self',
         on_delete=models.CASCADE,
-        null=True, blank=True,
+        null=True,
+        blank=True,
         related_name="children",
-        verbose_name="Родитель"
+        verbose_name="Родитель",
     )
     owner = models.ForeignKey(
         'users.User',
         on_delete=models.CASCADE,
         related_name="comments",
-        verbose_name="Владелец"
+        verbose_name="Владелец",
     )
     text = models.CharField(max_length=1000, verbose_name="Текст")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создан")
@@ -46,9 +47,7 @@ class Comment(MPTTModel):
 class BlogArticle(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     slug = models.CharField(max_length=100, unique=True, verbose_name='Slug')
-    image = models.ImageField(
-        upload_to='blog/', blank=True, verbose_name='Изображение'
-    )
+    image = models.ImageField(upload_to='blog/', blank=True, verbose_name='Изображение')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     is_published = models.BooleanField(default=False, verbose_name='Признак публикации')
@@ -61,9 +60,9 @@ class BlogArticle(models.Model):
         related_name='blogs',
         verbose_name='Владелец',
     )
-    users_like = models.ManyToManyField(AUTH_USER_MODEL,
-                                        related_name='images_liked',
-                                        blank=True)
+    users_like = models.ManyToManyField(
+        AUTH_USER_MODEL, related_name='images_liked', blank=True
+    )
     tags = models.ManyToManyField(
         'tags.Tag', blank=True, related_name='tags_article', verbose_name="Теги"
     )
@@ -89,4 +88,4 @@ class BlogArticle(models.Model):
     def save(self, *args, **kwargs):
         if not self.pk:
             self.slug = slugify(self.title)
-        super(BlogArticle,self).save(*args, **kwargs)
+        super(BlogArticle, self).save(*args, **kwargs)
