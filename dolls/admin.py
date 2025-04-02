@@ -8,7 +8,10 @@ from pytils.translit import slugify
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', )
+    list_display = (
+        'pk',
+        'name',
+    )
 
 
 class ImageInline(admin.TabularInline):

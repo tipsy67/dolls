@@ -148,15 +148,16 @@ def change_status(request, pk):
         address.is_active = True
         address.save()
 
-        return JsonResponse({
-            'success': True,
-            'active_address': address.id,
-            'message': f'{address.name} был установлен как основной',  # Сообщение для пользователя
-            'message_type': 'success'  # Тип сообщения (success, warning, danger)
-        })
+        return JsonResponse(
+            {
+                'success': True,
+                'active_address': address.id,
+                'message': f'{address.name} был установлен как основной',  # Сообщение для пользователя
+                'message_type': 'success',  # Тип сообщения (success, warning, danger)
+            }
+        )
 
     return JsonResponse({"success": False}, status=400)
 
 
 # /Адреса
-

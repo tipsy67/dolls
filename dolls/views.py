@@ -17,16 +17,18 @@ def main_page(request):
     banner_list = Banner.objects.filter(is_published=True)
     category_list = get_queryset_from_cache('category_list_product')
 
-    objects_list=[]
+    objects_list = []
     for category in category_list:
-        product_list = Product.objects.filter(is_published=True, category=category).order_by(Random())[:PRODUCT_PER_PAGE]
-        objects_list.append({
-            'pk': category.pk,
-            'name': category.name,
-            'product_list': product_list
-        })
+        product_list = Product.objects.filter(
+            is_published=True, category=category
+        ).order_by(Random())[:PRODUCT_PER_PAGE]
+        objects_list.append(
+            {'pk': category.pk, 'name': category.name, 'product_list': product_list}
+        )
 
-    blog_list = BlogArticle.objects.filter(is_published=True).order_by(Random())[:BLOG_PER_PAGE]
+    blog_list = BlogArticle.objects.filter(is_published=True).order_by(Random())[
+        :BLOG_PER_PAGE
+    ]
 
     context = {
         'objects_list': objects_list,
@@ -84,6 +86,7 @@ def product_single_view(request, pk):
 
     return render(request, 'dolls/404.html')
 
+
 def product_preview_update(request, pk):
     product = Product.objects.filter(pk=pk).first()
     if product is not None:
@@ -94,15 +97,14 @@ def product_preview_update(request, pk):
 
     return render(request, 'dolls/404.html')
 
+
 def about(request):
-    context = {
-    }
+    context = {}
 
     return render(request, 'dolls/about.html')
 
 
 def history(request):
-    context = {
-    }
+    context = {}
 
     return render(request, 'dolls/history.html')

@@ -45,9 +45,7 @@ class TunesDict(models.Model):
     value = models.CharField(
         max_length=100, **NULLABLE, verbose_name='Строковое значение'
     )
-    description = models.CharField(
-        max_length=100, **NULLABLE, verbose_name='Описание'
-    )
+    description = models.CharField(max_length=100, **NULLABLE, verbose_name='Описание')
 
     class Meta:
         ordering = ['key']
@@ -72,4 +70,3 @@ class Banner(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-

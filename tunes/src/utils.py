@@ -8,6 +8,7 @@ def get_value_from_base(key):
     obj = TunesDict.objects.filter(key=key).first()
     return obj.value
 
+
 def get_value_from_tunes(key):
     if CACHE_ENABLED:
         cache_data = cache.get(key)

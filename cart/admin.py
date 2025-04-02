@@ -4,9 +4,11 @@ from cart.models import Order, OrderItem
 from django.urls import reverse
 from django.utils.html import format_html
 
+
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -17,7 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
     )
     inlines = (OrderItemInline,)
     readonly_fields = ('total_cost',)
-    list_filter = ('user' ,'status')
+    list_filter = ('user', 'status')
     search_fields = ('user__last_name',)
 
     def total_cost(self, obj):

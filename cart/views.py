@@ -28,6 +28,7 @@ def cart_update(request):
     url = request.META.get('HTTP_REFERER')  # + "#product_" + str(product_id)
     return redirect(url)
 
+
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -45,12 +46,12 @@ def cart_add(request, product_id):
             'message': f"Вы добавили в корзину {product.name} - {quantity} шт.",
             'cart_total': len(cart),
             'product_name': product.name,
-            'quantity': quantity
+            'quantity': quantity,
         }
     else:
         response_data = {
             'success': False,
-            'message': "При добавлении в корзину произошла ошибка"
+            'message': "При добавлении в корзину произошла ошибка",
         }
 
     if request.headers.get('Content-Type') == 'application/json':
@@ -74,7 +75,8 @@ def cart_detail(request):
                 item['quantity'] = min(
                     int(request.POST.get(f'quantity{product.pk}', 1)), product.quantity
                 )
-                if item['quantity'] == 0: cart.remove(product)
+                if item['quantity'] == 0:
+                    cart.remove(product)
         cart.save()
     context = {
         'cart': cart,
@@ -110,13 +112,16 @@ def cart_remove(request, product_id):
     except:
         return JsonResponse({'success': False})
 
+
 def cart_partial_update(request):
     return render(request, "popup-cart.html")
+
 
 def get_cart(request):
     cart = Cart(request)
     response = {'success': True, 'cart_length': len(cart)}
     return JsonResponse(response)
+
 
 def order_create(request):
     cart = Cart(request)
@@ -129,25 +134,26 @@ def order_create(request):
             order.user = request.user
             order.save()
             for item in cart:
-                OrderItem.objects.create(order=order,
-                                         product=item['product'],
-                                         price=item['price'],
-                                         quantity=item['quantity'])
+                OrderItem.objects.create(
+                    order=order,
+                    product=item['product'],
+                    price=item['price'],
+                    quantity=item['quantity'],
+                )
 
             cart.clear()
-            return render(request,
-                          'dolls/order-created.html',
-                          {'order': order})
+            return render(request, 'dolls/order-created.html', {'order': order})
     else:
         user = User.objects.filter(pk=request.user.pk).first()
         dict_ = vars(user)
-        address = vars (user.addresses.filter(is_active=True).first())
-        if address: dict_ = dict_ | address
+        address = vars(user.addresses.filter(is_active=True).first())
+        if address:
+            dict_ = dict_ | address
         form = OrderCreateForm(dict_)
 
     context = {
         'title_form': "Создание заказа",
-        'form' :form,
+        'form': form,
     }
 
     return render(
@@ -155,6 +161,7 @@ def order_create(request):
         'dolls/order-form.html',
         context,
     )
+
 
 class OrderDetailView(DetailView):
     model = Order
@@ -164,6 +171,7 @@ class OrderDetailView(DetailView):
         'title_form': "Вы действительно хотите удалить этот адрес?",
         # 'back_url': reverse_lazy(request.GET.get('next', '/'))
     }
+
 
 class OrderListView(ListView):
     model = Order

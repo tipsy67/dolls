@@ -16,9 +16,7 @@ class BlogListView(ListView):
     paginate_by = BLOG_PER_PAGE
     template_name = 'dolls/blog.html'
     context_object_name = 'blog_list'
-    extra_context = {
-        'tags_list': get_queryset_from_cache('tag_list_article')
-    }
+    extra_context = {'tags_list': get_queryset_from_cache('tag_list_article')}
 
     def get_queryset(self):
         article_list = BlogArticle.objects.filter(is_published=True)
@@ -32,8 +30,7 @@ class BlogDetailView(DetailView):
     model = BlogArticle
     template_name = 'dolls/blog-single.html'
     context_object_name = 'article'
-    extra_context = {
-    }
+    extra_context = {}
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -45,7 +42,6 @@ class BlogDetailView(DetailView):
         self.extra_context['comments'] = comments
 
         return self.object
-
 
 
 def article_like(request):
@@ -74,17 +70,16 @@ def add_comment_reply(request, parent_id):
             article=article,
             parent=parent_comment,
             owner=request.user,
-            text=request.POST['text']
+            text=request.POST['text'],
         )
         return redirect('blog:blog_detail', slug=article.slug)
+
 
 def add_article_reply(request, article_id):
     """Добавление ответа на комментарий"""
     if request.method == 'POST':
         article = BlogArticle.objects.filter(id=article_id).first()
         Comment.objects.create(
-            article=article,
-            owner=request.user,
-            text=request.POST['text']
+            article=article, owner=request.user, text=request.POST['text']
         )
         return redirect('blog:blog_detail', slug=article.slug)
