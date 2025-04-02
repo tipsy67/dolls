@@ -14091,3 +14091,15 @@ quote {
             font-style: italic;
             color: #7a6a62;
         }
+
+  /* Показываем секцию по умолчанию */
+  .desktop-section {
+    display: block;
+  }
+
+  /* Скрываем на вертикальных мобильных (обычно < 768px) */
+  @media (max-width: 767px) and (orientation: portrait) {
+    .desktop-section {
+      display: none;
+    }
+  }

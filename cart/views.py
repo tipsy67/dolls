@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.urls import reverse
+from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, ListView
 
 from config.settings import LOGIN_URL, CART_SESSION_ID
@@ -27,12 +28,13 @@ def cart_update(request):
     url = request.META.get('HTTP_REFERER')  # + "#product_" + str(product_id)
     return redirect(url)
 
-
+@require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    data = json.loads(request.body)
-    quantity = int(data.get('quantity', 1))
+    # data = json.loads(request.body)
+    # quantity = int(data.get('quantity', 1))
+    quantity = 1
 
     if product and product.quantity > 0:
         # Add product to cart
@@ -54,7 +56,7 @@ def cart_add(request, product_id):
     if request.headers.get('Content-Type') == 'application/json':
         return JsonResponse(response_data)
 
-    if response_data['status'] == 'success':
+    if response_data['success']:
         messages.success(request, response_data['message'])
     else:
         messages.error(request, response_data['message'])
