@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    restoreScrollPosition();
+//    restoreScrollPosition();
     makeTableRowsClickable();
     setupLikeHandlers();
     setupChangeStatusHandler();

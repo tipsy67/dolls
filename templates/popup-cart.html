@@ -35,7 +35,9 @@
                         <img src="{{product.one_image|add_media}}" alt="Guza">
                     </div>
                     <div class="item-cart-info">
-                        <div class="item-cart-info-1"><a class="text-16-medium" href="#">{{product.name}}</a>
+                        <div class="item-cart-info-1">
+                            <a class="text-16-medium"
+                               href="{% url 'dolls:shop_single' product.pk %}">{{product.name}}</a>
                             <div class="box-info-size-color-product">
 <!--                                <p class="box-color"><span-->
 <!--                                        class="body-p2 neutral-dark">{{item.quantity}}</span> </p>-->

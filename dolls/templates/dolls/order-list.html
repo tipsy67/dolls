@@ -5,20 +5,16 @@
 {% load dolls_tags %}
 
 <main>
-    <!-- Page Banner -->
-    <div class="page-banner container-fluid no-padding">
-        <!-- Container -->
+    <div class="section block-breadcrumb">
         <div class="container">
-            <div class="banner-content">
-                <h3>Checkout</h3>
-                <p>our vision is to be Earth's most customer centric company</p>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Архив заказов</a></li>
+                </ul>
             </div>
-            <ol class="breadcrumb">
-                <li><a href="index.html" title="Home">Home</a></li>
-                <li class="active">Checkout</li>
-            </ol>
-        </div><!-- Container /- -->
-    </div><!-- Page Banner /- -->
+        </div>
+    </div>
     <!-- Checkout -->
     <div class="container-fluid no-left-padding no-right-padding woocommerce-checkout">
         <!-- Container -->
