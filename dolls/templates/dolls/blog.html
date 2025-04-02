@@ -11,8 +11,8 @@
                 <h1>Мои истории</h1>
                 <div class="breadcrumbs d-inline-block">
                     <ul>
-                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                    <li><a href="#">Блог</a></li>
+                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                        <li><a href="#">Блог</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,52 +33,45 @@
                             <a class="cardTitle" href="{% url 'blog:blog_detail' article.slug %}">
                                 <h5>{{article.title|safe}}</h5></a>
                             <p class="cardDesc body-p2">{{article.content|safe|truncatechars_html:400}}</p>
-                            <a class="link-underline link-l2" href="{% url 'blog:blog_detail' article.slug %}">Читать</a>
+                            <a class="link-underline link-l2"
+                               href="{% url 'blog:blog_detail' article.slug %}">Читать</a>
                         </div>
                     </div>
                     {% endfor %}
-                    {% include 'pagination.html' with page=blog_list page_name='page' %}
+                    {% include 'pagination.html' with page=page_obj page_name='page' %}
                 </div>
                 <div class="col-lg-3">
                     <div class="sidebar-right">
                         <div class="block-sidebar">
-                            <h5 class="text-20-medium mb-20">Latest Post</h5>
+                            <h5 class="text-20-medium mb-20">Последние обсуждения</h5>
                             <ul class="list-latest-posts">
+                                {% for article in list_popular_articles %}
                                 <li>
-                                    <div class="image-post"><a href="#"><img src="assets/imgs/page/blog-list/post.png"
-                                                                             alt=""></a></div>
-                                    <div class="info-post"><span class="date-post text-uppercase">13 Dec, 2022</span><a
+                                    <div class="image-post"><a href="#"><img
+                                            src="{% static 'dolls/assets/imgs/page/blog-list/img6.png' %}"
+                                            alt=""></a></div>
+                                    <div class="info-post"><span class="date-post text-uppercase">{{article.last_comment_date|date:"j M"}}</span><a
                                             href="#">
-                                        <h5 class="title-post">Milan Highlights Summer 2020</h5></a></div>
+                                        <h5 class="title-post">{{article.title|safe}}</h5></a></div>
                                 </li>
-                                <li>
-                                    <div class="image-post"><a href="#"><img src="assets/imgs/page/blog-list/post2.png"
-                                                                             alt=""></a></div>
-                                    <div class="info-post"><span class="date-post text-uppercase">13 Dec, 2022</span><a
-                                            href="#">
-                                        <h5 class="title-post">Milan Highlights Summer 2020</h5></a></div>
-                                </li>
-                                <li>
-                                    <div class="image-post"><a href="#"><img src="assets/imgs/page/blog-list/post3.png"
-                                                                             alt=""></a></div>
-                                    <div class="info-post"><span class="date-post text-uppercase">13 Dec, 2022</span><a
-                                            href="#">
-                                        <h5 class="title-post">Milan Highlights Summer 2020</h5></a></div>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="block-sidebar">
                             <h5 class="text-20-medium mb-20">Tags</h5>
                             <div class="box-tags">
                                 {% for tag in tags_list %}
-                                <a class="btn btn-tag-filter" href="{{tag.get_url_change}}?model=Article" title="{{tag.tag}}"
+                                <a class="btn btn-tag-filter" href="{{tag.get_url_change}}?model=Article"
+                                   title="{{tag.tag}}"
                                    {% if tag.str_pk in tags_article %}
                                    style="color: #b6795f;"
                                    {% endif %}>{{tag.tag}}</a>
                                 {% endfor %}
-                                <a class="btn btn-tag-filter" href="{% url 'tags:clear_tag' %}?model=Article" title="Сбросить отбор тегов">Сбросить</a>
+                                <a class="btn btn-tag-filter" href="{% url 'tags:clear_tag' %}?model=Article"
+                                   title="Сбросить отбор тегов">Сбросить</a>
+                            </div>
+                            <div class="block-sidebar"><img src="assets/imgs/page/blog-list/sale.png" alt=""></div>
                         </div>
-                        <div class="block-sidebar"><img src="assets/imgs/page/blog-list/sale.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -86,3 +79,4 @@
     </section>
 </main>
 {% endblock %}
+

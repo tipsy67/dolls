@@ -1,5 +1,6 @@
 import json
 
+from django.db.models import Max
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.decorators.http import require_POST
@@ -24,6 +25,15 @@ class BlogListView(ListView):
         if tags:
             article_list = article_list.filter(tags__pk__in=tags.tags)
         return article_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # last_comment_articles = Comment.objects.order_by('-created_at').distinct('article')[:3]
+        # list_popular_articles = BlogArticle.objects.filter(pk__in=last_comment_articles)
+        list_popular_articles = BlogArticle.objects.filter(is_published=True, comments__isnull=False).annotate(
+            last_comment_date = Max('comments__created_at')).order_by('-last_comment_date')[:3]
+        context['list_popular_articles']=list_popular_articles
+        return context
 
 
 class BlogDetailView(DetailView):
