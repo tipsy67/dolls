@@ -28,8 +28,6 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # last_comment_articles = Comment.objects.order_by('-created_at').distinct('article')[:3]
-        # list_popular_articles = BlogArticle.objects.filter(pk__in=last_comment_articles)
         list_popular_articles = BlogArticle.objects.filter(is_published=True, comments__isnull=False).annotate(
             last_comment_date = Max('comments__created_at')).order_by('-last_comment_date')[:3]
         context['list_popular_articles']=list_popular_articles

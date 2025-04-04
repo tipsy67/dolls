@@ -4,121 +4,121 @@
 {% load static %}
 {% load dolls_tags %}
 
-<main>
+<main class="main">
+  <section class="section banner-500">
+    <div class="box-cover-image wow fadeInUp"></div>
+    <div class="box-banner-info wow bounceIn">
+      <p class="overline-t2-medium text-uppercase primary-navy mb-10">МАСТЕРСКАЯ</p>
+      <h2 class="color-primary-dark mb-30">Как рождаются куклы</h2>
+    </div>
+  </section>
 
-      <section class="section block-head">
-        <div class="container">
-            <div class="text-center wow bounceIn">
-                <h1>Как рождаются куклы</h1>
-                <div class="breadcrumbs d-inline-block">
-                    <ul>
-                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                        <li><a href="#">Как рождаются куклы</a></li>
-                    </ul>
+  <section class="section block-our-shop-2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 wow bounceIn">
+          <div class="content-detail text-center">
+            <p class="body-p2 neutral-medium-dark mb-40">Вы когда-нибудь задумывались, как из простого кусочка ткани рождается что-то живое, уютное и по-настоящему волшебное? Секрет прост: я не просто шью кукол - я дарю им характер, душу и свою любовь.</p>
+
+            <h3 class="mb-30">Этапы создания куклы</h3>
+
+            <div class="box-process mb-50 mx-auto" style="max-width: 800px;">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Идея и эскиз</h4>
+                  <p class="body-p2 neutral-medium-dark">Куклы приходят во сне или появляются в голове сами собой. Каждая получает свой уникальный характер и образ.</p>
                 </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Выбор материалов</h4>
+                  <p class="body-p2 neutral-medium-dark">Используем только натуральные ткани, приятные на ощупь - ведь куклы должны быть "тактильным счастьем".</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Рождение образа</h4>
+                  <p class="body-p2 neutral-medium-dark">Когда появляются глаза - кукла оживает. В этот момент она словно что-то хочет сказать!</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h4>Одежда и аксессуары</h4>
+                  <p class="body-p2 neutral-medium-dark">Каждый наряд продумывается до мелочей, чтобы подчеркнуть индивидуальность.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h4>Характер и имя</h4>
+                  <p class="body-p2 neutral-medium-dark">Каждая кукла получает имя и свою историю, которую расскажет новому хозяину.</p>
+                </div>
+              </div>
             </div>
+
+            <h3 class="mb-30">Наши секреты</h3>
+
+            <div class="row mb-50 justify-content-center">
+              <div class="col-md-5">
+                <div class="box-feature">
+                  <div class="feature-icon">
+                    <img src="{% static 'dolls/assets/imgs/icons/heart.png' %}" alt="Любовь">
+                  </div>
+                  <div class="feature-content">
+                    <h4>Любовь в каждом стежке</h4>
+                    <p class="body-p2 neutral-medium-dark">Все куклы создаются с теплом и заботой, без конвейерного производства.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <div class="box-feature">
+                  <div class="feature-icon">
+                    <img src="{% static 'dolls/assets/imgs/icons/star.png' %}" alt="Волшебство">
+                  </div>
+                  <div class="feature-content">
+                    <h4>Капелька волшебства</h4>
+                    <p class="body-p2 neutral-medium-dark">Специальные ингредиенты: сказки, музыка и улыбки в процессе создания.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-notice">
+              <p class="text-italic-28 mb-20">"Мои куклы созданы, чтобы дарить тепло, уют и капельку волшебства в каждый дом."</p>
+              <p class="text-16-medium">Екатерина Торопова</p>
+            </div>
+
+            <div class="text-center mt-60">
+              <a class="btn btn-black" href="{% url 'dolls:shop' %}">Выбрать свою куклу</a>
+            </div>
+          </div>
         </div>
-    </section>
-<div class="doll-container">
-
-    <h1 class="doll-title">Магия создания кукол ручной работы</h1>
-
-    <div class="doll-intro">
-        Вы когда-нибудь задумывались, как из простого кусочка ткани рождается что-то живое, уютное и по-настоящему
-        волшебное?
+      </div>
     </div>
-
-    <p class="doll-text">Секрет прост: я не просто шью кукол – я дарю им характер, душу и свою любовь.</p>
-
-    <p class="doll-text">Готовы заглянуть за кулисы моего кукольного волшебства? Тогда поехали!</p>
-
-    <div class="doll-divider">~ ~ ~</div>
-
-    <h2 class="doll-subtitle">Как из кусочка ткани появляется живая эмоция?</h2>
-
-    <p class="doll-text">На первый взгляд – обычные материалы: хлопок, трикотаж, шерсть… Но в моих руках они
-        превращаются в нечто большее.</p>
-
-    <div class="doll-steps">
-        <div class="doll-step">
-            <strong>Идея</strong> – Сначала появляется задумка: какой будет эта кукла? Веселая и шкодливая? Тихая
-            мечтательница? Или, может, маленький философ, который будет задумчиво смотреть на мир?
-        </div>
-
-        <div class="doll-step">
-            <strong>Эскиз</strong> – Иногда куклы приходят ко мне во сне или появляются в голове сами собой. Тогда я
-            быстро хватаю карандаш и рисую их на бумаге, чтобы не забыть.
-        </div>
-
-        <div class="doll-step">
-            <strong>Материалы</strong> – Выбираю самые приятные на ощупь ткани, потому что мои куклы должны быть
-            «тактильным счастьем» – их хочется обнимать, гладить и не выпускать из рук.
-        </div>
-
-        <div class="doll-step">
-            <strong>Шитье</strong> – Это момент, когда кукла начинает рождаться. Я сшиваю детали, но самое интересное –
-            когда появляется лицо!
-        </div>
-
-        <div class="doll-step">
-            <strong>Глаза – зеркало души</strong> – Вы знали, что именно глаза делают куклу живой? Когда я вышиваю или
-            пришиваю глазки, в этот момент кукла словно оживает. Иногда даже кажется, что она что-то хочет мне сказать!
-        </div>
-
-        <div class="doll-step">
-            <strong>Одежда и детали</strong> – Наряды, бантики, шапочки, ботиночки – все продумывается до мелочей, ведь
-            именно аксессуары делают куклу особенной.
-        </div>
-
-        <div class="doll-step">
-            <strong>Финальный штрих – характер!</strong> – Каждая моя кукла получает имя и свою маленькую историю.
-            Иногда они сами мне подсказывают, кто они такие!
-        </div>
-    </div>
-
-    <h2 class="doll-subtitle">Почему мои куклы такие уютные и теплые?</h2>
-
-    <p class="doll-text">Вы когда-нибудь держали в руках игрушку, которая будто бы согревает изнутри?</p>
-
-    <p class="doll-text">Секрет в том, что я вкладываю в них не только нитки и ткань, но и тепло своих рук, частичку
-        души и много-много добрых мыслей!</p>
-
-    <div class="doll-highlight">
-        <p><span class="doll-checkmark">✔</span><strong>Натуральные материалы</strong> – мягкие, теплые, приятные на
-            ощупь.</p>
-        <p><span class="doll-checkmark">✔</span><strong>Особая энергетика</strong> – мои куклы создаются с любовью и
-            заботой, а значит, они несут это тепло дальше.</p>
-        <p><span class="doll-checkmark">✔</span><strong>Все сшито вручную</strong> – никакого конвейера, только внимание
-            к каждой детали.</p>
-        <p><span class="doll-checkmark">✔</span><strong>Мои куклы не просто украшают интерьер</strong> – они создают
-            уют, хранят секреты и дарят ощущение домашнего тепла.</p>
-    </div>
-
-    <h2 class="doll-subtitle">Секретные ингредиенты, которые я добавляю в каждую куклу</h2>
-
-    <div class="doll-secret">
-        <div class="doll-secret-title">(Тихо-тихо, это вообще-то тайна, но для вас я приоткрою завесу!)</div>
-        <p><span class="doll-checkmark">✔</span><strong>Любовь</strong> – без нее куклы не оживают.</p>
-        <p><span class="doll-checkmark">✔</span><strong>Капелька сказки</strong> – вдруг ночью они начнут рассказывать
-            истории?</p>
-        <p><span class="doll-checkmark">✔</span><strong>Щепотка волшебства</strong> – чтобы приносить радость своему
-            будущему хозяину.</p>
-        <p><span class="doll-checkmark">✔</span><strong>Теплая музыка в мастерской</strong> – говорят, что куклы слушают
-            и запоминают ее!</p>
-        <p><span class="doll-checkmark">✔</span><strong>Много улыбок</strong> – потому что радость передается через
-            руки.</p>
-    </div>
-
-    <h2 class="doll-subtitle">А что дальше?</h2>
-
-    <p class="doll-text">После того как кукла готова, она отправляется ждать свою семью. Каждая из них создана, чтобы
-        дарить тепло, уют и капельку волшебства.</p>
-
-    <div class="doll-conclusion">
-        Может, одна из них ждет именно вас?<br><br>
-        Выбирайте свою куклу в Кукольном дворике – она точно подарит вам особенную радость!
-    </div>
-</div>
+  </section>
 </main>
 
+<!-- Инструкция по иконкам:
+1. Скачайте SVG иконки:
+   - Сердце: https://www.flaticon.com/free-icon/heart_833472
+   - Волшебство: https://www.flaticon.com/free-icon/magic-wand_3084381
+
+2. Сохраните их в папку:
+   your_project/static/dolls/assets/imgs/icons/
+
+3. Или замените на Font Awesome (в basic.html):
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   и используйте:
+   <i class="fas fa-heart"></i>
+   <i class="fas fa-magic"></i>
+-->
 {% endblock %}

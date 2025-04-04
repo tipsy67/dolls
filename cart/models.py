@@ -7,6 +7,7 @@ from dolls.models import Product
 class Order(models.Model):
     STATUS_ORDER = {
         'CREATED': "Создан",
+        'NONPAID': "К оплате",
         'PAID': "Оплачен",
         'SEND': "Отправлен",
         'SHIPPED': "Доставлен",
