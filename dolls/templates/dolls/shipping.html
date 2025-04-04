@@ -1,0 +1,89 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main class="main">
+  <section class="section banner-500">
+    <div class="box-cover-image wow fadeInUp"></div>
+    <div class="box-banner-info wow bounceIn">
+      <p class="overline-t2-medium text-uppercase primary-navy mb-10">ИНФОРМАЦИЯ</p>
+      <h2 class="color-primary-dark mb-30">Оплата и доставка</h2>
+    </div>
+  </section>
+
+  <section class="section block-content-custome">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 wow bounceIn">
+          <ul class="menu-left">
+            <li><a href="privacy-policy.html">Политика конфиденциальности</a></li>
+            <li><a class="active" href="#">Оплата и доставка</a></li>
+            <li><a href="returns.html">Возврат товара</a></li>
+            <li><a href="terms.html">Пользовательское соглашение</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-9 wow bounceIn">
+          <div class="content-detail">
+            <h3>Способы оплаты</h3>
+            <ol class="list-decimal mb-30">
+              <li>Наличные при самовывозе</li>
+              <li>Перевод на банковскую карту</li>
+              <li>Банковский перевод на счет</li>
+            </ol>
+            <p class="body-p2 neutral-medium-dark mb-40">Посылки наложенным платежом не отправляются, только по предоплате.</p>
+
+            <h3>Варианты доставки</h3>
+            <ol class="list-decimal mb-30">
+              <li>Транспортной компанией СДЭК или Почтой России (цена зависит от пункта назначения и веса)</li>
+              <li>Другими транспортными компаниями после согласования</li>
+            </ol>
+            <p class="body-p2 neutral-medium-dark mb-40">По умолчанию все посылки отправляются без оценки. Для добавления услуги оценки укажите это в комментариях к заказу.</p>
+
+            <h3>Статусы заказа</h3>
+            <ul class="list-status mb-40">
+              <li><strong>Создан</strong> - заказ принят, подтверждается наличие товара</li>
+              <li><strong>К оплате</strong> - товар в наличии, ожидается оплата</li>
+              <li><strong>Оплачен</strong> - будет отправлен в течение 2 рабочих дней</li>
+              <li><strong>Отправлен</strong> - вам направлен трек-номер для отслеживания</li>
+            </ul>
+
+            <h3>Условия возврата</h3>
+            <div class="return-policy-box">
+              <div class="return-policy-section">
+                <h4 class="return-policy-title">Для бракованных товаров:</h4>
+                <ul class="list-bullet">
+                  <li>Возврат возможен в течение 7 дней с момента получения</li>
+                  <li>Требуется предоставить фото/видео доказательства дефектов</li>
+                  <li>Обязательно сохранение оригинальной упаковки</li>
+                </ul>
+              </div>
+
+              <div class="return-policy-section no-return">
+                <h4 class="return-policy-title">Не подлежат возврату:</h4>
+                <p class="body-p2 neutral-medium-dark">Согласно:</p>
+                <ul class="list-bullet">
+                  <li>Ч.1 ст.25 Закона РФ "О защите прав потребителей"</li>
+                  <li>Постановлению Правительства РФ №55 от 19.01.1998 (п.6 - изделия швейные и трикотажные)</li>
+                  <li>Ст.26.1 Закона "О защите прав потребителей" (дистанционная торговля)</li>
+                </ul>
+                <p class="notice-text">Авторские куклы ручной работы надлежащего качества возврату и обмену не подлежат, так как являются:</p>
+                <ul class="list-bullet">
+                  <li>Уникальными изделиями</li>
+                  <li>Изделиями из текстильных материалов</li>
+                  <li>Изготавливаемыми по индивидуальным параметрам</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-60"><a class="btn btn-black" href="contact.html">Задать вопрос</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}

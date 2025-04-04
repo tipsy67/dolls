@@ -11,7 +11,7 @@
     <meta name="keywords" content="index, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'dolls/assets/imgs/template/favicon.svg' %}">
-    <link href="{% static 'dolls/assets/css/style.css' v=1.0.0 %}" rel="stylesheet">
+    <link href="{% static 'dolls/assets/css/style.css' %}?v=1.0.0" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Home - Natural Skins - Multipurpose Startup SaaS HTML Template</title>
 </head>
@@ -37,8 +37,8 @@
     <div class="container">
         <div class="main-header">
             <div class="header-logo">
-                <a class="d-flex" href="index.html">
-                    <img alt="luxride" src="{% static 'dolls/assets/imgs/template/logo.svg' %}">
+                <a class="d-flex" href="{% url 'dolls:home' %}">
+                    <img alt="luxride" src="{% static 'dolls/assets/imgs/template/logo.png' %}">
                 </a>
             </div>
             <div class="header-menu">
@@ -51,7 +51,7 @@
                             </li>
                             <li class="has-children"><a href="{% url 'blog:blog_list' %}">Блог</a>
                             </li>
-                            <li class="has-children"><a href="{% url 'dolls:history' %}">Магия</a>
+                            <li class="has-children"><a href="{% url 'dolls:history' %}">Мастерская</a>
                             </li>
                             <li><a href="{% url 'dolls:about' %}">Обо мне</a></li>
                         </ul>
@@ -150,7 +150,7 @@
                             </li>
                             <li><a href="{% url 'blog:blog_list' %}">Блог</a>
                             </li>
-                            <li><a href="{% url 'dolls:history' %}">Магия</a>
+                            <li><a href="{% url 'dolls:history' %}">Мастерская</a>
                             </li>
                             <li><a href="{% url 'dolls:about' %}">Обо мне</a></li>
                         </ul>
@@ -170,40 +170,37 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-30">
-                    <h6 class="neutral-dark mb-20">About Shop</h6>
-                    <p class="neutral-medium-dark body-p2 desc-company">Lorem ipsum dolor sit amet, consectetur
-                        adipisicing elit. Read more</p>
-                    <p class="neutral-dark body-p2 email-footer">E. hello@uxper.co</p>
-                    <p class="neutral-dark body-p2 phone-footer">T. (00) 342 489 33</p>
+                    <h6 class="neutral-dark mb-20">О мастерской ТОР</h6>
+                    <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла создается с любовью и несет в себе частичку сказки.</p>
+                    <p class="neutral-dark body-p2 email-footer">E. tor.kukly@example.com</p>
+                    <p class="neutral-dark body-p2 phone-footer">Т. +7 (123) 456-78-90</p>
                 </div>
                 <div class="col-lg-8 mb-30">
                     <div class="row">
                         <div class="col-lg-3 mb-30">
-                            <h6 class="neutral-dark mb-20">Company</h6>
+                            <h6 class="neutral-dark mb-20">Мастерская</h6>
                             <ul class="menu-footer">
-                                <li><a href="about-us-1.html">About us</a></li>
-                                <li><a href="carrers.html">Careers</a></li>
-                                <li><a href="store-location.html">Store Locator</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="about.html">О нас</a></li>
+                                <li><a href="process.html">Процесс создания</a></li>
+                                <li><a href="materials.html">Наши материалы</a></li>
+                                <li><a href="contact.html">Контакты</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-3 mb-30">
-                            <h6 class="neutral-dark mb-20">Customer Care</h6>
+                            <h6 class="neutral-dark mb-20">Помощь</h6>
                             <ul class="menu-footer">
-                                <li><a href="about-us-1.html">Size Guide</a></li>
-                                <li><a href="custome-service.html">Help & FAQs</a></li>
-                                <li><a href="faq.html">Return My Order</a></li>
-                                <li><a href="store-location.html">Refer a Friend</a></li>
+                                <li><a href="{% url 'dolls:shipping' %}">Доставка и оплата</a></li>
+                                <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>
+                                <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
                             </ul>
                         </div>
                         <div class="col-lg-6 mb-30">
-                            <h6 class="neutral-dark mb-20">Newsletter</h6>
-                            <p class="body-p2 neutral-dark">Sign up now to get first update about our new
-                                collection.</p>
+                            <h6 class="neutral-dark mb-20">Рассылка</h6>
+                            <p class="body-p2 neutral-dark">Подпишитесь, чтобы первыми узнавать о новых куклах и сказках.</p>
                             <div class="box-form-subscribe box-form-subscribe-white">
                                 <form class="form-sub" action="#" method="POST">
-                                    <input class="form-control" type="text" placeholder="Enter your email">
-                                    <input class="btn btn-subscribe" type="submit" value="Subscribe">
+                                    <input class="form-control" type="text" placeholder="Ваш email">
+                                    <input class="btn btn-subscribe" type="submit" value="Подписаться">
                                 </form>
                             </div>
                         </div>
@@ -216,19 +213,19 @@
         <div class="container">
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-20"><span
-                            class="body-p1 neutral-medium-dark">© 2023 Guza.Co. All rights reserved</span>
+                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-20">
+                        <span class="body-p1 neutral-medium-dark">© 2025 ТОР. Территория Особенных Радостей. Все права защищены</span>
                         <ul class="menu-bottom">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>
+                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-12 text-center text-lg-end mb-20">
-                        <div class="socials"><a href="#"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}" alt="Guza"></a><a
-                                href="#"><img src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}"
-                                              alt="Guza"></a><a href="#"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="Guza"></a></div>
+                        <div class="socials">
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}" alt="Facebook"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}" alt="Instagram"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/vk.svg' %}" alt="ВКонтакте"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -256,7 +253,7 @@
 <script src="{% static 'dolls/assets/js/vendors/jquery.timepicker.min.js' %}"></script>
 <script src="{% static 'dolls/assets/js/vendors/glightbox.min.js' %}"></script>
 <script src="{% static 'dolls/assets/js/dolls.js' %}"></script>
-<script src="{% static 'dolls/assets/js/main.js' v=1.0.0 %}"></script>
+<script src="{% static 'dolls/assets/js/main.js' %}?v=1.0.0"></script>
 
 </body>
 </html>

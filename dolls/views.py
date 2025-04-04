@@ -108,3 +108,18 @@ def history(request):
     context = {}
 
     return render(request, 'dolls/history.html')
+
+def privacy_policy(request):
+    context = {}
+
+    return render(request, 'dolls/privacy-policy.html')
+
+def shipping(request):
+    context = {}
+
+    return render(request, 'dolls/shipping.html')
+
+def user_agreement(request):
+    context = {}
+
+    return render(request, 'dolls/user-agreement.html')
