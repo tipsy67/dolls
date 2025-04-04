@@ -19,10 +19,9 @@
       <div class="row">
         <div class="col-lg-3 wow bounceIn">
           <ul class="menu-left">
+            <li><a href="{% url 'dolls:shipping' %}">Оплата и доставка</a></li>
             <li><a class="active" href="#">Политика конфиденциальности</a></li>
-            <li><a href="delivery.html">Оплата и доставка</a></li>
-            <li><a href="cookie.html">Использование cookies</a></li>
-            <li><a href="terms.html">Пользовательское соглашение</a></li>
+            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
           </ul>
         </div>
 
