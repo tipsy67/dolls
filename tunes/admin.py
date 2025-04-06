@@ -6,7 +6,7 @@ from tunes.models import Feedback, TunesDict, Banner
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'created_at', 'email', 'phone', 'is_read')
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):

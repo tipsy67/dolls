@@ -2,6 +2,8 @@ from django.db.models.functions import Random
 
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from django.urls.base import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from blog.models import BlogArticle
 from config.settings import PRODUCT_PER_PAGE, BLOG_PER_PAGE
@@ -9,7 +11,7 @@ from dolls.models import Category, Product
 from dolls.src.utils import get_random_reviews, get_queryset_from_cache
 from tags.models import Tag
 from tags.tag import CheckedTag, ProductCheckedTag
-from tunes.models import Banner
+from tunes.models import Banner, Feedback
 
 
 def main_page(request):
@@ -124,7 +126,14 @@ def user_agreement(request):
 
     return render(request, 'dolls/user-agreement.html')
 
-def contact_us(request):
+def thank_you(request):
     context = {}
 
-    return render(request, 'dolls/contact-us.html')
+    return render(request, 'dolls/thank-you.html')
+
+class FeedbackCreateView(CreateView):
+    model = Feedback
+    fields = ['name', 'email', 'phone', 'message']
+    template_name = 'dolls/contact-us.html'
+    success_url = reverse_lazy('dolls:thank_you')
+

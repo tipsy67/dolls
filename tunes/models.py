@@ -5,14 +5,15 @@ from config.settings import NULLABLE
 
 class Feedback(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    phone = models.CharField(max_length=20, verbose_name='Телефон', **NULLABLE)
+    email = models.EmailField(verbose_name='Почта', **NULLABLE)
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
     message = models.TextField(blank=True, verbose_name='Сообщение')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создано')
     is_read = models.BooleanField(default=False, verbose_name='Прочитано')
     is_published = models.BooleanField(default=False, verbose_name='Публиковать')
 
     def __str__(self):
-        return f"{self.name}, {self.created_at}"
+        return f"{self.name}, {self.created_at:%Y-%m-%d %H:%M:%S}"
 
     class Meta:
         # db_table = 'optics_feedback'
