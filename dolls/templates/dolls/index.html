@@ -171,7 +171,7 @@
                             </div>
                             <a class="cardTitle" href="{{article_url}}">
                                 <h5>{{article.title|safe}}</h5></a>
-                            <p class="cardDesc body-p2">{{article.content|safe|truncatechars_html:50}}
+                            <p class="cardDesc body-p2">{{article.content|striptags|truncatechars_html:50}}
                             </p><a class="link-underline link-l2" href="{{article_url}}">Читать</a>
                         </div>
                     </div>

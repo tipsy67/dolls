@@ -1,22 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from tunes.models import Feedback, TunesDict, Banner, Contact
+from tunes.models import Feedback, TunesDict, Banner
 
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     pass
-
-
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = (
-        'email',
-        'phone',
-        'address',
-    )
-
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):

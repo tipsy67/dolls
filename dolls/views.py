@@ -123,3 +123,8 @@ def user_agreement(request):
     context = {}
 
     return render(request, 'dolls/user-agreement.html')
+
+def contact_us(request):
+    context = {}
+
+    return render(request, 'dolls/contact-us.html')
