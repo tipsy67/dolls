@@ -7,7 +7,7 @@ from dolls.views import (
     product_single_view,
     product_preview_update,
     about,
-    history, privacy_policy, shipping, user_agreement,
+    history, privacy_policy, shipping, user_agreement, contact_us,
 )
 
 app_name = DollsConfig.name
@@ -21,6 +21,7 @@ urlpatterns = [
     path('privacy-policy/', privacy_policy, name='privacy_policy'),
     path('shipping/', shipping, name='shipping'),
     path('user-agreement/', user_agreement, name='user_agreement'),
+    path('contact-us/', contact_us, name='contact_us'),
     path('shop/', product_list_view, name='shop'),
     path('category/<int:cat>/', product_list_view, name='shop_cat'),
     path('shop-detail/<int:pk>/', product_single_view, name='shop_single'),

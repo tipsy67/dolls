@@ -57,7 +57,7 @@ TEMPLATES = [
                 # 'tunes.context_processors.get_contact',
                 'cart.context_processors.cart',
                 'tags.context_processors.tags',
-                'tunes.context_processors.get_limit_free_shipping',
+                'tunes.context_processors.get_tunes',
             ],
         },
     },

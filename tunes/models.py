@@ -21,25 +21,6 @@ class Feedback(models.Model):
         verbose_name_plural = 'Отзывы'
 
 
-class Contact(models.Model):
-    country = models.CharField(max_length=50, verbose_name='Страна')
-    inn = models.CharField(max_length=20, verbose_name='ИНН')
-    address = models.CharField(max_length=255, verbose_name='Адрес')
-    phone = models.CharField(max_length=30, verbose_name='Телефон')
-    email = models.EmailField(verbose_name='Эл.почта')
-    updated_at = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(default=False, verbose_name='Активно')
-
-    def __str__(self):
-        return f"{self.email}"
-
-    class Meta:
-        # db_table = 'optics_contact'
-        ordering = ['-updated_at']
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
-
-
 class TunesDict(models.Model):
     key = models.CharField(max_length=30, unique=True, verbose_name='Ключ')
     value = models.CharField(

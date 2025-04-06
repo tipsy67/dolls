@@ -6,7 +6,9 @@ from tunes.models import TunesDict
 
 def get_value_from_base(key):
     obj = TunesDict.objects.filter(key=key).first()
-    return obj.value
+    value = getattr(obj, 'value', None)
+
+    return value
 
 
 def get_value_from_tunes(key):
