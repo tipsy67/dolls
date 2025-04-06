@@ -1,0 +1,35 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main class="main">
+    <section class="section">
+        <div class="box-commingsoon">
+            <div class="commingsoon-left wow bounceIn">
+                <div class="box-info-commingsoon">
+                    <h2 class="mb-10">Спасибо за выбор наших товаров!</h2>
+                    <p class="body-p2 mb-25">Заказ № {{order.pk}} на общую сумму {{order.get_total_cost}}
+                        зарегистрирован.</p>
+                    <p class="body-p2 mb-25">Мы с Вами свяжемся в ближайшее время.</p>
+                    <div class="form-newsletters">
+                        <form class="form-inline" action="#">
+                            <input class="form-control" type="text" placeholder="Email *">
+                            <button class="btn btn-black">Subcribe</button>
+                        </form>
+                    </div>
+                    <div class="mt-100">
+                        <div class="socials">
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/page/about1/fb.svg' %}" alt="Guza"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/page/about1/insta.svg' %}"
+                                             alt="Guza"></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="commingsoon-right wow bounceIn"></div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

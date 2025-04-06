@@ -1,505 +1,167 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=""><!--<![endif]-->
-<head>
-	<meta charset="utf-8">
+{% extends 'basic.html' %}
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
 
-    <meta name="description" content="">
-    <meta name="author" content="">
+<main class="main">
+    <div class="section block-breadcrumb">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="{% url 'dolls:shop' %}">Куклы</a></li>
+                    <li><a href="#">{{ product.name }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section block-product-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="detail-gallery detail-gallery-2">
+                        <div class="box-main-gallery">
+                            <!--                            <a class="zoom-image glightbox" href="assets/imgs/page/product/img.png"></a>-->
+                            <div class="product-image-slider product-image-slider-5">
+                                {% for image in product.images.all %}
+                                <figure class="border-radius-10"><a class="glightbox"
+                                                                    href="{{image|add_media}}"><img
+                                        src="{{image|add_media}}" alt="kidify"></a></figure>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="slider-nav-thumbnails slider-nav-thumbnails-5">
+                            {% for image in product.images.all %}
+                            <div>
+                                <div class="item-thumb"><img src="{{image|add_media}}" alt="kidify">
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="box-product-info">
+                        <p class="body-p2 viewed-guest"><span class="text-17-medium tone-red">24 guests</span>are
+                            viewing this product</p>
+                        <h3 class="mb-5">{{product.name}}</h3>
+                        <div class="block-rating"><img
+                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
+                                src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span
+                                class="text-17 neutral-medium-dark">(5)</span></div>
+                        <div class="block-price"><span class="price-main">{{product.price}}</span>
+                            {% if product.sale %}
+                            <span class="price-line">{{product.old_price}}</span>
+                            {% endif %}
+                        </div>
+                        <div class="block-description">
+                            <p class="body-p2 neutral-medium-dark">{{product.description}}</p>
+                        </div>
+                        <div class="block-quantity">
+<!--                            <div class="text-17 neutral-medium-dark mb-10">Наличие:</div>-->
+                            <div class="box-form-cart">
+                                {% if product.quantity %}
+<!--                                <div class="form-cart detail-qty"><span class="minus"></span>-->
+<!--                                    <input class="qty-val form-control" type="text" name="quantity"-->
+<!--                                           value="{{product.quantity}}"-->
+<!--                                           min="1"><span class="plus"></span>-->
+<!--                                </div>-->
+                                <a class="btn btn-black ajax-cart-add"
+                                   data-product_id="{{ product.pk }}"
+                                   {% if product.pk %}
+                                   data-url="{% url 'cart:cart_add' product.pk %}"
+                                   {% else %}
+                                   data-url="#"
+                                   {% endif %} href="#">
+                                    В корзину</a><a class="btn btn-navy" href="{% url 'cart:buy_now' product.pk %}">Купить</a>
+                                {% else %}
+                                нет в наличии
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="block-shipping">
+                            <div class="free-shipping">Free shipping over $300</div>
+                            <div class="time-shipping">60 - Days Returns Learn More</div>
+                        </div>
+                        <div class="block-tags-product">
+                            <p class="body-p2"><span class="neutral-medium-dark">Категория:</span>
+                                <a class="neutral-dark" href="#">{{product.category}}</a>
+                            </p>
+                            <p class="body-p2"><span class="neutral-medium-dark">Тэги:</span>
+                                {% for tag in product.tags.all %}
+                                <a class="neutral-dark" href="#">
+                                    {{tag}}
+                                    {% if not forloop.last %},{% endif %}
+                                </a>
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="block-socials-product"><span class="body-p2 neutral-medium-dark">Share:</span><a
+                                class="social-neutral-dark" href="#">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.9047 12.75H13.4437V20.1H10.1625V12.75H7.47187V9.73125H10.1625V7.40156C10.1625 4.77656 11.7375 3.3 14.1328 3.3C15.2813 3.3 16.4953 3.52969 16.4953 3.52969V6.12187H15.15C13.8375 6.12187 13.4437 6.90937 13.4437 7.7625V9.73125H16.3641L15.9047 12.75Z"
+                                      fill=""></path>
+                            </svg>
+                        </a><a class="social-neutral-dark" href="#">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.6609 8.2875C18.6609 8.45156 18.6609 8.58281 18.6609 8.74687C18.6609 13.3078 15.2156 18.525 8.88281 18.525C6.91406 18.525 5.10937 17.9672 3.6 16.9828C3.8625 17.0156 4.125 17.0484 4.42031 17.0484C6.02812 17.0484 7.50469 16.4906 8.68594 15.5719C7.17656 15.5391 5.89687 14.5547 5.47031 13.1766C5.7 13.2094 5.89687 13.2422 6.12656 13.2422C6.42187 13.2422 6.75 13.1766 7.0125 13.1109C5.4375 12.7828 4.25625 11.4047 4.25625 9.73125V9.69844C4.71562 9.96094 5.27344 10.0922 5.83125 10.125C4.87969 9.50156 4.28906 8.45156 4.28906 7.27031C4.28906 6.61406 4.45312 6.02344 4.74844 5.53125C6.45469 7.59844 9.01406 8.97656 11.8687 9.14062C11.8031 8.87812 11.7703 8.61562 11.7703 8.35312C11.7703 6.45 13.3125 4.90781 15.2156 4.90781C16.2 4.90781 17.0859 5.30156 17.7422 5.99062C18.4969 5.82656 19.2516 5.53125 19.9078 5.1375C19.6453 5.95781 19.1203 6.61406 18.3984 7.04062C19.0875 6.975 19.7766 6.77812 20.3672 6.51562C19.9078 7.20469 19.3172 7.79531 18.6609 8.2875Z"
+                                      fill=""></path>
+                            </svg>
+                        </a><a class="social-neutral-dark" href="#">
+                            <svg width="24" height="24" viewbox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.1375 11.7C20.1375 16.1953 16.4953 19.8375 12 19.8375C11.1469 19.8375 10.3266 19.7391 9.57187 19.4766C9.9 18.9516 10.3922 18.0656 10.5891 17.3437C10.6875 16.9828 11.0812 15.4078 11.0812 15.4078C11.3437 15.9328 12.1312 16.3594 12.9516 16.3594C15.4125 16.3594 17.1844 14.0953 17.1844 11.3062C17.1844 8.61562 14.9859 6.58125 12.1641 6.58125C8.65312 6.58125 6.78281 8.94375 6.78281 11.5031C6.78281 12.7172 7.40625 14.1937 8.42344 14.6859C8.5875 14.7516 8.68594 14.7187 8.71875 14.5547C8.71875 14.4562 8.88281 13.8984 8.94844 13.6359C8.94844 13.5703 8.94844 13.4719 8.88281 13.4062C8.55469 13.0125 8.29219 12.2578 8.29219 11.5359C8.29219 9.76406 9.6375 8.025 11.9672 8.025C13.9359 8.025 15.3469 9.37031 15.3469 11.3391C15.3469 13.5375 14.2312 15.0469 12.7875 15.0469C12 15.0469 11.4094 14.3906 11.5734 13.6031C11.8031 12.6187 12.2625 11.5687 12.2625 10.8797C12.2625 10.2562 11.9344 9.73125 11.2453 9.73125C10.425 9.73125 9.76875 10.5844 9.76875 11.7C9.76875 12.4219 9.99844 12.9141 9.99844 12.9141C9.99844 12.9141 9.21094 16.3266 9.04687 16.95C8.88281 17.6719 8.94844 18.6563 9.01406 19.2797C5.99531 18.0984 3.8625 15.1781 3.8625 11.7C3.8625 7.20469 7.50469 3.5625 12 3.5625C16.4953 3.5625 20.1375 7.20469 20.1375 11.7Z"
+                                      fill=""></path>
+                            </svg>
+                        </a><a class="social-neutral-dark" href="#">
+                            <svg width="29" height="28" viewbox="0 0 29 28" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.6001 10.0078C12.1001 10.0078 10.1079 12.0391 10.1079 14.5C10.1079 17 12.1001 18.9922 14.6001 18.9922C17.061 18.9922 19.0923 17 19.0923 14.5C19.0923 12.0391 17.061 10.0078 14.6001 10.0078ZM14.6001 17.4297C12.9985 17.4297 11.6704 16.1406 11.6704 14.5C11.6704 12.8984 12.9595 11.6094 14.6001 11.6094C16.2017 11.6094 17.4907 12.8984 17.4907 14.5C17.4907 16.1406 16.2017 17.4297 14.6001 17.4297ZM20.3032 9.85156C20.3032 9.26562 19.8345 8.79688 19.2485 8.79688C18.6626 8.79688 18.1938 9.26562 18.1938 9.85156C18.1938 10.4375 18.6626 10.9062 19.2485 10.9062C19.8345 10.9062 20.3032 10.4375 20.3032 9.85156ZM23.272 10.9062C23.1938 9.5 22.8813 8.25 21.8657 7.23438C20.8501 6.21875 19.6001 5.90625 18.1938 5.82812C16.7485 5.75 12.4126 5.75 10.9673 5.82812C9.56104 5.90625 8.3501 6.21875 7.29541 7.23438C6.27979 8.25 5.96729 9.5 5.88916 10.9062C5.81104 12.3516 5.81104 16.6875 5.88916 18.1328C5.96729 19.5391 6.27979 20.75 7.29541 21.8047C8.3501 22.8203 9.56104 23.1328 10.9673 23.2109C12.4126 23.2891 16.7485 23.2891 18.1938 23.2109C19.6001 23.1328 20.8501 22.8203 21.8657 21.8047C22.8813 20.75 23.1938 19.5391 23.272 18.1328C23.3501 16.6875 23.3501 12.3516 23.272 10.9062ZM21.397 19.6562C21.1235 20.4375 20.4985 21.0234 19.7563 21.3359C18.5845 21.8047 15.8501 21.6875 14.6001 21.6875C13.311 21.6875 10.5767 21.8047 9.44385 21.3359C8.6626 21.0234 8.07666 20.4375 7.76416 19.6562C7.29541 18.5234 7.4126 15.7891 7.4126 14.5C7.4126 13.25 7.29541 10.5156 7.76416 9.34375C8.07666 8.60156 8.6626 8.01562 9.44385 7.70312C10.5767 7.23438 13.311 7.35156 14.6001 7.35156C15.8501 7.35156 18.5845 7.23438 19.7563 7.70312C20.4985 7.97656 21.0845 8.60156 21.397 9.34375C21.8657 10.5156 21.7485 13.25 21.7485 14.5C21.7485 15.7891 21.8657 18.5234 21.397 19.6562Z"
+                                      fill=""></path>
+                            </svg>
+                        </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section block-may-also-like">
+        <div class="container">
+            <div class="text-center">
+                <h3 class="mb-60">You May Also Like</h3>
+            </div>
+            <div class="row">
+                <!--                <div class="col-lg-3 col-md-6">-->
+                <!--                    <div class="cardProduct wow fadeInUp">-->
+                <!--                        <div class="cardImage"><a href="#"><img class="imageMain"-->
+                <!--                                                                src="assets/imgs/page/homepage1/product5.png"-->
+                <!--                                                                alt="guza"><img class="imageHover"-->
+                <!--                                                                                src="assets/imgs/page/homepage1/product2-hover.png"-->
+                <!--                                                                                alt="guza"></a>-->
+                <!--                            <div class="button-select"><a href="#">Select Options</a></div>-->
+                <!--                        </div>-->
+                <!--                        <div class="cardInfo"><a href="#">-->
+                <!--                            <h6 class="text-16-medium cardTitle">{{product.name}}</h6></a>-->
+                <!--                            <p class="body-p2 cardDesc">-->
+                <!--                                {% if product.sale %}-->
+                <!--                                <del>{{product.old_price}}</del>-->
+                <!--                                {{product.price}}-->
+                <!--                                {% endif %}-->
+                <!--                                {{product.price}}-->
+                <!--                            </p>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</main>
 
-	<title>Maxshop - Shop Single</title>
-
-	<!-- Standard Favicon -->
-	<link rel="icon" type="image/x-icon" href="images//favicon.ico" />
-	
-	<!-- For iPhone 4 Retina display: -->
-	<link rel="apple-touch-icon-precomposed" href="images//apple-touch-icon-114x114-precomposed.png">
-	
-	<!-- For iPad: -->
-	<link rel="apple-touch-icon-precomposed" href="images//apple-touch-icon-72x72-precomposed.png">
-	
-	<!-- For iPhone: -->
-	<link rel="apple-touch-icon-precomposed" href="images//apple-touch-icon-57x57-precomposed.png">	
-	
-	<!-- Library - Google Font Familys -->
-	<link href="https://fonts.googleapis.com/css?family=Arizonia|Crimson+Text:400,400i,600,600i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	
-	<link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
- 
-	<!-- RS5.0 Layers and Navigation Styles -->
-	<link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
-	
-	<!-- Library - Bootstrap v3.3.5 -->
-    <link rel="stylesheet" type="text/css" href="libraries/lib.css">
-	
-	<!-- Custom - Common CSS -->
-	<link rel="stylesheet" type="text/css" href="css/plugins.css">			
-	<link rel="stylesheet" type="text/css" href="css/navigation-menu.css">
-	<link rel="stylesheet" type="text/css" href="css/shortcode.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	
-	
-	<!--[if lt IE 9]>
-		<script src="js/html5/respond.min.js"></script>
-    <![endif]-->
-	
-</head>
-
-<body data-offset="200" data-spy="scroll" data-target=".ow-navigation">
-	<div class="main-container">
-		<!-- Loader -->
-		<div id="site-loader" class="load-complete">
-			<div class="loader">
-				<div class="loader-inner ball-clip-rotate">
-					<div></div>
-				</div>
-			</div>
-		</div><!-- Loader /- -->	
-		
-		<!-- Header -->
-		<header class="header-section header-section-1 container-fluid no-padding">
-			<!-- Top Header -->
-			<div class="top-header top-header1 container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="col-md-7 col-sm-7 col-xs-7 dropdown-bar">
-						<h5>Welcome To Max Shop</h5>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="languages" id="language" type="button" class="btn dropdown-toggle">English <span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Danish</a></li>
-								<li><a title="German" href="#">German</a></li>
-								<li><a title="French" href="#">French</a></li>
-							</ul>
-						</div>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="currency" id="currency" type="button" class="btn dropdown-toggle">US Dollar<span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Usd</a></li>
-								<li><a title="German" href="#">Ora</a></li>
-								<li><a title="French" href="#">Riyal</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- Social -->
-					<div class="col-md-5 col-sm-5 col-xs-5 header-social"> 
-						<ul>
-							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-							<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-						</ul>
-					</div><!-- Social /- -->
-				</div><!-- Container /- -->
-			</div><!-- Top Header /- -->
-			
-			<!-- Middel Header -->
-			<div class="middel-header">
-				<!-- Container -->
-				<div class="container">
-					<!-- Logo Block -->
-					<div class="col-md-4 col-sm-6 col-xs-12 logo-block">
-						<a href="index.html" class="navbar-brand">Max <span>shop</span></a>
-					</div><!-- Logo Block /- -->
-					<!-- Search Block -->
-					<div class="col-md-5 col-sm-6 col-xs-6 search-block">
-						<div class="input-group">
-							<input class="form-control" placeholder="Search You Wants Here . . ." type="text">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button"><i class="icon icon-Search"></i></button>
-							</span>
-						</div>
-					</div><!-- Search Block /- -->
-					<!-- Menu Icon -->
-					<div class="col-md-3 col-sm-6 col-xs-6 menu-icon">
-						<ul class="cart">
-							<li>
-								<a aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" id="cart" class="btn dropdown-toggle" title="Add To Cart" href="#"><i class="icon icon-ShoppingCart"></i></a>
-								<ul class="dropdown-menu no-padding">
-									<li class="mini_cart_item">
-										<a title="Remove this item" class="remove" href="#">&#215;</a>
-										<a href="#" class="shop-thumbnail">
-											<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-1.jpg">Flying Ninja
-										</a>
-										<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-									</li>
-									<li class="mini_cart_item">
-										<a title="Remove this item" class="remove" href="#">&#215;</a>
-										<a href="#" class="shop-thumbnail">
-											<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-2.jpg">Flying Ninja
-										</a>
-										<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-									</li>
-									<li class="button">
-										<a href="#" title="View Cart">View Cart</a>
-										<a href="#" title="Check Out">Check out</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#" title="Like"><i class="icon icon-Heart"></i></a></li>
-							<li><a href="#" title="User"><i class="icon icon-User"></i></a></li>
-						</ul>
-					</div><!-- Menu Icon /- -->
-				</div><!-- Container /- -->
-			</div><!-- Middel Header /- -->
-			
-			<!-- Menu Block -->
-			<div class="container-fluid no-padding menu-block">
-				<!-- Container -->
-				<div class="container">
-					<!-- nav -->
-					<nav class="navbar navbar-default ow-navigation">
-						<div class="navbar-header">
-							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a href="index.html" class="navbar-brand">Max <span>shop</span></a>
-						</div>
-						<div class="navbar-collapse collapse" id="navbar">
-							<ul class="nav navbar-nav">
-								<li class="dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="index.html" title="home 1">home 1</a></li>
-										<li><a href="index2.html" title="home 2">home 2</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Categories </a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="cart.html" title="Cart">Cart</a></li>
-										<li><a href="checkout.html" title="Checkout">Checkout</a></li>
-										<li><a href="404.html" title="404">404</a></li>
-									</ul>
-								</li>
-								<li><a href="index.html#product-section" title="Products">Products</a></li>
-								<li class="active dropdown">
-									<a href="shop.html" title="Shop" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="shop-single.html" title="Shop Single">Shop Single</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="blog.html" title="Blog" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="blog-post.html" title="Blog Post">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="about.html" title="About Us">About Us</a></li>
-								<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-							</ul>
-						</div><!--/.nav-collapse -->
-					</nav><!-- nav /- -->
-				</div><!-- Container /- -->
-			</div><!-- Menu Block /- -->
-		</header><!-- Header /- -->
-		
-		<main>
-			<!-- Page Banner -->
-			<div class="page-banner container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="banner-content">
-						<h3>Shop Single</h3>
-						<p>our vision is to be Earth's most customer centric company</p>
-					</div>
-					<ol class="breadcrumb">
-						<li><a href="index.html" title="Home">Home</a></li>							
-						<li class="active">Shop</li>
-					</ol>
-				</div><!-- Container /- -->
-			</div><!-- Page Banner /- -->
-			
-			<!-- Shop Single -->
-			<div class="shop-single container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="product-views">
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="carousel-item">
-								<div class="item">
-									<img src="images/product.jpg" alt="product" />
-								</div>
-								
-								<div class="item">
-									<img src="images/product.jpg" alt="product" />
-								</div>
-								
-								<div class="item">
-									<img src="images/product.jpg" alt="product" />
-								</div>
-							</div>
-						</div>
-						<!-- Entry Summary -->
-						<div class="col-md-6 col-sm-6 col-xs-12 entry-summary">
-							<h3 class="product_title">mens casual shoes</h3>
-							<div class="product-rating">
-								<div class="star-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-o"></i>
-								</div>
-								<a href="#review-link" class="review-link">20 reviews</a>
-							</div>
-							<p class="stock in-stock"><span>Availablity:</span> in stock</p>
-							<div>
-								<p>So this is the tale of our castaways they're here for a long long time. They'll have to make the best of things its an uphill climb. Now were up in the big leagues getting' our turn at bat.</p>
-							</div>
-							<span class="price"><del>$850</del> $550</span>
-							<form>
-								<div class="product-attribute">
-									<div class="select">
-										<select>
-											<option>Color *</option>
-											<option>Black</option>
-											<option>Green</option>
-											<option>Blue</option>
-										</select>
-									</div>
-									<div class="select">
-										<select>
-											<option>Size *</option>
-											<option>L</option>
-											<option>M</option>
-											<option>XL</option>
-											<option>XXL</option>
-										</select>
-									</div>
-								</div>
-								<div class="product-quantity" data-title="Quantity">
-									<input type="button" value="-" class="qtyminus btn" data-field="quantity1">
-									<input type="text" name="quantity1" value="0" class="qty btn">
-									<input type="button" value="+" class="qtyplus btn" data-field="quantity1">
-								</div>
-								<button title="Add To Cart" class="add_to_cart">Add To Cart</button>
-							</form>
-							<div class="product_meta">
-								<span class="posted_in">
-									<a href="#"><i class="fa fa-heart"></i></a>
-									<a href="#"><i class="fa fa-retweet"></i></a>
-									<a href="#"><i class="fa fa-envelope-o"></i></a>
-								</span>
-								<ul class="social">
-									<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-									<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-								</ul>
-							</div>
-						</div><!-- Entry Summary /- -->
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12 description">
-						<h5>Description about this product</h5>
-						<p>A shadowy flight into the dangerous world of a man who does not exist. And we'll do it our way yes our way. Make all our dreams come true for me and you. Makin their way the only way they know how. That's just a little bit more than the law will allow. Doin' it our way. Nothin's gonna turn us back now. Straight ahead and on the track now. We're gonna make our dreams come true Takin' a break from all your worries sure would help a lot. Believe it or not I'm walking on air. I never thought I could feel so free. Flying away on a wing and a prayer. Who could it be? Believe it or not its just me. </p>
-					</div>
-					<!-- Product Section -->
-					<div class="product-section container-fluid no-padding">
-						<!-- Section Header -->
-						<div class="section-header">
-							<h3>Related Products</h3>
-							<p>our vision is to be Earth's most customer centric company</p>
-							<img src="images/section-seprator.png" alt="section-seprator" />
-						</div><!-- Section Header /- -->
-						<!-- Products -->
-						<ul class="products">
-							<!-- Product -->
-							<li class="product">
-								<a href="#">
-									<img src="images/product-1.jpg" alt="Product" />
-									<h5>Stylish Chair</h5>
-									<span class="price"><del>$200</del>$139</span>
-								</a>
-								<div class="wishlist-box">
-									<a href="#"><i class="fa fa-arrows-alt"></i></a>
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-								<a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-							</li><!-- Product /- -->
-							
-							<!-- Product -->
-							<li class="product">
-								<a href="#">
-									<img src="images/product-2.jpg" alt="Product" />
-									<h5>men's casual shoes</h5>
-									<span class="price"><del>$150</del>$85</span>
-								</a>
-								<div class="wishlist-box">
-									<a href="#"><i class="fa fa-arrows-alt"></i></a>
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-								<a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-							</li><!-- Product /- -->
-							
-							<!-- Product -->
-							<li class="product">
-								<a href="#">
-									<img src="images/product-3.jpg" alt="Product" />
-									<h5>Sun glass</h5>
-									<span class="price"><del>$100</del>$35</span>
-								</a>
-								<div class="wishlist-box">
-									<a href="#"><i class="fa fa-arrows-alt"></i></a>
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-								<a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-							</li><!-- Product /- -->
-							
-							<!-- Product -->
-							<li class="product">
-								<a href="#">
-									<img src="images/product-4.jpg" alt="Product" />
-									<h5>tourist bags</h5>
-									<span class="price"><del>$350</del>$279</span>
-								</a>
-								<div class="wishlist-box">
-									<a href="#"><i class="fa fa-arrows-alt"></i></a>
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-								<a href="#" class="addto-cart" title="Add To Cart">Add To Cart</a>
-							</li><!-- Product /- -->
-						</ul><!-- Products /- -->
-					</div><!-- Product Section /- -->
-					<nav class="ow-pagination">
-						<ul class="pager">
-							<li class="number"><a href="#">4</a></li>
-							<li class="load-more"><a href="#">Load More</a></li>
-							<li class="previous"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-							<li class="next"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-						</ul>
-					</nav>
-				</div><!-- Container /- -->
-			</div><!-- Shop Single /- -->
-		</main>
-		
-		<!-- Footer Main 1 -->
-		<footer id="footer-main" class="footer-main footer-main-1 services-section container-fluid">
-			<!-- Container -->
-			<div class="container">
-				<div class="services-item">
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="srv-box">
-							<i class="icon icon-Truck"></i><h5>Free delivery</h5><i class="icon icon-Dollar"></i>
-							<span class="icon_close"></span>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="srv-box">
-							<i class="icon icon-Goto"></i><h5>Money Back</h5><i class="icon icon-Dollars"></i>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-6">
-						<div class="srv-box">
-							<i class="icon icon-Headset"></i><h5>24/7 support</h5><i class="icon icon-Timer"></i>
-						</div>
-					</div>
-				</div>
-				<!-- Widget About -->
-				<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_about">
-					<a href="index.html" title="Max Shop">Max <span>Shop</span></a>
-					<p>On the most sensational inspirational celbrational Muppetational... This is what we call Show. I have always wanted to have a neighbor just like you.</p>
-					<ul class="social">
-						<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-						<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-					</ul>
-				</aside><!-- Widget About /- -->
-				<!-- Widget Links -->
-				<aside class="col-md-2 col-sm-6 col-xs-6 ftr-widget widget_links">
-					<h3 class="widget-title">Popular Links</h3>
-					<ul>
-						<li><a href="index.html#product-section" title="Popular Products">Popular Products</a></li>
-						<li><a href="index.html#selling" title="Best Selling">Best Selling</a></li>
-						<li><a href="about.html" title="About Us">About Us</a></li>
-						<li><a href="index.html#dealing" title="Deal Of The Day">Deal Of The Day</a></li>
-						<li><a href="index.html#collection" title="Product Collections">Product Collections</a></li>
-						<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-					</ul>
-				</aside><!-- Widget Links /- -->
-				<!-- Widget Account -->
-				<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links widget_account">
-					<h3 class="widget-title">my account</h3>
-					<ul>
-						<li><a href="#" title="My Order Details">My Order Details</a></li>
-						<li><a href="#" title="My credit Offers">My credit Offers</a></li>
-						<li><a href="#" title="My addresses">My addresses</a></li>
-						<li><a href="#" title="My Personal Details">My Personal Details</a></li>
-						<li><a href="#" title="My Account Details">My Account Details</a></li>
-					</ul>
-				</aside><!-- Widget Account /- -->
-				<!-- Widget Gallery -->
-				<aside class="col-md-4 col-sm-6 col-xs-6 ftr-widget widget_gallery">
-					<h3 class="widget-title">collections</h3>
-					<ul>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-1.jpg" alt="ftr-latestpost"></a></li>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-2.jpg" alt="ftr-latestpost"></a></li>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-3.jpg" alt="ftr-latestpost"></a></li>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-4.jpg" alt="ftr-latestpost"></a></li>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-5.jpg" alt="ftr-latestpost"></a></li>
-						<li><a href="#" title=""><img src="images/ftr-latestpost-6.jpg" alt="ftr-latestpost"></a></li>
-					</ul>
-				</aside><!-- Widget Gallery -->
-				<div class="copyright-section">
-					<div class="coyright-content">
-						<p>&copy; Max shop. all rights reserved</p>
-					</div>	
-					<ul>
-						<li><a href="#" title="Delivery Information">Delivery Information</a></li>
-						<li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
-						<li><a href="#" title="Terms & Condition">Terms & Condition</a></li>
-					</ul>
-				</div>
-			</div><!-- Container /- -->
-		</footer><!-- Footer Main 1 -->
-
-	</div>
-	
-	<!-- JQuery v1.12.4 -->
-	<script src="js/jquery.min.js"></script>
-
-	<!-- Library - Js -->
-	<script src="libraries/lib.js"></script>
-	
-	<script src="libraries/jquery.countdown.min.js"></script>
-	
-	<!-- RS5.0 Core JS Files -->
-	<script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
-	<script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
-	<script type="text/javascript" src="revolution/js/extensions/revolution.extension.video.min.js"></script>
-	<script type="text/javascript" src="revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-	<script type="text/javascript" src="revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-	<script type="text/javascript" src="revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-	
-	<!-- Library - Google Map API -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDW40y4kdsjsz714OVTvrw7woVCpD8EbLE"></script>
-
-	<!-- Library - Theme JS -->
-	<script src="js/functions.js"></script>
-	
-</body>
-</html>
-	
+{% endblock content %}

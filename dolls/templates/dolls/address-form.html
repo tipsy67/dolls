@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <div class="section block-breadcrumb">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Адрес</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60 ">
+            <form method="post" action="" enctype="multipart/form-data">
+                <div class="row mt-20 d-flex justify-content-center">
+                    <div class="col-lg-6">
+                        <h4 class="py-3">{{title_form}}</h4>
+                        <div class="box-form-checkout form-comment">
+                            <div class="col-md-12">
+                                {% csrf_token %}
+                                <div class="form-error text-end">{{ form.non_field_errors }}</div>
+                                {% for f in form %}
+                                <div class="form-group">
+                                    {% if f.label %}
+                                    <label class="form-label" for="{{ f.id_for_label }}">
+                                        {{ f.label }}</label>
+                                    {% endif %}
+                                    {{ f| add_attrs }}
+                                </div>
+                                <div class="form-error">{{ f.errors }}</div>
+                                {% endfor %}
+                                {% if user.is_authenticated %}
+                                <div class="box-button-checkout">
+                                    <button class="btn btn-black" type="submit">Сохранить</button>
+                                    {% if object.pk %}
+                                    <a class="btn btn-grey my-1"
+                                       href="{% url 'users:address_delete' object.pk %}?next={{ request.META.HTTP_REFERER }}">Удалить</a>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
+	

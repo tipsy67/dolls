@@ -1,0 +1,48 @@
+<div class="text-center mt-50">
+    <nav class="box-pagination">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link page-prev"
+                   {% if page.has_previous %}
+                   href="?{{page_name}}={{ page.previous_page_number }}"
+                   {% else %}
+                   href="#"
+                   style="pointer-events: none; opacity: 0.6;"
+                   {% endif %}>
+                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"></path>
+                    </svg>
+                </a>
+            </li>
+            {% for p in page.paginator.page_range %}
+            {% if page.number == p %}
+                <li class="page-item"><a class="page-link active" href="#">{{ p }}</a></li>
+            {% elif p >= page.number|add:-2 and p <= page.number|add:2 %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+            <li class="page-item">
+                <a class="page-link page-next"
+                   {% if page.has_next %}
+                   href="?{{page_name}}={{ page.next_page_number }}"
+                   {% else %}
+                   href="#"
+                   style="pointer-events: none; opacity: 0.6;"
+                   {% endif %}>
+                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+

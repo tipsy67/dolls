@@ -7,18 +7,39 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Banner',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('title', models.CharField(max_length=300, verbose_name='Заголовок')),
-                ('content', models.TextField(blank=True, null=True, verbose_name='Описание')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='tunes/', verbose_name='Изображение')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Активно')),
+                (
+                    'content',
+                    models.TextField(blank=True, null=True, verbose_name='Описание'),
+                ),
+                (
+                    'image',
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to='tunes/',
+                        verbose_name='Изображение',
+                    ),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Активно'),
+                ),
             ],
             options={
                 'verbose_name': 'Заглавный баннер',
@@ -29,14 +50,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Contact',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('country', models.CharField(max_length=50, verbose_name='Страна')),
                 ('inn', models.CharField(max_length=20, verbose_name='ИНН')),
                 ('address', models.CharField(max_length=255, verbose_name='Адрес')),
                 ('phone', models.CharField(max_length=30, verbose_name='Телефон')),
                 ('email', models.EmailField(max_length=254, verbose_name='Эл.почта')),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('is_published', models.BooleanField(default=False, verbose_name='Активно')),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Активно'),
+                ),
             ],
             options={
                 'verbose_name': 'Контакт',
@@ -47,13 +79,35 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Feedback',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=30, verbose_name='Имя')),
-                ('phone', models.CharField(blank=True, max_length=20, null=True, verbose_name='Телефон')),
+                (
+                    'phone',
+                    models.CharField(
+                        blank=True, max_length=20, null=True, verbose_name='Телефон'
+                    ),
+                ),
                 ('message', models.TextField(blank=True, verbose_name='Сообщение')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Создано')),
-                ('is_read', models.BooleanField(default=False, verbose_name='Прочитано')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Публиковать')),
+                (
+                    'created_at',
+                    models.DateTimeField(auto_now_add=True, verbose_name='Создано'),
+                ),
+                (
+                    'is_read',
+                    models.BooleanField(default=False, verbose_name='Прочитано'),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Публиковать'),
+                ),
             ],
             options={
                 'verbose_name': 'Отзыв',
@@ -64,10 +118,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Quote',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
                 ('name', models.CharField(max_length=150, verbose_name='Имя')),
                 ('quote', models.TextField(blank=True, verbose_name='Цитата')),
-                ('is_published', models.BooleanField(default=False, verbose_name='Публиковать')),
+                (
+                    'is_published',
+                    models.BooleanField(default=False, verbose_name='Публиковать'),
+                ),
             ],
             options={
                 'verbose_name': 'Цитата',
@@ -77,12 +142,46 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TunesDict',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('key', models.CharField(max_length=30, unique=True, verbose_name='Ключ')),
-                ('value_int', models.CharField(blank=True, null=True, verbose_name='Целочисленное значение')),
-                ('value_char', models.CharField(blank=True, max_length=100, null=True, verbose_name='Строковое значение')),
-                ('value_time', models.TimeField(blank=True, null=True, verbose_name='Константа времени')),
-                ('value_date', models.DateField(blank=True, null=True, verbose_name='Константа даты')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'key',
+                    models.CharField(max_length=30, unique=True, verbose_name='Ключ'),
+                ),
+                (
+                    'value_int',
+                    models.CharField(
+                        blank=True, null=True, verbose_name='Целочисленное значение'
+                    ),
+                ),
+                (
+                    'value_char',
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        null=True,
+                        verbose_name='Строковое значение',
+                    ),
+                ),
+                (
+                    'value_time',
+                    models.TimeField(
+                        blank=True, null=True, verbose_name='Константа времени'
+                    ),
+                ),
+                (
+                    'value_date',
+                    models.DateField(
+                        blank=True, null=True, verbose_name='Константа даты'
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'Тонкие настройки',

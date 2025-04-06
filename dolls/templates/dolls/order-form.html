@@ -1,0 +1,106 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+<main class="main">
+    <div class="section block-breadcrumb">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Заказ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60">
+            <form method="post" action="" enctype="multipart/form-data" id="placeOrderForm">
+                {% csrf_token %}
+                <div class="row mt-20 {% if not user.is_authenticated %} d-flex justify-content-center {% endif %}">
+                    <div class="col-lg-6">
+                        <div class="box-form-checkout form-comment">
+                            <h4 class="mt-32 mb-25">{{title_form}}</h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-error">{{ form.non_field_errors }}</div>
+                                    {% for f in form %}
+                                    <div class="form-error text-end text-danger">{{ f.errors }}</div>
+                                    <div class="form-group">
+                                        {% if not forloop.last %}
+                                        <label class="form-label" for="{{ f.id_for_label }}">
+                                            {{ f.label }}</label>
+                                        {% endif %}
+                                        {{ f| add_attrs }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="col-lg-6">
+                        <div class="box-detail-cart">
+                            <h4 class="mb-25"> Ваш заказ </h4>
+                            <div class="box-info-cart">
+<!--                                <p class="text-17-medium text-uppercase">Product</p>-->
+                                <div class="box-info-checkout-inner">
+                                    <div class="list-items-cart">
+                                        {% for item in cart %}
+                                        <div class="item-cart">
+                                            <div class="item-cart-image"><img src="{{item.product.one_image|add_media}}"
+                                                                              alt="Guza"></div>
+                                            <div class="item-cart-info">
+                                                <div class="item-cart-info-1">
+                                                    <a class="text-17-medium"
+                                                       href="{% url 'dolls:shop_single' item.product.pk %}">
+                                                        {{ item.product.name }} - x{{ item.quantity }}</a>
+<!--                                                    <p class="box-color"><span class="body-p2 neutral-medium-dark">Color: </span><span-->
+<!--                                                            class="body-p2 neutral-dark">Navy </span></p>-->
+<!--                                                    <p class="box-size"><span-->
+<!--                                                            class="body-p2 neutral-medium-dark">Size:  </span><span-->
+<!--                                                            class="body-p2 neutral-dark">S  </span></p>-->
+                                                </div>
+                                                <div class="item-cart-info-2">
+                                                    <p class="body-p2">{{ item.total_price }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between box-border-bottom">
+                                    <h5 class="neutral-medium-dark">Предварительный итог</h5>
+                                    <h5 class="neutral-dark">{{cart.get_total_price}}</h5>
+                                </div>
+                                <div class="box-other-link text-start box-border-bottom"><span
+                                        class="text-17 link-green">Бесплатная доставка при покупке от {{limit_free_shipping}}</span>
+                                    <a class="text-17 text-primary" href="{% url 'dolls:shop' %}">Продолжить покупки</a>
+                                </div>
+                                <div class="box-desc-checkout">
+                                    <p class="body-p2 neutral-medium-dark mb-20">Персональные данные пользователя обрабатываются
+                                        в целях исполнения заказа, обеспечения функционирования сайта и иных целей,
+                                        предусмотренных Политикой конфиденциальности.</p>
+                                    <div class="form-group">
+                                        <label>
+                                            <input class="cb-left" type="checkbox" id="termsCheckbox"> Я согласен с условиями
+                                            <a href="#">политики *</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="box-button-checkout">
+                                    <a class="btn btn-black btn-disabled" id="placeOrderButton"
+                                       href="javascript:void(0);" onclick="document.getElementById('placeOrderForm').submit();">
+                                        Разместить заказ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock content %}

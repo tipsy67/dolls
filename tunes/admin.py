@@ -1,24 +1,24 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
-from tunes.models import Feedback, Quote, TunesDict, Banner, Contact
+from tunes.models import Feedback, TunesDict, Banner
 
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('email', 'phone', 'address',)
-
-@admin.register(Quote)
-class QuoteAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'created_at', 'email', 'phone', 'is_read')
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):
-    list_display = ('key', 'value_int', 'value_char', 'value_date', 'value_time')
+    list_display = ('key', 'value', 'description')
+
 
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
-    list_display = ('title', 'short_content')
+    list_display = ('pk', 'photo_banner', 'title')
+
+    @admin.display(description="Просмотр")
+    def photo_banner(self, banner: Banner):
+        if banner.image:
+            return mark_safe(f"<img src='{banner.image.url}' width=50>")
+        return "Без изображения"

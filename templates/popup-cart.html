@@ -1,0 +1,78 @@
+{% load dolls_tags %}
+{% load static %}
+
+<div class="box-popup-cart" data-url="{% url 'cart:cart_partial_update' %}">
+    <div class="box-cart-overlay"></div>
+    <div class="box-cart-wrapper"><a class="btn-close-popup" href="#">
+        <svg class="icon-16 d-inline-flex align-items-center justify-content-center" fill="#111111" stroke="#111111"
+             width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </a>
+        <h5 class="mb-15">Ваша корзина</h5>
+        <p class="body-p2"><span class="text-17-medium text-success">
+            Бесплатная доставка при покупке от {{limit_free_shipping}}</span>
+        </p>
+        <div class="box-progress-bar-block">
+            <div class="progress">
+                <div class="progress-bar" style="width: 35%"></div>
+            </div>
+        </div>
+        <div class="box-products-cart">
+            <div class="box-empty-cart d-none">
+                <div class="icon-empty-cart"><img src="{% static 'dolls/assets/imgs/template/icons/empty-cart.svg' %}" alt="Guza"></div>
+                <div class="info-empty-cart">
+                    <p class="text-17 neutral-medium-dark">Your cart is empty</p><a class="link-underline" href="#">Add
+                    from Wishlist</a>
+                </div>
+            </div>
+            <div class="list-items-cart">
+                {% for item in cart %}
+                {% with product=item.product %}
+
+                <div class="item-cart">
+                    <div class="item-cart-image">
+                        <img src="{{product.one_image|add_media}}" alt="Guza">
+                    </div>
+                    <div class="item-cart-info">
+                        <div class="item-cart-info-1">
+                            <a class="text-16-medium"
+                               href="{% url 'dolls:shop_single' product.pk %}">{{product.name}}</a>
+                            <div class="box-info-size-color-product">
+<!--                                <p class="box-color"><span-->
+<!--                                        class="body-p2 neutral-dark">{{item.quantity}}</span> </p>-->
+                            </div>
+                            <p class="body-p2 d-block d-sm-none mb-8">{{item.price}}</p>
+                            <div class="box-form-cart">
+                                <div class="form-cart detail-qty"><span class="minus"></span>
+                                    <input class="qty-val form-control" type="text" name="quantity"
+                                           value="{{item.quantity}}"
+                                           min="1"><span class="plus"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-cart-info-2">
+                            <p class="body-p2 d-none d-sm-block">{{item.total_price}}</p>
+                            <a class="btn-remove-cart" href="#" data-url="{% url 'cart:cart_remove' product.pk %}"></a>
+                        </div>
+                    </div>
+                </div>
+                {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!--        <div class="box-fire">-->
+        <!--            <div class="icon-fire body-p2">Checkout now 09:14 before they’re<span class="text-17-medium">GONE!</span>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="d-flex align-items-center justify-content-between mt-25 mb-15">
+            <h6 class="neutral-medium-dark">Предварительный итог:</h6>
+            <h6 class="neutral-dark">{{cart.get_total_price}}</h6>
+        </div>
+        <div class="box-button-popup-cart d-flex align-items-center justify-content-between"><a
+                class="btn btn-border w-100 mr-5" href="{% url 'cart:cart_detail' %}">Подробнее</a><a class="btn btn-black w-100 ml-5"
+                                                                                   href="{% url 'cart:order_create' %}">Заказать</a>
+        </div>
+    </div>
+</div>

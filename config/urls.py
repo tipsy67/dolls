@@ -6,11 +6,11 @@ from config import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('dolls.urls', namespace='optics')),
-    # path('', include(('blog.urls', 'blog'), namespace='blog')),
-    # path('', include(('appointment.urls', 'appointment'), namespace='appointment')),
-    # path('', include(('users.urls', 'users'), namespace='users')),
-    # path('', include(('cart.urls', 'cart'), namespace='cart')),
+    path('', include('dolls.urls', namespace='dolls')),
+    path('', include('tags.urls', namespace='tags')),
+    path('', include(('blog.urls', 'blog'), namespace='blog')),
+    path('', include(('users.urls', 'users'), namespace='users')),
+    path('', include(('cart.urls', 'cart'), namespace='cart')),
 ]
 
 if settings.DEBUG:

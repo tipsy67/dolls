@@ -7,7 +7,9 @@ class UsersAppTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create(username='test') #, inn='test', address='test', phone='test', email='test@test.test')
+        cls.user = User.objects.create(
+            username='test'
+        )  # , inn='test', address='test', phone='test', email='test@test.test')
 
     def test_user_model(self):
         user = User.objects.get(id=self.user.pk)
@@ -41,13 +43,11 @@ class UsersAppTest(TestCase):
 
         self.assertEqual(user.is_medic, False)
 
-
     def test_fio(self):
         user = User.objects.get(id=self.user.pk)
 
         expected_object_name = '%s %s' % (user.last_name, user.first_name)
         self.assertEqual(expected_object_name, user.fio)
-
 
     def test_generate_password(self):
         user = User.objects.get(id=self.user.pk)

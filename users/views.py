@@ -4,17 +4,17 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import LoginView as BaseLoginView
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 
-from appointment.tasks import sendmail
-from users.forms import CreateUserForm, ProfileUpdateForm
-from users.models import User
+from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
+from users.models import User, Address
 
 
 class LoginView(BaseLoginView):
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Вход на сайт'}
 
     def form_valid(self, form):
@@ -28,11 +28,11 @@ class LoginView(BaseLoginView):
                 password = user.generate_password(8)
                 user.password = make_password(password)
                 user.save()
-                sendmail.delay(
-                    [user.email],
-                    'Восстановление пароля',
-                    f'{user.username} Ваш новый пароль {password}',
-                )
+                # sendmail.delay(
+                #     [user.email],
+                #     'Восстановление пароля',
+                #     f'{user.username} Ваш новый пароль {password}',
+                # )
                 messages.success(self.request, 'На вашу почту отправлен пароль')
                 return redirect(reverse('users:login'))
             else:
@@ -43,7 +43,7 @@ class LoginView(BaseLoginView):
 class ProfileUpdateView(UpdateView):
     model = get_user_model()
     form_class = ProfileUpdateForm
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Профиль пользователя'}
 
     def get_success_url(self):
@@ -56,7 +56,7 @@ class ProfileUpdateView(UpdateView):
 class UserCreateView(CreateView):
     model = get_user_model()
     form_class = CreateUserForm
-    template_name = 'users/user_form.html'
+    template_name = 'dolls/user-form.html'
     extra_context = {'title_form': 'Регистрация пользователя', 'create_user': True}
     success_url = reverse_lazy('users:login')
 
@@ -66,13 +66,13 @@ class UserCreateView(CreateView):
         user.is_active = False
         user.token = token
         user.save()
-        sendmail.delay(
-            [user.email],
-            'Подтверждение регистрации',
-            'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
-            + f'http://{self.request.get_host()}/confirm/{token}',
-        )
-
+        # sendmail.delay(
+        #     [user.email],
+        #     'Подтверждение регистрации',
+        #     'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
+        #     + f'http://{self.request.get_host()}/confirm/{token}',
+        # )
+        print(f'http://{self.request.get_host()}/confirm/{token}')
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')
 
         return super().form_valid(form)
@@ -92,4 +92,72 @@ def logout_form(request):
         'return_url': request.META.get('HTTP_REFERER'),
     }
 
-    return render(request, 'users/logout_form.html', context)
+    return render(request, 'dolls/user-logout.html', context)
+
+
+# Адреса
+
+
+class AddressCreateView(CreateView):
+    model = Address
+    template_name = 'dolls/address-form.html'
+    form_class = AddressForm
+    extra_context = {'title_form': "Новый адрес доставки"}
+
+    def get_success_url(self):
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
+
+    def form_valid(self, form):
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.save()
+
+        return super().form_valid(form)
+
+
+class AddressUpdateView(UpdateView):
+    model = Address
+    template_name = 'dolls/address-form.html'
+    form_class = AddressForm
+    extra_context = {'title_form': "Адрес доставки"}
+
+    def get_success_url(self):
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
+
+
+class AddressDeleteView(DeleteView):
+    model = Address
+    template_name = 'dolls/address-delete.html'
+    extra_context = {
+        'title_form': "Вы действительно хотите удалить этот адрес?",
+        # 'back_url': reverse_lazy(request.GET.get('next', '/'))
+    }
+
+    def get_success_url(self):
+        return self.request.GET.get('next', self.request.POST.get('next', '/'))
+
+
+def change_status(request, pk):
+    if request.method == "POST":
+        # Деактивируем все адреса текущего пользователя
+        Address.objects.filter(user=request.user).update(is_active=False)
+
+        # Активируем выбранный адрес
+        address = get_object_or_404(Address, pk=pk)
+        address.is_active = True
+        address.save()
+
+        return JsonResponse(
+            {
+                'success': True,
+                'active_address': address.id,
+                'message': f'{address.name} был установлен как основной',  # Сообщение для пользователя
+                'message_type': 'success',  # Тип сообщения (success, warning, danger)
+            }
+        )
+
+    return JsonResponse({"success": False}, status=400)
+
+
+# /Адреса

@@ -1,299 +1,258 @@
 <!DOCTYPE html>
+<html lang="en">
 {% load static %}
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class=""><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="msapplication-TileColor" content="#0E0E0E">
+    <meta name="template-color" content="#0E0E0E">
+    <meta name="description" content="Index page">
+    <meta name="keywords" content="index, page">
     <meta name="author" content="">
-
-	<title>Maxshop - Home1</title>
-
-	<!-- Standard Favicon -->
-	<link rel="icon" type="image/x-icon" href="{% static 'dolls/images//favicon.ico' %}" />
-	
-	<!-- For iPhone 4 Retina display: -->
-	<link rel="apple-touch-icon-precomposed" href="{% static 'dolls/images//apple-touch-icon-114x114-precomposed.png' %}">
-	
-	<!-- For iPad: -->
-	<link rel="apple-touch-icon-precomposed" href="{% static 'dolls/images//apple-touch-icon-72x72-precomposed.png' %}">
-	
-	<!-- For iPhone: -->
-	<link rel="apple-touch-icon-precomposed" href="{% static 'dolls/images//apple-touch-icon-57x57-precomposed.png' %}">
-	
-	<!-- Library - Google Font Familys -->
-	<link href="https://fonts.googleapis.com/css?family=Arizonia|Crimson+Text:400,400i,600,600i,700,700i|Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-	
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/revolution/css/settings.css' %}">
- 
-	<!-- RS5.0 Layers and Navigation Styles -->
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/revolution/css/layers.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/revolution/css/navigation.css' %}">
-	
-	<!-- Library - Bootstrap v3.3.5 -->
-    <link rel="stylesheet" type="text/css" href="{% static 'dolls/libraries/lib.css' %}">
-	
-	<!-- Custom - Common CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/css/plugins.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/css/navigation-menu.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/css/shortcode.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'dolls/style.css' %}">
-	
-	
-	<!--[if lt IE 9]>
-		<script src="{% static 'dolls/js/html5/respond.min.js' %}"></script>
-    <![endif]-->
-	
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'dolls/assets/imgs/template/favicon.svg' %}">
+    <link href="{% static 'dolls/assets/css/style.css' %}?v=1.0.0" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Home - Natural Skins - Multipurpose Startup SaaS HTML Template</title>
 </head>
+<body>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="page-loading">
+                <div class="page-loading-inner">
+                    <div class="scaling-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="header sticky-bar header-type1">
+    <div class="container">
+        <div class="main-header">
+            <div class="header-logo">
+                <a class="d-flex" href="{% url 'dolls:home' %}">
+                    <img alt="luxride" src="{% static 'dolls/assets/imgs/template/logo.png' %}">
+                </a>
+            </div>
+            <div class="header-menu">
+                <div class="header-nav">
+                    <nav class="nav-main-menu d-none d-xl-block">
+                        <ul class="main-menu">
+                            <li class="has-mega-menu"><a class="active" href="{% url 'dolls:home' %}">Главная</a>
+                            </li>
+                            <li class="has-children"><a href="{% url 'dolls:shop' %}">Куклы</a>
+                            </li>
+                            <li class="has-children"><a href="{% url 'blog:blog_list' %}">Блог</a>
+                            </li>
+                            <li class="has-children"><a href="{% url 'dolls:history' %}">Мастерская</a>
+                            </li>
+                            <li><a href="{% url 'dolls:about' %}">Обо мне</a></li>
+                        </ul>
+                    </nav>
+                    <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span
+                            class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
+                </div>
+            </div>
+            <div class="header-account">
+                <a class="account-icon search" href="#">
+                    <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
+                         viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_91_73)">
+                            <path d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"></path>
+                        </g>
+                        <defs>
+                            <clippath id="clip0_91_73">
+                                <rect width="24" height="24" fill="white" transform="translate(2 2)"></rect>
+                            </clippath>
+                        </defs>
+                    </svg>
+                </a>
+                <a class="account-icon account"
+                   {% if user.is_authenticated %}
+                   href="{% url 'users:profile' %}" title="Профиль"
+                   {% else %}
+                   href="{% url 'users:login' %}" title="Войти"
+                   {% endif %}>
+                    <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
+                         viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_116_451)">
+                            <path d="M6 24C6 21.8783 6.84285 19.8434 8.34315 18.3431C9.84344 16.8429 11.8783 16 14 16C16.1217 16 18.1566 16.8429 19.6569 18.3431C21.1571 19.8434 22 21.8783 22 24H20C20 22.4087 19.3679 20.8826 18.2426 19.7574C17.1174 18.6321 15.5913 18 14 18C12.4087 18 10.8826 18.6321 9.75736 19.7574C8.63214 20.8826 8 22.4087 8 24H6ZM14 15C10.685 15 8 12.315 8 9C8 5.685 10.685 3 14 3C17.315 3 20 5.685 20 9C20 12.315 17.315 15 14 15ZM14 13C16.21 13 18 11.21 18 9C18 6.79 16.21 5 14 5C11.79 5 10 6.79 10 9C10 11.21 11.79 13 14 13Z"></path>
+                        </g>
+                        <defs>
+                            <clippath id="clip0_116_451">
+                                <rect width="24" height="24" fill="white" transform="translate(2 2)"></rect>
+                            </clippath>
+                        </defs>
+                    </svg>
+                </a>
+                <a class="account-icon cart" href="#">
+                    <span class="number-tag cart-counter"
+                          {% if cart|length > 0 %}
+                            style = "visibility: visible;"
+                        {% else %}
+                            style = "visibility: hidden;"
+                        {% endif %}
+                        data-url="{% url 'cart:get_cart' %}">
+                        {{ cart|length }}
+                    </span>
+                    <svg width="28" height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_116_450)">
+                            <path d="M9 10V8C9 6.67392 9.52678 5.40215 10.4645 4.46447C11.4021 3.52678 12.6739 3 14 3C15.3261 3 16.5979 3.52678 17.5355 4.46447C18.4732 5.40215 19 6.67392 19 8V10H22C22.2652 10 22.5196 10.1054 22.7071 10.2929C22.8946 10.4804 23 10.7348 23 11V23C23 23.2652 22.8946 23.5196 22.7071 23.7071C22.5196 23.8946 22.2652 24 22 24H6C5.73478 24 5.48043 23.8946 5.29289 23.7071C5.10536 23.5196 5 23.2652 5 23V11C5 10.7348 5.10536 10.4804 5.29289 10.2929C5.48043 10.1054 5.73478 10 6 10H9ZM9 12H7V22H21V12H19V14H17V12H11V14H9V12ZM11 10H17V8C17 7.20435 16.6839 6.44129 16.1213 5.87868C15.5587 5.31607 14.7956 5 14 5C13.2044 5 12.4413 5.31607 11.8787 5.87868C11.3161 6.44129 11 7.20435 11 8V10Z"></path>
+                        </g>
+                        <defs>
+                            <clippath id="clip0_116_450">
+                                <rect width="24" height="24" transform="translate(2 2)"></rect>
+                            </clippath>
+                        </defs>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        {% include 'messages.html' %}
+    </div>
+</header>
+<div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-content-area">
+            <div class="mobile-menu-head">
+                <div class="box-head-1">
+                    <a class="link-underline mr-20 account-icon account"
+                       {% if user.is_authenticated %}
+                       href="{% url 'users:profile' %}">
+                        Профиль
+                        {% else %}
+                        href="{% url 'users:login' %}">
+                        Войти
+                        {% endif %}
+                    </a>
+                    <a class="close-mobile" href="#">
+                        <img src="{% static 'dolls/assets/imgs/template/icons/close.svg' %}" alt="Guza">
+                    </a>
+                </div>
+                <div class="box-head-2"><a class="back-mobile" href="#">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/back.svg' %}" alt="Guza"></a>
+                </div>
+            </div>
+            <div class="perfect-scroll">
+                <div class="mobile-menu-wrap mobile-header-border">
+                    <nav>
+                        <ul class="mobile-menu font-heading">
+                            <li><a class="active" href="{% url 'dolls:home' %}">Главная</a>
+                            </li>
+                            <li><a href="{% url 'dolls:shop' %}">Куклы</a>
+                            </li>
+                            <li><a href="{% url 'blog:blog_list' %}">Блог</a>
+                            </li>
+                            <li><a href="{% url 'dolls:history' %}">Мастерская</a>
+                            </li>
+                            <li><a href="{% url 'dolls:about' %}">Обо мне</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<body data-offset="200" data-spy="scroll" data-target=".ow-navigation">
-	<div class="main-container">
-		<!-- Loader -->
-		<div id="site-loader" class="load-complete">
-			<div class="loader">
-				<div class="loader-inner ball-clip-rotate">
-					<div></div>
-				</div>
-			</div>
-		</div><!-- Loader /- -->
 
-		<!-- Header -->
-		<header class="header-section container-fluid no-padding">
-			<!-- Top Header -->
-			<div class="top-header container-fluid no-padding">
-				<!-- Container -->
-				<div class="container">
-					<div class="col-md-7 col-sm-7 col-xs-7 dropdown-bar">
-						<h5>Welcome To Max Shop</h5>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="languages" id="language" type="button" class="btn dropdown-toggle">English <span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Danish</a></li>
-								<li><a title="German" href="#">German</a></li>
-								<li><a title="French" href="#">French</a></li>
-							</ul>
-						</div>
-						<div class="language-dropdown dropdown">
-							<button aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" title="currency" id="currency" type="button" class="btn dropdown-toggle">US Dollar<span class="caret"></span></button>
-							<ul class="dropdown-menu no-padding">
-								<li><a title="Danish" href="#">Usd</a></li>
-								<li><a title="German" href="#">Ora</a></li>
-								<li><a title="French" href="#">Riyal</a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- Social -->
-					<div class="col-md-5 col-sm-5 col-xs-5 header-social"> 
-						<ul>
-							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-							<li><a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-						</ul>
-					</div><!-- Social /- -->
-				</div><!-- Container /- -->
-			</div><!-- Top Header /- -->
-			
-			<!-- Menu Block -->
-			<div class="container-fluid no-padding menu-block">
-				<!-- Container -->
-				<div class="container">
-					<!-- nav -->
-					<nav class="navbar navbar-default ow-navigation">
-						<div class="navbar-header">
-							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a href="index.html" class="navbar-brand">Max <span>shop</span></a>
-						</div>
-						<!-- Menu Icon -->
-						<div class="menu-icon">
-							<div class="search">	
-								<a href="#" id="search" title="Search"><i class="icon icon-Search"></i></a>
-							</div>
-							<ul class="cart">
-								<li>
-									<a aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" id="cart" class="btn dropdown-toggle" title="Add To Cart" href="#"><i class="icon icon-ShoppingCart"></i></a>
-									<ul class="dropdown-menu no-padding">
-										<li class="mini_cart_item">
-											<a title="Remove this item" class="remove" href="#">&#215;</a>
-											<a href="#" class="shop-thumbnail">
-												<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-1.jpg">Flying Ninja
-											</a>
-											<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-										</li>
-										<li class="mini_cart_item">
-											<a title="Remove this item" class="remove" href="#">&#215;</a>
-											<a href="#" class="shop-thumbnail">
-												<img alt="poster_2_up" class="attachment-shop_thumbnail" src="images/product-wishlist-2.jpg">Flying Ninja
-											</a>
-											<span class="quantity">2 &#215; <span class="amount">Rs.12.00</span></span>
-										</li>
-										<li class="button">
-											<a href="#" title="View Cart">View Cart</a>
-											<a href="#" title="Check Out">Check out</a>
-										</li>
-									</ul>
-								</li>
-								<li><a href="#" title="Like"><i class="icon icon-Heart"></i></a></li>
-								<li><a href="#" title="User"><i class="icon icon-User"></i></a></li>
-							</ul>
-						</div><!-- Menu Icon /- -->
-						<div class="navbar-collapse collapse navbar-right" id="navbar">
-							<ul class="nav navbar-nav">
-								<li class="active dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="index.html" title="home 1">home 1</a></li>
-										<li><a href="index2.html" title="home 2">home 2</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" title="Home" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Categories </a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="cart.html" title="Cart">Cart</a></li>
-										<li><a href="checkout.html" title="Checkout">Checkout</a></li>
-										<li><a href="404.html" title="404">404</a></li>
-									</ul>
-								</li>
-								<li><a href="#product-section" title="Products">Products</a></li>
-								<li class="dropdown">
-									<a href="shop.html" title="Shop" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="shop-single.html" title="Shop Single">Shop Single</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="blog.html" title="Blog" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-									<i class="ddl-switch fa fa-angle-down"></i>
-									<ul class="dropdown-menu">				
-										<li><a href="blog-post.html" title="Blog Post">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="about.html" title="About Us">About Us</a></li>
-								<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-							</ul>
-						</div><!--/.nav-collapse -->
-					</nav><!-- nav /- -->
-					<!-- Search Box -->
-					<div class="search-box">
-						<span><i class="icon_close"></i></span>
-						<form><input type="text" class="form-control" placeholder="Enter a keyword and press enter..." /></form>
-					</div><!-- Search Box /- -->
-				</div><!-- Container /- -->
-			</div><!-- Menu Block /- -->
-		</header><!-- Header /- -->
+{% block content %}
+{% endblock content %}
 
-		{% block content %}
-		{% endblock content %}
+<footer class="footer footer-type3-light">
+    <div class="footer-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-30">
+                    <h6 class="neutral-dark mb-20">О мастерской ТОР</h6>
+                    <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла создается с любовью и несет в себе частичку сказки.</p>
+                    <p class="neutral-dark body-p2 email-footer">{{ author_email }}</p>
+                    <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>
+                </div>
+                <div class="col-lg-8 mb-30">
+                    <div class="row">
+                        <div class="col-lg-3 mb-30">
+                            <h6 class="neutral-dark mb-20">Мастерская</h6>
+                            <ul class="menu-footer">
+                                <li><a href="{% url 'dolls:about' %}">О нас</a></li>
+                                <li><a href="{% url 'dolls:history' %}">Процесс создания</a></li>
+                                <li><a href="{% url 'dolls:contact_us' %}">Контакты</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 mb-30">
+                            <h6 class="neutral-dark mb-20">Помощь</h6>
+                            <ul class="menu-footer">
+                                <li><a href="{% url 'dolls:shipping' %}">Доставка и оплата</a></li>
+                                <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>
+                                <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 mb-30">
+                            <h6 class="neutral-dark mb-20">Рассылка</h6>
+                            <p class="body-p2 neutral-dark">Подпишитесь, чтобы первыми узнавать о новых куклах и сказках.</p>
+                            <div class="box-form-subscribe box-form-subscribe-white">
+                                <form class="form-sub" action="#" method="POST">
+                                    <input class="form-control" type="text" placeholder="Ваш email">
+                                    <input class="btn btn-subscribe" type="submit" value="Подписаться">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-2">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-20">
+                        <span class="body-p1 neutral-medium-dark">© 2025 ТОР. Территория Особенных Радостей. Все права защищены</span>
+{#                        <ul class="menu-bottom">#}
+{#                            <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>#}
+{#                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>#}
+{#                        </ul>#}
+                    </div>
+                    <div class="col-lg-6 col-md-12 text-center text-lg-end mb-20">
+                        <div class="socials">
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}" alt="Facebook"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}" alt="Instagram"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/vk.svg' %}" alt="ВКонтакте"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-		<!-- Footer Main -->
-		<footer id="footer-main" class="footer-main container-fluid">
-			<!-- Container -->
-			<div class="container">
-				<div class="row">
-					<!-- Widget About -->
-					<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_about">
-						<a href="index.html" title="Max Shop">Max <span>Shop</span></a>
-						<div class="info">
-							<p><i class="icon icon-Pointer"></i>Max Shop, 65 Huge Street Melbourne, 2850 Australia.</p>
-							<p><i class="icon icon-Phone2"></i><a href="tel:(11)1234567890" title="Phone" class="phone">(11) 123 456 7890</a></p>
-							<p><i class="icon icon-Imbox"></i><a href="mailto:info@maxshop.com" title="info@maxshop.com">info@maxshop.com</a></p>
-						</div>
-					</aside><!-- Widget About /- -->
-					<!-- Widget Links -->
-					<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links">
-						<h3 class="widget-title">Popular Links</h3>
-						<ul>
-							<li><a href="#product-section" title="Popular Products">Popular Products</a></li>
-							<li><a href="#selling" title="Best Selling">Best Selling</a></li>
-							<li><a href="about.html" title="About Us">About Us</a></li>
-							<li><a href="#dealing" title="Deal Of The Day">Deal Of The Day</a></li>
-							<li><a href="#collection" title="Product Collections">Product Collections</a></li>
-							<li><a href="contact-us.html" title="Contact Us">Contact Us</a></li>
-						</ul>
-					</aside><!-- Widget Links /- -->
-					<!-- Widget Account -->
-					<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_links widget_account">
-						<h3 class="widget-title">my account</h3>
-						<ul>
-							<li><a href="#" title="My Order Details">My Order Details</a></li>
-							<li><a href="#" title="My credit Offers">My credit Offers</a></li>
-							<li><a href="#" title="My addresses">My addresses</a></li>
-							<li><a href="#" title="My Personal Details">My Personal Details</a></li>
-							<li><a href="#" title="My Account Details">My Account Details</a></li>
-						</ul>
-					</aside><!-- Widget Account /- -->
-					<!-- Widget Newsletter -->
-					<aside class="col-md-3 col-sm-6 col-xs-6 ftr-widget widget_newsletter">
-						<h3 class="widget-title">newsletter</h3>
-						<div class="input-group">
-							<input class="form-control" placeholder="email address" type="text">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button"><i class="fa fa-paper-plane-o"></i></button>
-							</span>
-						</div>
-						<h5>Get New Updates From Our Collections</h5>
-						<h3 class="widget-title widget-title-1">Follow Us</h3>
-						<ul class="social">
-							<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" title="Tumblr"><i class="fa fa-tumblr"></i></a></li>
-							<li><a href="#" title="Vimeo"><i class="fa fa-vimeo"></i></a></li>
-						</ul>
-					</aside><!-- Widget Newsletter /- -->
-				</div>
-				<div class="copyright-section">
-					<div class="coyright-content">
-						<p>&copy; Max shop. all rights reserved</p>
-					</div>	
-					<ul>
-						<li><a href="#" title="Delivery Information">Delivery Information</a></li>
-						<li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
-						<li><a href="#" title="Terms & Condition">Terms & Condition</a></li>
-					</ul>
-				</div>
-			</div><!-- Container /- -->
-		</footer><!-- Footer Main /- -->
+{% include 'popup-cart.html' %}
+{% include 'popup-preview.html' %}
 
-	</div>
+<script src="{% static 'dolls/assets/js/vendors/modernizr-3.6.0.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/jquery-migrate-3.3.0.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/waypoints.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/wow.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/magnific-popup.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/perfect-scrollbar.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/select2.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/isotope.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/counterup.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/slick.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/vendors/glightbox.min.js' %}"></script>
+<script src="{% static 'dolls/assets/js/dolls.js' %}"></script>
+<script src="{% static 'dolls/assets/js/main.js' %}?v=1.0.0"></script>
 
-	
-	<!-- JQuery v1.12.4 -->
-	<script src="{% static 'dolls/js/jquery.min.js' %}"></script>
-
-	<!-- Library - Js -->' %}
-	<script src="{% static 'dolls/libraries/lib.js' %}"></script>
-	
-	<script src="{% static 'dolls/libraries/jquery.countdown.min.js' %}"></script>
-	
-	<!-- RS5.0 Core JS Files -->
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/jquery.themepunch.tools.min.js' rev=5.0 %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/jquery.themepunch.revolution.min.js' rev=5.0 %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'dolls/revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
-
-	<!-- Library - Theme JS -->
-	<script src="{% static 'dolls/js/functions.js' %}"></script>
-	
 </body>
 </html>
