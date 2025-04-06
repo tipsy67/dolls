@@ -1,0 +1,45 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <div class="section block-breadcrumb">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Удалить адрес</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60 ">
+            <div class="row mt-20 d-flex justify-content-center">
+                <div class="col-lg-6">
+                    <h5 class="text-secondary p-2">{{title_form}}</h5>
+                    <div class="box-form-checkout form-comment">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <div class="col-md-12 form-group">
+                                {% csrf_token %}
+                                <span class="body-p2 neutral-dark">{{ object }}</span>
+                                {% if user.is_authenticated %}
+                                <div class="box-button-checkout py-5">
+                                    <button class="btn btn-black" type="submit">Удалить</button>
+                                    <a class="btn btn-grey my-1" href="#" onclick="history.back(); return false;">Вернуться</a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+{% endblock content %}
+	

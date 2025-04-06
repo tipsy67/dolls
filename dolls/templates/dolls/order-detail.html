@@ -1,0 +1,87 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+{% load static %}
+{% load dolls_tags %}
+
+<main>
+    <div class="section block-breadcrumb">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                    <li><a href="#">Заказ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section block-cart">
+        <div class="container mb-100 mt-60 ">
+            <div class="d-flex justify-content-center">
+                <div class="row col-md-12">
+                    <h3>Детали заказа</h3>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Товар</th>
+                                <th scope="col">Количество</th>
+                                <th scope="col">Цена</th>
+                                <th scope="col">Сумма</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in order.items.all %}
+                            <tr>
+                                <td>{{item.product}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.get_cost}}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Сумма заказа {{order.get_total_cost}}</td>
+                                <td></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    Заказ № {{order.pk}} от {{order.created_at|date:"d M Y"}}
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Статус</td>
+                                <td>{{order.get_status}}</td>
+                            </tr>
+                            <tr>
+                                <td>Получатель</td>
+                                <td>{{order.get_recipient}}</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">Адрес</td>
+                                <td rowspan="2">{{order.get_address}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-grey my-1" href="#" onclick="history.back(); return false;">Вернуться</a>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}
+

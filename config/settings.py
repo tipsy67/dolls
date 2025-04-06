@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from celery.schedules import crontab
 from dotenv import load_dotenv
+from datetime import timedelta
 
 load_dotenv()
 
@@ -26,6 +27,8 @@ INSTALLED_APPS = [
     'users',
     'tunes',
     'cart',
+    'tags',
+    'mptt',
 ]
 
 MIDDLEWARE = [
@@ -51,9 +54,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
                 # 'tunes.context_processors.get_contact',
-                # 'cart.context_processors.cart',
+                'cart.context_processors.cart',
+                'tags.context_processors.tags',
+                'tunes.context_processors.get_tunes',
             ],
         },
     },
@@ -104,11 +108,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'optics:home'
-LOGOUT_REDIRECT_URL = 'optics:home'
+LOGIN_REDIRECT_URL = 'dolls:home'
+LOGOUT_REDIRECT_URL = 'dolls:home'
 LOGIN_URL = 'users:login'
 
-CACHE_ENABLED = False
+CACHE_ENABLED = True
 
 if CACHE_ENABLED:
     CACHES = {
@@ -125,8 +129,8 @@ if CACHE_ENABLED:
 #     }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# SESSION_COOKIE_AGE = 60*60*24
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 60 * 60 * 24
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
@@ -140,6 +144,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'celery.backend_cleanup',
         'schedule': crontab(hour=4, minute=0),
     },
+    'get-post-from-instagram': {
+        'task': 'myapp.tasks.my_task',
+        'schedule': timedelta(hours=24),
+    },
 }
 
 
@@ -152,4 +160,5 @@ SERVICE_PER_PAGE = 4
 PRODUCT_PER_PAGE = 4
 BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
-CART_SESSION_ID='dolls_cart'
+CART_SESSION_ID = 'dolls_cart'
+TAGS_SESSION_ID = 'dolls_tags'

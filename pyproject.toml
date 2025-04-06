@@ -12,7 +12,15 @@ psycopg2-binary = "^2.9.10"
 pillow = "^11.1.0"
 python-dotenv = "^1.0.1"
 celery = "^5.4.0"
+pytils = "^0.4.1"
+redis = "^5.2.1"
+django-mptt = "^0.16.0"
+instaloader = "^4.14.1"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core"]

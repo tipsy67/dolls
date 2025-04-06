@@ -32,3 +32,34 @@ class User(AbstractUser):
         password = ''.join(random.choice(characters) for _ in range(length))
 
         return password
+
+    def get_unfinished_orders(self):
+        return self.orders.exclude(status='SHIPPED')
+
+
+class Address(models.Model):
+    STATUS_VALUES = {True: "Выбран", False: "Неактивен"}
+
+    name = models.CharField(max_length=50, verbose_name='Наименование')
+    country = models.CharField(max_length=50, verbose_name='Страна')
+    zip = models.CharField(max_length=20, verbose_name='Индекс')
+    address = models.CharField(max_length=255, verbose_name='Адрес')
+    comment = models.CharField(max_length=255, verbose_name='Комментарий', **NULLABLE)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=False, verbose_name='Активно')
+    user = models.ForeignKey(
+        to='users.User', on_delete=models.CASCADE, related_name='addresses'
+    )
+
+    class Meta:
+        # db_table = 'optics_contact'
+        ordering = ['-created_at']
+        verbose_name = 'адрес'
+        verbose_name_plural = 'адреса'
+
+    def __str__(self):
+        return f"{self.name}: {self.address}"[:50]
+
+    def get_status(self):
+        return self.STATUS_VALUES[self.is_active]
