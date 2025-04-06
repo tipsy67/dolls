@@ -13236,9 +13236,9 @@ footer a {
 .box-commingsoon .commingsoon-right {
     width: 50%;
     /*background-image: url(../imgs/page/commingsoon/banner.png);*/
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: cover;
+    /*background-repeat: no-repeat;*/
+    /*background-position: top left;*/
+    /*background-size: cover;*/
 }
 
 .box-logo-commingsoon {

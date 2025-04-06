@@ -1,68 +1,71 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
+    {% load static %}
+    {% load dolls_tags %}
 
     <main class="main">
-      <section class="section banner-500">
-        <div class="box-cover-image wow fadeInUp"></div>
-        <div class="box-banner-info wow bounceIn"> 
-          <p class="overline-t2-medium text-uppercase primary-navy mb-10">ЕСТЬ ВОПРОСЫ?</p>
-          <h2 class="color-primary-dark mb-30">Не нашли <br class="d-none d-lg-block">что искали? <br class="d-none d-lg-block">Мои контакты</h2>
-        </div>
-      </section>
-      <section class="section block-form-contact">
-        <div class="container"> 
-          <div class="row"> 
-            <div class="col-lg-5 mb-40 wow bounceIn"> 
-{#              <h4>Address</h4>#}
-{#              <p class="body-p2 neutral-medium-dark mb-45">8425 Melrose Ave, Los Angeles, CA 90069</p>#}
-              <h4 class="mb-20">Контакты</h4>
-              <p class="body-p2 neutral-medium-dark mb-10">{{ author_phone }}</p>
-              <p class="body-p2 neutral-medium-dark mb-45">{{ author_email }}</p>
-              <h4 class="mb-15">Жду ваших вопросов</h4>
-              <p class="body-p2 neutral-medium-dark mb-45">Отвечаю в разумное время по Москве</p>
-              <div class="socials mt-55 justify-content-start"><a class="ml-0" href="#"><img src="{% static 'dolls/assets/imgs/page/about1/fb.svg' %}" alt="Guza"></a><a href="#"><img src="{% static 'dolls/assets/imgs/page/about1/insta.svg' %}" alt="Guza"></a></div>
+        <section class="section banner-500">
+            <div class="box-cover-image wow fadeInUp"></div>
+            <div class="box-banner-info wow bounceIn">
+                <p class="overline-t2-medium text-uppercase primary-navy mb-10">ЕСТЬ ВОПРОСЫ?</p>
+                <h2 class="color-primary-dark mb-30">Не нашли <br class="d-none d-lg-block">что искали? <br
+                        class="d-none d-lg-block">Мои контакты</h2>
             </div>
-            <div class="col-lg-7 mb-40 wow bounceIn"> 
-              <h4 class="mb-10">Get in Touch</h4>
-              <p class="text-16-medium neutral-medium mb-30">Your email address will not be published. Required fields are marked *</p>
-              <div class="row"> 
-                <div class="col-lg-6 col-md-6 col-sm-6"> 
-                  <div class="form-group"> 
-                    <input class="form-control" type="text" placeholder="Name *">
-                  </div>
+        </section>
+        <section class="section block-form-contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 mb-40 wow bounceIn">
+                        {#              <h4>Address</h4>#}
+                        {#              <p class="body-p2 neutral-medium-dark mb-45">8425 Melrose Ave, Los Angeles, CA 90069</p>#}
+                        <h4 class="mb-20">Контакты</h4>
+                        <p class="body-p2 neutral-medium-dark mb-10">{{ author_phone }}</p>
+                        <p class="body-p2 neutral-medium-dark mb-45">{{ author_email }}</p>
+                        <h4 class="mb-15">Жду ваших вопросов</h4>
+                        <p class="body-p2 neutral-medium-dark mb-45">Отвечаю в разумное время по Москве</p>
+                        <div class="socials mt-55 justify-content-start"><a class="ml-0" href="#"><img
+                                src="{% static 'dolls/assets/imgs/page/about1/fb.svg' %}" alt="Guza"></a><a
+                                href="#"><img src="{% static 'dolls/assets/imgs/page/about1/insta.svg' %}"
+                                              alt="Guza"></a></div>
+                    </div>
+                    <div class="col-lg-7 mb-40 wow bounceIn">
+                        <h4 class="mb-10">Оставьте мне сообщение</h4>
+                        <p class="text-16-medium neutral-medium mb-30">Ваши данные не будут опубликованы.
+                            Обязательные поля помечены *</p>
+                        <div class="row">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input name="name" class="form-control" type="text" placeholder="Имя *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input name="email" class="form-control" type="text" placeholder="Почта *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input name="phone" class="form-control" type="text" placeholder="Телефон *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea name="message" class="form-control" placeholder="Сообщение *" rows="6"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="text-center mt-10">
+                                        <button class="btn btn-black" type="submit">Отправить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6"> 
-                  <div class="form-group"> 
-                    <input class="form-control" type="text" placeholder="Email *">
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6"> 
-                  <div class="form-group"> 
-                    <input class="form-control" type="text" placeholder="Phone number">
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6"> 
-                  <div class="form-group"> 
-                    <input class="form-control" type="text" placeholder="Website">
-                  </div>
-                </div>
-                <div class="col-lg-12"> 
-                  <div class="form-group"> 
-                    <textarea class="form-control" placeholder="Contents" rows="6"></textarea>
-                  </div>
-                </div>
-                <div class="col-lg-12"> 
-                  <div class="text-center mt-10"> 
-                    <button class="btn btn-black">Post Comment</button>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
     </main>
 {% endblock %}
