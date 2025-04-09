@@ -52,3 +52,17 @@ class Banner(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+
+class Subscriber(models.Model):
+    email = models.EmailField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['email']
+        verbose_name = 'Рассылка'
+        verbose_name_plural = 'Рассылки'
+
+    def __str__(self):
+        return f"{self.email}"

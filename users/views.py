@@ -11,6 +11,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 
 from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
 from users.models import User, Address
+from dolls.tasks import sendmail
 
 
 class LoginView(BaseLoginView):
@@ -28,11 +29,11 @@ class LoginView(BaseLoginView):
                 password = user.generate_password(8)
                 user.password = make_password(password)
                 user.save()
-                # sendmail.delay(
-                #     [user.email],
-                #     'Восстановление пароля',
-                #     f'{user.username} Ваш новый пароль {password}',
-                # )
+                sendmail.delay(
+                    [user.email],
+                    'Восстановление пароля',
+                    f'{user.username} Ваш новый пароль {password}',
+                )
                 messages.success(self.request, 'На вашу почту отправлен пароль')
                 return redirect(reverse('users:login'))
             else:
@@ -66,13 +67,29 @@ class UserCreateView(CreateView):
         user.is_active = False
         user.token = token
         user.save()
-        # sendmail.delay(
-        #     [user.email],
-        #     'Подтверждение регистрации',
-        #     'Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации\n'
-        #     + f'http://{self.request.get_host()}/confirm/{token}',
-        # )
-        print(f'http://{self.request.get_host()}/confirm/{token}')
+        sendmail.delay(
+            [user.email],
+            'Подтверждение регистрации',
+            content=f"""
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Подтверждение email</title>
+      </head>
+              <body>
+                <p>Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации</p>
+                <p>
+                  <a href="http://{self.request.get_host()}/confirm/{token}">Подтвердить email</a>
+                </p>
+                <p>
+                  Или скопируйте ссылку: http://{self.request.get_host()}/confirm/{token}
+                </p>
+              </body>
+            </html>""",
+
+        )
+
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')
 
         return super().form_valid(form)
@@ -158,6 +175,5 @@ def change_status(request, pk):
         )
 
     return JsonResponse({"success": False}, status=400)
-
 
 # /Адреса

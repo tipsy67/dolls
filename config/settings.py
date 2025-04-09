@@ -153,6 +153,16 @@ CELERY_BEAT_SCHEDULE = {
 
 NULLABLE = {'blank': True, 'null': True}
 
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+EMAIL_PASSWORD=os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST=os.environ.get('EMAIL_HOST')
+EMAIL_PORT=os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+
 NUMBER_OF_REVIEWS_DISPLAYED = 5
 NUMBER_OF_PRODUCTS_DISPLAYED = 4
 DEFAULT_SERVICE_DURATION = 30
