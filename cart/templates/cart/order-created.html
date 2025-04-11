@@ -1,0 +1,15 @@
+{% load cart_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Статус заказа</title>
+</head>
+<body>
+    <p>Уважаемый, {{ obj.first_name }} {{ obj.last_name }}.</p>
+    <p>Спасибо за выбор наших товаров!</p>
+    <p>Заказ № {{ obj.pk }} на общую сумму {{ obj.get_total_cost }}
+        зарегистрирован.</p>
+    <p>Мы с Вами свяжемся в ближайшее время.</p>
+</body>
+</html>

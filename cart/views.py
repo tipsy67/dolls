@@ -2,6 +2,7 @@ import json
 
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 
 from django.urls import reverse
 from django.views.decorators.http import require_POST
@@ -17,7 +18,7 @@ from django.contrib import messages
 
 from .forms import OrderCreateForm
 from .models import OrderItem, Order
-
+from dolls.tasks import sendmail
 
 def cart_update(request):
     cart = Cart(request)
@@ -142,6 +143,15 @@ def order_create(request):
                 )
 
             cart.clear()
+            context = {
+                'obj': order,
+            }
+            sendmail.delay(
+                [order.email, get_value_from_tunes('author_email')],
+                f"Заказ создан",
+                render_to_string('cart/order-created.html', context),
+            )
+
             return render(request, 'dolls/order-created.html', {'order': order})
     else:
         user = User.objects.filter(pk=request.user.pk).first()

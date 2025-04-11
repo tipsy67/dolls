@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include(('blog.urls', 'blog'), namespace='blog')),
     path('', include(('users.urls', 'users'), namespace='users')),
     path('', include(('cart.urls', 'cart'), namespace='cart')),
+    path('', include(('tunes.urls', 'tunes'), namespace='tunes')),
 ]
 
 if settings.DEBUG:

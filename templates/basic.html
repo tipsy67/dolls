@@ -75,11 +75,11 @@
                     </svg>
                 </a>
                 <a class="account-icon account"
-                   {% if user.is_authenticated %}
+                        {% if user.is_authenticated %}
                    href="{% url 'users:profile' %}" title="Профиль"
-                   {% else %}
+                        {% else %}
                    href="{% url 'users:login' %}" title="Войти"
-                   {% endif %}>
+                        {% endif %}>
                     <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"
                          viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_116_451)">
@@ -94,12 +94,12 @@
                 </a>
                 <a class="account-icon cart" href="#">
                     <span class="number-tag cart-counter"
-                          {% if cart|length > 0 %}
-                            style = "visibility: visible;"
-                        {% else %}
-                            style = "visibility: hidden;"
-                        {% endif %}
-                        data-url="{% url 'cart:get_cart' %}">
+                            {% if cart|length > 0 %}
+                          style="visibility: visible;"
+                            {% else %}
+                          style="visibility: hidden;"
+                            {% endif %}
+                          data-url="{% url 'cart:get_cart' %}">
                         {{ cart|length }}
                     </span>
                     <svg width="28" height="28" viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
@@ -124,13 +124,13 @@
             <div class="mobile-menu-head">
                 <div class="box-head-1">
                     <a class="link-underline mr-20 account-icon account"
-                       {% if user.is_authenticated %}
+                            {% if user.is_authenticated %}
                        href="{% url 'users:profile' %}">
-                        Профиль
-                        {% else %}
-                        href="{% url 'users:login' %}">
-                        Войти
-                        {% endif %}
+                                Профиль
+                            {% else %}
+                                href="{% url 'users:login' %}">
+                                Войти
+                            {% endif %}
                     </a>
                     <a class="close-mobile" href="#">
                         <img src="{% static 'dolls/assets/imgs/template/icons/close.svg' %}" alt="Guza">
@@ -171,7 +171,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-30">
                     <h6 class="neutral-dark mb-20">О мастерской ТОР</h6>
-                    <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла создается с любовью и несет в себе частичку сказки.</p>
+                    <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла
+                        создается с любовью и несет в себе частичку сказки.</p>
                     <p class="neutral-dark body-p2 email-footer">{{ author_email }}</p>
                     <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>
                 </div>
@@ -195,11 +196,18 @@
                         </div>
                         <div class="col-lg-6 mb-30">
                             <h6 class="neutral-dark mb-20">Рассылка</h6>
-                            <p class="body-p2 neutral-dark">Подпишитесь, чтобы первыми узнавать о новых куклах и сказках.</p>
+                            <p class="body-p2 neutral-dark">Подпишитесь, чтобы первыми узнавать о новых куклах и
+                                сказках.</p>
                             <div class="box-form-subscribe box-form-subscribe-white">
                                 <form class="form-sub" action="#" method="POST">
-                                    <input class="form-control" type="text" placeholder="Ваш email">
-                                    <input class="btn btn-subscribe" type="submit" value="Подписаться">
+                                    {% csrf_token %}
+                                    <input class="form-control" type="email" placeholder="Ваш email"
+                                           value="{{ request.user.email }}"
+                                            {% if not user.is_authenticated %} disabled {% endif %}>
+                                    <input class="btn btn-subscribe" type="submit" value="Подписаться"
+                                           data-url="{% url 'tunes:subscribe' %}"
+                                            {% if not user.is_authenticated %} disabled
+                                           style="outline: none; border: none;"{% endif %}>
                                 </form>
                             </div>
                         </div>
@@ -214,16 +222,19 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 text-center text-lg-start mb-20">
                         <span class="body-p1 neutral-medium-dark">© 2025 ТОР. Территория Особенных Радостей. Все права защищены</span>
-{#                        <ul class="menu-bottom">#}
-{#                            <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>#}
-{#                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>#}
-{#                        </ul>#}
+                        {#                        <ul class="menu-bottom">#}
+                        {#                            <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>#}
+                        {#                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>#}
+                        {#                        </ul>#}
                     </div>
                     <div class="col-lg-6 col-md-12 text-center text-lg-end mb-20">
                         <div class="socials">
-                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}" alt="Facebook"></a>
-                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}" alt="Instagram"></a>
-                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/vk.svg' %}" alt="ВКонтакте"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
+                                             alt="Facebook"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}"
+                                             alt="Instagram"></a>
+                            <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/vk.svg' %}"
+                                             alt="ВКонтакте"></a>
                         </div>
                     </div>
                 </div>

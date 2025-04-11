@@ -55,14 +55,15 @@ class Banner(models.Model):
 
 
 class Subscriber(models.Model):
-    email = models.EmailField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField(unique=True, verbose_name='Почта')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создана')
+    author = models.ForeignKey(to='users.User', on_delete=models.CASCADE, verbose_name='Автор')
 
 
     class Meta:
         ordering = ['email']
-        verbose_name = 'Рассылка'
-        verbose_name_plural = 'Рассылки'
+        verbose_name = 'Адрес для рассылок'
+        verbose_name_plural = 'Адреса для рассылок'
 
     def __str__(self):
         return f"{self.email}"
