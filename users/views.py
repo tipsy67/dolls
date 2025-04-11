@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.template.loader import render_to_string
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 
@@ -67,27 +68,15 @@ class UserCreateView(CreateView):
         user.is_active = False
         user.token = token
         user.save()
+
+        context = {
+            'host': self.request.get_host(),
+            'token': token, }
+
         sendmail.delay(
             [user.email],
             'Подтверждение регистрации',
-            content=f"""
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Подтверждение email</title>
-      </head>
-              <body>
-                <p>Пожалуйста подтвердите свой адрес электронной почты для завершения регистрации</p>
-                <p>
-                  <a href="http://{self.request.get_host()}/confirm/{token}">Подтвердить email</a>
-                </p>
-                <p>
-                  Или скопируйте ссылку: http://{self.request.get_host()}/confirm/{token}
-                </p>
-              </body>
-            </html>""",
-
+            content=render_to_string('users/registration-confirm.html', context),
         )
 
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')

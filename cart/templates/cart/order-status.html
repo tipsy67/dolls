@@ -1,0 +1,15 @@
+{% load cart_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Статус заказа</title>
+</head>
+<body>
+{% with key=obj.status %}
+<p>Уважаемый, {{ obj.first_name }} {{ obj.last_name }}.</p>
+<p>Ваш заказ №{{ obj.pk }} от {{ obj.created_at|date:"d.m.Y"}}</p>
+<p>сменил статус на "<b>{{ obj.STATUS_ORDER|get_value_from_dict:key}}</b>"</p>
+{% endwith %}
+</body>
+</html>

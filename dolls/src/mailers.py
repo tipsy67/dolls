@@ -14,6 +14,7 @@ def sendmail_cmd(recipients_emails: list, title: str, content: str):
     Функция отправки писем
     """
     text_content = strip_tags(content)
+    text_content = '\n'.join(line.strip() for line in text_content.splitlines() if line.strip())
 
     msg = EmailMultiAlternatives(
         subject=title,
@@ -23,10 +24,10 @@ def sendmail_cmd(recipients_emails: list, title: str, content: str):
 
     msg.attach_alternative(content, "text/html")
     # Добавляем заголовки для правильного отображения
-    msg.mixed_subtype = 'related'
+    # msg.mixed_subtype = 'related'
     msg.encoding = 'utf-8'
-    msg.content_subtype = 'html'
-
+    # msg.content_subtype = 'html'
+    # print(msg)
     try:
         msg.send()
     except smtplib.SMTPException:
