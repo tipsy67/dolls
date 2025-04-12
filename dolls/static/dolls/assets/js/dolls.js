@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setupChangeStatusHandler();
     setupAddToCartHandler();
     checkTerms();
-    updateSubscribe()
+    updateSubscribe();
+    unSubscribe();
 });
 
 // Восстановление позиции прокрутки
@@ -212,7 +213,7 @@ function checkTerms() {
     });
 }
 
-// Обновление информации о корзине
+// Подписка на рассылку
 function updateSubscribe() {
     const subscribeBtn = document.querySelector('.btn-subscribe');
     if (!subscribeBtn) return;
@@ -228,6 +229,27 @@ function updateSubscribe() {
                     showMessage("Вы подписались", "success");
                 } else {
                     showMessage("Вы уже подписаны", "warning");
+                }
+            })
+            .catch(() => console.error("Ошибка при подписке"));
+    })
+}
+
+function unSubscribe() {
+    const subscribeBtn = document.getElementById('unsubscribe-button');
+    if (!subscribeBtn) return;
+
+    subscribeBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const emailInput = document.querySelector('.form-control');
+        const email = emailInput.value;
+
+        sendPostRequest(subscribeBtn.dataset.url, {'email': email})
+            .then(data => {
+                if (data.success) {
+                    showMessage("Вы отписались", "success");
+                } else {
+                    showMessage("Такого адреса нет в списке", "warning");
                 }
             })
             .catch(() => console.error("Ошибка при подписке"));
