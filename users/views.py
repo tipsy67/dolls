@@ -3,13 +3,14 @@ import secrets
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
-
+from django.contrib.auth.decorators import login_required
 from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
 from users.models import User, Address
 from dolls.tasks import sendmail
@@ -42,7 +43,7 @@ class LoginView(BaseLoginView):
         return super().form_invalid(form)
 
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     model = get_user_model()
     form_class = ProfileUpdateForm
     template_name = 'dolls/user-form.html'
@@ -84,6 +85,7 @@ class UserCreateView(CreateView):
         return super().form_valid(form)
 
 
+
 def confirm_user(request, token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
@@ -92,6 +94,7 @@ def confirm_user(request, token):
     return redirect(reverse('users:login'))
 
 
+@login_required
 def logout_form(request):
     context = {
         'title_form': 'Вы действительно хотите выйти?',
@@ -104,7 +107,7 @@ def logout_form(request):
 # Адреса
 
 
-class AddressCreateView(CreateView):
+class AddressCreateView(LoginRequiredMixin, CreateView):
     model = Address
     template_name = 'dolls/address-form.html'
     form_class = AddressForm
@@ -122,7 +125,7 @@ class AddressCreateView(CreateView):
         return super().form_valid(form)
 
 
-class AddressUpdateView(UpdateView):
+class AddressUpdateView(LoginRequiredMixin, UpdateView):
     model = Address
     template_name = 'dolls/address-form.html'
     form_class = AddressForm
@@ -132,7 +135,7 @@ class AddressUpdateView(UpdateView):
         return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
 
-class AddressDeleteView(DeleteView):
+class AddressDeleteView(LoginRequiredMixin, DeleteView):
     model = Address
     template_name = 'dolls/address-delete.html'
     extra_context = {
@@ -143,7 +146,7 @@ class AddressDeleteView(DeleteView):
     def get_success_url(self):
         return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
-
+@login_required
 def change_status(request, pk):
     if request.method == "POST":
         # Деактивируем все адреса текущего пользователя
