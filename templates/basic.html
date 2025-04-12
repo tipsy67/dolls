@@ -205,7 +205,7 @@
                                            value="{{ request.user.email }}"
                                             {% if not user.is_authenticated %} disabled {% endif %}>
                                     <input class="btn btn-subscribe" type="submit" value="Подписаться"
-                                           data-url="{% url 'tunes:subscribe' %}"
+                                           data-url="{% url 'subscribes:subscribe' %}"
                                             {% if not user.is_authenticated %} disabled
                                            style="outline: none; border: none;"{% endif %}>
                                 </form>

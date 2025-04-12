@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'blog',
     'users',
     'tunes',
+    'subscribes',
     'cart',
     'tags',
     'mptt',
