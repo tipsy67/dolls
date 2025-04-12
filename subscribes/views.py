@@ -3,8 +3,9 @@ import json
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from subscribes.models import Recipients
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def subscribe(request):
     if request.method == 'POST':
         try:
@@ -18,6 +19,7 @@ def subscribe(request):
 
     return JsonResponse(response)
 
+@login_required
 def unsubscribe(request):
     if request.method == 'POST':
         try:
@@ -31,7 +33,7 @@ def unsubscribe(request):
 
     return JsonResponse(response)
 
-
+@login_required
 def unsubscribe_page(request):
     context={}
 

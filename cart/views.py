@@ -1,5 +1,7 @@
 import json
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
@@ -123,7 +125,7 @@ def get_cart(request):
     response = {'success': True, 'cart_length': len(cart)}
     return JsonResponse(response)
 
-
+@login_required
 def order_create(request):
     cart = Cart(request)
     if not cart:
@@ -173,7 +175,7 @@ def order_create(request):
     )
 
 
-class OrderDetailView(DetailView):
+class OrderDetailView(LoginRequiredMixin, DetailView):
     model = Order
     context_object_name = 'order'
     template_name = 'dolls/order-detail.html'
@@ -183,7 +185,7 @@ class OrderDetailView(DetailView):
     }
 
 
-class OrderListView(ListView):
+class OrderListView(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'order_list'
     template_name = 'dolls/order-list.html'
