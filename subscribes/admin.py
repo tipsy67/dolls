@@ -15,6 +15,8 @@ class RecipientsAdmin(admin.ModelAdmin):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('is_test', 'title', 'updated_at')
+    actions = ('send_email',)
+    list_display_links = ('title',)
 
     @admin.action(description='Разослать')
     def send_email(self, request, queryset):
@@ -25,6 +27,12 @@ class ArticleAdmin(admin.ModelAdmin):
 
         for article in queryset:
             if article.is_test:
+                sendmail.delay(
+                    only_author,
+                    article.title,
+                    render_to_string('subscribes/article.html', {'article': article}),
+                )
+            else:
                 sendmail.delay(
                     list_recipients,
                     article.title,
