@@ -1,173 +1,179 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
-{% load mptt_tags %}
+    {% load static %}
+    {% load dolls_tags %}
+    {% load mptt_tags %}
 
-<main class="main">
-    <div class="section block-breadcrumb">
-        <div class="container">
-            <div class="breadcrumbs wow bounceIn">
-                <ul>
-                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                    <li><a href="{% url 'dolls:shop' %}">Блог</a></li>
-                    <li><a href="#">{{ article.title | safe }}</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <section class="section block-blog-single">
-        <div class="container-blog-single">
-            <div class="blog-head wow bounceIn">
-                <div class="text-center">
-
-                    <h2>{{article.title|safe}}</h2>
-                    <div class="meta-post text-17"><span>{{article.created_at|date:"j M"}}</span></div>
+    <main class="main">
+        <div class="section block-breadcrumb">
+            <div class="container">
+                <div class="breadcrumbs wow bounceIn">
+                    <ul>
+                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                        <li><a href="{% url 'dolls:shop' %}">Блог</a></li>
+                        <li><a href="#">{{ article.title | safe }}</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="blog-content wow bounceIn">
-                <img class="w-100" src="{% static 'dolls/assets/imgs/page/blog/single.png' %}" alt="Guza">
-                <div class="blog-content-inner">
-                    {{article.content|safe}}
-                    <div class="block-tag-share">
-                        <div class="block-tags"><span class="text-17 mr-20">Tags</span>
-                            {% for tag in article.tags.all %}
-                            <a class="btn btn-tag-filter" href="#">{{tag}}</a>
-                            {% endfor %}
-                        </div>
-                        <div class="block-shares"><span class="text-17 mr-20">Share</span>
-                            <div class="socials"><a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
-                                                                  alt="Guza"></a><a href="#"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}" alt="Guza"></a><a href="#"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="Guza"></a></div>
-                        </div>
+        </div>
+        <section class="section block-blog-single">
+            <div class="container-blog-single">
+                <div class="blog-head wow bounceIn">
+                    <div class="text-center">
+
+                        <h2>{{ article.title|safe }}</h2>
+                        <div class="meta-post text-17"><span>{{ article.created_at|date:"j M" }}</span></div>
                     </div>
-                    <div class="container" style="display: flex;">
-                        {% if user.is_authenticated %}
-                        <a class="border border-success rounded p-2 my-link" href="#"
-                           onclick="showReplyForm({{node.id}});return false;">КОММЕНТИРОВАТЬ</a>
-                        {% endif %}
-                        <span class="align-right post-like" style="margin-left: auto;">
+                </div>
+                <div class="blog-content wow bounceIn">
+                    <img class="w-100" src="{% static 'dolls/assets/imgs/page/blog/single.png' %}" alt="Guza">
+                    <div class="blog-content-inner">
+                        {{ article.content|safe }}
+                        <div class="block-tag-share">
+                            <div class="block-tags"><span class="text-17 mr-20">Tags</span>
+                                {% for tag in article.tags.all %}
+                                    <a class="btn btn-tag-filter" href="#">{{ tag }}</a>
+                                {% endfor %}
+                            </div>
+                            <div class="block-shares"><span class="text-17 mr-20">Share</span>
+                                <div class="socials"><a href="#"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
+                                        alt="Guza"></a><a href="#"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}"
+                                        alt="Guza"></a><a href="#"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="Guza"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" style="display: flex;">
+                            {% if user.is_authenticated %}
+                                <a class="border border-success rounded p-2 my-link" href="#"
+                                   onclick="showReplyForm({{ node.id }});return false;">КОММЕНТИРОВАТЬ</a>
+                            {% endif %}
+                            <span class="align-right post-like" style="margin-left: auto;">
                                 <a href="#" class="text-17-medium like"
                                    data-url="{% url 'blog:like' %}"
-                                   data-pk="{{article.pk}}"
+                                   data-pk="{{ article.pk }}"
                                    title="Like"
-                                   {% if request.user in article.users_like.all %}
+                                        {% if request.user in article.users_like.all %}
                                    data-action="unlike">
-                                        <i class="fas fa-heart"></i>{% else %}
-                                        data-action="like">
-                                        <i class="fas fa-heart-o"></i>{% endif %}</a><span
-                                class="count_like_{{article.pk}}">
-                                    {{article.users_like.count}}</span></span>
-                    </div>
-                    <div class="m-2" id="reply-form-undefined" style="display:none;">
-                        <div class="block-form-comment">
-                            <form method="post" action="{% url 'blog:article_reply' article.pk %}">
-                                {% csrf_token %}
-                                <div class="form-group col-md-12">
+                                            <i class="fas fa-heart"></i>{% else %}
+                                            data-action="like">
+                                            <i class="fas fa-heart-o"></i>{% endif %}</a><span
+                                    class="count_like_{{ article.pk }}">
+                                    {{ article.users_like.count }}</span></span>
+                        </div>
+                        <div class="m-2" id="reply-form-undefined" style="display:none;">
+                            <div class="block-form-comment">
+                                <form method="post" action="{% url 'blog:article_reply' article.pk %}">
+                                    {% csrf_token %}
+                                    <div class="form-group col-md-12">
                                         <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
                                                   class="form-control"></textarea>
-                                </div>
-                                {% if user.is_authenticated %}
-                                <input class="btn btn-navy" type="submit" title="Отправить" value="Отправить"
-                                       name="send">
-                                {% endif %}
-                            </form>
-                        </div>
-                    </div>
-                    <!--                    <div class="block-related-post">-->
-                    <!--                        <h4 class="mb-30">Related Posts</h4>-->
-                    <!--                        <div class="row">-->
-                    <!--                            <div class="col-lg-4 col-md-6">-->
-                    <!--                                <div class="cardBlog wow fadeInUp">-->
-                    <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog1.png"-->
-                    <!--                                                                            alt="guza"></a></div>-->
-                    <!--                                    <div class="cardInfo">-->
-                    <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                    <!--                                                class="date-post">DEC 1, 2022</span></div>-->
-                    <!--                                        <a class="cardTitle" href="#">-->
-                    <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="col-lg-4 col-md-6">-->
-                    <!--                                <div class="cardBlog wow fadeInUp">-->
-                    <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog2.png"-->
-                    <!--                                                                            alt="guza"></a></div>-->
-                    <!--                                    <div class="cardInfo">-->
-                    <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                    <!--                                                class="date-post">DEC 1, 2022</span></div>-->
-                    <!--                                        <a class="cardTitle" href="#">-->
-                    <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="col-lg-4 col-md-6">-->
-                    <!--                                <div class="cardBlog wow fadeInUp">-->
-                    <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog3.png"-->
-                    <!--                                                                            alt="guza"></a></div>-->
-                    <!--                                    <div class="cardInfo">-->
-                    <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                    <!--                                                class="date-post">{{article.created_at|date:"j M"}}</span></div>-->
-                    <!--                                        <a class="cardTitle" href="#">-->
-                    <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                    <!--                                    </div>-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!-- Comment Section -->
-                    <div class="comment-section col-12">
-                        <div class="section-heading">
-<!--                            <h3>comments are here<span>(3)</span></h3>-->
-                        </div>
-                        <ul class="media-list">
-                            {% recursetree comments %}
-                            <li class="media">
-                                <div class="media-left">
-                                    <a href="#" title="{{ node.owner }}">
-                                        {% if node.owner.avatar %}
-                                        <img src="{{ node.owner.avatar }}"
-                                             {% else %}
-                                        <img src="{% static 'dolls/images/blank-avatar.jpg' %}"
-                                             {% endif %}
-                                             alt="comment"></a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-content">
-                                        <h4 class="media-heading">{{node.owner}}</h4>
-                                        <span><i class="fa fa-calendar-o"></i>{{node.created_at| date:"M j, y"}}</span>
-                                        <p>{{node.text}}</p>
-                                        {% if user.is_authenticated %}
-                                        <a class="border border-success rounded p-1" href="#" onclick="showReplyForm({{ node.id }});return false;">Ответить</a>
-                                        {% endif %}
                                     </div>
-                                </div>
-                                <!-- Форма для ответа -->
-                                <div id="reply-form-{{ node.id }}" style="display:none;">
-                                    <div class="comment-form">
-                                        <form method="post" action="{% url 'blog:comment_reply' node.id %}">
-                                            {% csrf_token %}
-                                            <div class="form-group col-md-12">
-                                        <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
-                                                  class="form-control"></textarea>
+                                    {% if user.is_authenticated %}
+                                        <input class="btn btn-navy" type="submit" title="Отправить" value="Отправить"
+                                               name="send">
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                        <!--                    <div class="block-related-post">-->
+                        <!--                        <h4 class="mb-30">Related Posts</h4>-->
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-lg-4 col-md-6">-->
+                        <!--                                <div class="cardBlog wow fadeInUp">-->
+                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog1.png"-->
+                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                    <div class="cardInfo">-->
+                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
+                        <!--                                                class="date-post">DEC 1, 2022</span></div>-->
+                        <!--                                        <a class="cardTitle" href="#">-->
+                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-lg-4 col-md-6">-->
+                        <!--                                <div class="cardBlog wow fadeInUp">-->
+                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog2.png"-->
+                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                    <div class="cardInfo">-->
+                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
+                        <!--                                                class="date-post">DEC 1, 2022</span></div>-->
+                        <!--                                        <a class="cardTitle" href="#">-->
+                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-lg-4 col-md-6">-->
+                        <!--                                <div class="cardBlog wow fadeInUp">-->
+                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog3.png"-->
+                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                    <div class="cardInfo">-->
+                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
+                        <!--                                                class="date-post">{{article.created_at|date:"j M"}}</span></div>-->
+                        <!--                                        <a class="cardTitle" href="#">-->
+                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+                        <!-- Comment Section -->
+                        <div class="comment-section col-12">
+                            <div class="section-heading">
+                                <!--                            <h3>comments are here<span>(3)</span></h3>-->
+                            </div>
+                            <ul class="media-list">
+                                {% recursetree comments %}
+                                    <li class="media">
+                                        <div class="media-left">
+                                            <a href="#" title="{{ node.owner }}">
+                                                {% if node.owner.avatar %}
+                                                    <img src="{{ node.owner.avatar }}" alt="comment"></a>
+                                                {% else %}
+                                                    <img src="{% static 'dolls/images/blank-avatar.jpg' %}"
+                                                         alt="comment"></a>
+                                                {% endif %}
+
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="media-content">
+                                                <h4 class="media-heading">{{ node.owner }}</h4>
+                                                <span><i
+                                                        class="fa fa-calendar-o"></i>{{ node.created_at| date:"M j, y" }}</span>
+                                                <p>{{ node.text }}</p>
+                                                {% if user.is_authenticated %}
+                                                    <a class="border border-success rounded p-1" href="#"
+                                                       onclick="showReplyForm({{ node.id }});return false;">Ответить</a>
+                                                {% endif %}
                                             </div>
-                                            <input type="submit" title="send" value="Отправить" name="send">
-                                        </form>
-                                    </div>
-                                </div>
-                                {% if not node.is_leaf_node %}
-                                <ul>{{ children }}</ul>
-                                {% endif %}
-                            </li>
-                            {% endrecursetree %}
-                        </ul>
-                    </div><!-- Comment Section /- -->
+                                        </div>
+                                        <!-- Форма для ответа -->
+                                        <div id="reply-form-{{ node.id }}" style="display:none;">
+                                            <div class="comment-form">
+                                                <form method="post" action="{% url 'blog:comment_reply' node.id %}">
+                                                    {% csrf_token %}
+                                                    <div class="form-group col-md-12">
+                                        <textarea name="text" placeholder="Ваш комментарий . . ." rows="3"
+                                                  class="form-control"></textarea>
+                                                    </div>
+                                                    <input type="submit" title="send" value="Отправить" name="send">
+                                                </form>
+                                            </div>
+                                        </div>
+                                        {% if not node.is_leaf_node %}
+                                            <ul>{{ children }}</ul>
+                                        {% endif %}
+                                    </li>
+                                {% endrecursetree %}
+                            </ul>
+                        </div><!-- Comment Section /- -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 
 {% endblock %}
