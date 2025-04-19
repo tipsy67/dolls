@@ -9,6 +9,15 @@ import requests
 
 from config.settings import MEDIA_ROOT, STATIC_FILES
 
+from celery import shared_task
+
+from dolls.src.mailers import sendmail_cmd
+
+
+@shared_task
+def sendmail(recipients_emails: list, title: str, content: str):
+    sendmail_cmd(recipients_emails, title, content)
+
 
 def get_current_ip():
     try:

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.functions import Random
 
 from django.core.paginator import Paginator
@@ -126,12 +128,13 @@ def user_agreement(request):
 
     return render(request, 'dolls/user-agreement.html')
 
+@login_required
 def thank_you(request):
     context = {}
 
     return render(request, 'dolls/thank-you.html')
 
-class FeedbackCreateView(CreateView):
+class FeedbackCreateView(LoginRequiredMixin, CreateView):
     model = Feedback
     fields = ['name', 'email', 'phone', 'message']
     template_name = 'dolls/contact-us.html'

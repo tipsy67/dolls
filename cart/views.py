@@ -1,7 +1,10 @@
 import json
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 
 from django.urls import reverse
 from django.views.decorators.http import require_POST
@@ -17,7 +20,7 @@ from django.contrib import messages
 
 from .forms import OrderCreateForm
 from .models import OrderItem, Order
-
+from dolls.tasks import sendmail
 
 def cart_update(request):
     cart = Cart(request)
@@ -122,7 +125,7 @@ def get_cart(request):
     response = {'success': True, 'cart_length': len(cart)}
     return JsonResponse(response)
 
-
+@login_required
 def order_create(request):
     cart = Cart(request)
     if not cart:
@@ -142,6 +145,15 @@ def order_create(request):
                 )
 
             cart.clear()
+            context = {
+                'obj': order,
+            }
+            sendmail.delay(
+                [order.email, get_value_from_tunes('author_email')],
+                f"Заказ создан",
+                render_to_string('cart/order-created.html', context),
+            )
+
             return render(request, 'dolls/order-created.html', {'order': order})
     else:
         user = User.objects.filter(pk=request.user.pk).first()
@@ -163,7 +175,7 @@ def order_create(request):
     )
 
 
-class OrderDetailView(DetailView):
+class OrderDetailView(LoginRequiredMixin, DetailView):
     model = Order
     context_object_name = 'order'
     template_name = 'dolls/order-detail.html'
@@ -173,7 +185,7 @@ class OrderDetailView(DetailView):
     }
 
 
-class OrderListView(ListView):
+class OrderListView(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'order_list'
     template_name = 'dolls/order-list.html'
