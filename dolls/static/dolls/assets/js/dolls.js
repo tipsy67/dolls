@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setupChangeStatusHandler();
     setupAddToCartHandler();
     checkTerms();
+    updateSubscribe();
+    unSubscribe();
 });
 
 // Восстановление позиции прокрутки
@@ -15,6 +17,7 @@ function restoreScrollPosition() {
         sessionStorage.removeItem('scrollPos');
     }
 }
+
 window.onbeforeunload = () => sessionStorage.setItem('scrollPos', window.scrollY);
 
 // Делает строки таблицы ссылками
@@ -54,7 +57,7 @@ function setupLikeHandlers() {
     document.querySelectorAll("a.like").forEach(likeButton => {
         likeButton.addEventListener("click", function (e) {
             e.preventDefault();
-            sendPostRequest(this.dataset.url, { pk: this.dataset.pk, action: this.dataset.action })
+            sendPostRequest(this.dataset.url, {pk: this.dataset.pk, action: this.dataset.action})
                 .then(data => {
                     if (data.status === "ok") {
                         toggleLikeState(likeButton, data);
@@ -117,15 +120,15 @@ function setupAddToCartHandler() {
     document.querySelectorAll(".ajax-cart-add").forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
-            sendPostRequest(this.dataset.url, { quantity: 1 })
+            sendPostRequest(this.dataset.url, {quantity: 1})
                 .then(data => {
                     if (data.success) {
-                            updateCartUI();
-                            updateCartPopup();
-                            showMessage(data.message, data.status);}
-                        else {
-                            showMessage("Ошибка добавления в корзину", "danger");
-                        }
+                        updateCartUI();
+                        updateCartPopup();
+                        showMessage(data.message, data.status);
+                    } else {
+                        showMessage("Ошибка добавления в корзину", "danger");
+                    }
                 })
                 .catch(() => showMessage("Ошибка выполнения запроса", "danger"));
         });
@@ -141,12 +144,13 @@ function updateCartUI() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                if (data.cart_length>0){
-                cartElement.innerHTML = `${data.cart_length}`;
-                cartElement.style.visibility = "visible";}
-                else{
-                cartElement.innerHTML = ``;
-                cartElement.style.visibility = "hidden";}
+                if (data.cart_length > 0) {
+                    cartElement.innerHTML = `${data.cart_length}`;
+                    cartElement.style.visibility = "visible";
+                } else {
+                    cartElement.innerHTML = ``;
+                    cartElement.style.visibility = "hidden";
+                }
             }
         })
         .catch(() => console.error("Ошибка при обновлении количества в корзине"));
@@ -159,7 +163,7 @@ function updateCartPopup() {
     fetch(cartContainer.dataset.url)
         .then(response => response.text())  // Получаем HTML-код
         .then(html => {
-                cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
+            cartContainer.innerHTML = html;  // Заменяем содержимое всплывающего окна
         })
         .catch(error => console.error("Ошибка обновления popup окна корзины:", error));
 }
@@ -184,7 +188,7 @@ function updatePreviewPopup(data) {
         .catch(error => console.error("Ошибка обновления popup preview:", error));
 }
 
-    // Показать комменты
+// Показать комменты
 function showReplyForm(commentId) {
     var form = document.getElementById("reply-form-" + commentId);
     if (form.style.display === "none") {
@@ -192,7 +196,7 @@ function showReplyForm(commentId) {
     } else {
         form.style.display = "none";
     }
-    }
+}
 
 function checkTerms() {
     const checkbox = document.getElementById('termsCheckbox');
@@ -200,11 +204,54 @@ function checkTerms() {
     if (!checkbox) return;
 
     checkbox.checked = false;
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
         if (this.checked) {
             button.classList.remove('btn-disabled');
         } else {
             button.classList.add('btn-disabled');
         }
     });
+}
+
+// Подписка на рассылку
+function updateSubscribe() {
+    const subscribeBtn = document.querySelector('.btn-subscribe');
+    if (!subscribeBtn) return;
+
+    subscribeBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const emailInput = document.querySelector('.form-control');
+        const email = emailInput.value;
+
+        sendPostRequest(subscribeBtn.dataset.url, {'email': email})
+            .then(data => {
+                if (data.success) {
+                    showMessage("Вы подписались", "success");
+                } else {
+                    showMessage("Вы уже подписаны", "warning");
+                }
+            })
+            .catch(() => console.error("Ошибка при подписке"));
+    })
+}
+
+function unSubscribe() {
+    const subscribeBtn = document.getElementById('unsubscribe-button');
+    if (!subscribeBtn) return;
+
+    subscribeBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const emailInput = document.querySelector('.form-control');
+        const email = emailInput.value;
+
+        sendPostRequest(subscribeBtn.dataset.url, {'email': email})
+            .then(data => {
+                if (data.success) {
+                    showMessage("Вы отписались", "success");
+                } else {
+                    showMessage("Такого адреса нет в списке", "warning");
+                }
+            })
+            .catch(() => console.error("Ошибка при подписке"));
+    })
 }

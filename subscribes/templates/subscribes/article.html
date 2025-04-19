@@ -1,0 +1,15 @@
+{% load cart_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+    {{ article.text|safe }}
+
+    <a href="{% url 'subscribes:unsubscribe_page' %}" style="font-size: smaller;">Отписаться от рассылки</a>
+    <p style="font-size: smaller;">Если ссылка не работает,
+            то скопируйте в строку браузера: {% url 'subscribes:unsubscribe_page' %}</p>
+</body>
+</html>

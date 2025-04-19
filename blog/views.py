@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.db.models import Max
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -52,6 +53,7 @@ class BlogDetailView(DetailView):
         return self.object
 
 
+@login_required
 def article_like(request):
     data = json.loads(request.body)
     post_pk = data.get('pk')
@@ -68,7 +70,7 @@ def article_like(request):
 
     return JsonResponse({'status': 'error'})
 
-
+@login_required
 def add_comment_reply(request, parent_id):
     """Добавление ответа на комментарий"""
     if request.method == 'POST':
@@ -82,7 +84,7 @@ def add_comment_reply(request, parent_id):
         )
         return redirect('blog:blog_detail', slug=article.slug)
 
-
+@login_required
 def add_article_reply(request, article_id):
     """Добавление ответа на комментарий"""
     if request.method == 'POST':

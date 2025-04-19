@@ -1,4 +1,4 @@
-from tags.tag import CheckedTag, ArticleCheckedTag, ProductCheckedTag
+from tags.tag import ArticleCheckedTag, ProductCheckedTag
 
 
 def tags(request):

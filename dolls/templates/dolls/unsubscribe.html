@@ -1,0 +1,39 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+    {% load static %}
+    {% load dolls_tags %}
+
+    <main class="main">
+        <section class="section">
+            <div class="box-commingsoon">
+                <div class="commingsoon-left wow bounceIn">
+                    <div class="box-info-commingsoon">
+                        <h2 class="mb-10">Отписаться от рассылки</h2>
+                        <p class="body-p2 mb-25">Если вам захочется подписаться вновь, в подвале страницы есть кнопка.</p>
+                        <div class="form-newsletters">
+                            <form class="form-inline" action="#">
+                                <input class="form-control" type="text" placeholder="Email *"
+                                       value="{{ request.user.email }}">
+                                <button class="btn btn-black" id="unsubscribe-button"
+                                data-url="{% url 'subscribes:unsubscribe' %}">Отписаться</button>
+                            </form>
+                        </div>
+                        <div class="mt-100">
+                            <div class="socials">
+                                <a href="#"><img src="{% static 'dolls/assets/imgs/page/about1/fb.svg' %}"
+                                                 alt="Guza"></a>
+                                <a href="#"><img src="{% static 'dolls/assets/imgs/page/about1/insta.svg' %}"
+                                                 alt="Guza"></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="commingsoon-right d-flex justify-content-center align-items-start mt-100">
+                    <img src="{% static 'dolls/assets/imgs/page/about1/thank-you.png' %}" width="200"
+                         alt="Guza">
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock content %}

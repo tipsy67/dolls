@@ -1,0 +1,1142 @@
+[
+{
+  "model": "dolls.category",
+  "pk": 1,
+  "fields": {
+    "name": "Интерьерные куклы",
+    "description": "",
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.category",
+  "pk": 2,
+  "fields": {
+    "name": "Игровые куклы",
+    "description": "",
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.category",
+  "pk": 3,
+  "fields": {
+    "name": "Рассказы",
+    "description": "",
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 1,
+  "fields": {
+    "name": "Кукла тест",
+    "description": "Кукла пряжа ткань бла бла бала фыджлаыдла лвалвдла вдлавлф аллвдалф лвдлалывы вдллвал вылалвадвы  вдлалваылваы\r\nАбзац дваваамвллдамлдвалм",
+    "quantity": 1,
+    "price": "10000.00",
+    "old_price": "0.00",
+    "created_at": "2025-02-13T18:10:47.705Z",
+    "update_at": "2025-02-20T20:03:01.674Z",
+    "category": 1,
+    "parameter": null,
+    "is_published": true,
+    "tags": [
+      1
+    ]
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 2,
+  "fields": {
+    "name": "Dolls test",
+    "description": "dfsfsdsdffds",
+    "quantity": null,
+    "price": "9800.00",
+    "old_price": "12000.00",
+    "created_at": "2025-02-13T21:17:13.578Z",
+    "update_at": "2025-02-13T21:17:13.579Z",
+    "category": 1,
+    "parameter": null,
+    "is_published": true,
+    "tags": []
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 3,
+  "fields": {
+    "name": "Doll 2 test",
+    "description": "sgaggfgf\r\ngfdsgdgfg\r\ndfgdsfgdf",
+    "quantity": 2,
+    "price": "9000.00",
+    "old_price": "11000.00",
+    "created_at": "2025-02-14T19:33:52.115Z",
+    "update_at": "2025-03-29T10:39:12.858Z",
+    "category": 2,
+    "parameter": null,
+    "is_published": true,
+    "tags": [
+      2
+    ]
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 4,
+  "fields": {
+    "name": "Tets 4",
+    "description": "eqweqweqwqwe",
+    "quantity": 1,
+    "price": "5000.00",
+    "old_price": "0.00",
+    "created_at": "2025-03-07T18:08:35.739Z",
+    "update_at": "2025-03-07T18:08:35.739Z",
+    "category": 1,
+    "parameter": null,
+    "is_published": true,
+    "tags": []
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 5,
+  "fields": {
+    "name": "Test 5",
+    "description": "qwqwas",
+    "quantity": 1,
+    "price": "1000.00",
+    "old_price": "0.00",
+    "created_at": "2025-03-07T18:09:10.333Z",
+    "update_at": "2025-03-07T18:11:53.862Z",
+    "category": 1,
+    "parameter": null,
+    "is_published": true,
+    "tags": []
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 1,
+  "fields": {
+    "name": "kukla-test-img_5649.jpg.webp",
+    "image": "upload/product_images/img_5649.jpg.webp",
+    "product": 1,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 2,
+  "fields": {
+    "name": "kukla-test-img_5642.jpg.webp",
+    "image": "upload/product_images/img_5642.jpg.webp",
+    "product": 1,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 3,
+  "fields": {
+    "name": "kukla-test-img_5643.jpg.webp",
+    "image": "upload/product_images/img_5643.jpg.webp",
+    "product": 1,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 4,
+  "fields": {
+    "name": "kukla-test-img_5641.jpg.webp",
+    "image": "upload/product_images/img_5641.jpg.webp",
+    "product": 1,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 5,
+  "fields": {
+    "name": "kukla-test-img_5653.jpg.webp",
+    "image": "upload/product_images/img_5653.jpg.webp",
+    "product": 1,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 6,
+  "fields": {
+    "name": "doll-2-test-fullsizerender-15.jpg",
+    "image": "upload/product_images/fullsizerender-15.jpg",
+    "product": 3,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 7,
+  "fields": {
+    "name": "doll-2-test-fullsizerender-12.jpg",
+    "image": "upload/product_images/fullsizerender-12.jpg",
+    "product": 3,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 8,
+  "fields": {
+    "name": "doll-2-test-fullsizerender-3.jpg",
+    "image": "upload/product_images/fullsizerender-3.jpg",
+    "product": 3,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 9,
+  "fields": {
+    "name": "doll-2-test-fullsizerender-8.jpg",
+    "image": "upload/product_images/fullsizerender-8.jpg",
+    "product": 3,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 10,
+  "fields": {
+    "name": "doll-2-test-fullsizerender.jpg",
+    "image": "upload/product_images/fullsizerender.jpg",
+    "product": 3,
+    "is_published": true,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 1,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 2,
+    "text": "ggjjhjmm hjkhhjk",
+    "created_at": "2025-03-10T12:53:13.590Z",
+    "lft": 1,
+    "rght": 16,
+    "tree_id": 1,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 2,
+  "fields": {
+    "article": 12,
+    "parent": 1,
+    "owner": 1,
+    "text": "dsds fggfsgf",
+    "created_at": "2025-03-10T13:12:24.037Z",
+    "lft": 2,
+    "rght": 9,
+    "tree_id": 1,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 3,
+  "fields": {
+    "article": 12,
+    "parent": 1,
+    "owner": 1,
+    "text": "ddslf lfds;sdf;lsdf;l",
+    "created_at": "2025-03-10T13:13:20.441Z",
+    "lft": 10,
+    "rght": 13,
+    "tree_id": 1,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 4,
+  "fields": {
+    "article": 12,
+    "parent": 2,
+    "owner": 1,
+    "text": "hkjkjhhkj kjkjkjkj",
+    "created_at": "2025-03-10T13:14:42.585Z",
+    "lft": 3,
+    "rght": 8,
+    "tree_id": 1,
+    "level": 2
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 5,
+  "fields": {
+    "article": 12,
+    "parent": 4,
+    "owner": 1,
+    "text": "ghjjkjhhkjhjk kjkkjkjlljk",
+    "created_at": "2025-03-10T13:15:12.722Z",
+    "lft": 4,
+    "rght": 7,
+    "tree_id": 1,
+    "level": 3
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 7,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "fddffdfd fdbgdfgdf gbhfgnfg",
+    "created_at": "2025-03-10T13:43:47.830Z",
+    "lft": 1,
+    "rght": 4,
+    "tree_id": 2,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 8,
+  "fields": {
+    "article": 11,
+    "parent": null,
+    "owner": 1,
+    "text": "fddfdf",
+    "created_at": "2025-03-10T14:12:27.421Z",
+    "lft": 1,
+    "rght": 4,
+    "tree_id": 3,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 9,
+  "fields": {
+    "article": 10,
+    "parent": null,
+    "owner": 1,
+    "text": "ggfgf",
+    "created_at": "2025-03-10T14:25:02.799Z",
+    "lft": 1,
+    "rght": 4,
+    "tree_id": 4,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 10,
+  "fields": {
+    "article": 10,
+    "parent": null,
+    "owner": 1,
+    "text": "fg ",
+    "created_at": "2025-03-10T19:03:31.974Z",
+    "lft": 1,
+    "rght": 4,
+    "tree_id": 5,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 11,
+  "fields": {
+    "article": 10,
+    "parent": 9,
+    "owner": 1,
+    "text": "fdgdg",
+    "created_at": "2025-03-10T19:03:39.641Z",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 4,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 12,
+  "fields": {
+    "article": 12,
+    "parent": 3,
+    "owner": 1,
+    "text": "bcvbccb",
+    "created_at": "2025-03-13T18:59:40.552Z",
+    "lft": 11,
+    "rght": 12,
+    "tree_id": 1,
+    "level": 2
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 13,
+  "fields": {
+    "article": 12,
+    "parent": 7,
+    "owner": 1,
+    "text": "cvbvbcv",
+    "created_at": "2025-03-13T18:59:51.762Z",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 2,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 14,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "vbvcv",
+    "created_at": "2025-03-13T19:00:00.319Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 6,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 15,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "tyryryyr",
+    "created_at": "2025-03-27T21:22:42.226Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 7,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 16,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "f!!!!!!!!!!!!!",
+    "created_at": "2025-03-27T22:01:20.277Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 8,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 17,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "gg",
+    "created_at": "2025-03-27T22:06:02.032Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 9,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 18,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "!!!",
+    "created_at": "2025-03-27T22:06:19.646Z",
+    "lft": 1,
+    "rght": 4,
+    "tree_id": 10,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 19,
+  "fields": {
+    "article": 12,
+    "parent": 18,
+    "owner": 1,
+    "text": "nn",
+    "created_at": "2025-03-28T13:17:36.713Z",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 10,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 20,
+  "fields": {
+    "article": 12,
+    "parent": 1,
+    "owner": 1,
+    "text": "gffg",
+    "created_at": "2025-03-28T13:30:51.588Z",
+    "lft": 14,
+    "rght": 15,
+    "tree_id": 1,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 21,
+  "fields": {
+    "article": 12,
+    "parent": 5,
+    "owner": 1,
+    "text": "djonko\r\n",
+    "created_at": "2025-03-28T13:31:05.487Z",
+    "lft": 5,
+    "rght": 6,
+    "tree_id": 1,
+    "level": 4
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 22,
+  "fields": {
+    "article": 11,
+    "parent": 8,
+    "owner": 1,
+    "text": "рор",
+    "created_at": "2025-03-30T21:40:47.826Z",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 3,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 23,
+  "fields": {
+    "article": 10,
+    "parent": 10,
+    "owner": 1,
+    "text": "jhjhjh",
+    "created_at": "2025-04-02T20:56:58.714Z",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 5,
+    "level": 1
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 24,
+  "fields": {
+    "article": 9,
+    "parent": null,
+    "owner": 1,
+    "text": "ccc",
+    "created_at": "2025-04-02T21:18:19.306Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 11,
+    "level": 0
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 25,
+  "fields": {
+    "article": 12,
+    "parent": null,
+    "owner": 1,
+    "text": "kjhkhj",
+    "created_at": "2025-04-12T20:35:02.524Z",
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 12,
+    "level": 0
+  }
+},
+{
+  "model": "blog.blogarticle",
+  "pk": 1,
+  "fields": {
+    "title": "Шла Саша по <span>шоссе</span>",
+    "slug": "1111",
+    "image": "",
+    "created_at": "2025-03-07T18:59:00.036Z",
+    "update_at": "2025-03-07T20:05:09.262Z",
+    "is_published": true,
+    "views_counter": 0,
+    "content": "sadf",
+    "owner": 1,
+    "category": 1,
+    "users_like": [],
+    "tags": []
+  }
+},
+{
+  "model": "blog.blogarticle",
+  "pk": 9,
+  "fields": {
+    "title": "Шла Саша по шоссе1",
+    "slug": "shla-sasha-po-shosse1",
+    "image": "",
+    "created_at": "2025-03-07T19:52:33.371Z",
+    "update_at": "2025-04-02T21:18:19.381Z",
+    "is_published": true,
+    "views_counter": 2,
+    "content": "jhjhg",
+    "owner": 2,
+    "category": 1,
+    "users_like": [
+      1
+    ],
+    "tags": []
+  }
+},
+{
+  "model": "blog.blogarticle",
+  "pk": 10,
+  "fields": {
+    "title": "Шла Саша по шоссе3",
+    "slug": "shla-sasha-po-shosse3",
+    "image": "",
+    "created_at": "2025-03-07T19:52:58.672Z",
+    "update_at": "2025-04-02T20:56:58.806Z",
+    "is_published": true,
+    "views_counter": 32,
+    "content": "fsdgsfgs",
+    "owner": 2,
+    "category": 1,
+    "users_like": [
+      1
+    ],
+    "tags": []
+  }
+},
+{
+  "model": "blog.blogarticle",
+  "pk": 11,
+  "fields": {
+    "title": "Шла Саша по шоссе4",
+    "slug": "shla-sasha-po-shosse4",
+    "image": "",
+    "created_at": "2025-03-07T19:53:47.227Z",
+    "update_at": "2025-03-30T21:40:47.893Z",
+    "is_published": true,
+    "views_counter": 5,
+    "content": "ewfdsdf",
+    "owner": 2,
+    "category": 3,
+    "users_like": [
+      1
+    ],
+    "tags": []
+  }
+},
+{
+  "model": "blog.blogarticle",
+  "pk": 12,
+  "fields": {
+    "title": "Шла Саша по <span>шоссе</span>5",
+    "slug": "shla-sasha-po-spanshossespan5",
+    "image": "",
+    "created_at": "2025-03-07T20:05:25.479Z",
+    "update_at": "2025-04-12T20:35:22.044Z",
+    "is_published": true,
+    "views_counter": 217,
+    "content": "<p>Иногда жизнь поворачивает так, что ты вдруг оказываешься на перепутье. Казалось бы, у тебя всё есть: дом, семья, работа. Но что-то внутри шепчет – ты ещё не нашла себя. Так было и со мной. До того дня, когда я впервые взяла в руки кусочек ткани, нитки и иголку.</p>\r\n\r\n<p>Я шила куклу. Свою первую, совсем неровную, немного угловатую, но невероятно важную. Её звали Солнышко. Я помню, как аккуратно продумывала её наряд, как с любовью вышивала крошечные глазки и розовые щёчки. А потом, когда она была готова, я почувствовала странное тепло. Как будто передо мной не просто игрушка, а кто-то, кому я дала жизнь своими руками.</p>\r\n\r\n<p>С тех пор прошло пять лет. Теперь я – кукольный мастер. Но знаете, что самое удивительное? Каждая кукла, даже самая простая, всё ещё вызывает во мне ту самую магию. И я уверена: это не просто про хобби или ремесло. Это про что-то большее. Про связь между мастером и его творением.</p>\r\n\r\n<h3>Когда куклы оживают</h3>\r\n<p>Знаете, у каждой моей куклы есть своя история. Вот, например, Соня. Она появилась на свет в дождливый вечер, когда за окном громыхал гром, а я сидела на кухне с чашкой горячего чая. Мне хотелось создать что-то нежное, уютное, чтобы согреть этот холодный день.</p>\r\n\r\n<p>Когда я выставила её на продажу, куклу купила девушка по имени Оля. Она призналась, что часто чувствует себя одинокой, и Соня оказалась для неё настоящим другом. «Она как будто понимает меня», – сказала Оля.</p>\r\n\r\n<blockquote><i class=\"fa fa-quote-left\"></i>куклы действительно живые. Они хранят частичку души своего создателя. А потом находят тех, кому эта душа нужна больше всего.</blockquote>\r\n\r\n<p>Когда я выставила её на продажу, куклу купила девушка по имени Оля. Она призналась, что часто чувствует себя одинокой, и Соня оказалась для неё настоящим другом. «Она как будто понимает меня», – сказала Оля.</p>",
+    "owner": 2,
+    "category": 3,
+    "users_like": [
+      1
+    ],
+    "tags": [
+      3
+    ]
+  }
+},
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$FZ6zeXtzzRm9ThS6TkKLSU$YkupJeeui8IVBzDlmHqP4s7RSpK/VBd1P0MjT+oaoEE=",
+    "last_login": "2025-04-12T20:30:34.143Z",
+    "is_superuser": true,
+    "username": "negoro123",
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "email": "dtoropov@yandex.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-02-12T21:06:52Z",
+    "tg_chat_id": null,
+    "avatar": "",
+    "phone": "1",
+    "token": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$OrAPJ0xxjTaVuHrw7zDEVi$6Yj+L/2Pa/5gtJiNbuhH1VVIoCnXtBY4LH+dQHxtc44=",
+    "last_login": "2025-03-10T19:13:02.039Z",
+    "is_superuser": false,
+    "username": "test",
+    "first_name": "Dan",
+    "last_name": "Toropov",
+    "email": "dtoropov@yandex.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-03-01T17:51:03Z",
+    "tg_chat_id": null,
+    "avatar": "",
+    "phone": "89291234567",
+    "token": "d26bd96e20fff9003671c5b306f58f4a",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.address",
+  "pk": 2,
+  "fields": {
+    "name": "2222",
+    "country": "",
+    "zip": "",
+    "address": "",
+    "comment": null,
+    "updated_at": "2025-03-01T18:31:22.386Z",
+    "created_at": "2025-03-04T20:46:31.954Z",
+    "is_active": true,
+    "user": 2
+  }
+},
+{
+  "model": "users.address",
+  "pk": 10,
+  "fields": {
+    "name": "Дом",
+    "country": "Россия",
+    "zip": "214011",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-03-23T20:19:44.815Z",
+    "created_at": "2025-03-04T22:10:58.328Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 11,
+  "fields": {
+    "name": "dfdfgdfgfdfg",
+    "country": "Russia",
+    "zip": "2222",
+    "address": "!!ул. Пригородная д. 10 кв. 33",
+    "comment": null,
+    "updated_at": "2025-03-23T20:26:12.822Z",
+    "created_at": "2025-03-05T17:38:55.017Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 15,
+  "fields": {
+    "name": "2",
+    "country": "2",
+    "zip": "2",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-03-29T10:41:59.794Z",
+    "created_at": "2025-03-05T17:50:10.361Z",
+    "is_active": true,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 17,
+  "fields": {
+    "name": "цфы",
+    "country": "вфывфывфы",
+    "zip": "321312123",
+    "address": "ывфвы",
+    "comment": "укук",
+    "updated_at": "2025-03-27T16:21:29.636Z",
+    "created_at": "2025-03-27T16:21:25.438Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "tunes.feedback",
+  "pk": 4,
+  "fields": {
+    "name": "111",
+    "email": "com@com.com",
+    "phone": "222",
+    "message": "3333",
+    "created_at": "2025-04-06T20:12:53.350Z",
+    "is_read": true,
+    "is_published": false
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 1,
+  "fields": {
+    "key": "limit_free_shipping",
+    "value": "11000",
+    "description": "Лимит покупок для бесплатной доставки"
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 2,
+  "fields": {
+    "key": "author_phone",
+    "value": "+7(962)193-71-21",
+    "description": null
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 3,
+  "fields": {
+    "key": "author_email",
+    "value": "toropova.ek@gmail.com",
+    "description": null
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 4,
+  "fields": {
+    "key": "insta_name",
+    "value": "@kate_dolls",
+    "description": null
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 1,
+  "fields": {
+    "title": "1",
+    "image": "tunes/IMG_3282.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 2,
+  "fields": {
+    "title": "2",
+    "image": "tunes/IMG_2480.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 3,
+  "fields": {
+    "title": "3",
+    "image": "tunes/IMG_4425.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 4,
+  "fields": {
+    "title": "4",
+    "image": "tunes/IMG_3265.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 5,
+  "fields": {
+    "title": "5",
+    "image": "tunes/IMG_3234.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 6,
+  "fields": {
+    "title": "6",
+    "image": "tunes/IMG_3177.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 7,
+  "fields": {
+    "title": "7",
+    "image": "tunes/IMG_3170.png",
+    "is_published": true
+  }
+},
+{
+  "model": "subscribes.article",
+  "pk": 1,
+  "fields": {
+    "is_test": true,
+    "title": "New sales!!!",
+    "text": "<h3>Do you have debts to your husband? </h3>",
+    "created_at": "2025-04-12T19:05:20.709Z",
+    "updated_at": "2025-04-12T19:20:43.799Z"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 17,
+  "fields": {
+    "first_name": "Asfsddf",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Russia",
+    "postal_code": "1213",
+    "address": "!!ул. Пригородная д. 10 кв. 33",
+    "comment": null,
+    "updated_at": "2025-04-10T21:38:32.445Z",
+    "created_at": "2025-03-06T18:02:58.234Z",
+    "user": 1,
+    "status": "SHIPPED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 18,
+  "fields": {
+    "first_name": "Asfsddf",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Россия",
+    "postal_code": "fgdfdd",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-04-10T21:05:48.643Z",
+    "created_at": "2025-03-13T19:13:39.966Z",
+    "user": 1,
+    "status": "NONPAID"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 19,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Россия",
+    "postal_code": "123",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-04-10T21:05:22.235Z",
+    "created_at": "2025-03-23T19:00:00.418Z",
+    "user": 1,
+    "status": "NONPAID"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 20,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "222",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:47:46.572Z",
+    "created_at": "2025-04-10T21:47:46.572Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 21,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "hhh",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:49:23.471Z",
+    "created_at": "2025-04-10T21:49:23.472Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 22,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "jjj",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:51:04.663Z",
+    "created_at": "2025-04-10T21:51:04.663Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 17,
+    "product": 1,
+    "price": "10000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 18,
+    "product": 5,
+    "price": "1000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 18,
+    "product": 4,
+    "price": "5000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 18,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 19,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 20,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 21,
+    "product": 5,
+    "price": "1000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 22,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "tags.tag",
+  "pk": 1,
+  "fields": {
+    "tag": "White"
+  }
+},
+{
+  "model": "tags.tag",
+  "pk": 2,
+  "fields": {
+    "tag": "Black"
+  }
+},
+{
+  "model": "tags.tag",
+  "pk": 3,
+  "fields": {
+    "tag": "Cutely"
+  }
+}
+]
