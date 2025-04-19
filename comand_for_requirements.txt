@@ -1,1 +1,9 @@
 poetry export --format=requirements.txt --output=requirements.txt --without-hashes
+
+python manage.py dumpdata \
+    --exclude=auth.permission \
+    --exclude=contenttypes \
+    --exclude=admin.logentry \
+    --exclude=sessions.session \
+    --exclude=django_migrations \
+    --indent=2 > data.json
