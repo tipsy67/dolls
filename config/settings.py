@@ -10,9 +10,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,7 +57,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # 'tunes.context_processors.get_contact',
                 'cart.context_processors.cart',
-                # 'tags.context_processors.tags',
+                'tags.context_processors.tags',
                 'tunes.context_processors.get_tunes',
             ],
         },
@@ -101,6 +101,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_FILES = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

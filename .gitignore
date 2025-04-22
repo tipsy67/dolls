@@ -249,4 +249,5 @@ cython_debug/
 .idea/
 
 pg_data/
+/static/
 
