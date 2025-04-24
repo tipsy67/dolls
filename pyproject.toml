@@ -16,6 +16,7 @@ pytils = "^0.4.1"
 redis = "^5.2.1"
 django-mptt = "^0.16.0"
 instaloader = "^4.14.1"
+openai = "^1.76.0"
 
 
 [tool.poetry.group.dev.dependencies]

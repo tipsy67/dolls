@@ -1,491 +1,138 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
+    {% load static %}
+    {% load dolls_tags %}
 
-<main class="main">
-    <section class="section block-banner-shop">
-        <div class="container">
-            <h1 class="text-56-medium">Мои куколки</h1>
-            <div class="breadcrumbs">
-                <ul>
-                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                    <li><a href="#">Куклы</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <section class="section block-content-shop">
-        <div class="container">
-            <div class="shop-top-filter">
-                <div class="left-filter"><a class="btn-open-filter" href="#">Filter</a></div>
-                <div class="right-filter">
-                    <div class="box-filter-top">
-                        <div class="show-sm"><a class="btn-open-filter" href="#">Filter </a></div>
-                        <div class="number-product">
-                            <p class="body-p2 neutral-medium-dark">Showing 9 of 18 products</p>
-                        </div>
-                        <div class="box-sort">
-                            <div class="box-sortby d-flex align-items-center">
-                                <div class="dropdown dropdown-sort">
-                                    <button class="btn dropdown-toggle" id="dropdownSort" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Default Sorting
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort"
-                                        style="margin: 0px;">
-                                        <li><a class="dropdown-item active" href="#">Default Sorting</a></li>
-                                        <li><a class="dropdown-item" href="#">Oldest products</a></li>
-                                        <li><a class="dropdown-item" href="#">Comments products </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="box-view-style">
-                                <a class="view-type view-2" href="#" data-col="2"></a>
-                                <a class="view-type view-3" href="#" data-col="3"></a>
-                                <a class="view-type view-4 active" href="#" data-col="4"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="show-sm">
-            <div class="wrapper-overlay"></div>
-            <div class="box-filters-sidebar">
-                <h5 class="title-filter">Filter</h5>
-                <div class="block-filter">
-                    <h6 class="item-collapse">Categories</h6>
-                    <div class="box-collapse scrollFilter">
-                        <ul class="list-filter-checkbox">
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Womens <span class="neutral-medium">(12)</span></span><span
-                                        class="checkmark"></span>
-                                </label><span class="arrow-down"></span>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Mens <span class="neutral-medium">(9)</span></span><span
-                                        class="checkmark"></span>
-                                </label><span class="arrow-down"></span>
-                                <ul>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox"><span class="text-small">Hats<span
-                                                class="neutral-medium">(4)</span></span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox"><span class="text-small">Glasses <span
-                                                class="neutral-medium">(3)</span></span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="cb-container">
-                                            <input type="checkbox"><span class="text-small">Jeans<span
-                                                class="neutral-medium">(2)</span></span><span class="checkmark"></span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Kids <span class="neutral-medium">(15)</span></span><span
-                                        class="checkmark"></span>
-                                </label><span class="arrow-down"></span>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Gifts <span class="neutral-medium">(10)</span></span><span
-                                        class="checkmark"></span>
-                                </label><span class="arrow-down"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="block-filter">
-                    <h6 class="item-collapse">Colors </h6>
-                    <div class="box-collapse scrollFilter">
-                        <ul class="list-colors">
-                            <li class="active">
-                                <div class="box-colors">
-                                    <div class="item-color color-4"></div>
-                                    <label>Blue</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="box-colors">
-                                    <div class="item-color color-3"></div>
-                                    <label>Grey</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="box-colors">
-                                    <div class="item-color color-5"></div>
-                                    <label>Red</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="box-colors">
-                                    <div class="item-color color-6"></div>
-                                    <label>Yellow</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="block-filter">
-                    <h6 class="item-collapse">Size </h6>
-                    <div class="box-collapse scrollFilter">
-                        <div class="block-size">
-                            <div class="list-sizes"><span class="item-size">XS </span><span
-                                    class="item-size active">S </span><span class="item-size">M </span><span
-                                    class="item-size">XL </span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-filter">
-                    <h6 class="item-collapse">Brand </h6>
-                    <div class="box-collapse scrollFilter">
-                        <ul class="list-filter-checkbox">
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Adidas</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Chloe</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Kendo</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Nike</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">Adidas</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="block-filter">
-                    <h6 class="item-collapse">Price </h6>
-                    <div class="box-collapse scrollFilter">
-                        <ul class="list-filter-checkbox">
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">$10.00 - $49.00</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">$50.00 - $99.00</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">$100.00 - $199.00</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="cb-container">
-                                    <input type="checkbox"><span class="text-small">$200.00 +</span><span
-                                        class="checkmark"></span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="block-filter-middle">
+    <main class="main">
+        <section class="section block-banner-shop">
             <div class="container">
-                <div class="box-filters">
-                    <div class="block-filter block-filter-big">
-                        <h6 class="head-filter">Categories</h6>
-                        <div class="box-collapse scrollFilter">
-                            <ul class="list-filter-checkbox">
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Womens <span
-                                            class="neutral-medium">(12)</span></span><span class="checkmark"></span>
-                                    </label><span class="arrow-down"></span>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Mens <span
-                                            class="neutral-medium">(9)</span></span><span class="checkmark"></span>
-                                    </label><span class="arrow-down"></span>
-                                    <ul>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="checkbox"><span class="text-small">Hats<span
-                                                    class="neutral-medium">(4)</span></span><span
-                                                    class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="checkbox"><span class="text-small">Glasses <span
-                                                    class="neutral-medium">(3)</span></span><span
-                                                    class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="cb-container">
-                                                <input type="checkbox"><span class="text-small">Jeans<span
-                                                    class="neutral-medium">(2)</span></span><span
-                                                    class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Kids <span
-                                            class="neutral-medium">(15)</span></span><span class="checkmark"></span>
-                                    </label><span class="arrow-down"></span>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Gifts <span
-                                            class="neutral-medium">(10)</span></span><span class="checkmark"></span>
-                                    </label><span class="arrow-down"></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="block-filter">
-                        <h6 class="head-filter">Colors </h6>
-                        <div class="box-collapse scrollFilter">
-                            <ul class="list-colors">
-                                <li class="active">
-                                    <div class="box-colors">
-                                        <div class="item-color color-4"></div>
-                                        <label>Blue</label>
+                <h1 class="text-56-medium">Мои куколки</h1>
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                        <li><a href="#">Куклы</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="section block-content-shop">
+            <div class="container">
+                <div class="shop-top-filter">
+                    <div class="left-filter"><a class="btn-open-filter" href="#">Filter</a></div>
+                    <div class="right-filter">
+                        <div class="box-filter-top">
+                            <div class="show-sm"><a class="btn-open-filter" href="#">Filter </a></div>
+                            <div class="number-product">
+{#                                <p class="body-p2 neutral-medium-dark">Showing 9 of 18 products</p>#}
+                            </div>
+                            <div class="box-sort">
+                                <div class="box-sortby d-flex align-items-center">
+                                    <div class="dropdown dropdown-sort">
+                                        <button class="btn dropdown-toggle" id="dropdownSort" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Default Sorting
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort"
+                                            style="margin: 0px;">
+                                            <li><a class="dropdown-item active" href="#">Default Sorting</a></li>
+                                            <li><a class="dropdown-item" href="#">Oldest products</a></li>
+                                            <li><a class="dropdown-item" href="#">Comments products </a></li>
+                                        </ul>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="box-colors">
-                                        <div class="item-color color-3"></div>
-                                        <label>Grey</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box-colors">
-                                        <div class="item-color color-5"></div>
-                                        <label>Red</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="box-colors">
-                                        <div class="item-color color-6"></div>
-                                        <label>Yellow</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="block-filter">
-                        <h6 class="head-filter">Size </h6>
-                        <div class="box-collapse scrollFilter">
-                            <ul class="list-filter-checkbox">
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">S <span class="neutral-medium">(3)</span></span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">L <span class="neutral-medium">(9)</span></span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">M <span class="neutral-medium">(4)</span></span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">XL <span class="neutral-medium">(5)</span></span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="block-filter">
-                        <h6 class="head-filter">Brand </h6>
-                        <div class="box-collapse scrollFilter">
-                            <ul class="list-filter-checkbox">
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Adidas</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Chloe</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Kendo</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Nike</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">Adidas</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="block-filter block-filter-big">
-                        <h6 class="head-filter">Price </h6>
-                        <div class="box-collapse scrollFilter">
-                            <ul class="list-filter-checkbox">
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">$10.00 - $49.00</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">$50.00 - $99.00</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">$100.00 - $199.00</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <label class="cb-container">
-                                        <input type="checkbox"><span class="text-small">$200.00 +</span><span
-                                            class="checkmark"></span>
-                                    </label>
-                                </li>
-                            </ul>
+                                </div>
+                                <div class="box-view-style">
+                                    <a class="view-type view-2" href="#" data-col="2"></a>
+                                    <a class="view-type view-3" href="#" data-col="3"></a>
+                                    <a class="view-type view-4 active" href="#" data-col="4"></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <!--            <div class="box-your-filter box-your-filter-shop2">-->
-            <!--                <div class="block-text-filter"><span class="body-p2 neutral-medium-dark">Your filter</span></div>-->
-            <!--                <div class="block-ele-filter"><a class="btn btn-tag-filter" href="#">XS<span-->
-            <!--                        class="close-tag"></span></a><a class="btn btn-tag-filter" href="#">Women<span-->
-            <!--                        class="close-tag"></span></a><a class="clear-filter link-underline" href="#">Clear All</a></div>-->
-            <!--            </div>-->
-            <div class="box-list-products box-list-products-4 box-list-products-shop-2">
-                {% for product in product_list %}
-                <div class="product-item">
-                    <div class="cardProduct wow fadeInUp">
-                        <div class="cardImage"><a href="{% url 'dolls:shop_single' product.pk %}">
-                            <img class="imageMain" src="{{product.one_image|add_media}}" alt="guza">
-                            <img class="imageHover" src="{{product.one_image|add_media}}" alt="guza"></a>
-                            <div class="button-select">
-                                {% if product.quantity %}
-                                <a href="{% url 'cart:buy_now' product.pk %}"
-                                   class="addto-cart"
-                                   title="Купить">Купить</a>
-                                {% else %}
-                                <a class="addto-cart"
-                                   title="Нет в наличии"
-                                   style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
-                                {% endif %}
-                            </div>
-                            <div class="box-quick-button">
-                                <a class="btn preview-product"
-                                   data-url="{% url 'dolls:product_preview_update' product.pk %}" href="#">
-                                    <svg class="d-inline-flex align-items-center justify-content-center" width="28"
-                                         height="28" viewbox="0 0 28 28" fill="" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_91_73)">
-                                            <path d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"
-                                                  fill=""></path>
-                                        </g>
-                                        <defs>
-                                            <clippath id="clip0_91_73">
-                                                <rect width="24" height="24" fill="white"
-                                                      transform="translate(2 2)"></rect>
-                                            </clippath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                                {% if product.quantity %}
-                                <a class="btn ajax-cart-add" href="#"
-                                   data-product_id="{{ product.pk }}"
-                                   data-url="{% url 'cart:cart_add' product.pk %}">
-                                    <svg class="d-inline-flex align-items-center justify-content-center"
-                                         width="28" height="28" viewbox="0 0 28 28"
-                                         fill=""
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_116_450)">
-                                            <path d="M9 10V8C9 6.67392 9.52678 5.40215 10.4645 4.46447C11.4021 3.52678 12.6739 3 14 3C15.3261 3 16.5979 3.52678 17.5355 4.46447C18.4732 5.40215 19 6.67392 19 8V10H22C22.2652 10 22.5196 10.1054 22.7071 10.2929C22.8946 10.4804 23 10.7348 23 11V23C23 23.2652 22.8946 23.5196 22.7071 23.7071C22.5196 23.8946 22.2652 24 22 24H6C5.73478 24 5.48043 23.8946 5.29289 23.7071C5.10536 23.5196 5 23.2652 5 23V11C5 10.7348 5.10536 10.4804 5.29289 10.2929C5.48043 10.1054 5.73478 10 6 10H9ZM9 12H7V22H21V12H19V14H17V12H11V14H9V12ZM11 10H17V8C17 7.20435 16.6839 6.44129 16.1213 5.87868C15.5587 5.31607 14.7956 5 14 5C13.2044 5 12.4413 5.31607 11.8787 5.87868C11.3161 6.44129 11 7.20435 11 8V10Z"
-                                                  fill=""></path>
-                                        </g>
-                                        <defs>
-                                            <clippath id="clip0_116_450">
-                                                <rect width="24" height="24" fill="white"
-                                                      transform="translate(2 2)"></rect>
-                                            </clippath>
-                                        </defs>
-                                    </svg>
-                                </a>
-                                {% endif %}
+{#            {% include 'shop-filter.html' %}#}
+            <div class="container">
+                <!--            <div class="box-your-filter box-your-filter-shop2">-->
+                <!--                <div class="block-text-filter"><span class="body-p2 neutral-medium-dark">Your filter</span></div>-->
+                <!--                <div class="block-ele-filter"><a class="btn btn-tag-filter" href="#">XS<span-->
+                <!--                        class="close-tag"></span></a><a class="btn btn-tag-filter" href="#">Women<span-->
+                <!--                        class="close-tag"></span></a><a class="clear-filter link-underline" href="#">Clear All</a></div>-->
+                <!--            </div>-->
+                <div class="box-list-products box-list-products-4 box-list-products-shop-2">
+                    {% for product in product_list %}
+                        <div class="product-item">
+                            <div class="cardProduct wow fadeInUp">
+                                <div class="cardImage"><a href="{% url 'dolls:shop_single' product.pk %}">
+                                    <img class="imageMain" src="{{ product.one_image|add_media }}" alt="guza">
+                                    <img class="imageHover" src="{{ product.one_image|add_media }}" alt="guza"></a>
+                                    <div class="button-select">
+                                        {% if product.quantity %}
+                                            <a href="{% url 'cart:buy_now' product.pk %}"
+                                               class="addto-cart"
+                                               title="Купить">Купить</a>
+                                        {% else %}
+                                            <a class="addto-cart"
+                                               title="Нет в наличии"
+                                               style="pointer-events: none; opacity: 0.6;">Нет в наличии</a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="box-quick-button">
+                                        <a class="btn preview-product"
+                                           data-url="{% url 'dolls:product_preview_update' product.pk %}" href="#">
+                                            <svg class="d-inline-flex align-items-center justify-content-center"
+                                                 width="28"
+                                                 height="28" viewbox="0 0 28 28" fill=""
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <g clip-path="url(#clip0_91_73)">
+                                                    <path d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"
+                                                          fill=""></path>
+                                                </g>
+                                                <defs>
+                                                    <clippath id="clip0_91_73">
+                                                        <rect width="24" height="24" fill="white"
+                                                              transform="translate(2 2)"></rect>
+                                                    </clippath>
+                                                </defs>
+                                            </svg>
+                                        </a>
+                                        {% if product.quantity %}
+                                            <a class="btn ajax-cart-add" href="#"
+                                               data-product_id="{{ product.pk }}"
+                                               data-url="{% url 'cart:cart_add' product.pk %}">
+                                                <svg class="d-inline-flex align-items-center justify-content-center"
+                                                     width="28" height="28" viewbox="0 0 28 28"
+                                                     fill=""
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_116_450)">
+                                                        <path d="M9 10V8C9 6.67392 9.52678 5.40215 10.4645 4.46447C11.4021 3.52678 12.6739 3 14 3C15.3261 3 16.5979 3.52678 17.5355 4.46447C18.4732 5.40215 19 6.67392 19 8V10H22C22.2652 10 22.5196 10.1054 22.7071 10.2929C22.8946 10.4804 23 10.7348 23 11V23C23 23.2652 22.8946 23.5196 22.7071 23.7071C22.5196 23.8946 22.2652 24 22 24H6C5.73478 24 5.48043 23.8946 5.29289 23.7071C5.10536 23.5196 5 23.2652 5 23V11C5 10.7348 5.10536 10.4804 5.29289 10.2929C5.48043 10.1054 5.73478 10 6 10H9ZM9 12H7V22H21V12H19V14H17V12H11V14H9V12ZM11 10H17V8C17 7.20435 16.6839 6.44129 16.1213 5.87868C15.5587 5.31607 14.7956 5 14 5C13.2044 5 12.4413 5.31607 11.8787 5.87868C11.3161 6.44129 11 7.20435 11 8V10Z"
+                                                              fill=""></path>
+                                                    </g>
+                                                    <defs>
+                                                        <clippath id="clip0_116_450">
+                                                            <rect width="24" height="24" fill="white"
+                                                                  transform="translate(2 2)"></rect>
+                                                        </clippath>
+                                                    </defs>
+                                                </svg>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="cardInfo"><a href="#">
+                                    <h6 class="text-16-medium cardTitle">{{ product.name }}</h6></a>
+                                    <p class="body-p2 cardDesc">
+                                        {% if product.sale %}
+                                            <del>{{ product.old_price }}</del>
+                                        {% endif %}
+                                        {{ product.price }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="cardInfo"><a href="#">
-                            <h6 class="text-16-medium cardTitle">{{product.name}}</h6></a>
-                            <p class="body-p2 cardDesc">
-                                {% if product.sale %}
-                                <del>{{product.old_price}}</del>
-                                {% endif %}
-                                {{product.price}}
-                            </p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% include 'pagination.html' with page=product_list page_name='page' %}
             </div>
-            {% include 'pagination.html' with page=product_list page_name='page' %}
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 {% endblock content %}

@@ -43,33 +43,34 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="box-product-info">
-                        <p class="body-p2 viewed-guest"><span class="text-17-medium tone-red">24 guests</span>are
-                            viewing this product</p>
+{#                        <p class="body-p2 viewed-guest"><span class="text-17-medium tone-red">24 guests</span>are#}
+{#                            viewing this product</p>#}
                         <h3 class="mb-5">{{product.name}}</h3>
-                        <div class="block-rating"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img
-                                src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span
-                                class="text-17 neutral-medium-dark">(5)</span></div>
+{#                        <div class="block-rating"><img#}
+{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
+{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
+{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
+{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
+{#                                src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span#}
+{#                                class="text-17 neutral-medium-dark">(5)</span></div>#}
                         <div class="block-price"><span class="price-main">{{product.price}}</span>
                             {% if product.sale %}
                             <span class="price-line">{{product.old_price}}</span>
                             {% endif %}
                         </div>
                         <div class="block-description">
-                            <p class="body-p2 neutral-medium-dark">{{product.description}}</p>
+                            {{product.description|safe}}
                         </div>
                         <div class="block-quantity">
-<!--                            <div class="text-17 neutral-medium-dark mb-10">Наличие:</div>-->
+                            <div class="text-17 neutral-medium-dark mb-10">Наличие:
+                            {% if product.quantity %}
+                                {{product.quantity}}
+                            {% else %}
+                             нет
+                            {% endif %}
+                            </div>
                             <div class="box-form-cart">
                                 {% if product.quantity %}
-<!--                                <div class="form-cart detail-qty"><span class="minus"></span>-->
-<!--                                    <input class="qty-val form-control" type="text" name="quantity"-->
-<!--                                           value="{{product.quantity}}"-->
-<!--                                           min="1"><span class="plus"></span>-->
-<!--                                </div>-->
                                 <a class="btn btn-black ajax-cart-add"
                                    data-product_id="{{ product.pk }}"
                                    {% if product.pk %}
@@ -78,14 +79,12 @@
                                    data-url="#"
                                    {% endif %} href="#">
                                     В корзину</a><a class="btn btn-navy" href="{% url 'cart:buy_now' product.pk %}">Купить</a>
-                                {% else %}
-                                нет в наличии
                                 {% endif %}
                             </div>
                         </div>
                         <div class="block-shipping">
-                            <div class="free-shipping">Free shipping over $300</div>
-                            <div class="time-shipping">60 - Days Returns Learn More</div>
+                            <div class="free-shipping">Бесплатная доставка при покупке от {{limit_free_shipping}}</div>
+                            <div class="time-shipping">Бережно упакована в красивую коробку — идеально для хранения, подарка и транспортировки.</div>
                         </div>
                         <div class="block-tags-product">
                             <p class="body-p2"><span class="neutral-medium-dark">Категория:</span>
@@ -131,37 +130,7 @@
             </div>
         </div>
     </section>
-    <section class="section block-may-also-like">
-        <div class="container">
-            <div class="text-center">
-                <h3 class="mb-60">You May Also Like</h3>
-            </div>
-            <div class="row">
-                <!--                <div class="col-lg-3 col-md-6">-->
-                <!--                    <div class="cardProduct wow fadeInUp">-->
-                <!--                        <div class="cardImage"><a href="#"><img class="imageMain"-->
-                <!--                                                                src="assets/imgs/page/homepage1/product5.png"-->
-                <!--                                                                alt="guza"><img class="imageHover"-->
-                <!--                                                                                src="assets/imgs/page/homepage1/product2-hover.png"-->
-                <!--                                                                                alt="guza"></a>-->
-                <!--                            <div class="button-select"><a href="#">Select Options</a></div>-->
-                <!--                        </div>-->
-                <!--                        <div class="cardInfo"><a href="#">-->
-                <!--                            <h6 class="text-16-medium cardTitle">{{product.name}}</h6></a>-->
-                <!--                            <p class="body-p2 cardDesc">-->
-                <!--                                {% if product.sale %}-->
-                <!--                                <del>{{product.old_price}}</del>-->
-                <!--                                {{product.price}}-->
-                <!--                                {% endif %}-->
-                <!--                                {{product.price}}-->
-                <!--                            </p>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-            </div>
-        </div>
-        </div>
-        </div>
-    </section>
+
 </main>
 
 {% endblock content %}
