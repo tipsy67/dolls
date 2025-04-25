@@ -1,7 +1,5 @@
 import os
 
-import requests
-import json
 from openai import OpenAI
 
 from config.settings import BASE_DIR
