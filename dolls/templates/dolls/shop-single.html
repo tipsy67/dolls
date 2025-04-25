@@ -46,13 +46,15 @@
 {#                        <p class="body-p2 viewed-guest"><span class="text-17-medium tone-red">24 guests</span>are#}
 {#                            viewing this product</p>#}
                         <h3 class="mb-5">{{product.name}}</h3>
-{#                        <div class="block-rating"><img#}
-{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
-{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
-{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
-{#                                src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza"><img#}
-{#                                src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span#}
-{#                                class="text-17 neutral-medium-dark">(5)</span></div>#}
+                        <div class="block-rating">
+                            <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza">
+                            <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza">
+                            <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza">
+                            <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza">
+                            <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="Guza">
+{#                           <img src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="Guza"><span#}
+{#                                class="text-17 neutral-medium-dark">(5)</span>#}
+                        </div>
                         <div class="block-price"><span class="price-main">{{product.price}}</span>
                             {% if product.sale %}
                             <span class="price-line">{{product.old_price}}</span>
