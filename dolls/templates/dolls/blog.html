@@ -25,14 +25,14 @@
                     {% for article in blog_list %}
                     <div class="cardBlog cardBlogList wow fadeInUp">
                         <div class="cardImage"><a href="{% url 'blog:blog_detail' article.slug %}">
-                            <img src="{% static 'dolls/assets/imgs/page/blog-list/img6.png' %}" alt="guza"></a></div>
+                            <img src="{{article.image|add_media_insta}}" alt="TOR"></a></div>
                         <div class="cardInfo">
                             <div class="cardTags"><a href="#">{{article.category}}</a>
                                 <span class="date-post text-uppercase">{{article.created_at|date:"j M"}}</span>
                             </div>
                             <a class="cardTitle" href="{% url 'blog:blog_detail' article.slug %}">
                                 <h5>{{article.title|safe}}</h5></a>
-                            <p class="cardDesc body-p2">{{article.content|safe|truncatechars_html:400}}</p>
+                            <p class="cardDesc body-p2">{{article.short_content|safe|truncatechars_html:400}}</p>
                             <a class="link-underline link-l2"
                                href="{% url 'blog:blog_detail' article.slug %}">Читать</a>
                         </div>

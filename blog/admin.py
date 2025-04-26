@@ -1,9 +1,8 @@
-from django.contrib import admin
 from django import forms
-from django.core.validators import ValidationError
 from pytils.translit import slugify
-
+from django.contrib import admin, messages
 from blog.models import BlogArticle, Comment
+from blog.tasks import remake_article
 
 
 class BlogAdminForm(forms.ModelForm):
@@ -19,14 +18,23 @@ class BlogAdminForm(forms.ModelForm):
         super().clean(*args, **kwargs)
 
 
+
 @admin.register(BlogArticle)
 class BlogAdmin(admin.ModelAdmin):
     filter = ['created_at']
     form = BlogAdminForm
+    actions = ['edit_article']
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
 
+    @admin.action(description="Преобразовать статью с помощью AI")
+    def edit_article(self, request, queryset):
+        for article in queryset:
+            remake_article.delay(article.pk)
+        self.message_user(
+            request, f"Не забудьте проконтролировать отредактированный текст!", messages.WARNING
+        )
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

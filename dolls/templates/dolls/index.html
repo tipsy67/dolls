@@ -69,9 +69,9 @@
                                 <div class="cardImage"><a href="{% url 'dolls:shop_single' product.pk %}"><img
                                         class="imageMain"
                                         src="{{product.one_image|add_media}}"
-                                        alt="guza"><img class="imageHover"
+                                        alt="TOR"><img class="imageHover"
                                                         src="{{product.one_image|add_media}}"
-                                                        alt="guza"></a>
+                                                        alt="TOR"></a>
                                     <div class="button-select">
                                         {% if product.quantity %}
                                         <a href="{% url 'cart:buy_now' product.pk %}"
@@ -164,14 +164,14 @@
                 <div class="col-md-4">
                     <div class="cardBlog wow fadeInUp">
                         <div class="cardImage"><a href="{{article_url}}">
-                            <img src="{% static 'dolls/assets/imgs/page/homepage15/blog3.png' %}"
-                                 alt="guza"></a></div>
+                            <img src="{{article.image|add_media_insta}}"
+                                 alt="TOR"></a></div>
                         <div class="cardInfo">
-                            <div class="cardTags"><a href="#">Fashion</a><span class="date-post">{{article.created_at|date:"j M, Y"}}</span>
+                            <div class="cardTags"><a href="#">{{ article.category }}</a><span class="date-post">{{article.created_at|date:"j M, Y"}}</span>
                             </div>
                             <a class="cardTitle" href="{{article_url}}">
                                 <h5>{{article.title|safe}}</h5></a>
-                            <p class="cardDesc body-p2">{{article.content|striptags|truncatechars_html:50}}
+                            <p class="cardDesc body-p2">{{article.short_content|striptags|truncatechars_html:120}}
                             </p><a class="link-underline link-l2" href="{{article_url}}">Читать</a>
                         </div>
                     </div>

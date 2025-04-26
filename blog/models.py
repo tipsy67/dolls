@@ -52,7 +52,8 @@ class BlogArticle(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name='Изменен')
     is_published = models.BooleanField(default=False, verbose_name='Признак публикации')
     views_counter = models.IntegerField(default=0, verbose_name='Количество просмотров')
-    content = models.TextField(verbose_name='Содержимое')
+    short_content = models.TextField(**NULLABLE, verbose_name='Краткое содержимое')
+    content = models.TextField(**NULLABLE, verbose_name='Содержимое')
     owner = models.ForeignKey(
         to=User,
         on_delete=models.SET_NULL,
@@ -80,10 +81,6 @@ class BlogArticle(models.Model):
 
     def __str__(self):
         return f'{self.title}'
-
-    @property
-    def short_content(self):
-        return truncatechars(self.content, 100)
 
     def save(self, *args, **kwargs):
         if not self.pk:
