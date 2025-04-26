@@ -63,8 +63,8 @@
                         <div class="product-item">
                             <div class="cardProduct wow fadeInUp">
                                 <div class="cardImage"><a href="{% url 'dolls:shop_single' product.pk %}">
-                                    <img class="imageMain" src="{{ product.one_image|add_media }}" alt="guza">
-                                    <img class="imageHover" src="{{ product.one_image|add_media }}" alt="guza"></a>
+                                    <img class="imageMain" src="{{ product.one_image|add_media }}" alt="TOR">
+                                    <img class="imageHover" src="{{ product.one_image|add_media }}" alt="TOR"></a>
                                     <div class="button-select">
                                         {% if product.quantity %}
                                             <a href="{% url 'cart:buy_now' product.pk %}"
