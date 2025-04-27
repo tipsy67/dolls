@@ -48,7 +48,7 @@
                                 {% for article in list_popular_articles %}
                                 <li>
                                     <div class="image-post"><a href="#"><img
-                                            src="{% static 'dolls/assets/imgs/page/blog-list/img6.png' %}"
+                                            src="{{article.image|add_media_insta}}"
                                             alt=""></a></div>
                                     <div class="info-post"><span class="date-post text-uppercase">{{article.last_comment_date|date:"j M"}}</span><a
                                             href="#">
