@@ -37,7 +37,7 @@
     <section class="section block-shop-1">
         <div class="container">
             <div class="text-center">
-                <h3 class="neutral-dark wow fadeInLeft">Мои куколки</h3>
+                <a href="{% url 'dolls:shop' %}"><h3 class="neutral-dark wow fadeInLeft">Мои куколки</h3></a>
                 <div class="box-tabs wow fadeInRight">
                     <ul class="nav nav-tabs nav-tabs-style-2 nav-tabs-style-3" role="tablist">
                         {% for category in objects_list %}
@@ -156,7 +156,7 @@
     <section class="section box-blogs">
         <div class="container">
             <div class="text-center">
-                <h3 class="mb-40 wow fadeInLeft">Мои истории</h3>
+                <a href="{% url 'blog:blog_list' %}"><h3 class="mb-40 wow fadeInLeft">Мои истории</h3></a>
             </div>
             <div class="row">
                 {% for article in blog_list %}

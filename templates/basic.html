@@ -181,7 +181,7 @@
                         <div class="col-lg-3 mb-30">
                             <h6 class="neutral-dark mb-20">Мастерская</h6>
                             <ul class="menu-footer">
-                                <li><a href="{% url 'dolls:about' %}">О нас</a></li>
+                                <li><a href="{% url 'dolls:about' %}">Обо мне</a></li>
                                 <li><a href="{% url 'dolls:history' %}">Процесс создания</a></li>
                                 <li><a href="{% url 'dolls:contact_us' %}">Контакты</a></li>
                             </ul>
@@ -220,14 +220,19 @@
         <div class="container">
             <div class="footer-bottom">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-20">
-                        <span class="body-p1 neutral-medium-dark">© 2025 ТОР. Территория Особенных Радостей. Все права защищены</span>
+                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-10">
+                        <span class="body-p1 neutral-medium-dark">© 2025
+                        <a href="mailto:dan.toropov@gmail.com">Связаться с разработчиком </a>
+                        </span>
+                        <a href="https://github.com/tipsy67/">
+                            <img src="{% static 'dolls/assets/imgs/icons/guthub.png' %}" width="20" alt="GitHub">
+                        </a>
                         {#                        <ul class="menu-bottom">#}
-                        {#                            <li><a href="{% url 'dolls:privacy_policy' %}">Политика конфиденциальности</a></li>#}
+                        {#                            <li>c</li>#}
                         {#                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>#}
                         {#                        </ul>#}
                     </div>
-                    <div class="col-lg-6 col-md-12 text-center text-lg-end mb-20">
+                    <div class="col-lg-6 col-md-12 text-center text-lg-end mb-10">
                         <div class="socials">
                             <a href="#"><img src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
                                              alt="Facebook"></a>
