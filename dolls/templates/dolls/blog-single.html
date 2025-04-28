@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="blog-content wow bounceIn">
-                    <img class="w-100" src="{% static 'dolls/assets/imgs/page/blog/single.png' %}" alt="Guza">
+                    <img class="w-100" src="{{article.image|add_media_insta}}" alt="TOR">
                     <div class="blog-content-inner">
                         {{ article.content|safe }}
                         <div class="block-tag-share">
@@ -39,10 +39,10 @@
                             <div class="block-shares"><span class="text-17 mr-20">Share</span>
                                 <div class="socials"><a href="#"><img
                                         src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
-                                        alt="Guza"></a><a href="#"><img
+                                        alt="TOR"></a><a href="#"><img
                                         src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}"
-                                        alt="Guza"></a><a href="#"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="Guza"></a>
+                                        alt="TOR"></a><a href="#"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="TOR"></a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <!--                            <div class="col-lg-4 col-md-6">-->
                         <!--                                <div class="cardBlog wow fadeInUp">-->
                         <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog1.png"-->
-                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                                                            alt="TOR"></a></div>-->
                         <!--                                    <div class="cardInfo">-->
                         <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
                         <!--                                                class="date-post">DEC 1, 2022</span></div>-->
@@ -97,7 +97,7 @@
                         <!--                            <div class="col-lg-4 col-md-6">-->
                         <!--                                <div class="cardBlog wow fadeInUp">-->
                         <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog2.png"-->
-                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                                                            alt="TOR"></a></div>-->
                         <!--                                    <div class="cardInfo">-->
                         <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
                         <!--                                                class="date-post">DEC 1, 2022</span></div>-->
@@ -109,7 +109,7 @@
                         <!--                            <div class="col-lg-4 col-md-6">-->
                         <!--                                <div class="cardBlog wow fadeInUp">-->
                         <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog3.png"-->
-                        <!--                                                                            alt="guza"></a></div>-->
+                        <!--                                                                            alt="TOR"></a></div>-->
                         <!--                                    <div class="cardInfo">-->
                         <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
                         <!--                                                class="date-post">{{article.created_at|date:"j M"}}</span></div>-->

@@ -8,14 +8,16 @@ services:
 
   db:
     image: "postgres:latest"
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     expose:
       - "5432"
     volumes:
-      - ./pg_data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
       interval: 10s
       retries: 50
       timeout: 5s
@@ -33,7 +35,9 @@ services:
       - .env
     volumes:
       - .:/app
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#      - static:/app/staticfiles
+#      - media:/app/media
+    command: sh -c "./entrypoint.sh"
 #    stdin_open: true
 #    tty: true
 #    command: bash
@@ -51,6 +55,48 @@ services:
       - .:/app
     command: celery -A config worker -l info
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+    depends_on:
+      - app
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    ports:
+      - "5050:80"
+    volumes:
+      - pg_admin:/var/lib/pgadmin
+    depends_on:
+      db:
+        condition: service_healthy
+
+  flower:
+    build: .
+    ports:
+      - "${FLOWER_PORT}:${FLOWER_PORT}"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - celery
+      - redis
+    command: >
+      celery -A config flower
+      --port=${FLOWER_PORT}
+      --basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}
+      --broker=${FLOWER_BROKER_URL}
+
+
 volumes:
   pg_data:
-
+  pg_admin:
+#  static:
+#  media:
