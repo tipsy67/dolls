@@ -17,7 +17,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB" ]
       interval: 10s
       retries: 50
       timeout: 5s
@@ -35,12 +35,12 @@ services:
       - .env
     volumes:
       - .:/app
-#      - static:/app/staticfiles
-#      - media:/app/media
+    #      - static:/app/staticfiles
+    #      - media:/app/media
     command: sh -c "./entrypoint.sh"
-#    stdin_open: true
-#    tty: true
-#    command: bash
+  #    stdin_open: true
+  #    tty: true
+  #    command: bash
 
   celery:
     build: .
@@ -62,8 +62,21 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - .:/app
+      - ./certbot/etc:/etc/letsencrypt
+      - ./certbot/var:/var/lib/letsencrypt
+      - ./certbot/webroot:/var/www/html
     depends_on:
       - app
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/etc:/etc/letsencrypt
+      - ./certbot/var:/var/lib/letsencrypt
+      - ./certbot/webroot:/var/www/html
+    command: certonly --webroot -w /var/www/html --email ${DOMAIN_ADMIN_EMAIL} -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME} --agree-tos --non-interactive
+    depends_on:
+      - nginx
 
   pgadmin:
     image: dpage/pgadmin4
