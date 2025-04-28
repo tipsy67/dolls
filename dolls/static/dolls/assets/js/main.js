@@ -1330,7 +1330,7 @@ function initSwiperProduct() {
         });
     });
 }
-// Guza
+// TOR
 var swiper_4_items = null;
 function initSwiper4Items(elementor, prevEle, nextEle, pageEle) {
     if (swiper_4_items) {
@@ -1436,7 +1436,7 @@ function initSwiper6Items(elementor, prevEle, nextEle, pageEle) {
         }
     });
 }
-// Guza
+// TOR
 function initSwiperTab(idx, number) {
     if ($(".swiper-tab-" + idx + "").length == 0) {
         return;

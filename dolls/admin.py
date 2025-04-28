@@ -5,6 +5,8 @@ from django.utils.safestring import mark_safe
 from dolls.models import Category, Product, Image
 from pytils.translit import slugify
 
+from dolls.tasks import remake_description
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -17,6 +19,26 @@ class CategoryAdmin(admin.ModelAdmin):
 class ImageInline(admin.TabularInline):
     model = Image
     extra = 1
+
+@admin.action(description="Опубликовать выбранные записи")
+def set_published(self, request, queryset):
+    count = queryset.update(is_published=True)
+    self.message_user(request, f"Изменено {count} записей.")
+
+@admin.action(description="Снять с публикации выбранные записи")
+def set_draft(self, request, queryset):
+    count = queryset.update(is_published=False)
+    self.message_user(
+        request, f"{count} записей сняты с публикации!", messages.WARNING
+    )
+
+@admin.action(description="Преобразовать описание с помощью AI")
+def edit_description(self, request, queryset):
+    for product in queryset:
+        remake_description.delay(product.pk)
+    self.message_user(
+        request, f"Не забудьте проконтролировать отредактированный текст!", messages.WARNING
+    )
 
 
 @admin.register(Product)
@@ -32,24 +54,13 @@ class ProductAdmin(admin.ModelAdmin):
     )
     inlines = [ImageInline]
     list_display_links = ('name',)
+    actions = [set_draft, set_published, edit_description]
 
     @admin.display(description="Просмотр")
     def photo_product(self, product: Product):
         if product.one_image:
             return mark_safe(f"<img src='{product.one_image.image.url}' width=50>")
         return "Без изображения"
-
-    @admin.action(description="Опубликовать выбранные записи")
-    def set_published(self, request, queryset):
-        count = queryset.update(is_published=True)
-        self.message_user(request, f"Изменено {count} записей.")
-
-    @admin.action(description="Снять с публикации выбранные записи")
-    def set_draft(self, request, queryset):
-        count = queryset.update(is_published=False)
-        self.message_user(
-            request, f"{count} записей сняты с публикации!", messages.WARNING
-        )
 
     def save_formset(self, request, form, formset, change):
         product_name = form.cleaned_data.get('name', '')

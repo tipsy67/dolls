@@ -12,11 +12,17 @@ from config.settings import MEDIA_ROOT, STATIC_FILES
 from celery import shared_task
 
 from dolls.src.mailers import sendmail_cmd
+from dolls.src.requests_to_ai import generate_description
 
 
 @shared_task
 def sendmail(recipients_emails: list, title: str, content: str):
     sendmail_cmd(recipients_emails, title, content)
+
+
+@shared_task
+def remake_description(product_id:int):
+    generate_description(product_id)
 
 
 def get_current_ip():
