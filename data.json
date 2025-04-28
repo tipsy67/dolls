@@ -1,5 +1,446 @@
 [
 {
+  "model": "tags.tag",
+  "pk": 1,
+  "fields": {
+    "tag": "White"
+  }
+},
+{
+  "model": "tags.tag",
+  "pk": 2,
+  "fields": {
+    "tag": "Black"
+  }
+},
+{
+  "model": "tags.tag",
+  "pk": 3,
+  "fields": {
+    "tag": "Cutely"
+  }
+},
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$lrqyX933K0yZPdj749xFOv$WrI/nypUKRXCOAVw9SLtEobkV2eM/inxEwKsEA1SYpc=",
+    "last_login": "2025-04-28T18:10:09.527Z",
+    "is_superuser": true,
+    "username": "negoro123",
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "email": "dtoropov@yandex.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-02-12T21:06:52Z",
+    "tg_chat_id": null,
+    "avatar": "",
+    "phone": "1",
+    "token": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$OrAPJ0xxjTaVuHrw7zDEVi$6Yj+L/2Pa/5gtJiNbuhH1VVIoCnXtBY4LH+dQHxtc44=",
+    "last_login": "2025-03-10T19:13:02.039Z",
+    "is_superuser": false,
+    "username": "test",
+    "first_name": "Dan",
+    "last_name": "Toropov",
+    "email": "dtoropov@yandex.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-03-01T17:51:03Z",
+    "tg_chat_id": null,
+    "avatar": "",
+    "phone": "89291234567",
+    "token": "d26bd96e20fff9003671c5b306f58f4a",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.address",
+  "pk": 2,
+  "fields": {
+    "name": "2222",
+    "country": "",
+    "zip": "",
+    "address": "",
+    "comment": null,
+    "updated_at": "2025-03-01T18:31:22.386Z",
+    "created_at": "2025-03-04T20:46:31.954Z",
+    "is_active": true,
+    "user": 2
+  }
+},
+{
+  "model": "users.address",
+  "pk": 10,
+  "fields": {
+    "name": "Дом",
+    "country": "Россия",
+    "zip": "214011",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-03-23T20:19:44.815Z",
+    "created_at": "2025-03-04T22:10:58.328Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 11,
+  "fields": {
+    "name": "dfdfgdfgfdfg",
+    "country": "Russia",
+    "zip": "2222",
+    "address": "!!ул. Пригородная д. 10 кв. 33",
+    "comment": null,
+    "updated_at": "2025-03-23T20:26:12.822Z",
+    "created_at": "2025-03-05T17:38:55.017Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 15,
+  "fields": {
+    "name": "2",
+    "country": "2",
+    "zip": "2",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-03-29T10:41:59.794Z",
+    "created_at": "2025-03-05T17:50:10.361Z",
+    "is_active": true,
+    "user": 1
+  }
+},
+{
+  "model": "users.address",
+  "pk": 17,
+  "fields": {
+    "name": "цфы",
+    "country": "вфывфывфы",
+    "zip": "321312123",
+    "address": "ывфвы",
+    "comment": "укук",
+    "updated_at": "2025-03-27T16:21:29.636Z",
+    "created_at": "2025-03-27T16:21:25.438Z",
+    "is_active": false,
+    "user": 1
+  }
+},
+{
+  "model": "tunes.feedback",
+  "pk": 4,
+  "fields": {
+    "name": "111",
+    "email": "com@com.com",
+    "phone": "222",
+    "message": "3333",
+    "created_at": "2025-04-06T20:12:53.350Z",
+    "is_read": true,
+    "is_published": false
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 1,
+  "fields": {
+    "key": "limit_free_shipping",
+    "value": "11000",
+    "description": "Лимит покупок для бесплатной доставки"
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 2,
+  "fields": {
+    "key": "author_phone",
+    "value": "+7(962)193-71-21",
+    "description": null
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 3,
+  "fields": {
+    "key": "author_email",
+    "value": "toropova.ek@gmail.com",
+    "description": null
+  }
+},
+{
+  "model": "tunes.tunesdict",
+  "pk": 4,
+  "fields": {
+    "key": "insta_name",
+    "value": "@kate_dolls",
+    "description": null
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 1,
+  "fields": {
+    "title": "1",
+    "image": "tunes/IMG_3282.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 2,
+  "fields": {
+    "title": "2",
+    "image": "tunes/IMG_2480.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 3,
+  "fields": {
+    "title": "3",
+    "image": "tunes/IMG_4425.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 4,
+  "fields": {
+    "title": "4",
+    "image": "tunes/IMG_3265.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 5,
+  "fields": {
+    "title": "5",
+    "image": "tunes/IMG_3234.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 6,
+  "fields": {
+    "title": "6",
+    "image": "tunes/IMG_3177.png",
+    "is_published": true
+  }
+},
+{
+  "model": "tunes.banner",
+  "pk": 7,
+  "fields": {
+    "title": "7",
+    "image": "tunes/IMG_3170.png",
+    "is_published": true
+  }
+},
+{
+  "model": "subscribes.article",
+  "pk": 1,
+  "fields": {
+    "is_test": true,
+    "title": "New sales!!!",
+    "text": "<h3>Do you have debts to your husband? </h3>",
+    "created_at": "2025-04-12T19:05:20.709Z",
+    "updated_at": "2025-04-12T19:20:43.799Z"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 17,
+  "fields": {
+    "first_name": "Asfsddf",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Russia",
+    "postal_code": "1213",
+    "address": "!!ул. Пригородная д. 10 кв. 33",
+    "comment": null,
+    "updated_at": "2025-04-10T21:38:32.445Z",
+    "created_at": "2025-03-06T18:02:58.234Z",
+    "user": 1,
+    "status": "SHIPPED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 18,
+  "fields": {
+    "first_name": "Asfsddf",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Россия",
+    "postal_code": "fgdfdd",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-04-10T21:05:48.643Z",
+    "created_at": "2025-03-13T19:13:39.966Z",
+    "user": 1,
+    "status": "NONPAID"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 19,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "Россия",
+    "postal_code": "123",
+    "address": "ул. Пригородная д. 10 кв. 33",
+    "comment": "с 10 до 12",
+    "updated_at": "2025-04-10T21:05:22.235Z",
+    "created_at": "2025-03-23T19:00:00.418Z",
+    "user": 1,
+    "status": "NONPAID"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 20,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "222",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:47:46.572Z",
+    "created_at": "2025-04-10T21:47:46.572Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 21,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "hhh",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:49:23.471Z",
+    "created_at": "2025-04-10T21:49:23.472Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.order",
+  "pk": 22,
+  "fields": {
+    "first_name": "Asfsddf2",
+    "last_name": "DDffdgdgfdf",
+    "middle_name": null,
+    "email": "dtoropov@yandex.com",
+    "country": "2",
+    "postal_code": "jjj",
+    "address": "2",
+    "comment": "2",
+    "updated_at": "2025-04-10T21:51:04.663Z",
+    "created_at": "2025-04-10T21:51:04.663Z",
+    "user": 1,
+    "status": "CREATED"
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 18,
+    "product": 5,
+    "price": "1000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 18,
+    "product": 4,
+    "price": "5000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 18,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 19,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 20,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 2
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 21,
+    "product": 5,
+    "price": "1000.00",
+    "quantity": 1
+  }
+},
+{
+  "model": "cart.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 22,
+    "product": 3,
+    "price": "9000.00",
+    "quantity": 1
+  }
+},
+{
   "model": "dolls.category",
   "pk": 1,
   "fields": {
@@ -30,35 +471,27 @@
   }
 },
 {
-  "model": "dolls.product",
-  "pk": 1,
+  "model": "dolls.category",
+  "pk": 4,
   "fields": {
-    "name": "Кукла тест",
-    "description": "Кукла пряжа ткань бла бла бала фыджлаыдла лвалвдла вдлавлф аллвдалф лвдлалывы вдллвал вылалвадвы  вдлалваылваы\r\nАбзац дваваамвллдамлдвалм",
-    "quantity": 1,
-    "price": "10000.00",
-    "old_price": "0.00",
-    "created_at": "2025-02-13T18:10:47.705Z",
-    "update_at": "2025-02-20T20:03:01.674Z",
-    "category": 1,
-    "parameter": null,
+    "name": "Мастерим",
+    "description": "",
     "is_published": true,
-    "tags": [
-      1
-    ]
+    "active_on_main_page": false
   }
 },
 {
   "model": "dolls.product",
   "pk": 2,
   "fields": {
-    "name": "Dolls test",
-    "description": "dfsfsdsdffds",
-    "quantity": null,
-    "price": "9800.00",
+    "name": "Брюнетка",
+    "short_description": "Брюнетка — изысканная интерьерная кукла с выразительным взглядом и неповторимым стилем. Эта элегантная куколка ручной работы покоряет с первого взгляда. Идеально подходит для коллекции, декора или в подарок человеку с тонким вкусом. Брюнетка— настоящая арт-персона в мире авторских кукол.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Брюнетка — изысканная интерьерная кукла с выразительным взглядом и неповторимым стилем. \r\nЭта элегантная куколка ручной работы покоряет с первого взгляда. Идеально подходит для коллекции, декора или в подарок человеку с тонким вкусом. Брюнетка— настоящая арт-персона в мире авторских кукол.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 30 см</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Кукольный трикотаж «Белый ангел» (100% хлопок)</li>\r\n                <li class=\"mb-1\">Наполнитель: стеклянный гранулят + синтепух — для устойчивой посадки и приятного веса</li>\r\n                <li class=\"mb-1\">Подвижные ручки и ножки</li>\r\n                <li class=\"mb-1\">Голова поворачивается — идеально для фотосессий и композиций</li>\r\n                <li class=\"mb-1\">Глазки: стеклянные безопасные пуговки</li>\r\n                <li>Волосы: роскошный съёмный парик из искусственных прядей — можно расчёсывать и укладывать</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Гардероб куклы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Гольфы</li>\r\n                <li class=\"mb-1\">Панталоны</li>\r\n                <li class=\"mb-1\">Шикарное платье</li>\r\n                <li class=\"mb-1\">Меховая жилетка</li>\r\n                <li class=\"mb-1\">Шапочка</li>\r\n                <li>Ботиночки</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Брюнетка — интерьерная кукла, не предназначена для активных игр. Она создана для эстетики, вдохновения и коллекционного удовольствия.\r\n    </p>\r\n</div>",
+    "quantity": 1,
+    "price": "12000.00",
     "old_price": "12000.00",
     "created_at": "2025-02-13T21:17:13.578Z",
-    "update_at": "2025-02-13T21:17:13.579Z",
+    "update_at": "2025-04-27T18:29:09.066Z",
     "category": 1,
     "parameter": null,
     "is_published": true,
@@ -69,14 +502,15 @@
   "model": "dolls.product",
   "pk": 3,
   "fields": {
-    "name": "Doll 2 test",
-    "description": "sgaggfgf\r\ngfdsgdgfg\r\ndfgdsfgdf",
-    "quantity": 2,
-    "price": "9000.00",
-    "old_price": "11000.00",
+    "name": "Есения",
+    "short_description": "Она словно сошла со страниц доброй сказки… Нежная, утончённая, с длинными светлыми локонами и особым внутренним светом. Есения — это не просто интерьерная кукла, а настоящий талисман уюта и красоты в вашем доме.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Она словно сошла со страниц доброй сказки… Нежная, утончённая, с длинными светлыми локонами и особым внутренним светом. Есения — это не просто интерьерная кукла, а настоящий талисман уюта и красоты в вашем доме.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 30 см</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Кукольный трикотаж (100% хлопок)</li>\r\n                <li class=\"mb-1\">Наполнитель: стеклянный гранулят + синтепух — устойчивая посадка и приятная на ощупь тяжесть</li>\r\n                <li class=\"mb-1\">Волосы: можно расчёсывать и аккуратно укладывать</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Наряд Есении:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Элегантная розовая блуза</li>\r\n                <li class=\"mb-1\">Стильные хлопковые брючки</li>\r\n                <li class=\"mb-1\">Натуральные кожаные ботиночки</li>\r\n                <li>Вся одежда съёмная — можно переодевать и создавать новые образы</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Есения — интерьерная кукла, требующая бережного отношения. Она не предназначена для активных детских игр, но станет прекрасным украшением комнаты, душевным подарком или частью коллекции.\r\n    </p>\r\n</div>",
+    "quantity": 1,
+    "price": "10500.00",
+    "old_price": "10500.00",
     "created_at": "2025-02-14T19:33:52.115Z",
-    "update_at": "2025-03-29T10:39:12.858Z",
-    "category": 2,
+    "update_at": "2025-04-27T18:50:03.743Z",
+    "category": 1,
     "parameter": null,
     "is_published": true,
     "tags": [
@@ -88,13 +522,14 @@
   "model": "dolls.product",
   "pk": 4,
   "fields": {
-    "name": "Tets 4",
-    "description": "eqweqweqwqwe",
+    "name": "Блондинка",
+    "short_description": "Интерьерная кукла-блондинка — воплощение нежности, уюта и стиля.  \r\nЭта очаровательная куколка ручной работы создана для того, чтобы стать жемчужиной вашего интерьера и подарить тепло каждому уголку дома. Блондинка — не просто украшение, а настоящая душа пространства, в которой сочетаются изысканный образ и уютная атмосфера.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Интерьерная кукла-блондинка — воплощение нежности, уюта и стиля.  \r\n    Эта очаровательная куколка ручной работы создана для того, чтобы стать жемчужиной вашего интерьера и подарить тепло каждому уголку дома. Блондинка — не просто украшение, а настоящая душа пространства, в которой сочетаются изысканный образ и уютная атмосфера.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 30 см</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Кукольный трикотаж премиум-класса (100% хлопок)</li>\r\n                <li class=\"mb-1\">Наполнитель: стеклянный гранулят + синтепух — приятная тяжесть и реалистичная посадка</li>\r\n                <li class=\"mb-1\">Волосы: искусственный парик высокого качества — выглядит как настоящий, можно расчёсывать</li>\r\n                <li class=\"mb-1\">Глазки: стеклянные бусины — живой и тёплый взгляд</li>\r\n                <li>Подвижные ручки и ножки, голова поворачивается — идеально для фотосессий и композиций</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Наряд куклы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Уютные гольфы</li>\r\n                <li class=\"mb-1\">Стильные брючки</li>\r\n                <li class=\"mb-1\">Блуза с длинными рукавами</li>\r\n                <li class=\"mb-1\">Меховой жилет</li>\r\n                <li class=\"mb-1\">Шапочка с ушками зайки</li>\r\n                <li>Натуральные кожаные ботиночки</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Кукла-блондинка — интерьерная, требует бережного отношения. Она не предназначена для активных игр, но станет прекрасным подарком, украшением комнаты или частью коллекции.\r\n    </p>\r\n</div>",
     "quantity": 1,
-    "price": "5000.00",
+    "price": "12000.00",
     "old_price": "0.00",
     "created_at": "2025-03-07T18:08:35.739Z",
-    "update_at": "2025-03-07T18:08:35.739Z",
+    "update_at": "2025-04-25T20:52:39.073Z",
     "category": 1,
     "parameter": null,
     "is_published": true,
@@ -105,13 +540,50 @@
   "model": "dolls.product",
   "pk": 5,
   "fields": {
-    "name": "Test 5",
-    "description": "qwqwas",
+    "name": "Дэн",
+    "short_description": "Дэн — стильный и добрый друг для весёлых историй и уютных вечеров  \r\nЭтот обаятельный мальчик-мулат с кудряшками и тёплой улыбкой создан, чтобы стать настоящим другом вашему ребёнку. **Дэн** умеет слушать, обнимать, вдохновлять на игру и быть рядом в любой момент.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Дэн — стильный и добрый друг для весёлых историй и уютных вечеров. Этот обаятельный мальчик-мулат с кудряшками и тёплой улыбкой создан, чтобы стать настоящим другом вашему ребёнку. <strong>Дэн</strong> умеет слушать, обнимать, вдохновлять на игру и быть рядом в любой момент.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 40 см — идеальный размер для детских ручек</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Мягкий кукольный трикотаж (100% хлопок)</li>\r\n                <li class=\"mb-1\">Наполнитель: гипоаллергенный холлофайбер</li>\r\n                <li class=\"mb-1\">Волосы: тёмные кудри из мягкой пряжи — можно расчёсывать и укладывать</li>\r\n                <li class=\"mb-1\">Вышитые глазки и ротик — живое и доброе выражение лица</li>\r\n                <li>Подвижные ручки и ножки — для активных и реалистичных игр</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Гардероб Дэна:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Уютная шапочка</li>\r\n                <li class=\"mb-1\">Модные брючки</li>\r\n                <li class=\"mb-1\">Тёплый джемпер</li>\r\n                <li>Крутые кеды</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Вся одежда съёмная — можно переодевать и менять стиль!\r\n    </p>\r\n</div>",
     "quantity": 1,
-    "price": "1000.00",
+    "price": "10900.00",
     "old_price": "0.00",
     "created_at": "2025-03-07T18:09:10.333Z",
-    "update_at": "2025-03-07T18:11:53.862Z",
+    "update_at": "2025-04-27T18:32:57.185Z",
+    "category": 2,
+    "parameter": null,
+    "is_published": true,
+    "tags": []
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 6,
+  "fields": {
+    "name": "Аленушка",
+    "short_description": "Аленушка — нежная куколка с добрым сердцем и очаровательной улыбкой\r\nЭта текстильная малышка ручной работы создана с любовью, чтобы стать настоящей подружкой для ребёнка или трогательной частью вашей коллекции. Аленушка — уютная, стильная и очень душевная.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Аленушка — нежная куколка с добрым сердцем и очаровательной улыбкой\r\n    Эта текстильная малышка ручной работы создана с любовью, чтобы стать настоящей подружкой для ребёнка или трогательной частью вашей коллекции. Аленушка — уютная, стильная и очень душевная.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 38 см — идеальный размер для детских ручек и объятий</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Кукольный трикотаж (100% хлопок) — безопасный и приятный на ощупь</li>\r\n                <li class=\"mb-1\">Наполнитель: гипоаллергенный холлофайбер</li>\r\n                <li class=\"mb-1\">Волосы: мягкая пряжа *Адель Букле* — можно расчёсывать и укладывать</li>\r\n                <li>Личико: вышитые глазки и ротик — живая, милая мимика</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Гардероб Аленушки:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Лосины</li>\r\n                <li class=\"mb-1\">Носочки</li>\r\n                <li class=\"mb-1\">Футболка</li>\r\n                <li class=\"mb-1\">Сарафан</li>\r\n                <li>Заколка с бантиком — трогательная деталь, которая завершает образ</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Вся одежда съёмная — можно переодевать и менять стиль.\r\n    </p>\r\n</div>",
+    "quantity": 1,
+    "price": "9500.00",
+    "old_price": "9500.00",
+    "created_at": "2025-04-25T20:40:23.730Z",
+    "update_at": "2025-04-25T20:46:42.620Z",
+    "category": 2,
+    "parameter": null,
+    "is_published": true,
+    "tags": []
+  }
+},
+{
+  "model": "dolls.product",
+  "pk": 7,
+  "fields": {
+    "name": "Зоя",
+    "short_description": "Зоя — стильная интерьерная куколка с характером и шармом \r\nОчаровательная блондинка ручной работы, созданная из натуральных материалов, чтобы стать настоящим украшением вашего дома. **Зоя** — это не просто кукла, а атмосферная деталь интерьера, которая привлекает внимание с первого взгляда.",
+    "description": "<p class=\"body-p2 neutral-medium-dark\">\r\n    Зоя — стильная интерьерная куколка с характером и шармом. Очаровательная блондинка ручной работы, созданная из натуральных материалов, чтобы стать настоящим украшением вашего дома. <strong>Зоя</strong> — это не просто кукла, а атмосферная деталь интерьера, которая привлекает внимание с первого взгляда.\r\n</p>\r\n\r\n<div class=\"product-details mt-4\">\r\n    <h5 class=\"text-18-medium mb-3\">Характеристики:</h5>\r\n    <ul class=\"body-p2 neutral-medium-dark list-unstyled\">\r\n        <li class=\"mb-2\"><strong>Рост:</strong> 30 см</li>\r\n        <li class=\"mb-2\">\r\n            <strong>Материалы:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Натуральный кукольный трикотаж (100% хлопок)</li>\r\n                <li class=\"mb-1\">Наполнитель: стеклянный гранулят + синтепух — устойчивая посадка и приятная тяжесть</li>\r\n                <li class=\"mb-1\">Подвижные ручки и ножки</li>\r\n                <li>Голова поворачивается</li>\r\n            </ul>\r\n        </li>\r\n        <li>\r\n            <strong>Образ Зои:</strong>\r\n            <ul class=\"mt-2\">\r\n                <li class=\"mb-1\">Уютные гольфы</li>\r\n                <li class=\"mb-1\">Стильные брючки</li>\r\n                <li class=\"mb-1\">Меховой жилет</li>\r\n                <li class=\"mb-1\">Шапочка с ушками</li>\r\n                <li>Длинные волнистые волосы — можно расчёсывать и укладывать</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<div class=\"product-notice mt-4 pt-3 border-top\">\r\n    <p class=\"body-p2 neutral-medium-dark mb-0\">\r\n        <strong>Важно:</strong> Зоя — интерьерная кукла, не предназначена для активных детских игр. Она требует бережного отношения и подойдёт для декора, коллекционирования или в подарок ценителям ручного творчества.\r\n    </p>\r\n</div>",
+    "quantity": 1,
+    "price": "12000.00",
+    "old_price": "12000.00",
+    "created_at": "2025-04-25T20:49:32.343Z",
+    "update_at": "2025-04-27T18:41:30.908Z",
     "category": 1,
     "parameter": null,
     "is_published": true,
@@ -120,111 +592,650 @@
 },
 {
   "model": "dolls.image",
-  "pk": 1,
+  "pk": 11,
   "fields": {
-    "name": "kukla-test-img_5649.jpg.webp",
-    "image": "upload/product_images/img_5649.jpg.webp",
-    "product": 1,
-    "is_published": true,
+    "name": "blondinka-IMG_3220.webp",
+    "image": "upload/product_images/IMG_3220.webp",
+    "product": 4,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 2,
+  "pk": 12,
   "fields": {
-    "name": "kukla-test-img_5642.jpg.webp",
-    "image": "upload/product_images/img_5642.jpg.webp",
-    "product": 1,
-    "is_published": true,
+    "name": "blondinka-IMG_3225.webp",
+    "image": "upload/product_images/IMG_3225.webp",
+    "product": 4,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 3,
+  "pk": 13,
   "fields": {
-    "name": "kukla-test-img_5643.jpg.webp",
-    "image": "upload/product_images/img_5643.jpg.webp",
-    "product": 1,
-    "is_published": true,
+    "name": "blondinka-IMG_3218.webp",
+    "image": "upload/product_images/IMG_3218.webp",
+    "product": 4,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 4,
+  "pk": 14,
   "fields": {
-    "name": "kukla-test-img_5641.jpg.webp",
-    "image": "upload/product_images/img_5641.jpg.webp",
-    "product": 1,
-    "is_published": true,
+    "name": "blondinka-IMG_3211.webp",
+    "image": "upload/product_images/IMG_3211.webp",
+    "product": 4,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 5,
+  "pk": 15,
   "fields": {
-    "name": "kukla-test-img_5653.jpg.webp",
-    "image": "upload/product_images/img_5653.jpg.webp",
-    "product": 1,
-    "is_published": true,
+    "name": "blondinka-IMG_3228.webp",
+    "image": "upload/product_images/IMG_3228.webp",
+    "product": 4,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 6,
+  "pk": 16,
   "fields": {
-    "name": "doll-2-test-fullsizerender-15.jpg",
-    "image": "upload/product_images/fullsizerender-15.jpg",
+    "name": "blondinka-IMG_3213.webp",
+    "image": "upload/product_images/IMG_3213.webp",
+    "product": 4,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 17,
+  "fields": {
+    "name": "blondinka-IMG_3231.webp",
+    "image": "upload/product_images/IMG_3231.webp",
+    "product": 4,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 18,
+  "fields": {
+    "name": "blondinka-IMG_E3232.webp",
+    "image": "upload/product_images/IMG_E3232.webp",
+    "product": 4,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 19,
+  "fields": {
+    "name": "blondinka-IMG_3230.webp",
+    "image": "upload/product_images/IMG_3230.webp",
+    "product": 4,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 51,
+  "fields": {
+    "name": "alenushka-IMG_4791.webp",
+    "image": "upload/product_images/IMG_4791.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 52,
+  "fields": {
+    "name": "alenushka-IMG_4794.webp",
+    "image": "upload/product_images/IMG_4794.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 53,
+  "fields": {
+    "name": "alenushka-IMG_4793.webp",
+    "image": "upload/product_images/IMG_4793.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 54,
+  "fields": {
+    "name": "alenushka-IMG_4806.webp",
+    "image": "upload/product_images/IMG_4806.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 55,
+  "fields": {
+    "name": "alenushka-IMG_4795.webp",
+    "image": "upload/product_images/IMG_4795.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 56,
+  "fields": {
+    "name": "alenushka-IMG_4797.webp",
+    "image": "upload/product_images/IMG_4797.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 57,
+  "fields": {
+    "name": "alenushka-IMG_4812 (1).webp",
+    "image": "upload/product_images/IMG_4812_1.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 58,
+  "fields": {
+    "name": "alenushka-IMG_4807.webp",
+    "image": "upload/product_images/IMG_4807.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 59,
+  "fields": {
+    "name": "alenushka-IMG_4816.webp",
+    "image": "upload/product_images/IMG_4816.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 60,
+  "fields": {
+    "name": "alenushka-IMG_4818.webp",
+    "image": "upload/product_images/IMG_4818.webp",
+    "product": 6,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 70,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-06 (1).webp",
+    "image": "upload/product_images/2025-03-29_17-06-06_1_6hu1QZf.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 71,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-06.webp",
+    "image": "upload/product_images/2025-03-29_17-06-06_FGyq6WH.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 72,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-06 (2).webp",
+    "image": "upload/product_images/2025-03-29_17-06-06_2_fbUoIuv.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 73,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (1) (1).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_1_1_7m6v25q.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 74,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (2) (1).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_2_1_ntA37EO.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 75,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (1).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_1_OxdK3Op.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 76,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (3).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_3_y29XvnR.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 77,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (3) (1).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_3_1_8hIOOrg.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 78,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-07 (2).webp",
+    "image": "upload/product_images/2025-03-29_17-06-07_2_WX2JWKg.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 79,
+  "fields": {
+    "name": "bryunetka-2025-03-29 17-06-08.webp",
+    "image": "upload/product_images/2025-03-29_17-06-08_suobuA0.webp",
+    "product": 2,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 80,
+  "fields": {
+    "name": "den-2025-03-29 17-02-18 (2).webp",
+    "image": "upload/product_images/2025-03-29_17-02-18_2_DSltapT.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 81,
+  "fields": {
+    "name": "den-2025-03-29 17-02-18 (1).webp",
+    "image": "upload/product_images/2025-03-29_17-02-18_1_fc5h9pY.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 82,
+  "fields": {
+    "name": "den-2025-03-29 17-02-19 (2).webp",
+    "image": "upload/product_images/2025-03-29_17-02-19_2_LtCQnV6.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 83,
+  "fields": {
+    "name": "den-2025-03-29 17-02-19 (1).webp",
+    "image": "upload/product_images/2025-03-29_17-02-19_1_9RpX5g5.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 84,
+  "fields": {
+    "name": "den-2025-03-29 17-02-18.webp",
+    "image": "upload/product_images/2025-03-29_17-02-18_CYIHynk.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 85,
+  "fields": {
+    "name": "den-2025-03-29 17-02-19.webp",
+    "image": "upload/product_images/2025-03-29_17-02-19_s6WOSFt.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 86,
+  "fields": {
+    "name": "den-2025-03-29 17-02-19.webp",
+    "image": "upload/product_images/2025-03-29_17-02-19_Ekq53R0.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 87,
+  "fields": {
+    "name": "den-2025-03-29 17-02-19 (3).webp",
+    "image": "upload/product_images/2025-03-29_17-02-19_3_lFCW0vK.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 88,
+  "fields": {
+    "name": "den-2025-03-29 17-02-20 (2).webp",
+    "image": "upload/product_images/2025-03-29_17-02-20_2_27ETopO.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 89,
+  "fields": {
+    "name": "den-2025-03-29 17-02-20 (1).webp",
+    "image": "upload/product_images/2025-03-29_17-02-20_1_YzhvVmZ.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 90,
+  "fields": {
+    "name": "den-2025-03-29 17-02-20.webp",
+    "image": "upload/product_images/2025-03-29_17-02-20_Df6x7YM.webp",
+    "product": 5,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 98,
+  "fields": {
+    "name": "zoya-IMG_3162.webp",
+    "image": "upload/product_images/IMG_3162_9fIuopV.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 99,
+  "fields": {
+    "name": "zoya-IMG_3164.webp",
+    "image": "upload/product_images/IMG_3164_XZs4VN5.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 100,
+  "fields": {
+    "name": "zoya-IMG_3170.webp",
+    "image": "upload/product_images/IMG_3170_doIQS6P.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 101,
+  "fields": {
+    "name": "zoya-IMG_3177.webp",
+    "image": "upload/product_images/IMG_3177_hCg40PL.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 102,
+  "fields": {
+    "name": "zoya-IMG_3190.webp",
+    "image": "upload/product_images/IMG_3190_4DNkEBs.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 103,
+  "fields": {
+    "name": "zoya-IMG_3187.webp",
+    "image": "upload/product_images/IMG_3187_zF01Kqc.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 104,
+  "fields": {
+    "name": "zoya-IMG_3209.webp",
+    "image": "upload/product_images/IMG_3209_YZRaBqO.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 105,
+  "fields": {
+    "name": "zoya-IMG_3194.webp",
+    "image": "upload/product_images/IMG_3194_qBtmZ2Y.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 106,
+  "fields": {
+    "name": "zoya-IMG_3191.webp",
+    "image": "upload/product_images/IMG_3191_qW75dPs.webp",
+    "product": 7,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 107,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-34 (2).webp",
+    "image": "upload/product_images/2025-03-29_16-57-34_2_OjIO2fY.webp",
     "product": 3,
-    "is_published": true,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 7,
+  "pk": 108,
   "fields": {
-    "name": "doll-2-test-fullsizerender-12.jpg",
-    "image": "upload/product_images/fullsizerender-12.jpg",
+    "name": "eseniya-2025-03-29 16-57-34 (3).webp",
+    "image": "upload/product_images/2025-03-29_16-57-34_3_KaBy4kK.webp",
     "product": 3,
-    "is_published": true,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 8,
+  "pk": 109,
   "fields": {
-    "name": "doll-2-test-fullsizerender-3.jpg",
-    "image": "upload/product_images/fullsizerender-3.jpg",
+    "name": "eseniya-2025-03-29 16-57-34 (4).webp",
+    "image": "upload/product_images/2025-03-29_16-57-34_4_S9liW02.webp",
     "product": 3,
-    "is_published": true,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 9,
+  "pk": 110,
   "fields": {
-    "name": "doll-2-test-fullsizerender-8.jpg",
-    "image": "upload/product_images/fullsizerender-8.jpg",
+    "name": "eseniya-2025-03-29 16-57-35 (2).webp",
+    "image": "upload/product_images/2025-03-29_16-57-35_2_vwiI8xH.webp",
     "product": 3,
-    "is_published": true,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
 {
   "model": "dolls.image",
-  "pk": 10,
+  "pk": 111,
   "fields": {
-    "name": "doll-2-test-fullsizerender.jpg",
-    "image": "upload/product_images/fullsizerender.jpg",
+    "name": "eseniya-2025-03-29 16-57-34.webp",
+    "image": "upload/product_images/2025-03-29_16-57-34_vkC82DC.webp",
     "product": 3,
-    "is_published": true,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 112,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-35 (3).webp",
+    "image": "upload/product_images/2025-03-29_16-57-35_3_3UeFNUh.webp",
+    "product": 3,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 113,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-35 (2) (1).webp",
+    "image": "upload/product_images/2025-03-29_16-57-35_2_1.webp",
+    "product": 3,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 114,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-36.webp",
+    "image": "upload/product_images/2025-03-29_16-57-36_3wwH10d.webp",
+    "product": 3,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 115,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-35.webp",
+    "image": "upload/product_images/2025-03-29_16-57-35_eIhrr71.webp",
+    "product": 3,
+    "is_published": false,
+    "active_on_main_page": false
+  }
+},
+{
+  "model": "dolls.image",
+  "pk": 116,
+  "fields": {
+    "name": "eseniya-2025-03-29 16-57-34 (1).webp",
+    "image": "upload/product_images/2025-03-29_16-57-34_1_C82afMK.webp",
+    "product": 3,
+    "is_published": false,
     "active_on_main_page": false
   }
 },
@@ -592,16 +1603,17 @@
   "model": "blog.blogarticle",
   "pk": 1,
   "fields": {
-    "title": "Шла Саша по <span>шоссе</span>",
-    "slug": "1111",
-    "image": "",
+    "title": "Волшебное зеркало и девочка Лиза",
+    "slug": "volshebnoe-zerkalo-i-devochka-liza",
+    "image": "blog/liza.jpg",
     "created_at": "2025-03-07T18:59:00.036Z",
-    "update_at": "2025-03-07T20:05:09.262Z",
+    "update_at": "2025-04-27T21:46:52.943Z",
     "is_published": true,
-    "views_counter": 0,
-    "content": "sadf",
+    "views_counter": 4,
+    "short_content": "В самом сердце уютного городка, где улочки вились, как ленты на праздничном торте, а дома пахли корицей и теплым хлебом, жила девочка Лиза. Ее шелковистые каштановые волосы ниспадали мягкими волнами, словно шоколадный водопад, а зеленые глаза искрились, как изумрудные росинки на утренней траве. Лиза обожала красивые платья: с кружевами, бантами, с оборками, что шуршали, будто шептались между собой. Каждый день она кружилась перед зеркалом в своей комнате, представляя себя то принцессой, то звездой с обложки журнала.",
+    "content": "<h5>В самом сердце уютного городка</h5>\r\n<p>В самом сердце уютного городка, где улочки вились, как ленты на праздничном торте, а дома пахли корицей и теплым хлебом, жила девочка Лиза. Ее шелковистые каштановые волосы ниспадали мягкими волнами, словно шоколадный водопад, а зеленые глаза искрились, как изумрудные росинки на утренней траве. Лиза обожала красивые платья: с кружевами, бантами, с оборками, что шуршали, будто шептались между собой. Каждый день она кружилась перед зеркалом в своей комнате, представляя себя то принцессой, то звездой с обложки журнала.</p>\r\n\r\n<h5>Тайна старого чердака</h5>\r\n<p>Однажды, когда дождь стучал по крыше, как нетерпеливые пальчики, Лиза забралась на бабушкин чердак. Среди сундуков с пожелтевшими письмами и фарфоровых кукол с загадочными улыбками ее внимание привлекло зеркало. Не простое — старинное, в резной раме, где узоры переплетались, словно ветви волшебного дерева.</p>\r\n<p>Лиза осторожно протерла пыль ладошкой и... аахнула.</p>\r\n<p>В зеркале отражалась она сама, но в ослепительном бальном платье, усыпанном жемчугами, которые переливались, как капли росы на рассвете. За ее спиной мерцали хрустальные крылья, а в волосах сверкала диадема из настоящих звезд.</p>\r\n<p>— Оно исполняет мечты! — прошептала Лиза, и сердце ее забилось, как крылья пойманной бабочки.</p>\r\n\r\n<h5>Опасные грезы</h5>\r\n<p>С этого дня комната Лизы превратилась в волшебный салон. Зеркало показывало ей невероятные образы:</p>\r\n<ul>\r\n    <li>Принцессу в платье из лепестков роз, танцующую на балу в сияющем замке.</li>\r\n    <li>Знаменитую актрису, ослепительно сияющую под вспышками камер на красной дорожке.</li>\r\n    <li>Фею с крыльями из радужной пыли, летящую над облаками.</li>\r\n</ul>\r\n<p>Но чем больше Лиза смотрела в зеркало, тем бледнее становился реальный мир.</p>\r\n<p>Подруги звали ее гулять — но зачем, если в зеркале она уже каталась на единороге? Учителя просили подготовить уроки — но кто думает о задачах, когда можно примерять корону королевы? Даже любимые краски и ноты пылились в углу — ведь в зеркале все было идеально.</p>\r\n\r\n<h5>Трещина в волшебстве</h5>\r\n<p>Однажды утром, когда Лиза, как всегда, подбежала к зеркалу, что-то пошло не так.</p>\r\n<p>По стеклу пробежала тонкая трещина, словно паутинка.</p>\r\n<p>— Нет! — вскрикнула девочка и потянулась к отражению.</p>\r\n<p>Зеркало разлетелось на тысячи осколков.</p>\r\n<p>И в каждом из них Лиза увидела не сказочную принцессу, а саму себя — бледную, с потухшими глазами, одинокую.</p>\r\n<p>— Это... я? — прошептала она, и слезы покатились по щекам.</p>\r\n\r\n<h5>Прозрение</h5>\r\n<p>В комнату вбежали родители. Они обняли Лизу так крепко, что казалось — вот оно, настоящее волшебство.</p>\r\n<p>— Красота — не в платьях, а в сердце, — сказала мама, вытирая дочкины слезы.</p>\r\n<p>— И в делах, — добавил папа. — Вот твои рисунки... они же живые! А песни, которые ты пела, делали мир ярче.</p>\r\n<p>Лиза посмотрела на осколки. Больше в них не было ни замков, ни бриллиантов — только правда.</p>\r\n\r\n<h5>Новая жизнь</h5>\r\n<p>На следующий день Лиза:</p>\r\n<ul>\r\n    <li>🎨Достала краски и нарисовала портрет подруги — та заплакала от счастья.</li>\r\n    <li>🎤Спела на школьном концерте — зал аплодировал стоя.</li>\r\n    <li>🤝Помирилась с друзьями — оказалось, они скучали по ее смеху.</li>\r\n</ul>\r\n<p>А зеркало... Оно снова висело на стене, простое, настоящее. Теперь Лиза улыбалась своему отражению не потому, что оно идеально, а потому, что оно — ее.</p>\r\n\r\n<h5>Мораль</h5>\r\n<p>Настоящее волшебство — не в осколках мечты, а в:</p>\r\n<ul>\r\n    <li>💖Доброте, что согревает, как солнце.</li>\r\n    <li>🎨Таланте, который делает мир прекраснее.</li>\r\n    <li>👫Друзьях, готовых поддержать даже в пасмурный день.</li>\r\n</ul>\r\n<p>И если однажды вам попадется волшебное зеркало — загляните в него... и шагните назад, к тем, кто любит вас настоящих. 🌟</p>",
     "owner": 1,
-    "category": 1,
+    "category": 3,
     "users_like": [],
     "tags": []
   }
@@ -614,9 +1626,10 @@
     "slug": "shla-sasha-po-shosse1",
     "image": "",
     "created_at": "2025-03-07T19:52:33.371Z",
-    "update_at": "2025-04-02T21:18:19.381Z",
-    "is_published": true,
+    "update_at": "2025-04-27T21:05:30.927Z",
+    "is_published": false,
     "views_counter": 2,
+    "short_content": "",
     "content": "jhjhg",
     "owner": 2,
     "category": 1,
@@ -634,9 +1647,10 @@
     "slug": "shla-sasha-po-shosse3",
     "image": "",
     "created_at": "2025-03-07T19:52:58.672Z",
-    "update_at": "2025-04-02T20:56:58.806Z",
-    "is_published": true,
+    "update_at": "2025-04-27T21:05:17.167Z",
+    "is_published": false,
     "views_counter": 32,
+    "short_content": "",
     "content": "fsdgsfgs",
     "owner": 2,
     "category": 1,
@@ -654,9 +1668,10 @@
     "slug": "shla-sasha-po-shosse4",
     "image": "",
     "created_at": "2025-03-07T19:53:47.227Z",
-    "update_at": "2025-03-30T21:40:47.893Z",
-    "is_published": true,
+    "update_at": "2025-04-27T21:05:08.726Z",
+    "is_published": false,
     "views_counter": 5,
+    "short_content": "",
     "content": "ewfdsdf",
     "owner": 2,
     "category": 3,
@@ -670,15 +1685,16 @@
   "model": "blog.blogarticle",
   "pk": 12,
   "fields": {
-    "title": "Шла Саша по <span>шоссе</span>5",
-    "slug": "shla-sasha-po-spanshossespan5",
-    "image": "",
+    "title": "Маша и Тайна Игрушечного Королевства",
+    "slug": "masha-i-tajna-igrushechnogo-korolevstva",
+    "image": "blog/masha.jpg",
     "created_at": "2025-03-07T20:05:25.479Z",
-    "update_at": "2025-04-12T20:35:22.044Z",
+    "update_at": "2025-04-27T21:48:15.516Z",
     "is_published": true,
-    "views_counter": 217,
-    "content": "<p>Иногда жизнь поворачивает так, что ты вдруг оказываешься на перепутье. Казалось бы, у тебя всё есть: дом, семья, работа. Но что-то внутри шепчет – ты ещё не нашла себя. Так было и со мной. До того дня, когда я впервые взяла в руки кусочек ткани, нитки и иголку.</p>\r\n\r\n<p>Я шила куклу. Свою первую, совсем неровную, немного угловатую, но невероятно важную. Её звали Солнышко. Я помню, как аккуратно продумывала её наряд, как с любовью вышивала крошечные глазки и розовые щёчки. А потом, когда она была готова, я почувствовала странное тепло. Как будто передо мной не просто игрушка, а кто-то, кому я дала жизнь своими руками.</p>\r\n\r\n<p>С тех пор прошло пять лет. Теперь я – кукольный мастер. Но знаете, что самое удивительное? Каждая кукла, даже самая простая, всё ещё вызывает во мне ту самую магию. И я уверена: это не просто про хобби или ремесло. Это про что-то большее. Про связь между мастером и его творением.</p>\r\n\r\n<h3>Когда куклы оживают</h3>\r\n<p>Знаете, у каждой моей куклы есть своя история. Вот, например, Соня. Она появилась на свет в дождливый вечер, когда за окном громыхал гром, а я сидела на кухне с чашкой горячего чая. Мне хотелось создать что-то нежное, уютное, чтобы согреть этот холодный день.</p>\r\n\r\n<p>Когда я выставила её на продажу, куклу купила девушка по имени Оля. Она призналась, что часто чувствует себя одинокой, и Соня оказалась для неё настоящим другом. «Она как будто понимает меня», – сказала Оля.</p>\r\n\r\n<blockquote><i class=\"fa fa-quote-left\"></i>куклы действительно живые. Они хранят частичку души своего создателя. А потом находят тех, кому эта душа нужна больше всего.</blockquote>\r\n\r\n<p>Когда я выставила её на продажу, куклу купила девушка по имени Оля. Она призналась, что часто чувствует себя одинокой, и Соня оказалась для неё настоящим другом. «Она как будто понимает меня», – сказала Оля.</p>",
-    "owner": 2,
+    "views_counter": 219,
+    "short_content": "В уютной, залитой солнечным светом комнате, где воздух был пропитан ароматом воска от старых деревянных кубиков и сладковатым запахом плюшевых зверят, жила кукла Маша. Ее золотистые локоны переливались, будто сотканные из лучей заката, а большие голубые глаза сияли, как два осколка летнего неба. Когда она улыбалась, казалось, что даже самые грустные игрушки забывали о своих печалях.",
+    "content": "<h5>Маша и Тайна Игрушечного Королевства</h5>\n<p>В уютной, залитой солнечным светом комнате, где воздух был пропитан ароматом воска от старых деревянных кубиков и сладковатым запахом плюшевых зверят, жила кукла Маша. Ее золотистые локоны переливались, будто сотканные из лучей заката, а большие голубые глаза сияли, как два осколка летнего неба. Когда она улыбалась, казалось, что даже самые грустные игрушки забывали о своих печалях.</p>\n<p>Маша обожала своих друзей: плюшевого медвежонка Топтыжку, чья шерсть была мягкой, как первый снег, озорного зайчонка Прыг-Скока, который вечно норовил спрятать чей-то бантик или носок, и куклу Дашу — ее верную подругу, всегда готовую на отважные приключения. Вместе они играли до самого вечера, строили замки из книг, устраивали чаепития на ковре-самолете и шептались по ночам, мечтая о чудесах.</p>\n<p>Но однажды, когда в комнате воцарилась тишина, а за окном уже дрожали первые звезды, игрушки услышали жутковатый звук — будто кто-то царапался из-за стены. Потом раздались всхлипы, а следом — отчаянный крик: «Помогите! Нас хотят уничтожить!»</p>\n<p>Маша сжала Топтыжку за лапу, и ее сердце, набитое ватой, заколотилось сильнее.</p>\n<ul>\n    <li>— Это игрушки из соседней комнаты! — прошептала Даша. — С ними что-то случилось!</li>\n    <li>Не раздумывая, друзья отправились на разведку. Прыг-Скок ловко поддел замок на двери, и вот они уже пробирались по темному коридору, освещенному лишь мерцанием луны.</li>\n</ul>\n<h5>Тайна Короля Пластмасса</h5>\n<p>За дверью их ждало настоящее игрушечное королевство — но не то волшебное, о котором они мечтали, а захваченное страхом. Оказалось, что злой Король Пластмасс, холодный и блестящий, как лед, объявил войну всем тряпичным куклам и плюшевым зверям!</p>\n<quote>“— Вы — пережиток прошлого! — гремел он, размахивая жезлом из скрепок. — Мир должен принадлежать только прочным, современным игрушкам!”<span class=\"text-17 author-name\">- Король Пластмасс</span></quote>\n<p>Его армия — жесткие роботы, бездушные солдатики и мерцающие неоновым светом машинки — уже начала охоту.</p>\n<p>Маша сжала кулачки.</p>\n<p>— Мы не позволим ему обижать наших друзей!</p>\n<h5>Опасное путешествие</h5>\n<p>Путь к замку Короля лежал через Темный Шкаф, где в паутине прятались старые сломанные марионетки, через Речку из Лент, где вода текла, переливаясь шелковыми волнами, и через Лес Гуталина, где тени двигались, словно живые.</p>\n<ul>\n    <li>🔹 Оловянный Солдатик — хоть и маленький, но с сердцем настоящего героя. Его шпага сверкала, как серебряная нить.</li>\n    <li>🔹 Матрешка Катюша — мудрая, как сама сказка, знавшая тайные заклинания из древних легенд.</li>\n    <li>🔹 Клоун Кексик — весельчак, у которого даже в самые мрачные моменты находилась шутка, чтобы рассмешить всех.</li>\n</ul>\n<p>Вместе они перехитрили механических стражей, разгадали загадку Зеркального Лабиринта и даже убедили танки Короля, что дружба важнее слепого подчинения.</p>\n<h5>Последняя битва</h5>\n<p>Когда они добрались до замка — огромного, сверкающего, как ледяная глыба — Король Пластмасс уже ждал их, окруженный армией.</p>\n<p>— Вы смеете бросать мне вызов? — прошипел он, и его голос скрипел, как несмазанные шестеренки.</p>\n<p>Но Маша не дрогнула. Она шагнула вперед, и ее голос прозвучал чисто и звонко, как колокольчик:</p>\n<p>— Каждая игрушка особенная! Дети любят нас не за материал, а за то, что мы становимся их друзьями!</p>\n<p>Король замер.</p>\n<p>И тут Кексик рассмешил его до слез, Катюша рассказала сказку о забытой заводной обезьянке, которую когда-то любил сам Король, а Топтыжка просто обнял его — ведь даже у пластмассового сердца есть чувства.</p>\n<h5>Возвращение домой</h5>\n<p>Когда Маша и ее друзья вернулись в свою комнату, первые лучи солнца уже ласкали их лица. Они знали: дружба, смелость и доброта способны растопить даже самое холодное сердце.</p>\n<p>А с тех пор в их мире больше не было войн — только смех, приключения и волшебство, которое рождается, когда игрушки верят в чудеса.</p>\n<p>И если однажды ночью вам покажется, что куклы и мишки шепчутся — не пугайтесь. Возможно, это Маша с друзьями снова готовятся к новому подвигу. 🌟</p>",
+    "owner": 1,
     "category": 3,
     "users_like": [
       1
@@ -689,454 +1705,24 @@
   }
 },
 {
-  "model": "users.user",
-  "pk": 1,
+  "model": "blog.blogarticle",
+  "pk": 13,
   "fields": {
-    "password": "pbkdf2_sha256$870000$FZ6zeXtzzRm9ThS6TkKLSU$YkupJeeui8IVBzDlmHqP4s7RSpK/VBd1P0MjT+oaoEE=",
-    "last_login": "2025-04-12T20:30:34.143Z",
-    "is_superuser": true,
-    "username": "negoro123",
-    "first_name": "Asfsddf2",
-    "last_name": "DDffdgdgfdf",
-    "email": "dtoropov@yandex.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2025-02-12T21:06:52Z",
-    "tg_chat_id": null,
-    "avatar": "",
-    "phone": "1",
-    "token": null,
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "users.user",
-  "pk": 2,
-  "fields": {
-    "password": "pbkdf2_sha256$870000$OrAPJ0xxjTaVuHrw7zDEVi$6Yj+L/2Pa/5gtJiNbuhH1VVIoCnXtBY4LH+dQHxtc44=",
-    "last_login": "2025-03-10T19:13:02.039Z",
-    "is_superuser": false,
-    "username": "test",
-    "first_name": "Dan",
-    "last_name": "Toropov",
-    "email": "dtoropov@yandex.ru",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2025-03-01T17:51:03Z",
-    "tg_chat_id": null,
-    "avatar": "",
-    "phone": "89291234567",
-    "token": "d26bd96e20fff9003671c5b306f58f4a",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "users.address",
-  "pk": 2,
-  "fields": {
-    "name": "2222",
-    "country": "",
-    "zip": "",
-    "address": "",
-    "comment": null,
-    "updated_at": "2025-03-01T18:31:22.386Z",
-    "created_at": "2025-03-04T20:46:31.954Z",
-    "is_active": true,
-    "user": 2
-  }
-},
-{
-  "model": "users.address",
-  "pk": 10,
-  "fields": {
-    "name": "Дом",
-    "country": "Россия",
-    "zip": "214011",
-    "address": "ул. Пригородная д. 10 кв. 33",
-    "comment": "с 10 до 12",
-    "updated_at": "2025-03-23T20:19:44.815Z",
-    "created_at": "2025-03-04T22:10:58.328Z",
-    "is_active": false,
-    "user": 1
-  }
-},
-{
-  "model": "users.address",
-  "pk": 11,
-  "fields": {
-    "name": "dfdfgdfgfdfg",
-    "country": "Russia",
-    "zip": "2222",
-    "address": "!!ул. Пригородная д. 10 кв. 33",
-    "comment": null,
-    "updated_at": "2025-03-23T20:26:12.822Z",
-    "created_at": "2025-03-05T17:38:55.017Z",
-    "is_active": false,
-    "user": 1
-  }
-},
-{
-  "model": "users.address",
-  "pk": 15,
-  "fields": {
-    "name": "2",
-    "country": "2",
-    "zip": "2",
-    "address": "2",
-    "comment": "2",
-    "updated_at": "2025-03-29T10:41:59.794Z",
-    "created_at": "2025-03-05T17:50:10.361Z",
-    "is_active": true,
-    "user": 1
-  }
-},
-{
-  "model": "users.address",
-  "pk": 17,
-  "fields": {
-    "name": "цфы",
-    "country": "вфывфывфы",
-    "zip": "321312123",
-    "address": "ывфвы",
-    "comment": "укук",
-    "updated_at": "2025-03-27T16:21:29.636Z",
-    "created_at": "2025-03-27T16:21:25.438Z",
-    "is_active": false,
-    "user": 1
-  }
-},
-{
-  "model": "tunes.feedback",
-  "pk": 4,
-  "fields": {
-    "name": "111",
-    "email": "com@com.com",
-    "phone": "222",
-    "message": "3333",
-    "created_at": "2025-04-06T20:12:53.350Z",
-    "is_read": true,
-    "is_published": false
-  }
-},
-{
-  "model": "tunes.tunesdict",
-  "pk": 1,
-  "fields": {
-    "key": "limit_free_shipping",
-    "value": "11000",
-    "description": "Лимит покупок для бесплатной доставки"
-  }
-},
-{
-  "model": "tunes.tunesdict",
-  "pk": 2,
-  "fields": {
-    "key": "author_phone",
-    "value": "+7(962)193-71-21",
-    "description": null
-  }
-},
-{
-  "model": "tunes.tunesdict",
-  "pk": 3,
-  "fields": {
-    "key": "author_email",
-    "value": "toropova.ek@gmail.com",
-    "description": null
-  }
-},
-{
-  "model": "tunes.tunesdict",
-  "pk": 4,
-  "fields": {
-    "key": "insta_name",
-    "value": "@kate_dolls",
-    "description": null
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 1,
-  "fields": {
-    "title": "1",
-    "image": "tunes/IMG_3282.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 2,
-  "fields": {
-    "title": "2",
-    "image": "tunes/IMG_2480.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 3,
-  "fields": {
-    "title": "3",
-    "image": "tunes/IMG_4425.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 4,
-  "fields": {
-    "title": "4",
-    "image": "tunes/IMG_3265.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 5,
-  "fields": {
-    "title": "5",
-    "image": "tunes/IMG_3234.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 6,
-  "fields": {
-    "title": "6",
-    "image": "tunes/IMG_3177.png",
-    "is_published": true
-  }
-},
-{
-  "model": "tunes.banner",
-  "pk": 7,
-  "fields": {
-    "title": "7",
-    "image": "tunes/IMG_3170.png",
-    "is_published": true
-  }
-},
-{
-  "model": "subscribes.article",
-  "pk": 1,
-  "fields": {
-    "is_test": true,
-    "title": "New sales!!!",
-    "text": "<h3>Do you have debts to your husband? </h3>",
-    "created_at": "2025-04-12T19:05:20.709Z",
-    "updated_at": "2025-04-12T19:20:43.799Z"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 17,
-  "fields": {
-    "first_name": "Asfsddf",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "Russia",
-    "postal_code": "1213",
-    "address": "!!ул. Пригородная д. 10 кв. 33",
-    "comment": null,
-    "updated_at": "2025-04-10T21:38:32.445Z",
-    "created_at": "2025-03-06T18:02:58.234Z",
-    "user": 1,
-    "status": "SHIPPED"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 18,
-  "fields": {
-    "first_name": "Asfsddf",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "Россия",
-    "postal_code": "fgdfdd",
-    "address": "ул. Пригородная д. 10 кв. 33",
-    "comment": "с 10 до 12",
-    "updated_at": "2025-04-10T21:05:48.643Z",
-    "created_at": "2025-03-13T19:13:39.966Z",
-    "user": 1,
-    "status": "NONPAID"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 19,
-  "fields": {
-    "first_name": "Asfsddf2",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "Россия",
-    "postal_code": "123",
-    "address": "ул. Пригородная д. 10 кв. 33",
-    "comment": "с 10 до 12",
-    "updated_at": "2025-04-10T21:05:22.235Z",
-    "created_at": "2025-03-23T19:00:00.418Z",
-    "user": 1,
-    "status": "NONPAID"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 20,
-  "fields": {
-    "first_name": "Asfsddf2",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "2",
-    "postal_code": "222",
-    "address": "2",
-    "comment": "2",
-    "updated_at": "2025-04-10T21:47:46.572Z",
-    "created_at": "2025-04-10T21:47:46.572Z",
-    "user": 1,
-    "status": "CREATED"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 21,
-  "fields": {
-    "first_name": "Asfsddf2",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "2",
-    "postal_code": "hhh",
-    "address": "2",
-    "comment": "2",
-    "updated_at": "2025-04-10T21:49:23.471Z",
-    "created_at": "2025-04-10T21:49:23.472Z",
-    "user": 1,
-    "status": "CREATED"
-  }
-},
-{
-  "model": "cart.order",
-  "pk": 22,
-  "fields": {
-    "first_name": "Asfsddf2",
-    "last_name": "DDffdgdgfdf",
-    "middle_name": null,
-    "email": "dtoropov@yandex.com",
-    "country": "2",
-    "postal_code": "jjj",
-    "address": "2",
-    "comment": "2",
-    "updated_at": "2025-04-10T21:51:04.663Z",
-    "created_at": "2025-04-10T21:51:04.663Z",
-    "user": 1,
-    "status": "CREATED"
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 4,
-  "fields": {
-    "order": 17,
-    "product": 1,
-    "price": "10000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 5,
-  "fields": {
-    "order": 18,
-    "product": 5,
-    "price": "1000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 6,
-  "fields": {
-    "order": 18,
-    "product": 4,
-    "price": "5000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 7,
-  "fields": {
-    "order": 18,
-    "product": 3,
-    "price": "9000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 8,
-  "fields": {
-    "order": 19,
-    "product": 3,
-    "price": "9000.00",
-    "quantity": 2
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 9,
-  "fields": {
-    "order": 20,
-    "product": 3,
-    "price": "9000.00",
-    "quantity": 2
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 10,
-  "fields": {
-    "order": 21,
-    "product": 5,
-    "price": "1000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "cart.orderitem",
-  "pk": 11,
-  "fields": {
-    "order": 22,
-    "product": 3,
-    "price": "9000.00",
-    "quantity": 1
-  }
-},
-{
-  "model": "tags.tag",
-  "pk": 1,
-  "fields": {
-    "tag": "White"
-  }
-},
-{
-  "model": "tags.tag",
-  "pk": 2,
-  "fields": {
-    "tag": "Black"
-  }
-},
-{
-  "model": "tags.tag",
-  "pk": 3,
-  "fields": {
-    "tag": "Cutely"
+    "title": "Как рождаются куклы: магия создания кукол ручной работы",
+    "slug": "kak-rozhdayutsya-kuklyi-magiya-sozdaniya-kukol-ruchnoj-rabotyi",
+    "image": "blog/_ebd88205-b44a-4a91-b2f1-38da259a4b9a.jpg",
+    "created_at": "2025-04-26T18:14:10.341Z",
+    "update_at": "2025-04-27T20:27:54.899Z",
+    "is_published": true,
+    "views_counter": 10,
+    "short_content": "Вы когда-нибудь задумывались, как из простого кусочка ткани рождается что-то живое, уютное и по-настоящему волшебное?  \r\n \r\nСекрет прост: я не просто шью кукол – я дарю им характер, душу и свою любовь.\r\n \r\nГотовы заглянуть за кулисы моего кукольного волшебства? Тогда поехали!",
+    "content": "<h5>Как рождаются куклы: магия создания кукол ручной работы</h5>\r\n<p>Вы когда-нибудь задумывались, как из простого кусочка ткани рождается что-то живое, уютное и по-настоящему волшебное?</p>\r\n<p>Секрет прост: я не просто шью кукол – я дарю им характер, душу и свою любовь.</p>\r\n<p>Готовы заглянуть за кулисы моего кукольного волшебства? Тогда поехали!</p>\r\n\r\n<h5>Как из кусочка ткани появляется живая эмоция?</h5>\r\n<p>На первый взгляд – обычные материалы: хлопок, трикотаж, шерсть… Но в моих руках они превращаются в нечто большее.</p>\r\n\r\n<ul>\r\n    <li>Идея – Сначала появляется задумка: какой будет эта кукла? Веселая и шкодливая? Тихая мечтательница? Или, может, маленький философ, который будет задумчиво смотреть на мир?</li>\r\n    <li>Эскиз – Иногда куклы приходят ко мне во сне или появляются в голове сами собой. Тогда я быстро хватаю карандаш и рисую их на бумаге, чтобы не забыть.</li>\r\n    <li>Материалы – Выбираю самые приятные на ощупь ткани, потому что мои куклы должны быть «тактильным счастьем» – их хочется обнимать, гладить и не выпускать из рук.</li>\r\n    <li>Шитье – Это момент, когда кукла начинает рождаться. Я сшиваю детали, но самое интересное – когда появляется лицо!</li>\r\n    <li>Глаза – зеркало души – Вы знали, что именно глаза делают куклу живой? Когда я вышиваю или пришиваю глазки, в этот момент кукла словно оживает. Иногда даже кажется, что она что-то хочет мне сказать!</li>\r\n    <li>Одежда и детали – Наряды, бантики, шапочки, ботиночки – все продумывается до мелочей, ведь именно аксессуары делают куклу особенной.</li>\r\n    <li>Финальный штрих – характер! – Каждая моя кукла получает имя и свою маленькую историю. Иногда они сами мне подсказывают, кто они такие!</li>\r\n</ul>\r\n\r\n<h5>Почему мои куклы такие уютные и теплые?</h5>\r\n<p>Вы когда-нибудь держали в руках игрушку, которая будто бы согревает изнутри?</p>\r\n<p>Секрет в том, что я вкладываю в них не только нитки и ткань, но и тепло своих рук, частичку души и много-много добрых мыслей!</p>\r\n\r\n<ul>\r\n    <li>Натуральные материалы – мягкие, теплые, приятные на ощупь.</li>\r\n    <li>Особая энергетика – мои куклы создаются с любовью и заботой, а значит, они несут это тепло дальше.</li>\r\n    <li>Все сшито вручную – никакого конвейера, только внимание к каждой детали.</li>\r\n</ul>\r\n\r\n<p>Мои куклы не просто украшают интерьер – они создают уют, хранят секреты и дарят ощущение домашнего тепла.</p>\r\n\r\n<h5>Секретные ингредиенты, которые я добавляю в каждую куклу</h5>\r\n<p>(Тихо-тихо, это вообще-то тайна, но для вас я приоткрою завесу!)</p>\r\n\r\n<ul>\r\n    <li>Любовь – без нее куклы не оживают.</li>\r\n    <li>Капелька сказки – вдруг ночью они начнут рассказывать истории?</li>\r\n    <li>Щепотка волшебства – чтобы приносить радость своему будущему хозяину.</li>\r\n    <li>Теплая музыка в мастерской – говорят, что куклы слушают и запоминают ее!</li>\r\n    <li>Много улыбок – потому что радость передается через руки.</li>\r\n</ul>\r\n\r\n<h5>А что дальше?</h5>\r\n<p>После того как кукла готова, она отправляется ждать свою семью. Каждая из них создана, чтобы дарить тепло, уют и капельку волшебства.</p>\r\n<p>Может, одна из них ждет именно вас?</p>\r\n<p>Выбирайте свою куклу в Кукольном дворике – она точно подарит вам особенную радость!</p>",
+    "owner": 1,
+    "category": 4,
+    "users_like": [
+      1
+    ],
+    "tags": []
   }
 }
 ]
