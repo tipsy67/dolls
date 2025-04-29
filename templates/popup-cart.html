@@ -15,7 +15,7 @@
         </p>
         <div class="box-progress-bar-block">
             <div class="progress">
-                <div class="progress-bar" style="width: 35%"></div>
+                <div class="progress-bar" style="width: {% percent cart.get_total_price limit_free_shipping %}%"></div>
             </div>
         </div>
         <div class="box-products-cart">

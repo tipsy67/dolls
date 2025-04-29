@@ -30,3 +30,12 @@ def to_int(value):
         return int(value)
     except (ValueError, TypeError):
         return 0
+
+@register.simple_tag
+def percent(total_cost, limit):
+    try:
+        limit = int(limit)
+    except (ValueError, TypeError):
+        limit = 0
+
+    return round((total_cost / limit) * 100)

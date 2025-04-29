@@ -1,69 +1,83 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
+    {% load static %}
+    {% load dolls_tags %}
 
-<!-- Шаблон для "Обработка персональных данных.html" -->
-<main class="main">
-  <section class="section banner-200">
-    <div class="box-cover-image wow fadeInUp"></div>
-    <div class="box-banner-info wow bounceIn">
-      <p class="overline-t2-medium text-uppercase primary-navy mb-10">КОНФИДЕНЦИАЛЬНОСТЬ</p>
-      <h2 class="color-primary-dark mb-30">Политика обработки персональных данных</h2>
-    </div>
-  </section>
+    <!-- Шаблон для "Обработка персональных данных.html" -->
+    <main class="main">
+        <section class="section block-head">
+            <div class="container">
+                <div class="text-center wow bounceIn">
+                    <h2>Политика обработки персональных данных</h2>
+                    <div class="breadcrumbs d-inline-block">
+                        <ul>
+                            <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                            <li><a href="#">Конфиденциальность</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section class="section block-content-custome">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 wow bounceIn">
-          <ul class="menu-left">
-            <li><a href="{% url 'dolls:shipping' %}">Оплата и доставка</a></li>
-            <li><a class="active" href="#">Политика конфиденциальности</a></li>
-            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
-          </ul>
-        </div>
+        <section class="section block-content-custome">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 wow bounceIn">
+                        <ul class="menu-left">
+                            <li><a href="{% url 'dolls:shipping' %}">Оплата и доставка</a></li>
+                            <li><a class="active" href="#">Политика конфиденциальности</a></li>
+                            <li><a href="{% url 'dolls:user_agreement' %}">Пользовательское соглашение</a></li>
+                        </ul>
+                    </div>
 
-        <div class="col-lg-9 wow bounceIn">
-          <div class="content-detail">
-            <h5>1. Общие положения</h5>
-            <p class="body-p2 neutral-medium-dark mb-30">Настоящая Политика регулирует обработку персональных данных между Тороповой Е.В. (214004, г. Смоленск, ул. Пригородная, д.10) и пользователями сайта.</p>
+                    <div class="col-lg-9 wow bounceIn">
+                        <div class="content-detail">
+                            <h5>1. Общие положения</h5>
+                            <p class="body-p2 neutral-medium-dark mb-30">Настоящая Политика регулирует обработку
+                                персональных данных между Тороповой Е.В. (214004, г. Смоленск, ул. Пригородная, д.10) и
+                                пользователями сайта.</p>
 
-            <h5>2. Какие данные мы собираем</h5>
-            <p class="body-p2 neutral-medium-dark mb-20">При оформлении заказа или обратной связи мы запрашиваем:</p>
-            <ul class="list-bullet mb-30">
-              <li>Фамилию, Имя, Отчество</li>
-              <li>Контактный телефон</li>
-              <li>Адрес электронной почты</li>
-              <li>Адрес доставки (при необходимости)</li>
-            </ul>
+                            <h5>2. Какие данные мы собираем</h5>
+                            <p class="body-p2 neutral-medium-dark mb-20">При оформлении заказа или обратной связи мы
+                                запрашиваем:</p>
+                            <ul class="list-bullet mb-30">
+                                <li>Фамилию, Имя, Отчество</li>
+                                <li>Контактный телефон</li>
+                                <li>Адрес электронной почты</li>
+                                <li>Адрес доставки (при необходимости)</li>
+                            </ul>
 
-            <h5>3. Цели обработки данных</h5>
-            <p class="body-p2 neutral-medium-dark mb-30">Ваши данные используются исключительно для:</p>
-            <ul class="list-bullet mb-30">
-              <li>Обработки и выполнения заказов</li>
-              <li>Организации доставки</li>
-              <li>Предоставления информации о статусе заказа</li>
-              <li>Ответа на обращения через формы связи</li>
-            </ul>
+                            <h5>3. Цели обработки данных</h5>
+                            <p class="body-p2 neutral-medium-dark mb-30">Ваши данные используются исключительно для:</p>
+                            <ul class="list-bullet mb-30">
+                                <li>Обработки и выполнения заказов</li>
+                                <li>Организации доставки</li>
+                                <li>Предоставления информации о статусе заказа</li>
+                                <li>Ответа на обращения через формы связи</li>
+                            </ul>
 
-            <h5>4. Защита данных</h5>
-            <p class="body-p2 neutral-medium-dark mb-30">Мы гарантируем конфиденциальность полученной информации. Все данные хранятся на защищенных серверах с ограниченным доступом.</p>
+                            <h5>4. Защита данных</h5>
+                            <p class="body-p2 neutral-medium-dark mb-30">Мы гарантируем конфиденциальность полученной
+                                информации. Все данные хранятся на защищенных серверах с ограниченным доступом.</p>
 
-            <h5>5. Передача третьим лицам</h5>
-            <p class="body-p2 neutral-medium-dark mb-40">Ваши персональные данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ или необходимых для выполнения обязательств (например, транспортным компаниям для доставки).</p>
+                            <h5>5. Передача третьим лицам</h5>
+                            <p class="body-p2 neutral-medium-dark mb-40">Ваши персональные данные не передаются третьим
+                                лицам, за исключением случаев, предусмотренных законодательством РФ или необходимых для
+                                выполнения обязательств (например, транспортным компаниям для доставки).</p>
 
-            <h5>6. Контакты</h5>
-            <p class="body-p2 neutral-medium-dark">По вопросам обработки данных обращайтесь:<br>
-            Телефон: {{ author_phone }}<br>
-            Email: {{ author_email }}</p>
-
-            <div class="mt-60"><a class="btn btn-black" href="{% url 'dolls:contact_us' %}">Связаться с нами</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+                            <h5>6. Контакты</h5>
+                            <p class="body-p2 neutral-medium-dark">По вопросам обработки данных обращайтесь:<br>
+                                Телефон: {{ author_phone }}<br>
+                                Email: {{ author_email }}</p>
+                            <div class="d-flex justify-content-center">
+                                <div class="mt-60"><a class="btn btn-black" href="{% url 'dolls:contact_us' %}">Связаться
+                                    с нами</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}
