@@ -12636,6 +12636,15 @@ footer a {
     background-color: #FAF0E8;
 }
 
+.banner-200 {
+    position: relative;
+}
+
+.banner-200 .box-cover-image {
+    height: 200px;
+    background-color: #FAF0E8;
+}
+
 .block-our-store {
     padding: 80px 0px;
 }
@@ -15702,7 +15711,7 @@ quote {
     height: 40px;
 }
 
-.box-notice {
+.box-notice1 {
     background-color: #f5f0ee;
     padding: 30px;
     border-radius: 8px;
@@ -15760,7 +15769,7 @@ quote {
 
 .box-notice {
     background-color: #f5f0ee;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     text-align: center;
     margin: 0 auto;
