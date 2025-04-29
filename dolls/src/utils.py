@@ -18,11 +18,11 @@ def get_random_reviews(request):
 
 def get_model_queryset(list_name: str):
     if list_name == 'tag_list_product':
-        queryset= None
-        # queryset = Tag.objects.filter(tags_product__isnull=False).distinct()
+        # queryset= None
+        queryset = Tag.objects.filter(tags_product__isnull=False).distinct()
     elif list_name == 'tag_list_article':
-        queryset= None
-        # queryset = Tag.objects.filter(tags_article__isnull=False).distinct()
+        # queryset= None
+        queryset = Tag.objects.filter(tags_article__isnull=False).distinct()
     elif list_name == 'category_list_product':
         queryset = Category.objects.filter(
             is_published=True, products__isnull=False
