@@ -7,13 +7,18 @@
     <div class="box-popup-content">
         <div class="preview-product-image">
             <div class="detail-gallery detail-gallery-2">
-                <div class="box-main-gallery"><a class="zoom-image glightbox"
-                                                 href="#"></a>
+                <div class="box-main-gallery">
+                    {% if product %}
+                        <a class="zoom-image glightbox" href="{% url 'dolls:shop_single' product.pk %}"></a>
+                    {% else %}
+                        <a class="zoom-image glightbox" href="#"></a>
+                    {% endif %}
                     <div class="product-image-slider product-image-slider-preview">
                         {% for image in product.images.all %}
-                        <figure class="border-radius-10"><a class="glightbox"
-                                                            href="{{image|add_media}}"><img
-                                src="{{image|add_media}}" alt="kidify"></a></figure>
+                            <figure class="border-radius-10">
+                                <a class="glightbox" href="{{ image|add_media }}">
+                                    <img src="{{ image|add_media }}" alt="kidify"></a>
+                            </figure>
                         {% endfor %}
                     </div>
                 </div>
@@ -21,56 +26,68 @@
         </div>
         <div class="preview-product-info">
             <div class="box-product-info">
-                <h3 class="mb-5">{{product.name}}</h3>
-{#                <div class="block-rating"><img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}"#}
-{#                                               alt="TOR"><img#}
-{#                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR"><img#}
-{#                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR"><img#}
-{#                        src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR"><img#}
-{#                        src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="TOR"><span#}
-{#                        class="text-17 neutral-medium-dark">(5)</span></div>#}
+                {% if product %}
+                    <a href="{% url 'dolls:shop_single' product.pk %}"><h3 class="mb-5">{{ product.name }}</h3></a>
+                {% else %}
+                    <h3 class="mb-5">{{ product.name }}</h3>
+                {% endif %}
+                <div class="block-rating">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR">
+                    <img src="{% static 'dolls/assets/imgs/template/icons/star-fill.svg' %}" alt="TOR">
+                    {#                    <img src="{% static 'dolls/assets/imgs/template/icons/star-none.svg' %}" alt="TOR"><span#}
+                    {#                        class="text-17 neutral-medium-dark">(5)</span>#}
+                </div>
                 <div class="block-price">
-                    <span class="price-main">{{product.price}}</span>
+                    <span class="price-main">{{ product.price }}</span>
                     {% if product.sale %}
-                    <span class="price-line">{{product.old_price}}</span>
+                        <span class="price-line">{{ product.old_price }}</span>
                     {% endif %}
                 </div>
-{#                <p class="body-p2 viewed-guest viewed-guest-black mb-25"><span class="text-17-medium">24 guests are viewing this product</span>#}
-{#                </p>#}
+                {#                <p class="body-p2 viewed-guest viewed-guest-black mb-25"><span class="text-17-medium">24 guests are viewing this product</span>#}
+                {#                </p>#}
                 <div class="block-description">
-                    <p class="body-p2 neutral-medium-dark">{{product.short_description}}</p>
+                    {% if product %}
+                        <a href="{% url 'dolls:shop_single' product.pk %}"><p class="body-p2 neutral-medium-dark">{{ product.short_description }}</p></a>
+                    {% else %}
+                        <p class="body-p2 neutral-medium-dark">{{ product.short_description }}</p>
+                    {% endif %}
+
                 </div>
                 <div class="block-quantity">
                     <div class="text-17 neutral-medium-dark mb-10">Количество</div>
                     <div class="box-form-cart">
                         {% if product.quantity %}
-<!--                        <div class="form-cart detail-qty"><span class="minus"></span>-->
-<!--                            <input class="qty-val form-control" type="text" name="quantity" value="1" min="1"><span-->
-<!--                                    class="plus"></span>-->
-<!--                        </div>-->
-                        <a class="btn btn-black ajax-cart-add"
-                           data-product_id="{{ product.pk }}"
-                           {% if product.pk %}
-                           data-url="{% url 'cart:cart_add' product.pk %}"
-                           {% else %}
-                           data-url="#"
-                           {% endif %} href="#">
-                            В корзину</a><a class="btn btn-navy" href="{% url 'cart:buy_now' product.pk %}">Купить</a>
+                            <!--                        <div class="form-cart detail-qty"><span class="minus"></span>-->
+                            <!--                            <input class="qty-val form-control" type="text" name="quantity" value="1" min="1"><span-->
+                            <!--                                    class="plus"></span>-->
+                            <!--                        </div>-->
+                            <a class="btn btn-black ajax-cart-add"
+                               data-product_id="{{ product.pk }}"
+                                    {% if product.pk %}
+                               data-url="{% url 'cart:cart_add' product.pk %}"
+                                    {% else %}
+                               data-url="#"
+                                    {% endif %} href="#">
+                                В корзину</a>
+                            <a class="btn btn-navy" href="{% url 'cart:buy_now' product.pk %}">Купить</a>
                         {% else %}
-                        нет в наличии
+                            нет в наличии
                         {% endif %}
                     </div>
                 </div>
                 <div class="block-tags-product">
                     <p class="body-p2"><span class="neutral-medium-dark">Категория:</span>
-                        <a class="neutral-dark" href="#">{{product.category}}</a>
+                        <a class="neutral-dark" href="#">{{ product.category }}</a>
                     </p>
                     <p class="body-p2"><span class="neutral-medium-dark">Тэги:</span>
                         {% for tag in product.tags.all %}
-                        <a class="neutral-dark" href="#">
-                            {{tag}}
-                            {% if not forloop.last %},{% endif %}
-                        </a>
+                            <a class="neutral-dark" href="#">
+                                {{ tag }}
+                                {% if not forloop.last %},{% endif %}
+                            </a>
                         {% endfor %}
                     </p>
                 </div>

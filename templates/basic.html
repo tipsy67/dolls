@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'dolls/assets/imgs/template/favicon.svg' %}">
     <link href="{% static 'dolls/assets/css/style.css' %}?v=1.0.0" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Home - Natural Skins - Multipurpose Startup SaaS HTML Template</title>
+    <title>Куклы-Ручная работа-Сделано с душой</title>
 </head>
 <body>
 <div id="preloader-active">
@@ -174,7 +174,9 @@
                     <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла
                         создается с любовью и несет в себе частичку сказки.</p>
                     <p class="neutral-dark body-p2 email-footer">{{ author_email }}</p>
+                    {% if user.is_authenticated %}
                     <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>
+                    {% endif %}
                 </div>
                 <div class="col-lg-8 mb-30">
                     <div class="row">
