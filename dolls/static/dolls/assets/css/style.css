@@ -15630,6 +15630,18 @@ quote {
     }
 }
 
+/* Показываем секцию по умолчанию */
+.mobile-section {
+    display: none;
+}
+
+/* Скрываем на вертикальных мобильных (обычно < 768px) */
+@media (max-width: 767px) and (orientation: portrait) {
+    .mobile-section {
+        display: block;
+    }
+}
+
 .return-policy-box {
     border: 1px solid #e5e5e5;
     border-radius: 8px;
