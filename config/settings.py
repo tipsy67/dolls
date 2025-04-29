@@ -12,11 +12,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = os.environ.get('DEBUG')
 
-if DEBUG:
-    ALLOWED_HOSTS = ['*']
-else:
-    DOMAIN_NAME = os.environ.get('DOMAIN_NAME')
-    ALLOWED_HOSTS = [DOMAIN_NAME, f'www.{DOMAIN_NAME}']
+ALLOWED_HOSTS = ['*']
+#     DOMAIN_NAME = os.environ.get('DOMAIN_NAME')
+#     ALLOWED_HOSTS = [DOMAIN_NAME, f'www.{DOMAIN_NAME}']
+CSRF_TRUSTED_ORIGINS = ['https://toytales.ru', 'https://www.toytales.ru']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
