@@ -1,118 +1,126 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
-<main class="main">
-    <div class="section block-breadcrumb">
-        <div class="container">
-            <div class="breadcrumbs">
-                <ul>
-                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                    <li><a href="#">Корзина</a></li>
-                </ul>
+    {% load static %}
+    {% load dolls_tags %}
+    <main class="main">
+        <div class="section block-breadcrumb">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                        <li><a href="#">Корзина</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <section class="section block-cart">
-        <div class="container">
-            <form id="myForm" method="POST" action="{% url 'cart:cart_detail' %}">
-                <div class="row mt-20">
-                    <div class="col-lg-7">
-                        {% csrf_token %}
-                        <div class="box-title-cart">
-                            <h4>Ваша корзина</h4>
-<!--                            <h6>Количество ({{cart|length}})</h6>-->
-                        </div>
-                        <div class="list-items-cart">
-                            {% for item in cart %}
-                            {% with product=item.product %}
-                            <div class="item-cart">
-                                <div class="item-cart-image"><img src="{{product.one_image|add_media}}" alt="TOR">
-                                </div>
-                                <div class="item-cart-info">
-                                    <div class="item-cart-info-1"><a class="text-16-medium"
-                                                                     href="{% url 'dolls:shop_single' product.pk %}">{{product.name}}</a>
-                                        <div class="box-info-size-color-product">
-                                            <p class="box-color"><span
-                                                    class="body-p2 neutral-dark">{{item.price}}</span></p>
-                                        </div>
-                                        <div class="box-form-cart">
-                                            <div class="form-cart detail-qty"><span class="minus"></span>
-                                                <input class="qty-val form-control" type="text" name="quantity{{product.pk}}"
-                                                       value="{{item.quantity}}"
-                                                       min="1"><span class="plus"></span>
+        <section class="section block-cart">
+            <div class="container">
+                <form id="myForm" method="POST" action="{% url 'cart:cart_detail' %}">
+                    <div class="row mt-20">
+                        <div class="col-lg-7">
+                            {% csrf_token %}
+                            <div class="box-title-cart">
+                                <h4>Ваша корзина</h4>
+                                <!--                            <h6>Количество ({{cart|length}})</h6>-->
+                            </div>
+                            <div class="list-items-cart">
+                                {% for item in cart %}
+                                    {% with product=item.product %}
+                                        <div class="item-cart">
+                                            <div class="item-cart-image">
+                                                <a class="text-16-medium"
+                                                   href="{% url 'dolls:shop_single' product.pk %}">
+                                                    <img src="{{ product.one_image|add_media }}" alt="TOR">
+                                                </a>
+                                            </div>
+                                            <div class="item-cart-info">
+                                                <div class="item-cart-info-1"><a class="text-16-medium"
+                                                                                 href="{% url 'dolls:shop_single' product.pk %}">{{ product.name }}</a>
+                                                    <div class="box-info-size-color-product">
+                                                        <p class="box-color"><span
+                                                                class="body-p2 neutral-dark">{{ item.price }}</span></p>
+                                                    </div>
+                                                    <div class="box-form-cart">
+                                                        <div class="form-cart detail-qty"><span class="minus"></span>
+                                                            <input class="qty-val form-control" type="text"
+                                                                   name="quantity{{ product.pk }}"
+                                                                   value="{{ item.quantity }}"
+                                                                   min="1"><span class="plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item-cart-info-2">
+                                                    <p class="body-p2">{{ item.total_price }}</p>
+                                                    <a class="btn-remove-cart" href="#"
+                                                       data-url="{% url 'cart:cart_remove' product.pk %}"></a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item-cart-info-2">
-                                        <p class="body-p2">{{item.total_price}}</p>
-                                        <a class="btn-remove-cart" href="#" data-url="{% url 'cart:cart_remove' product.pk %}"></a>
-                                    </div>
-                                </div>
+                                    {% endwith %}
+                                {% endfor %}
                             </div>
-                            {% endwith %}
-                            {% endfor %}
-                        </div>
-                        <div class="box-coupon">
-                            <div class="coupon-left">
-                                <input class="form-control input-coupon" type="text" placeholder="Купон на скидку">
-                                <button class="btn btn-border">Применить</button>
+                            <div class="box-coupon">
+                                <div class="coupon-left">
+                                    <input class="form-control input-coupon" type="text" placeholder="Купон на скидку">
+                                    <button class="btn btn-border">Применить</button>
+                                </div>
+                                <div class="coupon-right"><a class="btn btn-border"
+                                                             href="javascript:void(0);"
+                                                             onclick="document.getElementById('myForm').submit();">Обновить
+                                    корзину</a></div>
                             </div>
-                            <div class="coupon-right"><a class="btn btn-border"
-                                                         href="javascript:void(0);"
-                                                         onclick="document.getElementById('myForm').submit();">Обновить
-                                корзину</a></div>
                         </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="box-detail-cart">
-                            <h4 class="mb-25">Сводная информация</h4>
-                            <div class="box-info-cart">
-                                <div class="d-flex align-items-center justify-content-between box-border-bottom">
-                                    <h6 class="neutral-medium-dark">Предварительный итог</h6>
-                                    <h5 class="neutral-dark">{{cart.get_total_price}}</h5>
-                                </div>
-                                <div class="box-info-cart-inner">
-                                    <p class="text-17-medium text-uppercase mb-15">Доставка</p>
-{#                                    <div class="list-radio">#}
-{#                                        <div class="item-radio">#}
-{#                                            <label>#}
-{#                                                <input type="radio" name="shipping" checked="checked">Flat rate: $50.00#}
-{#                                            </label><span class="price-ship">$50.00</span>#}
-{#                                        </div>#}
-{#                                        <div class="item-radio">#}
-{#                                            <label>#}
-{#                                                <input type="radio" name="shipping">Local pickup: $60.00#}
-{#                                            </label>#}
-{#                                        </div>#}
-{#                                    </div>#}
-                                    {% if cart.get_total_price >= limit_free_shipping|to_int %}
-                                    <a class="text-17 link-green" href="#">
-                                    Бесплатная доставка при покупке от {{limit_free_shipping}}</a>
-                                    {% else %}
-                                    <p class="body-p2 neutral-medium-dark mb-12">Стоимость доставки будет рассчитана после оформления заказа</p>
-                                        <a class="text-17 calculate-shipping" href="#">Рассчитать стоимость доставки</a>
-                                    {% endif %}
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between box-total-bottom">
-                                    <h5 class="neutral-medium-dark">Итого</h5>
-                                    <h5 class="neutral-dark">{{cart.get_total_price}}</h5>
-                                </div>
-                                <div class="box-button-cart">
-                                    <a class="btn btn-black"
-                                       href="{% url 'cart:order_create' %}">
-                                        Оформить заказ</a>
-                                </div>
-                                <div class="box-other-link">
-                                    <a class="text-17" href="{% url 'dolls:shop' %}">Продолжить покупки</a>
+                        <div class="col-lg-5">
+                            <div class="box-detail-cart">
+                                <h4 class="mb-25">Сводная информация</h4>
+                                <div class="box-info-cart">
+                                    <div class="d-flex align-items-center justify-content-between box-border-bottom">
+                                        <h6 class="neutral-medium-dark">Предварительный итог</h6>
+                                        <h5 class="neutral-dark">{{ cart.get_total_price }}</h5>
+                                    </div>
+                                    <div class="box-info-cart-inner">
+                                        <p class="text-17-medium text-uppercase mb-15">Доставка</p>
+                                        {#                                    <div class="list-radio">#}
+                                        {#                                        <div class="item-radio">#}
+                                        {#                                            <label>#}
+                                        {#                                                <input type="radio" name="shipping" checked="checked">Flat rate: $50.00#}
+                                        {#                                            </label><span class="price-ship">$50.00</span>#}
+                                        {#                                        </div>#}
+                                        {#                                        <div class="item-radio">#}
+                                        {#                                            <label>#}
+                                        {#                                                <input type="radio" name="shipping">Local pickup: $60.00#}
+                                        {#                                            </label>#}
+                                        {#                                        </div>#}
+                                        {#                                    </div>#}
+                                        {% if cart.get_total_price >= limit_free_shipping|to_int %}
+                                            <a class="text-17 link-green" href="#">
+                                                Бесплатная доставка при покупке от {{ limit_free_shipping }}</a>
+                                        {% else %}
+                                            <p class="body-p2 neutral-medium-dark mb-12">Стоимость доставки будет
+                                                рассчитана после оформления заказа</p>
+                                            <a class="text-17 calculate-shipping" href="#">Рассчитать стоимость
+                                                доставки</a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between box-total-bottom">
+                                        <h5 class="neutral-medium-dark">Итого</h5>
+                                        <h5 class="neutral-dark">{{ cart.get_total_price }}</h5>
+                                    </div>
+                                    <div class="box-button-cart">
+                                        <a class="btn btn-black"
+                                           href="{% url 'cart:order_create' %}">
+                                            Оформить заказ</a>
+                                    </div>
+                                    <div class="box-other-link">
+                                        <a class="text-17" href="{% url 'dolls:shop' %}">Продолжить покупки</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-    </section>
-</main>
+                </form>
+            </div>
+        </section>
+    </main>
 {% endblock content %}
