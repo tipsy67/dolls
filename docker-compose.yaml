@@ -77,7 +77,11 @@ services:
       - ./certbot/etc:/etc/letsencrypt
       - ./certbot/var:/var/lib/letsencrypt
       - ./certbot/webroot:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --email ${DOMAIN_ADMIN_EMAIL} -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME} --agree-tos --non-interactive
+    command: >
+      certonly --webroot -w /var/www/certbot 
+      --email ${DOMAIN_ADMIN_EMAIL} 
+      -d ${DOMAIN_NAME} -d www.${DOMAIN_NAME} -d flower.${DOMAIN_NAME} 
+      --agree-tos --non-interactive
     depends_on:
       - nginx
 
@@ -105,10 +109,11 @@ services:
       - celery
       - redis
     command: >
-      celery -A config flower
+      celery -A config 
+      --broker=${FLOWER_BROKER_URL}
+      flower
       --port=${FLOWER_PORT}
       --basic_auth=${FLOWER_USER}:${FLOWER_PASSWORD}
-      --broker=${FLOWER_BROKER_URL}
 
 
 volumes:
