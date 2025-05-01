@@ -1,82 +1,82 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
+    {% load static %}
+    {% load dolls_tags %}
 
-<main class="main">
-    <section class="section block-head">
-        <div class="container">
-            <div class="text-center wow bounceIn">
-                <h1>Мои истории</h1>
-                <div class="breadcrumbs d-inline-block">
-                    <ul>
-                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                        <li><a href="#">Блог</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section block-blog-list">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    {% for article in blog_list %}
-                    <div class="cardBlog cardBlogList wow fadeInUp">
-                        <div class="cardImage"><a href="{% url 'blog:blog_detail' article.slug %}">
-                            <img src="{{article.image|add_media_insta}}" alt="TOR"></a></div>
-                        <div class="cardInfo">
-                            <div class="cardTags"><a href="#">{{article.category}}</a>
-                                <span class="date-post text-uppercase">{{article.created_at|date:"j M"}}</span>
-                            </div>
-                            <a class="cardTitle" href="{% url 'blog:blog_detail' article.slug %}">
-                                <h5>{{article.title|safe}}</h5></a>
-                            <p class="cardDesc body-p2">{{article.short_content|safe|truncatechars_html:400}}</p>
-                            <a class="link-underline link-l2"
-                               href="{% url 'blog:blog_detail' article.slug %}">Читать</a>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% include 'pagination.html' with page=page_obj page_name='page' %}
-                </div>
-                <div class="col-lg-3">
-                    <div class="sidebar-right">
-                        <div class="block-sidebar">
-                            <h5 class="text-20-medium mb-20">Последние обсуждения</h5>
-                            <ul class="list-latest-posts">
-                                {% for article in list_popular_articles %}
-                                <li>
-                                    <div class="image-post"><a href="#"><img
-                                            src="{{article.image|add_media_insta}}"
-                                            alt=""></a></div>
-                                    <div class="info-post"><span class="date-post text-uppercase">{{article.last_comment_date|date:"j M"}}</span><a
-                                            href="#">
-                                        <h5 class="title-post">{{article.title|safe}}</h5></a></div>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                        <div class="block-sidebar">
-                            <h5 class="text-20-medium mb-20">Tags</h5>
-                            <div class="box-tags">
-                                {% for tag in tags_list %}
-                                <a class="btn btn-tag-filter" href="{{tag.get_url_change}}?model=Article"
-                                   title="{{tag.tag}}"
-                                   {% if tag.str_pk in tags_article %}
-                                   style="color: #b6795f;"
-                                   {% endif %}>{{tag.tag}}</a>
-                                {% endfor %}
-                                <a class="btn btn-tag-filter" href="{% url 'tags:clear_tag' %}?model=Article"
-                                   title="Сбросить отбор тегов">Сбросить</a>
-                            </div>
-                            <div class="block-sidebar"><img src="assets/imgs/page/blog-list/sale.png" alt=""></div>
-                        </div>
+    <main class="main">
+        <section class="section block-head">
+            <div class="container">
+                <div class="text-center wow bounceIn">
+                    <h1>Мои истории</h1>
+                    <div class="breadcrumbs d-inline-block">
+                        <ul>
+                            <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                            <li><a href="#">Блог</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+        <section class="section block-blog-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9">
+                        {% for article in blog_list %}
+                            <div class="cardBlog cardBlogList wow fadeInUp">
+                                <div class="cardImage"><a href="{% url 'blog:blog_detail' article.slug %}">
+                                    <img src="{{ article.image|add_media_insta }}" alt="TOR"></a></div>
+                                <div class="cardInfo">
+                                    <div class="cardTags"><a href="#">{{ article.category }}</a>
+                                        <span class="date-post text-uppercase">{{ article.created_at|date:"j M" }}</span>
+                                    </div>
+                                    <a class="cardTitle" href="{% url 'blog:blog_detail' article.slug %}">
+                                        <h5>{{ article.title|safe }}</h5></a>
+                                    <p class="cardDesc body-p2">{{ article.short_content|safe|truncatechars_html:400 }}</p>
+                                    <a class="link-underline link-l2"
+                                       href="{% url 'blog:blog_detail' article.slug %}">Читать</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% include 'pagination.html' with page=page_obj page_name='page' %}
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="sidebar-right">
+                            <div class="block-sidebar">
+                                <h5 class="text-20-medium mb-20">Последние обсуждения</h5>
+                                <ul class="list-latest-posts">
+                                    {% for article in list_popular_articles %}
+                                        <li>
+                                            <div class="image-post"><a href="{% url 'blog:blog_detail' article.slug %}"><img
+                                                    src="{{ article.image|add_media_insta }}"
+                                                    alt="TOR"></a></div>
+                                            <div class="info-post"><span
+                                                    class="date-post text-uppercase">{{ article.last_comment_date|date:"j M" }}</span><a
+                                                    href="{% url 'blog:blog_detail' article.slug %}">
+                                                <h5 class="title-post">{{ article.title|safe }}</h5></a></div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="block-sidebar">
+                                <h5 class="text-20-medium mb-20">Tags</h5>
+                                <div class="box-tags">
+                                    {% for tag in tags_list %}
+                                        <a class="btn btn-tag-filter" href="{{ tag.get_url_change }}?model=Article"
+                                           title="{{ tag.tag }}"
+                                                {% if tag.str_pk in tags_article %}
+                                           style="color: #b6795f;"
+                                                {% endif %}>{{ tag.tag }}</a>
+                                    {% endfor %}
+                                    <a class="btn btn-tag-filter" href="{% url 'tags:clear_tag' %}?model=Article"
+                                       title="Сбросить отбор тегов">Сбросить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}
 

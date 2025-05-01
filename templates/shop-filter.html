@@ -9,7 +9,8 @@
                     {% for cat in category_list %}
                     <li>
                         <label class="cb-container">
-                            <input type="checkbox"><span class="text-small">{{ cat.name }} </span>
+                            <input type="checkbox" data-category-id="{{ cat.id }}">
+                            <span class="text-small">{{ cat.name }} </span>
                             <span class="checkmark"></span>
                         </label>
                     </li>
@@ -52,7 +53,8 @@
                     {% for cat in category_list %}
                         <li>
                             <label class="cb-container">
-                                <input type="checkbox"><span class="text-small">{{ cat.name }} </span>
+                                <input type="checkbox" data-category-id="{{ cat.id }}">
+                                <span class="text-small">{{ cat.name }} </span>
                                 <span class="checkmark"></span>
                             </label>
                         </li>
