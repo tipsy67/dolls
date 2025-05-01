@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     checkTerms();
     updateSubscribe();
     unSubscribe();
+    shopFilter();
 });
 
 // Восстановление позиции прокрутки
@@ -180,7 +181,7 @@ function updatePreviewPopup(data) {
         })  // Получаем HTML-код
         .then(html => {
             cartContainer.innerHTML = html;
-            // Из за асинхронности fetch перенес из main сюда
+            // Из-за асинхронности fetch перенес из main сюда
             $(".box-popup-preview").show();
             initSlidePreview();
             setupAddToCartHandler();
@@ -254,4 +255,45 @@ function unSubscribe() {
             })
             .catch(() => console.error("Ошибка при подписке"));
     })
+}
+
+//Фильтры на странице товаров
+function shopFilter() {
+    document.addEventListener('change', function(e) {
+        // Проверяем, что изменение произошло в нужном нам чекбоксе
+        if (e.target.closest('.list-filter-checkbox') && e.target.type === 'checkbox') {
+            filterProducts();
+        }
+    });
+
+    function filterProducts() {
+        const productPartial = document.getElementById('products-container')
+        if (!productPartial) return;
+
+        const checkedBoxes = document.querySelectorAll('.list-filter-checkbox input[type="checkbox"]:checked');
+        const selectedCategories = Array.from(checkedBoxes).map(checkbox => checkbox.dataset.categoryId);
+
+        // Получаем текущую страницу из URL или пагинации
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('page') || 1;
+
+        $('#preloader-active').fadeIn('fast');
+
+        const ajaxUrl = `${productPartial.dataset.url}?page=${currentPage}&categories=${selectedCategories.join(',')}`;
+
+        fetch(ajaxUrl)
+            .then(response => response.text())
+            .then(html => {
+                productPartial.innerHTML = html;
+                history.pushState(null, null, `?page=${currentPage}&categories=${selectedCategories.join(',')}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                productPartial.innerHTML = '<div class="error">Ошибка загрузки</div>';
+            })
+            .finally(() => {
+                // Скрываем лоадер в любом случае
+                $('#preloader-active').fadeOut('slow');
+            });;
+    }
 }
