@@ -3,7 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.functions import Random
 
 from django.core.paginator import Paginator
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.urls.base import reverse_lazy
 from django.views.generic.edit import CreateView
 
@@ -44,6 +46,28 @@ def main_page(request):
 
     return render(request, 'dolls/index.html', context)
 
+def product_filter_view(request):
+    categories_param = request.GET.get('categories', '')
+    try:
+        categories = [int(c) for c in categories_param.split(',') if c]
+    except (ValueError, AttributeError):
+        categories = []
+
+    page_num_product = request.GET.get('page', 1)
+
+    if categories:
+        product_list = Product.objects.filter(category__id__in=categories)
+    else:
+        product_list = Product.objects.all()
+
+    paginator = Paginator(product_list, PRODUCT_PER_PAGE)
+    page_product = paginator.get_page(page_num_product)
+
+    context= {
+        'product_list': page_product,
+    }
+
+    return render(request,'products.html', context)
 
 def product_list_view(request, cat=None):
 
@@ -70,10 +94,10 @@ def product_list_view(request, cat=None):
     context = {
         'product_list': page_product,
         'category_list': category_list,
-        'testimonials': get_random_reviews(request),
+        # 'testimonials': get_random_reviews(request),
         'shop': 'active',
         'category_pk': cat,
-        'sale_list': sale_list,
+        # 'sale_list': sale_list,
         'tag_list': tag_list,
     }
 
