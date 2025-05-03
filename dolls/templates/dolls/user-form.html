@@ -57,14 +57,16 @@
                                                            name="login">
                                                     <input class="btn btn-grey" value="Забыли пароль?" type="submit"
                                                            name="recovery">
-                                                    <p>Войти через:</p>
-                                                    {% get_providers as socialaccount_providers %}
-                                                    {% for provider in socialaccount_providers %}
-                                                        <a href="{% provider_login_url provider.id process='login' %}"
-                                                           class="btn btn-social btn-{{ provider.id }}">
-                                                            {{ provider.name }}
-                                                        </a>
-                                                    {% endfor %}
+                                                    <div class="row mt-20 align-items-start">
+                                                        <span class="me-2 col-auto align-self-center">Войти через:</span>
+                                                        {% get_providers as socialaccount_providers %}
+                                                        {% for provider in socialaccount_providers %}
+                                                            <div class="col-auto">
+                                                                <a href="{% provider_login_url provider.id process='login' %}">
+                                                                    <img src="{% static 'dolls/assets/imgs/icons/'|add:provider.id|add:'.png' %}"
+                                                                         alt="{{ provider.name }}" width="28"></a></div>
+                                                        {% endfor %}
+                                                    </div>
                                                 {% endif %}
                                             {% endif %}
                                         </div>
