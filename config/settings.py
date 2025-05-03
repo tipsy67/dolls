@@ -33,6 +33,15 @@ INSTALLED_APPS = [
     'dolls',
     'blog',
     'mptt',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.mailru',
+    'allauth.socialaccount.providers.odnoklassniki',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.yandex',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -92,6 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 LANGUAGE_CODE = 'ru-ru'
@@ -168,7 +184,7 @@ EMAIL_USE_SSL = True
 # EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 10
 
-NUMBER_OF_REVIEWS_DISPLAYED = 5
+NUMBER_OF_REVIEWS_DISPLAYED = 3
 NUMBER_OF_PRODUCTS_DISPLAYED = 4
 DEFAULT_SERVICE_DURATION = 30
 SERVICE_PER_PAGE = 4
@@ -177,3 +193,14 @@ BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
 CART_SESSION_ID = 'dolls_cart'
 TAGS_SESSION_ID = 'dolls_tags'
+
+SITE_ID = 1
+# 1. Поля при регистрации (email обязателен, username обязателен)
+ACCOUNT_SIGNUP_FIELDS = ['username*', 'email*']
+
+# 2. Методы входа (только по username)
+ACCOUNT_LOGIN_METHODS = {'username': 'username'}
+
+# 3. Дополнительные важные настройки
+ACCOUNT_UNIQUE_EMAIL = True                # Уникальный email
+SOCIALACCOUNT_EMAIL_REQUIRED = True        # Для социальных аккаунтов

@@ -10,10 +10,10 @@ from django.db.models.functions import Random
 def get_random_reviews(request):
     reviews_set = request.session.get('reviews')
     if reviews_set is None:
-        reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())
+        reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())[:NUMBER_OF_REVIEWS_DISPLAYED]
         request.session['reviews'] = reviews_set
 
-    return reviews_set[:NUMBER_OF_REVIEWS_DISPLAYED]
+    return reviews_set
 
 
 def get_model_queryset(list_name: str):
