@@ -3,18 +3,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.functions import Random
 
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+
 from django.shortcuts import render
-from django.template.loader import render_to_string
+
 from django.urls.base import reverse_lazy
 from django.views.generic.edit import CreateView
 
 from blog.models import BlogArticle
 from config.settings import PRODUCT_PER_PAGE, BLOG_PER_PAGE
-from dolls.models import Category, Product
+from dolls.models import Product
 from dolls.src.utils import get_random_reviews, get_queryset_from_cache
-from tags.models import Tag
-from tags.tag import CheckedTag, ProductCheckedTag
+
+from tags.tag import ProductCheckedTag
 from tunes.models import Banner, Feedback
 
 
@@ -22,8 +22,11 @@ def main_page(request):
 
     banner_list = Banner.objects.filter(is_published=True)
     category_list = get_queryset_from_cache('category_list_product')
+    product_list = Product.objects.filter(
+        is_published=True).order_by(Random())[:PRODUCT_PER_PAGE]
 
-    objects_list = []
+    objects_list = [{'pk': None, 'name': "Все", 'product_list': product_list}]
+
     for category in category_list:
         product_list = Product.objects.filter(
             is_published=True, category=category
@@ -127,35 +130,26 @@ def product_preview_update(request, pk):
 
 
 def about(request):
-    context = {}
-
-    return render(request, 'dolls/about.html')
+    context = {
+        'testimonial_list': get_random_reviews(request),
+    }
+    return render(request, 'dolls/about.html', context)
 
 
 def history(request):
-    context = {}
-
     return render(request, 'dolls/history.html')
 
 def privacy_policy(request):
-    context = {}
-
     return render(request, 'dolls/privacy-policy.html')
 
 def shipping(request):
-    context = {}
-
     return render(request, 'dolls/shipping.html')
 
 def user_agreement(request):
-    context = {}
-
     return render(request, 'dolls/user-agreement.html')
 
 @login_required
 def thank_you(request):
-    context = {}
-
     return render(request, 'dolls/thank-you.html')
 
 class FeedbackCreateView(LoginRequiredMixin, CreateView):

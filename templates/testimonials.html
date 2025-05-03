@@ -7,72 +7,35 @@
         <div class="box-swiper box-button-leftright box-page-style2 pb-90">
             <div class="swiper-container swiper-3-items p-0">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="cardReview">
-                            <div class="cardAuthor mb-20">
-                                <div class="cardImageAuthor"><img
-                                        src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}" alt="TOR"></div>
+                    {% for obj in testimonial_list %}
+                        <div class="swiper-slide">
+                            <div class="cardReview">
+                                <div class="cardAuthor mb-20">
+                                    <div class="cardImageAuthor"><img
+                                            src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}" alt="TOR">
+                                    </div>
+                                </div>
                                 <div class="cardNameAuthor">
-                                    <p class="text-17-medium">Kate Smith</p>
+                                    <p class="text-17-medium">{{ obj.name }}</p>
+                                </div>
+                                <div class="cardRate mb-10"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR">
+                                </div>
+                                {#                            <h6 class="mb-20">Perfect indoor play tent!</h6>#}
+                                <div class="cardText mb-0">
+                                    <h6 class="text-18">{{ obj.message }}</h6>
                                 </div>
                             </div>
-                            <div class="cardRate mb-10"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"></div>
-                            <h6 class="mb-20">Perfect indoor play tent!</h6>
-                            <div class="cardText mb-0">
-                                <h6 class="text-18">I like the way the staff advises me. Thank you for the very good
-                                    quality of the case. I will come back and buy more stuff.</h6>
-                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="cardReview">
-                            <div class="cardAuthor mb-20">
-                                <div class="cardImageAuthor"><img src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}"
-                                                                  alt="TOR"></div>
-                                <div class="cardNameAuthor">
-                                    <p class="text-17-medium">Kate Smith</p>
-                                </div>
-                            </div>
-                            <div class="cardRate mb-10"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"></div>
-                            <h6 class="mb-20">Perfect indoor play tent!</h6>
-                            <div class="cardText mb-0">
-                                <h6 class="text-18">I like the way the staff advises me. Thank you for the very good
-                                    quality of the case. I will come back and buy more stuff.</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="cardReview">
-                            <div class="cardAuthor mb-20">
-                                <div class="cardImageAuthor"><img src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}"
-                                                                  alt="TOR"></div>
-                                <div class="cardNameAuthor">
-                                    <p class="text-17-medium">Kate Smith</p>
-                                </div>
-                            </div>
-                            <div class="cardRate mb-10"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                    src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"></div>
-                            <h6 class="mb-20">Perfect indoor play tent!</h6>
-                            <div class="cardText mb-0">
-                                <h6 class="text-18">I like the way the staff advises me. Thank you for the very good
-                                    quality of the case. I will come back and buy more stuff.</h6>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="box-pagination-button">
