@@ -130,7 +130,10 @@ def product_preview_update(request, pk):
 
 
 def about(request):
-    return render(request, 'dolls/about.html')
+    context = {
+        'testimonial_list': get_random_reviews(request),
+    }
+    return render(request, 'dolls/about.html', context)
 
 
 def history(request):
