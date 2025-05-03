@@ -11,23 +11,30 @@
                         <div class="swiper-slide">
                             <div class="cardReview">
                                 <div class="cardAuthor mb-20">
-                                    {#                                <div class="cardImageAuthor"><img#}
-                                    {#                                        src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}" alt="TOR"></div>#}
-                                    {#                                <div class="cardNameAuthor">#}
+                                    <div class="cardImageAuthor"><img
+                                            src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}" alt="TOR">
+                                    </div>
+                                </div>
+                                <div class="cardNameAuthor">
                                     <p class="text-17-medium">{{ obj.name }}</p>
                                 </div>
                                 <div class="cardRate mb-10"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR"></div>
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}"
+                                        alt="TOR"><img
+                                        src="{% static 'dolls/assets/imgs/template/icons/star.svg' %}" alt="TOR">
+                                </div>
                                 {#                            <h6 class="mb-20">Perfect indoor play tent!</h6>#}
                                 <div class="cardText mb-0">
                                     <h6 class="text-18">{{ obj.message }}</h6>
                                 </div>
                             </div>
-                         </div>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
