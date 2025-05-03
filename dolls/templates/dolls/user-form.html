@@ -1,156 +1,169 @@
 {% extends 'basic.html' %}
 
 {% block content %}
-{% load static %}
-{% load dolls_tags %}
-<main class="main">
-    <div class="section block-breadcrumb">
-        <div class="container">
-            <div class="breadcrumbs">
-                <ul>
-                    <li><a href="{% url 'dolls:home' %}">Главная </a></li>
-                    <li><a href="#">Пользователь</a></li>
-                </ul>
+    {% load static %}
+    {% load dolls_tags %}
+    {% load socialaccount %}
+
+    <main class="main">
+        <div class="section block-breadcrumb">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="{% url 'dolls:home' %}">Главная </a></li>
+                        <li><a href="#">Пользователь</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <section class="section block-cart">
-        <div class="container mb-100 mt-60">
-            <form method="post"
-{#                  {% if create_user %} action="{% url 'users:create_user' %}" {% endif %}#}
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="row mt-20 {% if not user.is_authenticated %} d-flex justify-content-center {% endif %}">
-                    <div class="col-lg-6">
-                        {% if not user.is_authenticated %}
-                        <div class="box-customer-login">
-                            Не зарегистрированы? <a href="{% url 'users:create_user' %}">Нажмите сюда</a></div>
+        <section class="section block-cart">
+            <div class="container mb-100 mt-60">
+                <form method="post"
+                        {#                  {% if create_user %} action="{% url 'users:create_user' %}" {% endif %}#}
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mt-20 {% if not user.is_authenticated %} d-flex justify-content-center {% endif %}">
+                        <div class="col-lg-6">
+                            {% if not user.is_authenticated %}
+                                <div class="box-customer-login">
+                                    Не зарегистрированы? <a href="{% url 'users:create_user' %}">Нажмите сюда</a></div>
+                            {% endif %}
+                            <div class="box-form-checkout form-comment">
+                                <h4 class="mt-32 mb-25">{{ title_form }}</h4>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-error">{{ form.non_field_errors }}</div>
+                                        {% for f in form %}
+                                            <div class="form-error text-end">{{ f.errors }}</div>
+                                            <div class="form-group">
+                                                {% if not forloop.last %}
+                                                    <label class="form-label" for="{{ f.id_for_label }}">
+                                                        {{ f.label }}</label>
+                                                {% endif %}
+                                                {{ f| add_attrs }}
+                                            </div>
+                                        {% endfor %}
+                                        <div class="box-button-checkout">
+                                            {% if user.is_authenticated %}
+                                                <button class="btn btn-black" type="submit">Сохранить</button>
+                                                <a class="btn btn-grey my-1" href="{% url 'users:logout_form' %}">Выйти
+                                                    из
+                                                    профиля</a>
+                                            {% else %}
+                                                {% if create_user %}
+                                                    <input class="btn btn-black" value="Зарегистрировать" type="submit">
+                                                {% else %}
+                                                    <input class="btn btn-black" value="ВОЙТИ" type="submit"
+                                                           name="login">
+                                                    <input class="btn btn-grey" value="Забыли пароль?" type="submit"
+                                                           name="recovery">
+                                                    <p>Войти через:</p>
+                                                    {% get_providers as socialaccount_providers %}
+                                                    {% for provider in socialaccount_providers %}
+                                                        <a href="{% provider_login_url provider.id process='login' %}"
+                                                           class="btn btn-social btn-{{ provider.id }}">
+                                                            {{ provider.name }}
+                                                        </a>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="col-lg-6">
+                                <div class="box-detail-cart">
+                                    <div class="box-info-cart">
+                                        <p class="text-17-medium text-uppercase">Активные заказы</p>
+                                        <div class="box-info-checkout-inner">
+                                            <div class="list-items-cart">
+                                                <div class="item-cart">
+                                                    <div class="item-cart-info">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Заказы</th>
+                                                                <th>Сумма</th>
+                                                                <th>Статус</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {% for order in user.orders.all %}
+                                                                <tr class="clickable-row"
+                                                                    data-href="{% url 'cart:order_detail' order.pk %}"
+                                                                    title="Посмотреть детали">
+                                                                    <td class="product-name">
+                                                                        {{ order.pk }}/{{ order.created_at|date:"d.m.y" }}
+                                                                    </td>
+                                                                    <td>{{ order.get_total_cost }}</td>
+                                                                    <td>{{ order.get_status }}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-button-checkout">
+                                            <a class="btn btn-grey" href="{% url 'cart:order_list' %}">Архив</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-detail-cart">
+                                    <div class="box-info-cart">
+                                        <p class="text-17-medium text-uppercase">Адреса доставки</p>
+                                        <div class="box-info-checkout-inner">
+                                            <div class="list-items-cart">
+                                                <div class="item-cart">
+                                                    <div class="item-cart-info">
+                                                        <table id="tableAddress" class="table table-striped">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Название</th>
+                                                                <th>Статус</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {% for addr in user.addresses.all %}
+                                                                <tr>
+                                                                    <td>
+                                                                        <a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
+                                                                           title="Редактировать">{{ addr }}</a>
+                                                                    </td>
+                                                                    <td class="address-status"
+                                                                        data-address-id="{{ addr.pk }}"
+                                                                        data-status-url="{% url 'users:change_status' addr.pk %}">
+                                                                        {% if addr.is_active %}
+                                                                            <b class="text-success">Основной</b>
+                                                                        {% else %}
+                                                                            <a href="#"
+                                                                               class="change-status text-secondary"
+                                                                               data-id="{{ addr.pk }}"
+                                                                               data-url="{% url 'users:change_status' addr.pk %}">Неактивен</a>
+                                                                        {% endif %}
+                                                                    </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="box-button-checkout">
+                                            <a class="btn btn-grey"
+                                               href="{% url 'users:address_create' %}?next={{ request.path }}">Новый</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
-                        <div class="box-form-checkout form-comment">
-                            <h4 class="mt-32 mb-25">{{title_form}}</h4>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-error">{{ form.non_field_errors }}</div>
-                                    {% for f in form %}
-                                    <div class="form-error text-end">{{ f.errors }}</div>
-                                    <div class="form-group">
-                                        {% if not forloop.last %}
-                                        <label class="form-label" for="{{ f.id_for_label }}">
-                                            {{ f.label }}</label>
-                                        {% endif %}
-                                        {{ f| add_attrs }}
-                                    </div>
-                                    {% endfor %}
-                                    <div class="box-button-checkout">
-                                        {% if user.is_authenticated %}
-                                        <button class="btn btn-black" type="submit">Сохранить</button>
-                                        <a class="btn btn-grey my-1" href="{% url 'users:logout_form' %}">Выйти из
-                                            профиля</a>
-                                        {% else %}
-                                        {% if create_user %}
-                                        <input class="btn btn-black" value="Зарегистрировать" type="submit">
-                                        {% else %}
-                                        <input class="btn btn-black" value="ВОЙТИ" type="submit" name="login">
-                                        <input class="btn btn-grey" value="Забыли пароль?" type="submit"
-                                               name="recovery">
-                                        {% endif %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    {% if user.is_authenticated %}
-                    <div class="col-lg-6">
-                        <div class="box-detail-cart">
-                            <div class="box-info-cart">
-                                <p class="text-17-medium text-uppercase">Активные заказы</p>
-                                <div class="box-info-checkout-inner">
-                                    <div class="list-items-cart">
-                                        <div class="item-cart">
-                                            <div class="item-cart-info">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Заказы</th>
-                                                        <th>Сумма</th>
-                                                        <th>Статус</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for order in user.orders.all %}
-                                                    <tr class="clickable-row"
-                                                        data-href="{% url 'cart:order_detail' order.pk %}"
-                                                        title="Посмотреть детали">
-                                                        <td class="product-name">
-                                                            {{order.pk}}/{{order.created_at|date:"d.m.y"}}
-                                                        </td>
-                                                        <td>{{order.get_total_cost}}</td>
-                                                        <td>{{order.get_status}}</td>
-                                                    </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-button-checkout">
-                                    <a class="btn btn-grey" href="{% url 'cart:order_list' %}">Архив</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-detail-cart">
-                            <div class="box-info-cart">
-                                <p class="text-17-medium text-uppercase">Адреса доставки</p>
-                                <div class="box-info-checkout-inner">
-                                    <div class="list-items-cart">
-                                        <div class="item-cart">
-                                            <div class="item-cart-info">
-                                                <table id="tableAddress" class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Название</th>
-                                                        <th>Статус</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for addr in user.addresses.all %}
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{% url 'users:address_update' addr.pk %}?next={{ request.path }}"
-                                                               title="Редактировать">{{addr}}</a>
-                                                        </td>
-                                                        <td class="address-status"
-                                                            data-address-id="{{ addr.pk }}"
-                                                            data-status-url="{% url 'users:change_status' addr.pk %}">
-                                                            {% if addr.is_active %}
-                                                            <b class="text-success">Основной</b>
-                                                            {% else %}
-                                                            <a href="#" class="change-status text-secondary"
-                                                               data-id="{{addr.pk}}"
-                                                               data-url="{% url 'users:change_status' addr.pk %}">Неактивен</a>
-                                                            {% endif %}
-                                                        </td>
-                                                    </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-button-checkout">
-                                    <a class="btn btn-grey"
-                                       href="{% url 'users:address_create' %}?next={{request.path}}">Новый</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-            </form>
-        </div>
-    </section>
-</main>
+                </form>
+            </div>
+        </section>
+    </main>
 {% endblock content %}
