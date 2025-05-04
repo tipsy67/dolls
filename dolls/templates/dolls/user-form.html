@@ -61,10 +61,10 @@
                                                         <span class="me-2 col-auto align-self-center">Войти через:</span>
                                                         {% get_providers as socialaccount_providers %}
                                                         {% for provider in socialaccount_providers %}
-                                                            <div class="col-auto">
+                                                            <div class="col-auto social-provider-btn mb-1">
                                                                 <a href="{% provider_login_url provider.id process='login' %}">
                                                                     <img src="{% static 'dolls/assets/imgs/icons/'|add:provider.id|add:'.png' %}"
-                                                                         alt="{{ provider.name }}" width="28"></a></div>
+                                                                         alt="{{ provider.name }}" width="40"></a></div>
                                                         {% endfor %}
                                                     </div>
                                                 {% endif %}
