@@ -15787,3 +15787,21 @@ quote {
     margin: 0 auto;
     max-width: 600px;
 }
+
+.social-provider-btn {
+    display: inline-block;
+    padding: 8px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    transition: all 0.3s ease;
+}
+
+.social-provider-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.social-login-options {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
