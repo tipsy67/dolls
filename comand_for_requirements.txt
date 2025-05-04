@@ -6,6 +6,7 @@ python manage.py dumpdata \
     --exclude=admin.logentry \
     --exclude=sessions.session \
     --exclude=auth.user \
+    --exclude=subscribes \
     --indent=2 > data.json
 
 docker compose run --rm certbot certonly --webroot -w /var/www/certbot --email dan.toropov@gmail.com -d toytales.ru -d www.toytales.ru -d flower.toytales.ru --agree-tos --non-interactive --force-renewal
