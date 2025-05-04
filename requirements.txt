@@ -12,3 +12,4 @@ gunicorn
 django-allauth
 pyjwt
 cryptography
+openai
