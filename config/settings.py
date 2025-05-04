@@ -204,3 +204,5 @@ ACCOUNT_LOGIN_METHODS = {'username': 'username'}
 # 3. Дополнительные важные настройки
 ACCOUNT_UNIQUE_EMAIL = True                # Уникальный email
 SOCIALACCOUNT_EMAIL_REQUIRED = True        # Для социальных аккаунтов
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"  # Форсирует HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
