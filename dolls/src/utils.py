@@ -9,7 +9,7 @@ from django.db.models.functions import Random
 
 def get_random_reviews(request):
     reviews_set = request.session.get('reviews')
-    if reviews_set is None:
+    if reviews_set is None or len(reviews_set) == 0:
         reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())[:NUMBER_OF_REVIEWS_DISPLAYED]
         request.session['reviews'] = reviews_set
 
