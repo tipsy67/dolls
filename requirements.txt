@@ -9,3 +9,6 @@ django-mptt
 instaloader
 flower
 gunicorn
+django-allauth
+pyjwt
+cryptography
