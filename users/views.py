@@ -1,5 +1,6 @@
 import secrets
 
+from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
