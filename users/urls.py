@@ -1,3 +1,4 @@
+from allauth.socialaccount.providers.oauth2.urls import default_urlpatterns
 from django.contrib.auth.views import LogoutView
 from django.urls import path
 
