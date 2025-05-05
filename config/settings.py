@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
     'allauth.socialaccount.providers.mailru',
     'allauth.socialaccount.providers.odnoklassniki',
-    'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.yandex',
+    'vk_custom',
 ]
 
 MIDDLEWARE = [
