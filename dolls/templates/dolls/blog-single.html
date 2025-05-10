@@ -31,20 +31,15 @@
                     <div class="blog-content-inner">
                         {{ article.content|safe }}
                         <div class="block-tag-share">
-                            <div class="block-tags"><span class="text-17 mr-20">Tags</span>
-                                {% for tag in article.tags.all %}
+                            {% with tags=article.tags.all %}
+                            {% if tags %}
+                            <div class="block-tags"><span class="text-17 mr-20"></span>
+                                {% for tag in tags %}
                                     <a class="btn btn-tag-filter" href="#">{{ tag }}</a>
                                 {% endfor %}
                             </div>
-                            <div class="block-shares"><span class="text-17 mr-20">Share</span>
-                                <div class="socials"><a href="#"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/fb.svg' %}"
-                                        alt="TOR"></a><a href="#"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/insta.svg' %}"
-                                        alt="TOR"></a><a href="#"><img
-                                        src="{% static 'dolls/assets/imgs/template/icons/tw.svg' %}" alt="TOR"></a>
-                                </div>
-                            </div>
+                            {% endif %}
+                            {% endwith %}
                         </div>
                         <div class="container" style="display: flex;">
                             {% if user.is_authenticated %}
@@ -79,47 +74,6 @@
                                 </form>
                             </div>
                         </div>
-                        <!--                    <div class="block-related-post">-->
-                        <!--                        <h4 class="mb-30">Related Posts</h4>-->
-                        <!--                        <div class="row">-->
-                        <!--                            <div class="col-lg-4 col-md-6">-->
-                        <!--                                <div class="cardBlog wow fadeInUp">-->
-                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog1.png"-->
-                        <!--                                                                            alt="TOR"></a></div>-->
-                        <!--                                    <div class="cardInfo">-->
-                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                        <!--                                                class="date-post">DEC 1, 2022</span></div>-->
-                        <!--                                        <a class="cardTitle" href="#">-->
-                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="col-lg-4 col-md-6">-->
-                        <!--                                <div class="cardBlog wow fadeInUp">-->
-                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog2.png"-->
-                        <!--                                                                            alt="TOR"></a></div>-->
-                        <!--                                    <div class="cardInfo">-->
-                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                        <!--                                                class="date-post">DEC 1, 2022</span></div>-->
-                        <!--                                        <a class="cardTitle" href="#">-->
-                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="col-lg-4 col-md-6">-->
-                        <!--                                <div class="cardBlog wow fadeInUp">-->
-                        <!--                                    <div class="cardImage"><a href="#"><img src="assets/imgs/page/homepage2/blog3.png"-->
-                        <!--                                                                            alt="TOR"></a></div>-->
-                        <!--                                    <div class="cardInfo">-->
-                        <!--                                        <div class="cardTags"><a href="#">Fashion</a><span-->
-                        <!--                                                class="date-post">{{article.created_at|date:"j M"}}</span></div>-->
-                        <!--                                        <a class="cardTitle" href="#">-->
-                        <!--                                            <h6>The Best Winter Trend for 2022/2023</h6></a>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
                         <!-- Comment Section -->
                         <div class="comment-section col-12">
                             <div class="section-heading">
@@ -133,7 +87,7 @@
                                                 {% if node.owner.avatar %}
                                                     <img src="{{ node.owner.avatar }}" alt="comment"></a>
                                                 {% else %}
-                                                    <img src="{% static 'dolls/images/blank-avatar.jpg' %}"
+                                                    <img src="{% static 'dolls/assets/imgs/page/homepage15/author.png' %}"
                                                          alt="comment"></a>
                                                 {% endif %}
 
