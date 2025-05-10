@@ -24,12 +24,14 @@ def add_attrs(value):
         # attrs = {'class': 'form-control', 'placeholder': f'{value.label} *'}
     )
 
+
 @register.filter
 def to_int(value):
     try:
         return int(value)
     except (ValueError, TypeError):
         return 0
+
 
 @register.simple_tag
 def percent(total_cost, limit):

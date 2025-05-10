@@ -1,8 +1,9 @@
 import os
+from datetime import timedelta
 from pathlib import Path
+
 from celery.schedules import crontab
 from dotenv import load_dotenv
-from datetime import timedelta
 
 load_dotenv()
 
@@ -52,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'allauth.account.middleware.AccountMiddleware',
 ]
 
@@ -174,12 +174,12 @@ CELERY_BEAT_SCHEDULE = {
 
 NULLABLE = {'blank': True, 'null': True}
 
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST=os.environ.get("EMAIL_HOST")
-EMAIL_PORT=os.environ.get('EMAIL_PORT')
-EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 # EMAIL_USE_TLS = True
 EMAIL_TIMEOUT = 10
@@ -202,7 +202,7 @@ ACCOUNT_SIGNUP_FIELDS = ['username*', 'email*']
 ACCOUNT_LOGIN_METHODS = {'username': 'username'}
 
 # 3. Дополнительные важные настройки
-ACCOUNT_UNIQUE_EMAIL = True                # Уникальный email
-SOCIALACCOUNT_EMAIL_REQUIRED = True        # Для социальных аккаунтов
+ACCOUNT_UNIQUE_EMAIL = True  # Уникальный email
+SOCIALACCOUNT_EMAIL_REQUIRED = True  # Для социальных аккаунтов
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"  # Форсирует HTTPS
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

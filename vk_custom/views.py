@@ -1,4 +1,5 @@
-from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
+from allauth.socialaccount.providers.oauth2.views import (OAuth2CallbackView,
+                                                          OAuth2LoginView)
 from allauth.socialaccount.providers.vk.views import VKOAuth2Adapter
 
 
@@ -19,8 +20,8 @@ class VKCustomOAuth2Adapter(VKOAuth2Adapter):
         4. Создание социального аккаунта
         """
         from allauth.socialaccount.adapter import get_adapter
-        from requests.exceptions import RequestException
         from django.core.exceptions import SuspiciousOperation
+        from requests.exceptions import RequestException
 
         # 1. Проверка state (должен быть в сессии)
         session_state = request.session.pop('vk_auth_state', None)
@@ -34,7 +35,9 @@ class VKCustomOAuth2Adapter(VKOAuth2Adapter):
         code_verifier = request.session.pop('vk_code_verifier', None)
 
         if not all([auth_code, device_id, code_verifier]):
-            raise ValueError("Missing required auth parameters (code, device_id or code_verifier)")
+            raise ValueError(
+                "Missing required auth parameters (code, device_id or code_verifier)"
+            )
 
         try:
             session = get_adapter().get_requests_session()
@@ -56,7 +59,9 @@ class VKCustomOAuth2Adapter(VKOAuth2Adapter):
             ).json()
 
             if 'error' in token_response:
-                error_msg = token_response.get('error_description', 'VK token exchange failed')
+                error_msg = token_response.get(
+                    'error_description', 'VK token exchange failed'
+                )
                 raise RequestException(f"VK Token Error: {error_msg}")
 
             # 4. Получаем данные пользователя
@@ -66,12 +71,14 @@ class VKCustomOAuth2Adapter(VKOAuth2Adapter):
                     "access_token": token_response['access_token'],
                     # "v": "5.199",
                     "fields": "first_name,last_name,photo_max_orig,email,screen_name",
-                    "lang": "ru"
-                }
+                    "lang": "ru",
+                },
             ).json()
 
             if 'error' in user_data:
-                raise RequestException(f"VK API Error: {user_data['error']['error_msg']}")
+                raise RequestException(
+                    f"VK API Error: {user_data['error']['error_msg']}"
+                )
 
             # 5. Формируем данные для социального аккаунта
             extra_data = {
@@ -80,7 +87,7 @@ class VKCustomOAuth2Adapter(VKOAuth2Adapter):
                 "access_token": token_response['access_token'],
                 "refresh_token": token_response.get('refresh_token'),
                 "id_token": token_response.get('id_token'),
-                "token_expires_in": token_response.get('expires_in')
+                "token_expires_in": token_response.get('expires_in'),
             }
 
             # 6. Добавляем email, если он пришел в токен-ответе

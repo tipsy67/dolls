@@ -10,7 +10,7 @@ from django.views.generic import DetailView, ListView
 from blog.models import BlogArticle, Comment
 from config.settings import BLOG_PER_PAGE
 from dolls.src.utils import get_queryset_from_cache
-from tags.tag import CheckedTag, ArticleCheckedTag
+from tags.tag import ArticleCheckedTag, CheckedTag
 
 
 class BlogListView(ListView):
@@ -29,9 +29,12 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        list_popular_articles = BlogArticle.objects.filter(is_published=True, comments__isnull=False).annotate(
-            last_comment_date = Max('comments__created_at')).order_by('-last_comment_date')[:3]
-        context['list_popular_articles']=list_popular_articles
+        list_popular_articles = (
+            BlogArticle.objects.filter(is_published=True, comments__isnull=False)
+            .annotate(last_comment_date=Max('comments__created_at'))
+            .order_by('-last_comment_date')[:3]
+        )
+        context['list_popular_articles'] = list_popular_articles
         return context
 
 
@@ -70,6 +73,7 @@ def article_like(request):
 
     return JsonResponse({'status': 'error'})
 
+
 @login_required
 def add_comment_reply(request, parent_id):
     """Добавление ответа на комментарий"""
@@ -83,6 +87,7 @@ def add_comment_reply(request, parent_id):
             text=request.POST['text'],
         )
         return redirect('blog:blog_detail', slug=article.slug)
+
 
 @login_required
 def add_article_reply(request, article_id):
