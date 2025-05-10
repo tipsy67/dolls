@@ -1,8 +1,10 @@
 import secrets
 
-from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
+from allauth.socialaccount.providers.oauth2.views import (OAuth2CallbackView,
+                                                          OAuth2LoginView)
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
@@ -10,11 +12,11 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
-from django.contrib.auth.decorators import login_required
-from users.forms import CreateUserForm, ProfileUpdateForm, AddressForm
-from users.models import User, Address
+from django.views.generic import CreateView, DeleteView, UpdateView
+
 from dolls.tasks import sendmail
+from users.forms import AddressForm, CreateUserForm, ProfileUpdateForm
+from users.models import Address, User
 
 
 class LoginView(BaseLoginView):
@@ -44,7 +46,7 @@ class LoginView(BaseLoginView):
         return super().form_invalid(form)
 
 
-class ProfileUpdateView(LoginRequiredMixin,UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = ProfileUpdateForm
     template_name = 'dolls/user-form.html'
@@ -73,7 +75,8 @@ class UserCreateView(CreateView):
 
         context = {
             'host': self.request.get_host(),
-            'token': token, }
+            'token': token,
+        }
 
         sendmail.delay(
             [user.email],
@@ -84,7 +87,6 @@ class UserCreateView(CreateView):
         messages.success(self.request, 'Проверьте почту и подтвердите свой адрес')
 
         return super().form_valid(form)
-
 
 
 def confirm_user(request, token):
@@ -147,6 +149,7 @@ class AddressDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return self.request.GET.get('next', self.request.POST.get('next', '/'))
 
+
 @login_required
 def change_status(request, pk):
     if request.method == "POST":
@@ -168,5 +171,6 @@ def change_status(request, pk):
         )
 
     return JsonResponse({"success": False}, status=400)
+
 
 # /Адреса

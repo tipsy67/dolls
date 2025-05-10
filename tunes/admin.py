@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from tunes.models import Feedback, TunesDict, Banner
+from tunes.models import Banner, Feedback, TunesDict
 
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'email', 'phone', 'is_read')
+
 
 @admin.register(TunesDict)
 class TunesDictAdmin(admin.ModelAdmin):

@@ -1,7 +1,8 @@
-from config.settings import NULLABLE
 from django.db import models
-from django.urls import reverse
 from django.db.models.functions import Random
+from django.urls import reverse
+
+from config.settings import NULLABLE
 
 
 class Category(models.Model):

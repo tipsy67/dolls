@@ -1,14 +1,11 @@
 from django.urls import path
 
 from dolls.apps import DollsConfig
-from dolls.views import (
-    main_page,
-    product_list_view,
-    product_single_view,
-    product_preview_update,
-    about,
-    history, privacy_policy, shipping, user_agreement, FeedbackCreateView, thank_you, product_filter_view,
-)
+from dolls.views import (FeedbackCreateView, about, history, main_page,
+                         privacy_policy, product_filter_view,
+                         product_list_view, product_preview_update,
+                         product_single_view, shipping, thank_you,
+                         user_agreement)
 
 app_name = DollsConfig.name
 

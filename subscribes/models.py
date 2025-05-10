@@ -1,10 +1,12 @@
 from django.db import models
 
+
 class Recipients(models.Model):
     email = models.EmailField(unique=True, verbose_name='Почта')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создана')
-    author = models.ForeignKey(to='users.User', on_delete=models.CASCADE, verbose_name='Автор')
-
+    author = models.ForeignKey(
+        to='users.User', on_delete=models.CASCADE, verbose_name='Автор'
+    )
 
     class Meta:
         ordering = ['email']
