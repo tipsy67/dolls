@@ -40,5 +40,3 @@ class ArticleAdmin(admin.ModelAdmin):
                 )
 
         self.message_user(request, f"Разослано {count}.")
-
-

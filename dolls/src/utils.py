@@ -1,16 +1,19 @@
-from config.settings import NUMBER_OF_REVIEWS_DISPLAYED, CACHE_ENABLED
-from dolls.models import Category, Product
-from tags.models import Tag
-from tunes.models import Feedback
 from django.core.cache import cache
 from django.db.models import F, Q
 from django.db.models.functions import Random
+
+from config.settings import CACHE_ENABLED, NUMBER_OF_REVIEWS_DISPLAYED
+from dolls.models import Category, Product
+from tags.models import Tag
+from tunes.models import Feedback
 
 
 def get_random_reviews(request):
     reviews_set = request.session.get('reviews')
     if reviews_set is None or len(reviews_set) == 0:
-        reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())[:NUMBER_OF_REVIEWS_DISPLAYED]
+        reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())[
+            :NUMBER_OF_REVIEWS_DISPLAYED
+        ]
         request.session['reviews'] = reviews_set
 
     return reviews_set

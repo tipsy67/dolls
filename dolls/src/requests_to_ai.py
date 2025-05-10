@@ -7,7 +7,7 @@ from config.settings import BASE_DIR
 from dolls.models import Product
 
 
-def generate_description(product_id:int) -> None:
+def generate_description(product_id: int) -> None:
 
     DEEPSEEK_API_URL = "https://api.deepseek.com/"
     API_KEY = os.environ.get("DEEPSEEK_API_KEY")
@@ -44,7 +44,7 @@ def generate_description(product_id:int) -> None:
             {"role": "system", "content": "Ты профессиональный верстальщик HTML."},
             {"role": "user", "content": prompt},
         ],
-        stream=False
+        stream=False,
     )
 
     new_description = response.choices[0].message.content
@@ -89,7 +89,7 @@ def generate_desription(product_id: int) -> None:
             {"role": "system", "content": "Ты профессиональный верстальщик HTML."},
             {"role": "user", "content": prompt},
         ],
-        stream=False
+        stream=False,
     )
 
     new_article = response.choices[0].message.content

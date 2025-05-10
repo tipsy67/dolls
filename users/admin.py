@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from users.models import User, Address
+from users.models import Address, User
 
 
 class AddressInline(admin.TabularInline):

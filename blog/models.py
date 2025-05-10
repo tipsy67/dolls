@@ -1,12 +1,11 @@
 from django.db import models
 from django.template.defaultfilters import truncatechars
+from mptt.models import MPTTModel, TreeForeignKey
 from pytils.translit import slugify
 
 from config.settings import AUTH_USER_MODEL
 from dolls.models import Category
 from users.models import NULLABLE, User
-from django.db import models
-from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Comment(MPTTModel):

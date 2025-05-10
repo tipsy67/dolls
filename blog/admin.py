@@ -1,6 +1,7 @@
 from django import forms
-from pytils.translit import slugify
 from django.contrib import admin, messages
+from pytils.translit import slugify
+
 from blog.models import BlogArticle, Comment
 from blog.tasks import remake_article
 
@@ -18,7 +19,6 @@ class BlogAdminForm(forms.ModelForm):
         super().clean(*args, **kwargs)
 
 
-
 @admin.register(BlogArticle)
 class BlogAdmin(admin.ModelAdmin):
     filter = ['created_at']
@@ -33,8 +33,11 @@ class BlogAdmin(admin.ModelAdmin):
         for article in queryset:
             remake_article.delay(article.pk)
         self.message_user(
-            request, f"Не забудьте проконтролировать отредактированный текст!", messages.WARNING
+            request,
+            f"Не забудьте проконтролировать отредактированный текст!",
+            messages.WARNING,
         )
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
