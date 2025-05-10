@@ -13441,6 +13441,12 @@ quote {
     justify-content: flex-end;
 }
 
+.block-shares-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .block-related-post {
     padding-bottom: 10px;
     margin-bottom: 40px;
