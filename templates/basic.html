@@ -174,9 +174,10 @@
                     <p class="neutral-medium-dark body-p2 desc-company">Территория Особенных Радостей, где каждая кукла
                         создается с любовью и несет в себе частичку сказки.</p>
                     <p class="neutral-dark body-p2 email-footer">{{ author_email }}</p>
-                    {% if user.is_authenticated %}
-                    <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>
-                    {% endif %}
+                    {% include 'social.html' %}
+                    {#                    {% if user.is_authenticated %}#}
+{#                    <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>#}
+{#                    {% endif %}#}
                 </div>
                 <div class="col-lg-8 mb-30">
                     <div class="row">
