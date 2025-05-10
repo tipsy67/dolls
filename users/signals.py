@@ -12,5 +12,3 @@ def member_pre_save_handler(sender, instance: User, created, *args, **kwargs):
             Recipients(email=instance.email, author=instance).save()
         except:
             pass
-
-

@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.template.loader import render_to_string
-
-from cart.models import Order, OrderItem
 from django.urls import reverse
 from django.utils.html import format_html
+
+from cart.models import Order, OrderItem
 from dolls.tasks import sendmail
+
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -35,7 +36,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if "status" in form.changed_data:
-            context ={
+            context = {
                 'obj': obj,
             }
 

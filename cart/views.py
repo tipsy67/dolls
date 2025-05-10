@@ -1,26 +1,25 @@
 import json
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
-
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, ListView
 
-from config.settings import LOGIN_URL, CART_SESSION_ID
+from config.settings import CART_SESSION_ID, LOGIN_URL
 from dolls.models import Product
+from dolls.tasks import sendmail
 from tunes.src.utils import get_value_from_tunes
 from users.models import User
+
 from .cart import Cart
-
-from django.contrib import messages
-
 from .forms import OrderCreateForm
-from .models import OrderItem, Order
-from dolls.tasks import sendmail
+from .models import Order, OrderItem
+
 
 def cart_update(request):
     cart = Cart(request)
@@ -124,6 +123,7 @@ def get_cart(request):
     cart = Cart(request)
     response = {'success': True, 'cart_length': len(cart)}
     return JsonResponse(response)
+
 
 @login_required
 def order_create(request):

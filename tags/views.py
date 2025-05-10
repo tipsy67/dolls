@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 
-from tags.tag import CheckedTag, ArticleCheckedTag, ProductCheckedTag
+from tags.tag import ArticleCheckedTag, CheckedTag, ProductCheckedTag
 
 
 def change_tag(request, tag_pk):

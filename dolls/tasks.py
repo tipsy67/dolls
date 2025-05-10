@@ -1,16 +1,13 @@
+import os
 import subprocess
 import time
-
-import instaloader
-import os
 from datetime import datetime
 
+import instaloader
 import requests
-
-from config.settings import MEDIA_ROOT, STATIC_FILES
-
 from celery import shared_task
 
+from config.settings import MEDIA_ROOT, STATIC_FILES
 from dolls.src.mailers import sendmail_cmd
 from dolls.src.requests_to_ai import generate_description
 
@@ -21,7 +18,7 @@ def sendmail(recipients_emails: list, title: str, content: str):
 
 
 @shared_task
-def remake_description(product_id:int):
+def remake_description(product_id: int):
     generate_description(product_id)
 
 

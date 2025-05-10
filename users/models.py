@@ -22,7 +22,6 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.last_name} {self.first_name[:1]}."
 
-
     @property
     def fio(self):
         return f'{self.last_name} {self.first_name}'

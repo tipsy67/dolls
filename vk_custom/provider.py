@@ -15,5 +15,6 @@ class CustomVKProvider(VKProvider):
         params['code_challenge_method'] = 'S256'
         return params
 
+
 # providers.registry.register(CustomVKProvider)
 provider_classes = [CustomVKProvider]
