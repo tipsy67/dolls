@@ -1,5 +1,5 @@
 from allauth.socialaccount.providers.oauth2.views import OAuth2LoginView, OAuth2CallbackView
-from allauth.socialaccount.providers.vk.views import VKOAuth2Adapter, USER_FIELDS
+from allauth.socialaccount.providers.vk.views import VKOAuth2Adapter
 
 
 class VKCustomOAuth2Adapter(VKOAuth2Adapter):
