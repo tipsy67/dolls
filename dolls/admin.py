@@ -6,7 +6,7 @@ from pytils.translit import slugify
 
 from dolls.models import Category, Image, Product
 from dolls.src.images import resize_product_images
-from dolls.tasks import remake_description
+from dolls.tasks import remake_description, resize_images
 
 
 @admin.register(Category)
@@ -80,7 +80,7 @@ class ProductAdmin(admin.ModelAdmin):
                 inline_form.instance.name = image_new_name
                 inline_form.instance.image.name = image_new_name
         super().save_formset(request, form, formset, change)
-        resize_product_images(formset.instance.pk)
+
 
 
 @admin.register(Image)

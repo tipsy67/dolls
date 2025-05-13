@@ -5,3 +5,6 @@ class DollsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'dolls'
     verbose_name = 'Товары'
+
+    def ready(self):
+        import dolls.signals
