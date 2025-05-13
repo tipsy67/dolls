@@ -5,7 +5,10 @@ from pathlib import Path
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
+from pillow_heif import register_heif_opener
+
 load_dotenv()
+register_heif_opener()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

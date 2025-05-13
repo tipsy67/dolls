@@ -1,14 +1,14 @@
 import os
 import subprocess
 import time
-from datetime import datetime
 
 import instaloader
 import requests
 from celery import shared_task
 
-from config.settings import MEDIA_ROOT, STATIC_FILES
-from dolls.src.images import resize_product_images
+from config.settings import MEDIA_ROOT
+from dolls.models import Image
+from dolls.src.images import resize_product_images,  resize_product_image
 from dolls.src.mailers import sendmail_cmd
 from dolls.src.requests_to_ai import generate_description
 
@@ -26,6 +26,10 @@ def remake_description(product_id: int):
 @shared_task
 def resize_images(product_id: int):
     resize_product_images(product_id)
+
+@shared_task
+def resize_image(image_id: int):
+    resize_product_image(image_id)
 
 
 def get_current_ip():
