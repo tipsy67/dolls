@@ -1,8 +1,8 @@
 from django.db import models
 from django.db.models.functions import Random
-from django.urls import reverse
 
 from config.settings import NULLABLE
+
 
 
 class Category(models.Model):
@@ -85,3 +85,6 @@ class Image(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+
