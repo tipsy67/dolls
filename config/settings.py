@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.odnoklassniki',
     'allauth.socialaccount.providers.yandex',
     'vk_custom',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
@@ -193,16 +194,21 @@ BLOG_PER_PAGE = 3
 # NUMBER_OFFSET_PAGE = 2
 CART_SESSION_ID = 'dolls_cart'
 TAGS_SESSION_ID = 'dolls_tags'
+IMG_WIDTH = 756
+IMG_HEIGHT = 1008
 
+# allauth
 SITE_ID = 1
 # 1. Поля при регистрации (email обязателен, username обязателен)
 ACCOUNT_SIGNUP_FIELDS = ['username*', 'email*']
-
 # 2. Методы входа (только по username)
 ACCOUNT_LOGIN_METHODS = {'username': 'username'}
-
-# 3. Дополнительные важные настройки
+# 3. Дополнительные настройки
 ACCOUNT_UNIQUE_EMAIL = True  # Уникальный email
 SOCIALACCOUNT_EMAIL_REQUIRED = True  # Для социальных аккаунтов
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"  # Форсирует HTTPS
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Максимальный размер загружаемого файла (20 МБ)
+DATA_UPLOAD_MAX_MEMORY_SIZE = 20 * 1024 * 1024
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20 * 1024 * 1024

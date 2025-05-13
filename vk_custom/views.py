@@ -1,5 +1,7 @@
-from allauth.socialaccount.providers.oauth2.views import (OAuth2CallbackView,
-                                                          OAuth2LoginView)
+from allauth.socialaccount.providers.oauth2.views import (
+    OAuth2CallbackView,
+    OAuth2LoginView,
+)
 from allauth.socialaccount.providers.vk.views import VKOAuth2Adapter
 
 
