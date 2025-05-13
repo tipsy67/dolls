@@ -1,7 +1,9 @@
 import secrets
 
-from allauth.socialaccount.providers.oauth2.views import (OAuth2CallbackView,
-                                                          OAuth2LoginView)
+from allauth.socialaccount.providers.oauth2.views import (
+    OAuth2CallbackView,
+    OAuth2LoginView,
+)
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required

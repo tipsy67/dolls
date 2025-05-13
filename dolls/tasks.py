@@ -8,6 +8,7 @@ import requests
 from celery import shared_task
 
 from config.settings import MEDIA_ROOT, STATIC_FILES
+from dolls.src.images import resize_product_images
 from dolls.src.mailers import sendmail_cmd
 from dolls.src.requests_to_ai import generate_description
 
@@ -20,6 +21,11 @@ def sendmail(recipients_emails: list, title: str, content: str):
 @shared_task
 def remake_description(product_id: int):
     generate_description(product_id)
+
+
+@shared_task
+def resize_images(product_id: int):
+    resize_product_images(product_id)
 
 
 def get_current_ip():
