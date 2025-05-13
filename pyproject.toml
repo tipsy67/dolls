@@ -20,6 +20,8 @@ openai = "^1.76.0"
 django-allauth = "^65.7.0"
 pyjwt = "^2.10.1"
 cryptography = "^44.0.3"
+django-cleanup = "^9.0.0"
+pillow-heif = "^0.22.0"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -5,7 +5,8 @@ from django.utils.safestring import mark_safe
 from pytils.translit import slugify
 
 from dolls.models import Category, Image, Product
-from dolls.tasks import remake_description
+from dolls.src.images import resize_product_images
+from dolls.tasks import remake_description, resize_images
 
 
 @admin.register(Category)
@@ -67,6 +68,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     def save_formset(self, request, form, formset, change):
         product_name = form.cleaned_data.get('name', '')
+
         for inline_form in formset.forms:
             image_name = inline_form.cleaned_data.get('name', '')
             if inline_form.cleaned_data and (
@@ -74,8 +76,11 @@ class ProductAdmin(admin.ModelAdmin):
             ):
                 file_path = inline_form.cleaned_data.get('image', '')
                 file_name = os.path.basename(file_path.name)
-                inline_form.instance.name = f"{slugify(product_name)}-{file_name}"
+                image_new_name = f"{slugify(product_name)}-{file_name}"
+                inline_form.instance.name = image_new_name
+                inline_form.instance.image.name = image_new_name
         super().save_formset(request, form, formset, change)
+
 
 
 @admin.register(Image)
