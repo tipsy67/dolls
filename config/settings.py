@@ -144,6 +144,7 @@ if CACHE_ENABLED:
         'default': {
             'BACKEND': 'django.core.cache.backends.redis.RedisCache',
             'LOCATION': os.environ.get("CELERY_BROKER_URL"),
+            'TIMEOUT': 600,
         }
     }
 # else:

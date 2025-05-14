@@ -70,6 +70,7 @@ services:
       - ./certbot/webroot:/var/www/certbot
     depends_on:
       - app
+      - flower
 
   certbot:
     image: certbot/certbot
