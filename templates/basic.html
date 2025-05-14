@@ -14,6 +14,33 @@
     <link href="{% static 'dolls/assets/css/style.css' %}?v=1.0.0" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Куклы - Ручная работа - Сделано с душой</title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(101851033, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/101851033" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <div id="preloader-active">
@@ -61,19 +88,19 @@
                 </div>
             </div>
             <div class="header-account">
-{#                <a class="account-icon search" href="#">#}
-{#                    <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"#}
-{#                         viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">#}
-{#                        <g clip-path="url(#clip0_91_73)">#}
-{#                            <path d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"></path>#}
-{#                        </g>#}
-{#                        <defs>#}
-{#                            <clippath id="clip0_91_73">#}
-{#                                <rect width="24" height="24" fill="white" transform="translate(2 2)"></rect>#}
-{#                            </clippath>#}
-{#                        </defs>#}
-{#                    </svg>#}
-{#                </a>#}
+                {#                <a class="account-icon search" href="#">#}
+                {#                    <svg class="d-inline-flex align-items-center justify-content-center" width="28" height="28"#}
+                {#                         viewbox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">#}
+                {#                        <g clip-path="url(#clip0_91_73)">#}
+                {#                            <path d="M20.031 18.617L24.314 22.899L22.899 24.314L18.617 20.031C17.0237 21.3082 15.042 22.0029 13 22C8.032 22 4 17.968 4 13C4 8.032 8.032 4 13 4C17.968 4 22 8.032 22 13C22.0029 15.042 21.3082 17.0237 20.031 18.617ZM18.025 17.875C19.2941 16.5699 20.0029 14.8204 20 13C20 9.132 16.867 6 13 6C9.132 6 6 9.132 6 13C6 16.867 9.132 20 13 20C14.8204 20.0029 16.5699 19.2941 17.875 18.025L18.025 17.875Z"></path>#}
+                {#                        </g>#}
+                {#                        <defs>#}
+                {#                            <clippath id="clip0_91_73">#}
+                {#                                <rect width="24" height="24" fill="white" transform="translate(2 2)"></rect>#}
+                {#                            </clippath>#}
+                {#                        </defs>#}
+                {#                    </svg>#}
+                {#                </a>#}
                 <a class="account-icon account"
                         {% if user.is_authenticated %}
                    href="{% url 'users:profile' %}" title="Профиль"
@@ -176,8 +203,8 @@
                     <p class="neutral-dark body-p2 email-footer">{{ author_email }}</p>
                     {% include 'social.html' %}
                     {#                    {% if user.is_authenticated %}#}
-{#                    <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>#}
-{#                    {% endif %}#}
+                    {#                    <p class="neutral-dark body-p2 phone-footer">{{ author_phone }}</p>#}
+                    {#                    {% endif %}#}
                 </div>
                 <div class="col-lg-8 mb-30">
                     <div class="row">
