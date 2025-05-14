@@ -15375,7 +15375,7 @@ quote {
 .comment-section .media-left {
     float: left;
     clear: both;
-    margin-top: 10px;
+    margin-top: 1px;
 }
 
 .comment-section .media-heading {
