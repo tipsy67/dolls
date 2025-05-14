@@ -14,4 +14,4 @@ pyjwt
 cryptography
 openai
 django-cleanup
-
+pillow-heif
