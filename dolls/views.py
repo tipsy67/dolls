@@ -76,7 +76,7 @@ def product_list_view(request, cat=None):
     tag_list = get_queryset_from_cache('tag_list_product')
 
     category_list = get_queryset_from_cache('category_list_product')
-    sale_list = get_queryset_from_cache('sale_list')
+    # sale_list = get_queryset_from_cache('sale_list')
 
     if cat is not None:
         product_list = Product.objects.filter(
