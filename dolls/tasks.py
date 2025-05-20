@@ -14,21 +14,21 @@ from dolls.src.requests_to_ai import generate_description
 
 
 @shared_task
-def sendmail(recipients_emails: list, title: str, content: str):
+def sendmail(recipients_emails: list, title: str, content: str) -> None:
     sendmail_cmd(recipients_emails, title, content)
 
 
 @shared_task
-def remake_description(product_id: int):
+def remake_description(product_id: int) -> None:
     generate_description(product_id)
 
 
 @shared_task
-def resize_images(product_id: int):
+def resize_images(product_id: int) -> None:
     resize_product_images(product_id)
 
 @shared_task
-def resize_image(image_id: int):
+def resize_image(image_id: int) -> None:
     resize_product_image(image_id)
 
 

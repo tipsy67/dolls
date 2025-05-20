@@ -1,5 +1,5 @@
 from django.core.cache import cache
-from django.db.models import F, Q
+from django.db.models import F, Q, QuerySet
 from django.db.models.functions import Random
 
 from config.settings import CACHE_ENABLED, NUMBER_OF_REVIEWS_DISPLAYED
@@ -8,7 +8,7 @@ from tags.models import Tag
 from tunes.models import Feedback
 
 
-def get_random_reviews(request):
+def get_random_reviews(request) -> QuerySet:
     reviews_set = request.session.get('reviews')
     if reviews_set is None or len(reviews_set) == 0:
         reviews_set = Feedback.objects.filter(is_published=True).order_by(Random())[
@@ -19,7 +19,7 @@ def get_random_reviews(request):
     return reviews_set
 
 
-def get_model_queryset(list_name: str):
+def get_model_queryset(list_name: str) -> QuerySet:
     if list_name == 'tag_list_product':
         # queryset= None
         queryset = Tag.objects.filter(tags_product__isnull=False).distinct()
@@ -42,9 +42,9 @@ def get_model_queryset(list_name: str):
     return queryset
 
 
-def get_queryset_from_cache(list_name: str):
+def get_queryset_from_cache(list_name: str) -> QuerySet:
     if CACHE_ENABLED:
-        cache_data = None  # cache.get(list_name)
+        cache_data = cache.get(list_name)
         if cache_data is None:
             cache_data = get_model_queryset(list_name)
             cache.set(list_name, cache_data)
