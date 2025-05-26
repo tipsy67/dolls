@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from blog.models import BlogArticle
-
+from blog.tasks import resize_image
 
 
 @receiver(post_save, sender=BlogArticle, weak=False, dispatch_uid="post_save_image")
