@@ -2,12 +2,14 @@ services:
 
   redis:
     image: redis:latest
+    container_name: dolls_redis
     restart: on-failure
     expose:
       - "6379"
 
   db:
     image: "postgres:latest"
+    container_name: dolls_db
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -25,6 +27,7 @@ services:
 
   app:
     build: .
+    container_name: dolls_app
     depends_on:
       redis:
         condition: service_started
@@ -46,6 +49,7 @@ services:
 
   celery:
     build: .
+    container_name: dolls_celery
     depends_on:
       - redis
       - db
@@ -59,6 +63,7 @@ services:
 
   nginx:
     image: nginx:latest
+    container_name: dolls_nginx
     ports:
       - "80:80"
       - "443:443"
@@ -74,6 +79,7 @@ services:
 
   certbot:
     image: certbot/certbot
+    container_name: dolls_certbot
     volumes:
       - ./certbot/etc:/etc/letsencrypt
       - ./certbot/var:/var/lib/letsencrypt
@@ -88,6 +94,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: dolls_pgadmin
     env_file:
       - .env
     ports:
@@ -100,6 +107,7 @@ services:
 
   flower:
     build: .
+    container_name: dolls_flower
     ports:
       - "${FLOWER_PORT}:${FLOWER_PORT}"
     volumes:

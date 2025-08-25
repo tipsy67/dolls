@@ -1,0 +1,60 @@
+{
+  "inbounds": [
+    {
+      "port": 10086,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "e5a74214-cd02-4c8c-9101-7509abddc897",  
+            "flow": "",
+			"email": "my_d1@toytales.ru"
+          },
+          {
+            "id": "e5a74214-cd02-4c8c-9101-7509abddc897",  
+            "flow": "",
+			"email": "my_d2@toytales.ru"
+          },
+          {
+            "id": "87ec66ac-2eee-43fc-849d-f9c3873b85f4",  
+            "flow": "",
+			"email": "my_k@toytales.ru"
+          },
+          {
+            "id": "fc8af4c3-2a56-42c0-96c3-bfc99fe7696a",  
+            "flow": "",
+			"email": "my_g@toytales.ru"
+          },
+          {
+            "id": "8ac99985-07ee-450b-958e-60d1c0757d89",  
+            "flow": "",
+			"email": "my_m@toytales.ru"
+          },
+          {
+            "id": "aaf03cd5-d6dd-4c86-8513-48f7cf4074c2",  
+            "flow": "",
+			"email": "my_r1@toytales.ru"
+          },
+          {
+            "id": "6c6cb916-af1e-4c49-ad79-0bd1d4a8667a",  
+            "flow": "",
+			"email": "my_r2@toytales.ru"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "http",
+        "wsSettings": {
+          "path": "/workshop"  
+      }
+    }
+   } 
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "settings": {}
+    }
+  ]
+}
