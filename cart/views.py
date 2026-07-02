@@ -158,9 +158,9 @@ def order_create(request):
     else:
         user = User.objects.filter(pk=request.user.pk).first()
         dict_ = vars(user)
-        address = vars(user.addresses.filter(is_active=True).first())
-        if address:
-            dict_ = dict_ | address
+        address_obj = user.addresses.filter(is_active=True).first()
+        if address_obj:
+            dict_ |= vars(address_obj)
         form = OrderCreateForm(dict_)
 
     context = {
