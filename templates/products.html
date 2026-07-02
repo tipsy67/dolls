@@ -60,7 +60,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="cardInfo"><a href="#">
+            <div class="cardInfo"> <a href="{% url 'dolls:shop_single' product.pk %}">
                 <h6 class="text-16-medium cardTitle">{{ product.name }}</h6></a>
                 <p class="body-p2 cardDesc">
                     {% if product.sale %}
